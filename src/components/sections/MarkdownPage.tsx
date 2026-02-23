@@ -1,50 +1,62 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Reveal } from "@/components/animations/Reveal";
-import { ArrowRight, CheckCircle2, FileText, Scale } from "lucide-react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Reveal } from '@/components/animations/Reveal'
+import { ArrowRight, CheckCircle2, FileText, Scale } from 'lucide-react'
+import Link from 'next/link'
+import { cn } from '@/lib/utils'
 
 interface MarkdownPageProps {
-  content: string;
-  frontmatter: Record<string, string>;
-  locale: string;
+  content: string
+  frontmatter: Record<string, string>
+  locale: string
 }
 
 export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps) {
-  const isLegal = frontmatter.title?.toLowerCase().includes('privacy') || 
-                  frontmatter.title?.toLowerCase().includes('terms') ||
-                  frontmatter.title?.toLowerCase().includes('datenschutz') ||
-                  frontmatter.title?.toLowerCase().includes('agb') ||
-                  frontmatter.title?.toLowerCase().includes('bedingungen');
+  const isLegal =
+    frontmatter.title?.toLowerCase().includes('privacy') ||
+    frontmatter.title?.toLowerCase().includes('terms') ||
+    frontmatter.title?.toLowerCase().includes('datenschutz') ||
+    frontmatter.title?.toLowerCase().includes('agb') ||
+    frontmatter.title?.toLowerCase().includes('bedingungen')
 
   return (
-    <div className="flex flex-col w-full overflow-hidden pt-32 pb-24">
+    <div className="flex w-full flex-col overflow-hidden pt-56 md:pt-72">
       {/* Dynamic Header */}
-      <section className="relative min-h-[40vh] flex items-center py-20 overflow-hidden border-b border-white/5 bg-[#0a0b0c]">
-        <div className="absolute inset-0 bg-primary/5 blur-[100px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-4xl">
+      <section className="relative flex min-h-[50vh] items-center overflow-hidden border-b border-white/5 bg-[#0a0b0c] py-32 md:py-48 lg:py-64">
+        <div className="bg-primary/5 pointer-events-none absolute inset-0 blur-[150px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        <div className="relative z-10 container mx-auto max-w-5xl px-10 md:px-20 lg:px-32">
           <Reveal>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shadow-inner">
-                {isLegal ? <Scale size={24} /> : <FileText size={24} />}
+            <div className="mb-8 flex items-center gap-5">
+              <div className="skeuo-circle text-primary flex h-14 w-14 items-center justify-center rounded-2xl">
+                {isLegal ? <Scale size={28} /> : <FileText size={28} />}
               </div>
-              <div className="text-sm font-medium text-foreground/50 tracking-wider uppercase">
-                {isLegal ? (locale === 'de' ? 'Rechtliche Informationen' : 'Legal Information') : (locale === 'de' ? 'Ressource' : 'Resource')}
+              <div className="text-foreground/50 text-base font-semibold tracking-widest uppercase">
+                {isLegal
+                  ? locale === 'de'
+                    ? 'Rechtliche Informationen'
+                    : 'Legal Information'
+                  : locale === 'de'
+                    ? 'Ressource'
+                    : 'Resource'}
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.2] mb-6 tracking-tight">
-              {frontmatter.title || "SolutionPlus"}
+            <h1 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-7xl lg:text-8xl">
+              {frontmatter.title || 'SolutionPlus'}
             </h1>
             {frontmatter.description && (
-              <p className="text-xl text-foreground/60 max-w-2xl">
+              <p className="text-foreground/60 max-w-3xl text-2xl leading-relaxed font-light">
                 {frontmatter.description}
               </p>
             )}
             {isLegal && (
-              <div className="mt-8 text-sm text-foreground/40 border-l-2 border-primary/50 pl-4 py-1">
-                {locale === 'de' ? 'Zuletzt aktualisiert: ' : 'Last updated: '} {new Date().toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              <div className="text-foreground/40 border-primary/50 mt-12 border-l-2 py-2 pl-6 text-lg">
+                {locale === 'de' ? 'Zuletzt aktualisiert: ' : 'Last updated: '}{' '}
+                {new Date().toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
               </div>
             )}
           </Reveal>
@@ -52,40 +64,58 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
       </section>
 
       {/* Markdown Content */}
-      <section className="container mx-auto px-6 md:px-12 max-w-4xl py-20">
+      <section className="container mx-auto max-w-4xl px-10 py-32 md:px-20 md:py-48 lg:px-32 lg:py-64">
         <Reveal delay={0.1} direction="up">
-          <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-secondary hover:prose-a:text-primary prose-a:transition-colors prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-h1:text-4xl prose-h1:font-bold prose-h1:mb-8 prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-6 prose-h2:font-semibold prose-h3:text-2xl prose-h3:font-medium prose-p:text-foreground/70 prose-p:leading-relaxed prose-li:text-foreground/70 prose-strong:text-white prose-hr:border-white/10">
+          <div className="prose prose-invert prose-xl prose-headings:text-white prose-a:text-secondary hover:prose-a:text-primary prose-a:transition-colors prose-img:rounded-[3rem] prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-h1:text-6xl prose-h1:font-black prose-h1:mb-12 prose-h2:text-5xl prose-h2:mt-24 prose-h2:mb-10 prose-h2:font-bold prose-h3:text-3xl prose-h3:font-semibold prose-p:text-foreground/70 prose-p:leading-relaxed prose-li:text-foreground/70 prose-strong:text-white prose-hr:border-white/10 max-w-none">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({ node, ...props }) => <h1 className="text-gradient" {...props} />,
                 img: ({ node, ...props }) => (
-                  <div className="my-12 relative rounded-3xl overflow-hidden border border-white/10 bg-[#141618] p-2">
+                  <div className="relative my-16 overflow-hidden rounded-[3rem] border border-white/10 bg-[#141618] p-3 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="rounded-2xl w-full h-auto object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700 m-0" {...props} />
+                    <img
+                      className="m-0 h-auto w-full rounded-[2.5rem] object-cover opacity-80 mix-blend-luminosity transition-all duration-1000 hover:mix-blend-normal"
+                      {...props}
+                    />
                   </div>
                 ),
                 a: ({ node, href, ...props }) => {
-                  const url = href || '#';
+                  const url = href || '#'
                   if (url.startsWith('http')) {
-                    return <a href={url} target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-primary font-medium underline decoration-secondary/30 underline-offset-4" {...props} />;
+                    return (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-secondary hover:text-primary decoration-secondary/30 font-medium underline underline-offset-4"
+                        {...props}
+                      />
+                    )
                   }
-                  return <Link href={`/${locale}${url}`} className="text-secondary hover:text-primary font-medium underline decoration-secondary/30 underline-offset-4" {...props} />;
+                  return (
+                    <Link
+                      href={`/${locale}${url}`}
+                      className="text-secondary hover:text-primary decoration-secondary/30 font-medium underline underline-offset-4"
+                      {...props}
+                    />
+                  )
                 },
-                ul: ({ node, ...props }) => (
-                  <ul className="space-y-4 my-8" {...props} />
-                ),
+                ul: ({ node, ...props }) => <ul className="my-10 space-y-6" {...props} />,
                 li: ({ node, ...props }) => (
-                  <li className="flex gap-4 items-start" {...props}>
-                    <CheckCircle2 className="text-secondary mt-1 shrink-0 w-5 h-5" />
+                  <li className="flex items-start gap-5" {...props}>
+                    <CheckCircle2 className="text-secondary mt-1.5 h-6 w-6 shrink-0" />
                     <span>{props.children}</span>
                   </li>
                 ),
                 blockquote: ({ node, ...props }) => (
-                  <blockquote className="border-l-4 border-secondary/50 pl-6 py-2 my-10 bg-white/5 rounded-r-2xl text-xl text-white font-medium italic" {...props} />
+                  <blockquote
+                    className="border-secondary/50 my-16 rounded-r-[2rem] border-l-4 bg-white/5 py-6 pl-10 text-2xl leading-relaxed font-medium text-white italic"
+                    {...props}
+                  />
                 ),
                 p: ({ node, ...props }) => (
-                  <p className="leading-relaxed text-foreground/80 mb-6" {...props} />
+                  <p className="text-foreground/80 mb-8 leading-loose" {...props} />
                 ),
               }}
             >
@@ -94,26 +124,32 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
           </div>
         </Reveal>
       </section>
-      
+
       {/* Global CTA */}
-      <section className="py-32 relative overflow-hidden mt-20 border-t border-white/5 bg-[#0f1112]">
-        <div className="absolute inset-0 bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-4xl">
+      <section className="relative mt-32 overflow-hidden border-t border-white/5 bg-[#0a0b0d] py-48 md:py-64 lg:py-80">
+        <div className="bg-primary/10 pointer-events-none absolute inset-0 rounded-full blur-[200px]" />
+        <div className="relative z-10 container mx-auto max-w-5xl px-10 text-center md:px-20 lg:px-32">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              {locale === 'de' ? 'Lassen Sie uns Ihre Vision' : "Let's turn your vision into"} <span className="text-secondary">{locale === 'de' ? 'Wirklichkeit werden lassen.' : 'something unforgettable.'}</span>
+            <h2 className="mb-14 text-5xl font-black md:text-7xl lg:text-8xl">
+              {locale === 'de' ? 'Lassen Sie uns Ihre Vision' : "Let's turn your vision into"}{' '}
+              <span className="text-secondary">
+                {locale === 'de' ? 'Wirklichkeit werden lassen.' : 'something unforgettable.'}
+              </span>
             </h2>
             <Link
               href={locale === 'de' ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`}
-              className="px-10 py-5 inline-flex items-center justify-center gap-3 rounded-full bg-secondary text-white font-bold tracking-wide text-lg hover:bg-[#ff8a65] transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] hover:-translate-y-1 active:scale-95 group relative overflow-hidden"
+              className="bg-secondary group relative inline-flex items-center justify-center gap-4 overflow-hidden rounded-full px-16 py-8 text-2xl font-bold tracking-wide text-white shadow-[0_4px_40px_-8px_rgba(255,112,67,0.5)] transition-all duration-500 hover:-translate-y-2 hover:bg-[#ff8a65] hover:shadow-[0_12px_50px_-8px_rgba(255,112,67,0.7)] active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {locale === 'de' ? 'Gespräch vereinbaren' : 'Book a short call'}
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight
+                size={24}
+                className="transition-transform duration-500 group-hover:translate-x-2"
+              />
             </Link>
           </Reveal>
         </div>
       </section>
     </div>
-  );
+  )
 }

@@ -18,6 +18,8 @@
   --font-mono: var(--font-geist-mono);
 
   --animate-shimmer: shimmer 2.5s infinite linear;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-float: float 6s ease-in-out infinite;
 
   @keyframes shimmer {
     0% {
@@ -26,6 +28,28 @@
 
     100% {
       transform: translateX(200%);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-8px);
     }
   }
 }
@@ -72,4 +96,120 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Skeuomorphic Utility Classes */
+.skeuo-btn {
+  background: linear-gradient(180deg, #6c7bd0 0%, #4b5aab 100%);
+  box-shadow:
+    0 4px 0 #3b4787,
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.skeuo-btn:active {
+  transform: translateY(4px) !important;
+  box-shadow:
+    0 0 0 #3b4787,
+    0 2px 5px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.skeuo-btn-secondary {
+  background: linear-gradient(180deg, #2a2c30 0%, #1a1c1e 100%);
+  box-shadow:
+    0 4px 0 #0d0e10,
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease-in-out;
+}
+
+.skeuo-btn-secondary:active {
+  transform: translateY(4px) !important;
+  box-shadow:
+    0 0 0 #0d0e10,
+    0 2px 5px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.skeuo-card {
+  background: linear-gradient(145deg, #181a1c, #131416);
+  box-shadow:
+    10px 10px 20px #0a0b0c,
+    -10px -10px 20px #1e2124,
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.skeuo-card:hover {
+  background: linear-gradient(145deg, #1a1c1e, #141618);
+  box-shadow:
+    12px 12px 24px #0a0b0c,
+    -12px -12px 24px #1e2124,
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.skeuo-inner {
+  background: #121415;
+  box-shadow:
+    inset 5px 5px 10px #090a0b,
+    inset -5px -5px 10px #1b1e20;
+}
+
+.skeuo-pill {
+  background: linear-gradient(145deg, #181a1c, #131416);
+  box-shadow:
+    4px 4px 8px #0a0b0c,
+    -4px -4px 8px #1e2124,
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.skeuo-circle {
+  background: linear-gradient(145deg, #181a1c, #131416);
+  box-shadow:
+    8px 8px 16px #0a0b0c,
+    -8px -8px 16px #1e2124,
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.skeuo-btn-accent {
+  background: linear-gradient(180deg, #ff8a65 0%, #d85f36 100%);
+  box-shadow:
+    0 4px 0 #b34a26,
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s ease-in-out;
+}
+
+.skeuo-btn-accent:active {
+  transform: translateY(4px) !important;
+  box-shadow:
+    0 0 0 #b34a26,
+    0 2px 5px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.skeuo-btn-light {
+  background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+  color: #141618 !important;
+  box-shadow:
+    0 4px 0 #b0b0b0,
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  transition: all 0.1s ease-in-out;
+}
+
+.skeuo-btn-light:active {
+  transform: translateY(4px) !important;
+  box-shadow:
+    0 0 0 #b0b0b0,
+    0 2px 5px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }

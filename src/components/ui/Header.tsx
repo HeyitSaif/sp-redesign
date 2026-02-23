@@ -1,148 +1,157 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
+import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import type { ComponentType } from 'react'
 import {
-  ChevronDown,
-  Rocket,
-  Users,
-  RefreshCw,
-  TrendingUp,
-  Target,
-  Globe,
-  Briefcase,
-  ShieldCheck,
-  Zap,
   ArrowRight,
+  Briefcase,
+  ChevronDown,
+  Globe,
+  Menu,
+  RefreshCw,
+  Rocket,
+  Target,
+  TrendingUp,
+  Users,
+  X,
+  Zap,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const NAV_DATA_EN = [
+interface NavItem {
+  name: string
+  description: string
+  href: string
+  icon: ComponentType<{ size?: number; className?: string }>
+}
+
+interface NavSection {
+  name: string
+  items: NavItem[]
+}
+
+const NAV_DATA_EN: NavSection[] = [
   {
     name: 'Services',
     items: [
       {
         name: 'MVP Sprint Package',
-        description: 'Validate fast and enter the market with confidence.',
+        description: 'Validate faster and go to market with confidence.',
         href: '/mvp-sprint-package',
         icon: Rocket,
       },
       {
         name: 'Dedicated Teams',
-        description: 'Scale your engineering with our managed remote teams.',
+        description: 'Scale delivery with managed remote engineering teams.',
         href: '/dedicated-delivery-teams',
         icon: Users,
       },
       {
         name: 'Product Modernization',
-        description: 'Refactor and upgrade legacy code securely.',
+        description: 'Upgrade legacy platforms without losing stability.',
         href: '/product-modernization',
         icon: RefreshCw,
       },
     ],
-    footerMessage: 'Engineered for performance & scale.',
   },
   {
     name: 'Who We Serve',
     items: [
       {
         name: 'Startups',
-        description: 'Agile engineering for early-stage companies.',
+        description: 'Agile execution for early-stage product teams.',
         href: '/startup',
         icon: Target,
       },
       {
         name: 'Scale-Ups',
-        description: 'Expand features and capacity without losing momentum.',
+        description: 'Increase speed and capacity while maintaining quality.',
         href: '/scale-up',
         icon: TrendingUp,
       },
       {
         name: 'Entrepreneurs',
-        description: 'Transform your vision into a scalable product.',
+        description: 'Turn your product idea into a scalable business asset.',
         href: '/entrepreneur-with-an-idea',
         icon: Briefcase,
       },
     ],
-    footerMessage: 'Trusted by growing tech companies.',
   },
   {
     name: 'Company',
     items: [
       {
         name: 'About Us',
-        description: 'German leadership, elite Pakistani engineering talent.',
+        description: 'German leadership with elite Pakistani engineering talent.',
         href: '/about-team',
         icon: Globe,
       },
       {
         name: 'Careers',
-        description: 'Join our mission to build products that matter.',
+        description: 'Join a team that builds business-critical products.',
         href: '/careers',
         icon: Zap,
       },
     ],
-    footerMessage: 'Quality-driven global delivery.',
   },
 ]
 
-const NAV_DATA_DE = [
+const NAV_DATA_DE: NavSection[] = [
   {
     name: 'Leistungen',
     items: [
       {
         name: 'MVP Sprint Paket',
-        description: 'Schnelle Validierung und sicherer Markteintritt.',
+        description: 'Schnell validieren und sicher in den Markt starten.',
         href: '/mvp-sprint-paket',
         icon: Rocket,
       },
       {
         name: 'Dedizierte Teams',
-        description: 'Skalieren Sie Ihre Entwicklung mit unseren Teams.',
+        description: 'Ihre Delivery mit unseren Remote-Teams skalieren.',
         href: '/dedizierte-teams',
         icon: Users,
       },
       {
         name: 'Software Modernisierung',
-        description: 'Legacy-Code sicher refaktorieren und upgraden.',
+        description: 'Bestehende Plattformen stabil modernisieren.',
         href: '/software-modernisierung',
         icon: RefreshCw,
       },
     ],
-    footerMessage: 'Für Performance & Skalierung entwickelt.',
   },
   {
     name: 'Für Wen',
     items: [
       {
         name: 'Startups',
-        description: 'Agile Entwicklung für junge Unternehmen.',
+        description: 'Agile Produktentwicklung für junge Unternehmen.',
         href: '/startups',
         icon: Target,
       },
       {
         name: 'Scale-Ups',
-        description: 'Erweitern Sie Features ohne Momentum zu verlieren.',
+        description: 'Mehr Delivery-Speed bei konstanter Qualität.',
         href: '/scaleups',
         icon: TrendingUp,
       },
       {
         name: 'Gründer',
-        description: 'Verwandeln Sie Ihre Vision in ein skalierbares Produkt.',
+        description: 'Von der Idee zum skalierbaren digitalen Produkt.',
         href: '/gruender-idee-startup-partner',
         icon: Briefcase,
       },
     ],
-    footerMessage: 'Vertrauen von wachsenden Tech-Unternehmen.',
   },
   {
     name: 'Unternehmen',
     items: [
       {
         name: 'Über Uns',
-        description: 'Deutsche Führung, pakistanische Top-Entwickler.',
+        description: 'Deutsche Führung mit pakistanischen Top-Ingenieuren.',
         href: '/ueber-solutionplus',
         icon: Globe,
       },
@@ -153,364 +162,260 @@ const NAV_DATA_DE = [
         icon: Zap,
       },
     ],
-    footerMessage: 'Qualitätsgetriebene globale Umsetzung.',
   },
 ]
 
-// Spring configurations for buttery smooth animations
-const springConfig = { type: 'spring' as const, stiffness: 300, damping: 30, mass: 0.8 }
-const menuSpringConfig = { type: 'spring' as const, stiffness: 350, damping: 25, mass: 0.5 }
-
 export function Header({ locale }: { locale: string }) {
-  const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null)
-  const [expandedMobileSection, setExpandedMobileSection] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
 
   const navData = locale === 'de' ? NAV_DATA_DE : NAV_DATA_EN
+  const contactHref = locale === 'de' ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+    const onScroll = () => setIsScrolled(window.scrollY > 24)
+    const onResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileOpen(false)
+      }
     }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+    }
   }, [])
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768 && mobileMenuOpen) {
-        setMobileMenuOpen(false)
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [mobileMenuOpen])
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
+    document.body.style.overflow = mobileOpen ? 'hidden' : 'unset'
     return () => {
       document.body.style.overflow = 'unset'
     }
-  }, [mobileMenuOpen])
+  }, [mobileOpen])
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 z-50 w-full transition-all duration-500 will-change-transform',
-        scrolled ? 'py-3' : 'py-6'
-      )}
-    >
-      {/* Blurred background pill that appears on scroll */}
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8 lg:px-10">
       <div
         className={cn(
-          'pointer-events-none absolute inset-0 mx-auto max-w-[1200px] transition-all duration-500 ease-out',
-          scrolled
-            ? 'top-3 right-4 bottom-3 left-4 rounded-2xl border border-white/[0.08] bg-black/40 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-2xl md:right-8 md:left-8 md:rounded-[2rem] lg:right-12 lg:left-12'
-            : 'top-0 right-0 bottom-0 left-0 bg-transparent'
-        )}
-      />
-
-      <div
-        className={cn(
-          'relative z-10 container mx-auto flex items-center justify-between transition-all duration-500',
-          scrolled ? 'px-8 md:px-14 lg:px-20' : 'px-6 md:px-12 lg:px-12'
+          'mx-auto w-full max-w-7xl rounded-2xl border transition-all duration-300',
+          isScrolled
+            ? 'border-white/15 bg-[#0d0f12]/86 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl'
+            : 'border-white/8 bg-[#0d0f12]/72 backdrop-blur-lg'
         )}
       >
-        <Link
-          href={`/${locale}`}
-          className="group relative flex items-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-white/50"
+        <div
+          className={cn(
+            'flex items-center justify-between gap-3 px-4 transition-all md:px-6 lg:px-8',
+            isScrolled ? 'h-16' : 'h-20'
+          )}
         >
-          <Image
-            src="/logo.png"
-            alt="SolutionPlus"
-            width={180}
-            height={60}
-            className="h-6 w-auto object-contain opacity-90 brightness-0 invert transition-opacity duration-300 group-hover:opacity-100 md:h-7 lg:h-8"
-            priority
-          />
-        </Link>
+          <Link
+            href={`/${locale}`}
+            className="group flex items-center gap-3 rounded-xl p-1.5 transition-colors outline-none hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            <Image
+              src="/logo.png"
+              alt="SolutionPlus"
+              width={170}
+              height={56}
+              className="h-8 w-auto object-contain brightness-0 invert transition duration-300 group-hover:opacity-100 md:h-9"
+              priority
+            />
+            <span className="hidden text-xs font-medium tracking-[0.16em] text-white/55 uppercase xl:inline-block">
+              {locale === 'de' ? 'Engineering Partner' : 'Product Engineering'}
+            </span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav
-          className="relative hidden items-center gap-1 md:flex"
-          onMouseLeave={() => setHoveredMenu(null)}
-        >
-          {navData.map((section) => (
-            <div
-              key={section.name}
-              className="relative"
-              onMouseEnter={() => setHoveredMenu(section.name)}
-            >
-              <button
-                className={cn(
-                  'relative z-10 flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-medium transition-colors duration-200 outline-none',
-                  hoveredMenu === section.name ? 'text-white' : 'text-white/70 hover:text-white'
-                )}
-                aria-expanded={hoveredMenu === section.name}
+          <nav
+            className="relative hidden items-center gap-1 lg:flex"
+            onMouseLeave={() => setDesktopOpen(null)}
+          >
+            {navData.map((section) => (
+              <div
+                key={section.name}
+                className="relative"
+                onMouseEnter={() => setDesktopOpen(section.name)}
               >
-                {section.name}
-                <ChevronDown
-                  size={14}
+                <button
+                  type="button"
                   className={cn(
-                    'transition-transform duration-300 ease-[0.23,1,0.32,1]',
-                    hoveredMenu === section.name ? 'rotate-180 text-white' : 'text-white/40'
+                    'flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold tracking-wide transition-colors outline-none',
+                    desktopOpen === section.name
+                      ? 'bg-white/10 text-white'
+                      : 'text-white/70 hover:bg-white/5 hover:text-white'
                   )}
-                />
-              </button>
+                  aria-haspopup="true"
+                  aria-expanded={desktopOpen === section.name}
+                >
+                  {section.name}
+                  <ChevronDown
+                    size={16}
+                    className={cn(
+                      'transition-transform duration-200',
+                      desktopOpen === section.name && 'rotate-180'
+                    )}
+                  />
+                </button>
 
-              {/* Animated hover pill background */}
-              {hoveredMenu === section.name && (
-                <motion.div
-                  layoutId="desktop-nav-pill"
-                  className="absolute inset-0 z-0 rounded-full border border-white/[0.05] bg-white/[0.06]"
-                  transition={springConfig}
-                />
-              )}
-
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {hoveredMenu === section.name && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 12, filter: 'blur(8px)', scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 }}
-                    exit={{ opacity: 0, y: 8, filter: 'blur(4px)', scale: 0.98 }}
-                    transition={menuSpringConfig}
-                    className="absolute top-[calc(100%+0.5rem)] left-1/2 z-50 w-[360px] origin-top -translate-x-1/2 rounded-2xl border border-white/[0.08] bg-[#0c0c0e]/95 p-2.5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8),0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur-3xl lg:w-[400px]"
-                  >
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent" />
-
-                    <div className="relative z-10 flex flex-col gap-1">
-                      {section.items.map((item, idx) => {
-                        const Icon = item.icon
-                        return (
-                          <motion.div
-                            key={item.name}
-                            initial={{ opacity: 0, x: -8 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: idx * 0.04, duration: 0.3, ease: 'easeOut' }}
-                          >
+                <AnimatePresence>
+                  {desktopOpen === section.name && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                      transition={{ duration: 0.18, ease: 'easeOut' }}
+                      className="absolute top-[calc(100%+10px)] left-1/2 z-50 w-[560px] -translate-x-1/2 rounded-2xl border border-white/10 bg-[#0b0d10]/97 p-3 shadow-[0_24px_65px_-28px_rgba(0,0,0,0.95)] backdrop-blur-xl"
+                    >
+                      <div className="grid grid-cols-2 gap-2">
+                        {section.items.map((item) => {
+                          const Icon = item.icon
+                          return (
                             <Link
+                              key={item.name}
                               href={`/${locale}${item.href}`}
-                              className="group/item flex items-start gap-4 rounded-xl p-3 transition-all duration-300 outline-none hover:bg-white/[0.04] focus-visible:bg-white/[0.06]"
-                              onClick={() => setHoveredMenu(null)}
+                              className="group rounded-xl border border-transparent bg-white/2 p-3 transition-all outline-none hover:border-white/10 hover:bg-white/6 focus-visible:border-white/20"
+                              onClick={() => setDesktopOpen(null)}
                             >
-                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/[0.05] bg-gradient-to-br from-white/[0.08] to-white/[0.02] text-white/80 shadow-inner transition-all duration-300 group-hover/item:border-white/20 group-hover/item:from-white/[0.12] group-hover/item:to-white/[0.05] group-hover/item:text-white">
-                                <Icon
-                                  size={18}
-                                  strokeWidth={2}
-                                  className="transition-transform duration-300 group-hover/item:scale-110"
-                                />
-                              </div>
-                              <div className="flex-1">
-                                <div className="mb-0.5 flex items-center justify-between">
-                                  <span className="text-sm font-semibold tracking-tight text-white/90 transition-colors group-hover/item:text-white">
-                                    {item.name}
-                                  </span>
-                                  <ArrowRight
-                                    size={14}
-                                    className="-translate-x-2 text-white/40 opacity-0 transition-all duration-300 group-hover/item:translate-x-0 group-hover/item:text-white group-hover/item:opacity-100"
-                                  />
+                              <div className="mb-2.5 flex items-center gap-2.5">
+                                <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/85">
+                                  <Icon size={15} />
                                 </div>
-                                <div className="text-xs leading-relaxed font-medium text-white/50 transition-colors group-hover/item:text-white/70">
-                                  {item.description}
-                                </div>
+                                <span className="text-sm font-semibold text-white/90 transition-colors group-hover:text-white">
+                                  {item.name}
+                                </span>
                               </div>
+                              <p className="text-xs leading-relaxed text-white/55 group-hover:text-white/70">
+                                {item.description}
+                              </p>
                             </Link>
-                          </motion.div>
-                        )
-                      })}
-                    </div>
-
-                    {/* Sub-footer */}
-                    <div className="group/footer relative z-10 mt-2 overflow-hidden rounded-xl border border-white/[0.03] bg-black/40 px-4 py-3">
-                      <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-white/0 via-white/5 to-white/0 group-hover/footer:animate-[shimmer_2s_infinite]" />
-                      <div className="relative z-10 flex items-center gap-2.5 text-xs font-medium text-white/60">
-                        <ShieldCheck size={14} className="text-white/40" />
-                        <span>{section.footerMessage}</span>
+                          )
+                        })}
                       </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </nav>
 
-          <div className="ml-2 flex items-center border-l border-white/10 pl-4">
+          <div className="hidden items-center gap-3 lg:flex">
             <Link
-              href={locale === 'de' ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`}
-              className="group relative overflow-hidden rounded-full bg-white px-5 py-2.5 text-sm font-semibold tracking-wide text-black shadow-[0_0_0_0_rgba(255,255,255,0)] transition-all duration-300 outline-none hover:scale-[1.02] hover:shadow-[0_0_20px_0_rgba(255,255,255,0.3)] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-[0.98] lg:px-6"
+              href={contactHref}
+              className="skeuo-btn-light group flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold tracking-wide outline-none"
             >
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/5 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-              <span className="relative z-10 flex items-center gap-2">
-                {locale === 'de' ? 'Gespräch buchen' : 'Book a Call'}
-                <ArrowRight
-                  size={16}
-                  className="opacity-70 transition-transform group-hover:translate-x-0.5"
-                />
-              </span>
+              {locale === 'de' ? 'Gespräch buchen' : 'Book a Call'}
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
-        </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="relative z-50 -mr-2 flex h-10 w-10 flex-col items-center justify-center rounded-full p-2 text-white transition-colors outline-none hover:bg-white/10 md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-        >
-          <motion.div
-            animate={mobileMenuOpen ? 'open' : 'closed'}
-            className="flex h-4 w-5 flex-col justify-between"
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40 lg:hidden"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
-            <motion.span
-              variants={{
-                closed: { rotate: 0, y: 0 },
-                open: { rotate: 45, y: 7.5 },
-              }}
-              className="block h-[1.5px] w-full origin-left bg-white transition-all"
-            />
-            <motion.span
-              variants={{
-                closed: { opacity: 1 },
-                open: { opacity: 0 },
-              }}
-              className="block h-[1.5px] w-full bg-white transition-all"
-            />
-            <motion.span
-              variants={{
-                closed: { rotate: 0, y: 0 },
-                open: { rotate: -45, y: -7.5 },
-              }}
-              className="block h-[1.5px] w-full origin-left bg-white transition-all"
-            />
-          </motion.div>
-        </button>
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Navigation Overlay */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            animate={{ opacity: 1, backdropFilter: 'blur(20px)' }}
-            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 flex flex-col overflow-hidden bg-black/95 pt-24 md:hidden"
-          >
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent" />
-
-            <div className="no-scrollbar flex-1 overflow-y-auto px-6 pb-32">
-              <div className="flex flex-col gap-3">
-                {navData.map((section, idx) => (
-                  <motion.div
-                    key={section.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.1 + idx * 0.05,
-                      duration: 0.4,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02]"
-                  >
-                    <button
-                      onClick={() =>
-                        setExpandedMobileSection(
-                          expandedMobileSection === section.name ? null : section.name
-                        )
-                      }
-                      className="flex w-full items-center justify-between p-5 text-lg font-semibold text-white/90 transition-colors outline-none hover:bg-white/[0.04]"
-                    >
-                      {section.name}
-                      <motion.div
-                        animate={{ rotate: expandedMobileSection === section.name ? 180 : 0 }}
-                        transition={springConfig}
+        {mobileOpen && (
+          <>
+            <motion.button
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-40 bg-black/55 backdrop-blur-[2px] lg:hidden"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close mobile menu backdrop"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              className="relative z-50 mt-3 overflow-hidden rounded-2xl border border-white/12 bg-[#0d0f12]/96 px-4 pt-3 pb-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] backdrop-blur-xl lg:hidden"
+            >
+              <div className="no-scrollbar max-h-[72vh] overflow-y-auto pr-1">
+                <div className="space-y-2">
+                  {navData.map((section) => (
+                    <div key={section.name} className="rounded-xl border border-white/8 bg-white/3">
+                      <button
+                        type="button"
+                        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-white/90"
+                        onClick={() =>
+                          setMobileExpanded((prev) => (prev === section.name ? null : section.name))
+                        }
+                        aria-expanded={mobileExpanded === section.name}
                       >
-                        <ChevronDown size={20} className="text-white/40" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {expandedMobileSection === section.name && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                          <div className="flex flex-col gap-2 px-3 pb-4">
-                            {section.items.map((item, itemIdx) => {
-                              const Icon = item.icon
-                              return (
-                                <motion.div
-                                  key={item.name}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: itemIdx * 0.05 }}
-                                >
+                        <span>{section.name}</span>
+                        <ChevronDown
+                          size={16}
+                          className={cn(
+                            'text-white/60 transition-transform duration-200',
+                            mobileExpanded === section.name && 'rotate-180'
+                          )}
+                        />
+                      </button>
+
+                      <AnimatePresence initial={false}>
+                        {mobileExpanded === section.name && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <div className="space-y-1.5 px-2 pb-2">
+                              {section.items.map((item) => {
+                                const Icon = item.icon
+                                return (
                                   <Link
+                                    key={item.name}
                                     href={`/${locale}${item.href}`}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="flex items-center gap-4 rounded-xl border border-transparent p-3 transition-colors outline-none hover:bg-white/[0.06] focus-visible:bg-white/[0.08]"
+                                    className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/10"
+                                    onClick={() => setMobileOpen(false)}
                                   >
-                                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.05] text-white/80">
-                                      <Icon size={20} />
+                                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/6 text-white/80">
+                                      <Icon size={14} />
                                     </div>
-                                    <div className="flex-1">
-                                      <div className="mb-0.5 text-[15px] font-semibold text-white">
+                                    <div>
+                                      <p className="text-sm font-semibold text-white/90">
                                         {item.name}
-                                      </div>
-                                      <div className="line-clamp-1 text-xs text-white/50">
+                                      </p>
+                                      <p className="text-xs leading-relaxed text-white/55">
                                         {item.description}
-                                      </div>
+                                      </p>
                                     </div>
                                   </Link>
-                                </motion.div>
-                              )
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Mobile Bottom CTA Area */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="pointer-events-none absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/90 to-transparent p-6 pt-12"
-            >
-              <div className="pointer-events-auto mx-auto max-w-sm">
-                <Link
-                  href={
-                    locale === 'de' ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`
-                  }
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex h-14 w-full items-center justify-center gap-2 rounded-full bg-white text-base font-semibold tracking-wide text-black shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-all outline-none hover:bg-white/90 active:scale-95"
-                >
-                  {locale === 'de' ? 'Kostenlose Beratung anfragen' : 'Request a Free Consultation'}
-                  <ArrowRight size={18} />
-                </Link>
-                <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-white/40">
-                  <ShieldCheck size={14} className="text-white/30" />
-                  <span>
-                    {locale === 'de'
-                      ? 'Enterprise-Grade Qualität'
-                      : 'Enterprise-grade quality & security'}
-                  </span>
+                                )
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ))}
                 </div>
               </div>
+
+              <Link
+                href={contactHref}
+                className="skeuo-btn-light mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-full text-sm font-semibold tracking-wide"
+                onClick={() => setMobileOpen(false)}
+              >
+                {locale === 'de' ? 'Kostenlose Beratung anfragen' : 'Request a Consultation'}
+                <ArrowRight size={16} />
+              </Link>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
