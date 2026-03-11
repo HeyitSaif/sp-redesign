@@ -31,7 +31,7 @@ export function FloatiesBackground() {
 
       {/* Pill 1 */}
       <motion.div
-        className="absolute top-[40%] right-[10%] h-32 w-80 rotate-45 rounded-full bg-white/5 blur-3xl"
+        className="bg-sp-accent/5 absolute top-[40%] right-[10%] h-32 w-80 rotate-45 rounded-full blur-3xl"
         animate={{
           y: [0, 50, 0],
           x: [0, -30, 0],

@@ -23,7 +23,7 @@ export function CareersPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
             <Reveal>
-              <span className="text-sp-accent mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
+              <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle mb-8 inline-block rounded-full border px-4 py-2 text-sm font-medium">
                 {isDe ? 'Karriere bei SolutionPlus' : 'Careers at SolutionPlus'}
               </span>
               <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
@@ -32,7 +32,7 @@ export function CareersPage({ locale }: { locale: string }) {
                   {isDe ? 'Wachsen ohne Grenzen.' : 'Grow without borders.'}
                 </span>
               </h1>
-              <p className="text-foreground/70 mb-8 max-w-xl text-xl leading-relaxed">
+              <p className="text-sp-text-muted mb-8 max-w-xl text-xl leading-relaxed">
                 {isDe
                   ? 'Wir sind mehr als ein Softwareunternehmen; wir sind ein Team mit klaren Zielen. Mit deutsch geführter Projektaufsicht und Top-Engineering-Talenten aus Pakistan liefern wir nachhaltigen Einfluss für Kunden in ganz Europa und den USA.'
                   : "We're more than a software company; we're a team built on purpose. With German-led project oversight and top engineering talent from Pakistan, we deliver lasting impact for clients across Europe and the US."}
@@ -110,7 +110,7 @@ export function CareersPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-clip rounded-[2rem] border border-black/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                <div className="group bg-sp-bg-medium relative h-full overflow-x-clip rounded-[2rem] border border-black/10 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                   <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="group-hover:bg-sp-accent/10 group-hover:border-sp-accent/30 group-hover:text-sp-accent text-sp-text-dark mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5 shadow-lg transition-all duration-500 group-hover:scale-110">
                     {feature.icon}
@@ -137,7 +137,7 @@ export function CareersPage({ locale }: { locale: string }) {
               <h2 className="mb-6 text-3xl font-bold md:text-5xl">
                 {isDe ? 'Warum bei uns arbeiten' : 'Why Work With Us'}
               </h2>
-              <p className="text-foreground/70 mb-10 text-lg">
+              <p className="text-sp-text-muted mb-10 text-lg">
                 {isDe
                   ? 'Wenn sich dies nach Ihrer Arbeitsweise anfühlt, würden wir uns freuen, von Ihnen zu hören.'
                   : "If this feels like your way of working, we'd love to hear from you."}
@@ -311,7 +311,7 @@ export function CareersPage({ locale }: { locale: string }) {
 
       {/* Related reading */}
       <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
-        <div className="container mx-auto px-6 md:px-12 text-center">
+        <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
             <h3 className="mb-8 text-2xl font-bold text-white">
               {supportData[locale === 'de' ? 'de' : 'en'].caseStudies.readMore}
@@ -319,7 +319,7 @@ export function CareersPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
-                className="bg-white/5 border border-white/10 text-white/80 hover:border-sp-accent hover:text-sp-accent rounded-full px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>

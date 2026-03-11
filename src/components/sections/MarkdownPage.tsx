@@ -129,7 +129,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
                 ),
                 blockquote: ({ node, ...props }) => (
                   <blockquote
-                    className="border-sp-accent/50 my-16 rounded-r-[2rem] border-l-4 bg-white/5 py-6 pl-10 text-2xl leading-relaxed font-medium text-white italic"
+                    className="border-sp-accent/50 bg-sp-surface-subtle my-16 rounded-r-[2rem] border-l-4 py-6 pl-10 text-2xl leading-relaxed font-medium text-white italic"
                     {...props}
                   />
                 ),

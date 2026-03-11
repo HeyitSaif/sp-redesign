@@ -60,7 +60,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
+                  className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
                 >
                   {isDe ? 'Modelle ansehen' : 'View models'}
                 </a>
@@ -131,7 +131,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                     {i === 1 && <ProceduralNetwork nodeCount={12} animated={true} />}
                     {i === 2 && <ProceduralDataGrid animated={true} />}
                     {i === 3 && <ProceduralIsometricBlocks layers={3} animated={true} />}
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                       {feature.icon}
                     </div>
                   </div>
@@ -447,24 +447,29 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 max-w-2xl">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/automotive-ai`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
                     Automotive AI · {isDe ? 'Dedizierte Teams' : 'Dedicated Teams'}
                   </div>
                   <div className="text-lg font-semibold text-white">Automotive AI (AAI)</div>
                   <div className="text-sm text-white/60">
-                    {isDe ? '2 Plattformen parallel gebaut, null Delivery-Reibung' : '2 platforms built in parallel, zero delivery friction'}
+                    {isDe
+                      ? '2 Plattformen parallel gebaut, null Delivery-Reibung'
+                      : '2 platforms built in parallel, zero delivery friction'}
                   </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={20} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={20}
+                />
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>

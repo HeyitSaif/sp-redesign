@@ -90,7 +90,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <HeroCarousel locale={locale} />
 
       {/* 2. What we do — and do well */}
-      <section className="bg-sp-bg-light text-sp-text-dark relative border-y border-white/5 py-16 md:py-24 lg:py-32">
+      <section className="bg-sp-bg-light text-sp-text-dark border-sp-border-dark relative border-y py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-6 md:px-12 lg:px-16">
           <div className="mx-auto mb-16 max-w-4xl text-center">
             <Reveal>
@@ -206,7 +206,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* Filler Bridge: Relocation Support to German Discipline */}
-      <div className="bg-sp-bg-medium border-b border-white/5 py-16 text-center">
+      <div className="bg-sp-bg-medium border-sp-border-light border-b py-16 text-center">
         <Reveal>
           <div className="flex flex-col items-center justify-center gap-4">
             <p className="text-sp-text-dark/80 container mx-auto max-w-4xl px-6 text-xl font-light italic md:text-2xl">

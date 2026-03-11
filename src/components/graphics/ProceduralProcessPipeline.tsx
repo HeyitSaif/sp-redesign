@@ -7,25 +7,38 @@ interface ProceduralProcessPipelineProps {
   className?: string
   steps?: number
   animated?: boolean
+  compact?: boolean
 }
 
 export function ProceduralProcessPipeline({ 
   className,
   steps = 4,
-  animated = true 
+  animated = true,
+  compact = false,
 }: ProceduralProcessPipelineProps) {
   
-  const pipelineSteps = Array.from({ length: steps }).map((_, i) => i)
+  const stepCount = compact ? 3 : steps
+  const pipelineSteps = Array.from({ length: stepCount }).map((_, i) => i)
 
   return (
-    <div className={cn('relative w-full h-full flex items-center justify-center p-8 bg-sp-bg-dark rounded-2xl border border-white/5 overflow-hidden', className)}>
+    <div className={cn(
+      'relative w-full h-full flex items-center justify-center bg-sp-bg-dark overflow-hidden',
+      compact ? 'p-3' : 'p-8 rounded-2xl border border-sp-border-dark',
+      className
+    )}>
       <div className="absolute inset-0 bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-sp-accent/5 via-transparent to-sp-accent/10 opacity-50" />
       
-      <div className="relative flex flex-col md:flex-row w-full h-full gap-4 md:gap-2 items-center justify-center">
+      <div className={cn(
+        'relative flex w-full h-full items-center justify-center',
+        compact ? 'flex-row gap-1' : 'flex-col md:flex-row gap-4 md:gap-2'
+      )}>
         {pipelineSteps.map((step, index) => (
           <motion.div 
             key={step}
-            className="relative flex-1 w-full md:w-auto h-20 md:h-24"
+            className={cn(
+              'relative flex-1',
+              compact ? 'h-10 min-w-[60px]' : 'w-full md:w-auto h-20 md:h-24'
+            )}
             initial={animated ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
             animate={animated ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.2, ease: "easeOut" }}
@@ -33,8 +46,8 @@ export function ProceduralProcessPipeline({
             {/* The chevron shape */}
             <div 
               className={cn(
-                "absolute inset-0 bg-white/5 border border-white/10 flex items-center pl-6 pr-10",
-                "transition-colors duration-300"
+                "absolute inset-0 flex items-center transition-colors duration-300",
+                compact ? "bg-sp-surface-subtle border border-sp-border-dark pl-4 pr-6" : "bg-sp-surface-subtle border border-sp-border-dark pl-6 pr-10"
               )}
               style={{
                 clipPath: 'polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 15% 50%)'
@@ -56,14 +69,17 @@ export function ProceduralProcessPipeline({
                 />
               )}
               
-              <div className="relative z-10 flex flex-col gap-2 w-full ml-4">
-                <div className="w-8 h-2 rounded-full bg-sp-accent/60" />
-                <div className="w-16 h-2 rounded-full bg-white/20" />
+              <div className={cn("relative z-10 flex flex-col w-full", compact ? "gap-0.5 ml-2" : "gap-2 ml-4")}>
+                <div className={cn("rounded-full bg-sp-accent/60", compact ? "w-4 h-1" : "w-8 h-2")} />
+                <div className={cn("rounded-full bg-sp-text-muted/40", compact ? "w-8 h-1" : "w-16 h-2")} />
               </div>
             </div>
             
             {/* Number Badge */}
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-sp-bg-dark border border-sp-accent flex items-center justify-center text-xs font-bold text-sp-accent z-10">
+            <div className={cn(
+              "absolute top-1/2 -translate-y-1/2 rounded-full bg-sp-bg-dark border border-sp-accent flex items-center justify-center font-bold text-sp-accent z-10",
+              compact ? "left-1.5 w-4 h-4 text-[8px]" : "left-4 w-6 h-6 text-xs"
+            )}>
               {index + 1}
             </div>
           </motion.div>

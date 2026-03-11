@@ -66,7 +66,7 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
               <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
                 {data.tagline[isDe ? 'de' : 'en']}
               </h1>
-              <p className="text-foreground/70 mb-10 max-w-xl text-xl leading-relaxed">
+              <p className="text-sp-text-muted mb-10 max-w-xl text-xl leading-relaxed">
                 {data.heroDescription[isDe ? 'de' : 'en']}
               </p>
 
@@ -84,7 +84,7 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
+                  className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
                 >
                   {isDe ? 'Mehr erfahren' : 'Learn more'}
                 </a>
@@ -93,7 +93,7 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative h-64 w-full rotate-2 overflow-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:h-80 lg:h-[400px]">
+            <div className="bg-sp-bg-medium relative h-64 w-full rotate-2 overflow-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:h-80 lg:h-[400px]">
               {HeroGraphic}
             </div>
           </Reveal>
@@ -101,28 +101,30 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
       </section>
 
       {/* What We Deliver */}
-      <section className="bg-sp-bg-dark relative border-y border-white/5 py-24">
-        <div className="container mx-auto px-6 text-center md:px-12">
+      <section className="bg-sp-bg-dark relative border-y border-sp-border-dark py-24">
+        <div className="container mx-auto px-6 md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+            <h2 className="mb-16 text-center text-3xl font-bold md:text-5xl">
               {data.whatWeDeliver.sectionTitle[isDe ? 'de' : 'en']}
             </h2>
           </Reveal>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             {data.whatWeDeliver.items.map((item, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium group relative h-full overflow-hidden rounded-3xl border border-black/5 p-8 text-left shadow-lg transition-all duration-300 hover:border-black/20 hover:shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)]">
-                  <div className="bg-sp-bg-dark relative mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
-                    {i % 4 === 0 && <ProceduralIsometricBlocks layers={2} animated={true} />}
-                    {i % 4 === 1 && <ProceduralNetwork nodeCount={12} animated={true} />}
-                    {i % 4 === 2 && <ProceduralDataGrid animated={true} />}
-                    {i % 4 === 3 && <ProceduralGeometricMesh variant="circle" animated={true} />}
+                <div className="bg-sp-bg-medium group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 p-8 text-left shadow-lg transition-all duration-300 hover:border-black/20 hover:shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)]">
+                  <div className="relative mb-6 aspect-[16/10] min-h-[200px] w-full overflow-hidden rounded-2xl border border-black/10 bg-sp-surface-elevated">
+                    <div className="absolute inset-0 [&>*]:h-full [&>*]:w-full">
+                      {i % 4 === 0 && <ProceduralIsometricBlocks layers={2} animated />}
+                      {i % 4 === 1 && <ProceduralNetwork nodeCount={10} animated />}
+                      {i % 4 === 2 && <ProceduralDataGrid animated compact />}
+                      {i % 4 === 3 && <ProceduralGeometricMesh variant="circle" animated />}
+                    </div>
                   </div>
-                  <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
+                  <h3 className="text-sp-text-dark relative z-10 mb-4 text-xl font-bold">
                     {item.title[isDe ? 'de' : 'en']}
                   </h3>
-                  <p className="text-sp-text-on-light relative z-20 leading-relaxed">
+                  <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                     {item.description[isDe ? 'de' : 'en']}
                   </p>
                 </div>
@@ -137,7 +139,7 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
         <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal direction="right">
-            <div className="bg-sp-bg-medium relative h-64 overflow-hidden rounded-3xl border border-white/10 p-2 md:h-80 lg:h-[400px]">
+            <div className="bg-sp-bg-medium relative h-64 overflow-hidden rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[400px]">
               <ProceduralProcessPipeline steps={4} animated={true} />
             </div>
           </Reveal>
@@ -170,7 +172,7 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
       </section>
 
       {/* How We Work */}
-      <section id="how-it-works" className="bg-sp-bg-dark relative border-y border-white/5 py-24">
+      <section id="how-it-works" className="bg-sp-bg-dark relative border-y border-sp-border-dark py-24">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
             <div className="mb-16 text-center">
@@ -183,14 +185,14 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {data.howWeWork.items.map((step, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 group flex h-full flex-col rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-md transition-all duration-300">
+                <div className="hover:border-sp-accent/30 group border-sp-border-dark bg-sp-surface-subtle flex h-full flex-col rounded-[2rem] border p-8 shadow-xl transition-all duration-300">
                   <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-[1.25rem] text-xl font-bold transition-transform group-hover:scale-110">
                     {i + 1}
                   </div>
                   <h3 className="mb-4 text-xl font-bold text-white">
                     {step.title[isDe ? 'de' : 'en']}
                   </h3>
-                  <p className="flex-grow leading-relaxed text-white/60">
+                  <p className="grow leading-relaxed text-sp-text-muted">
                     {step.description[isDe ? 'de' : 'en']}
                   </p>
                 </div>

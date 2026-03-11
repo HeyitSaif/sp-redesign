@@ -6,28 +6,35 @@ import { cn } from '@/lib/utils'
 interface ProceduralDataGridProps {
   className?: string
   animated?: boolean
+  compact?: boolean
 }
 
 export function ProceduralDataGrid({ 
   className,
-  animated = true 
+  animated = true,
+  compact = false,
 }: ProceduralDataGridProps) {
   
-  const columns = 6
+  const columns = compact ? 4 : 6
   const bars = Array.from({ length: columns }).map((_, i) => ({
     id: i,
     height: 30 + Math.random() * 60, // %
     delay: i * 0.1
   }))
 
-  const dataPoints = Array.from({ length: 4 }).map((_, i) => ({
+  const dataPointCount = compact ? 2 : 4
+  const dataPoints = Array.from({ length: dataPointCount }).map((_, i) => ({
     id: i,
     width: 40 + Math.random() * 40, // %
     delay: i * 0.15
   }))
 
   return (
-    <div className={cn('relative w-full h-full bg-sp-bg-dark rounded-2xl border border-white/5 p-6 flex flex-col gap-6 overflow-hidden', className)}>
+    <div className={cn(
+      'relative w-full h-full bg-sp-bg-dark rounded-2xl border border-sp-border-dark overflow-hidden flex flex-col',
+      compact ? 'p-3 gap-3' : 'p-6 gap-6',
+      className
+    )}>
       {/* Background Grid Lines */}
       <div className="absolute inset-0 opacity-20"
         style={{
@@ -37,7 +44,7 @@ export function ProceduralDataGrid({
       />
 
       {/* Top Header Mockup */}
-      <div className="relative z-10 flex justify-between items-center border-b border-white/10 pb-4">
+      <div className={cn('relative z-10 flex justify-between items-center border-b border-sp-border-dark', compact ? 'pb-2' : 'pb-4')}>
         <div className="flex gap-2">
           <div className="w-10 h-3 rounded-full bg-sp-accent/40" />
           <div className="w-20 h-3 rounded-full bg-white/10" />
@@ -47,11 +54,11 @@ export function ProceduralDataGrid({
         </div>
       </div>
 
-      <div className="relative z-10 flex-1 grid grid-cols-2 gap-6">
+      <div className={cn('relative z-10 flex-1 grid grid-cols-2 min-h-0', compact ? 'gap-3' : 'gap-6')}>
         {/* Left Column - Bar Chart */}
-        <div className="bg-white/5 rounded-xl border border-white/10 p-4 flex items-end gap-2 h-full">
+        <div className={cn('rounded-xl border border-sp-border-dark bg-sp-surface-subtle flex items-end h-full', compact ? 'p-2 gap-1' : 'p-4 gap-2')}>
           {bars.map(bar => (
-            <div key={bar.id} className="flex-1 bg-white/5 rounded-t-sm relative group">
+            <div key={bar.id} className="flex-1 min-w-0 bg-sp-surface-subtle rounded-t-sm relative group">
               <motion.div 
                 className="absolute bottom-0 w-full bg-sp-accent rounded-t-sm shadow-[0_0_10px_rgba(255,112,67,0.3)]"
                 initial={animated ? { height: '0%' } : { height: `${bar.height}%` }}
@@ -70,9 +77,9 @@ export function ProceduralDataGrid({
         </div>
 
         {/* Right Column - Data List */}
-        <div className="flex flex-col gap-3 h-full">
+        <div className={cn('flex flex-col h-full min-h-0', compact ? 'gap-1' : 'gap-3')}>
           {dataPoints.map(point => (
-            <div key={point.id} className="flex-1 bg-white/5 rounded-xl border border-white/10 p-4 flex flex-col justify-center gap-2">
+            <div key={point.id} className={cn('flex-1 min-h-0 bg-sp-surface-subtle rounded-xl border border-sp-border-dark flex flex-col justify-center', compact ? 'p-2 gap-1' : 'p-4 gap-2')}>
               <div className="w-full flex justify-between items-center mb-1">
                 <div className="w-12 h-2 rounded-full bg-white/20" />
                 <div className="w-8 h-2 rounded-full bg-sp-accent/50" />

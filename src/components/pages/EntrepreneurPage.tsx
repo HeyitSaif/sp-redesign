@@ -33,7 +33,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   <Lightbulb size={16} />
                   {isDe ? 'Für Gründer' : 'For Entrepreneurs'}
                 </div>
-                <Badge variant="outline" className="text-white/60">
+                <Badge variant="outline" className="text-sp-text-muted">
                   {supportData[isDe ? 'de' : 'en'].services.idealFor}: Pre-Seed / Idea Phase
                 </Badge>
               </div>
@@ -41,7 +41,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 {isDe ? 'Ihre Idee verdient mehr als ' : 'Your idea deserves more than '}{' '}
                 <span className="text-sp-accent">{isDe ? 'einen Prototyp.' : 'a prototype.'}</span>
               </h1>
-              <p className="text-foreground/70 mb-10 max-w-xl text-xl leading-relaxed">
+              <p className="text-sp-text-muted mb-10 max-w-xl text-xl leading-relaxed">
                 {isDe
                   ? 'Lassen Sie uns daraus ein Produkt machen, an das Investoren glauben können. Wir bringen das Entwicklerteam, Sie bringen die Vision.'
                   : "Let's turn it into a product investors can believe in. We bring the delivery team, you bring the vision."}
@@ -61,7 +61,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 </Link>
                 <a
                   href="#how-we-help"
-                  className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
+                  className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
                 >
                   {isDe ? 'Mehr erfahren' : 'Learn more'}
                 </a>
@@ -83,7 +83,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* What you're probably thinking */}
-      <section className="bg-sp-bg-dark relative border-y border-white/5 py-24">
+      <section className="bg-sp-bg-dark relative border-y border-sp-border-dark py-24">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
             <h2 className="mb-16 text-center text-3xl font-bold md:text-5xl">
@@ -175,80 +175,95 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* How we help */}
-      <section id="how-we-help" className="bg-sp-bg-dark scroll-mt-24 py-24">
-        <div className="container mx-auto max-w-4xl px-6 text-center md:px-12">
+      <section id="how-we-help" className="bg-sp-bg-dark scroll-mt-24 border-y border-sp-border-dark py-24">
+        <div className="container mx-auto max-w-5xl px-6 md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+            <h2 className="mb-16 text-center text-3xl font-bold md:text-5xl">
               {isDe ? 'Wie wir Ihnen vorwärts helfen!' : 'How we help you move forward!'}
             </h2>
           </Reveal>
 
-          <div className="grid gap-8 text-left md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
-                  01
-                </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
-                  <ProceduralProcessPipeline steps={4} animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
-                    <Rocket size={32} className="text-sp-accent" />
+              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+                <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
+                  <div className="absolute inset-0">
+                    <ProceduralProcessPipeline steps={4} animated compact />
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
+                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                    <Rocket size={22} strokeWidth={2.5} />
+                  </div>
+                  <span className="absolute left-4 top-4 text-6xl font-black leading-none text-white/5">
+                    01
+                  </span>
                 </div>
-                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  {isDe ? 'MVPs in 4–6 Wochen' : 'MVPs in 4–6 weeks'}
-                </h3>
-                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  {isDe
-                    ? 'Wir starten schnell, priorisieren den Kernwert und bringen Sie schnell auf den Markt.'
-                    : 'We move fast, prioritize core value, and get you to market quickly.'}
-                </p>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="mb-3 text-xl font-bold text-white">
+                    {isDe ? 'MVPs in 4–6 Wochen' : 'MVPs in 4–6 weeks'}
+                  </h3>
+                  <p className="text-sp-text-muted leading-relaxed">
+                    {isDe
+                      ? 'Wir starten schnell, priorisieren den Kernwert und bringen Sie schnell auf den Markt.'
+                      : 'We move fast, prioritize core value, and get you to market quickly.'}
+                  </p>
+                </div>
               </div>
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
-                  02
-                </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
-                  <ProceduralDataGrid animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
-                    <Coins size={32} className="text-sp-accent" />
+              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+                <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
+                  <div className="absolute inset-0">
+                    <ProceduralDataGrid animated compact />
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
+                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                    <Coins size={22} strokeWidth={2.5} />
+                  </div>
+                  <span className="absolute left-4 top-4 text-6xl font-black leading-none text-white/5">
+                    02
+                  </span>
                 </div>
-                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  {isDe
-                    ? 'Fester Umfang. Transparenter Preis.'
-                    : 'Fixed scope. Transparent pricing.'}
-                </h3>
-                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  {isDe
-                    ? 'Keine Überraschungen oder versteckten Kosten. Klare Logik über den gesamten Zyklus hinweg.'
-                    : 'No surprises or hidden fees. Clear logic throughout the entire cycle.'}
-                </p>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="mb-3 text-xl font-bold text-white">
+                    {isDe
+                      ? 'Fester Umfang. Transparenter Preis.'
+                      : 'Fixed scope. Transparent pricing.'}
+                  </h3>
+                  <p className="text-sp-text-muted leading-relaxed">
+                    {isDe
+                      ? 'Keine Überraschungen oder versteckten Kosten. Klare Logik über den gesamten Zyklus hinweg.'
+                      : 'No surprises or hidden fees. Clear logic throughout the entire cycle.'}
+                  </p>
+                </div>
               </div>
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
-                  03
-                </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
-                  <ProceduralNetwork nodeCount={15} animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
-                    <LayoutDashboard size={32} className="text-sp-accent" />
+              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+                <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
+                  <div className="absolute inset-0">
+                    <ProceduralNetwork nodeCount={12} animated />
                   </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
+                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                    <LayoutDashboard size={22} strokeWidth={2.5} />
+                  </div>
+                  <span className="absolute left-4 top-4 text-6xl font-black leading-none text-white/5">
+                    03
+                  </span>
                 </div>
-                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  {isDe ? 'Deutsch-geführt, global gebaut' : 'German-managed, globally built'}
-                </h3>
-                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  {isDe
-                    ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unsere Ingenieure in Pakistan mit Sorgfalt bauen.'
-                    : "You'll work with a German-based delivery lead, while our engineers in Pakistan build with care."}
-                </p>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="mb-3 text-xl font-bold text-white">
+                    {isDe ? 'Deutsch-geführt, global gebaut' : 'German-managed, globally built'}
+                  </h3>
+                  <p className="text-sp-text-muted leading-relaxed">
+                    {isDe
+                      ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unsere Ingenieure in Pakistan mit Sorgfalt bauen.'
+                      : "You'll work with a German-based delivery lead, while our engineers in Pakistan build with care."}
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -267,7 +282,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   ? 'Lassen Sie uns Ihre Idee zum Leben erwecken'
                   : "Let's bring your idea to life"}
               </h2>
-              <p className="text-foreground/70 text-2xl leading-relaxed font-light">
+              <p className="text-sp-text-muted text-2xl leading-relaxed font-light">
                 {isDe
                   ? 'Sie sind sich nicht sicher, wo Sie anfangen sollen? Hinterlassen Sie einfach Ihre Daten. Egal, ob Sie ein Konzept validieren oder auf ein MVP hinsteuern, wir helfen Ihnen, den nächsten Schritt zu planen – ohne Fachjargon, ohne lange Wartezeiten.'
                   : "Not sure where to start? Just leave your details. Whether you're validating a concept or racing toward an MVP, we'll help you map the next step; no jargon, no long wait."}
@@ -426,30 +441,35 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 max-w-2xl">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
                     B2B SaaS · {isDe ? 'Fallstudie' : 'Case Study'}
                   </div>
                   <div className="text-lg font-semibold text-white">Democorder</div>
-                  <div className="text-sm text-white/60">
-                    {isDe ? 'Von der Idee zur produktionsreifen B2B-Plattform in 6 Monaten' : 'From idea to production-ready B2B SaaS in 6 months'}
+                  <div className="text-sm text-sp-text-muted">
+                    {isDe
+                      ? 'Von der Idee zur produktionsreifen B2B-Plattform in 6 Monaten'
+                      : 'From idea to production-ready B2B SaaS in 6 months'}
                   </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={20} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={20}
+                />
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
             <div className="mt-16 text-center">
-              <p className="text-foreground/70 mb-6 text-lg">
+              <p className="text-sp-text-muted mb-6 text-lg">
                 {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
               </p>
               <Link

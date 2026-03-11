@@ -64,19 +64,35 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
+      images: [
+        `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description.slice(0, 200))}`,
+      ],
       site: '@SolutionPlus_io',
       creator: '@SolutionPlus_io',
     },
     alternates: {
       canonical,
       languages: {
-        en: `${SITE_URL}/en`,
-        de: `${SITE_URL}/de`,
+        'en-US': `${SITE_URL}/en`,
+        'de-DE': `${SITE_URL}/de`,
+        'x-default': `${SITE_URL}/en`,
       },
     },
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
     },
   }
 }

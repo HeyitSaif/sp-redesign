@@ -11,6 +11,12 @@ export interface PageMetadata {
   alternateLocales?: AlternateLocale[];
   noIndex?: boolean;
   ogType?: "website" | "article";
+  /** For article type: ISO date string */
+  publishedTime?: string;
+  /** For article type: ISO date string */
+  modifiedTime?: string;
+  /** For article type: author names */
+  authors?: string[];
 }
 
 export interface AlternateLocale {

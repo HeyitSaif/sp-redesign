@@ -1,64 +1,65 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowLeft, Home } from "lucide-react";
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { ArrowLeft, Home } from 'lucide-react'
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-center pt-32 pb-24 overflow-hidden relative">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-32 pb-24">
       {/* Background Orbs */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-sp-accent/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-sp-accent/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
+      <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/4 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-[120px]" />
+      <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 right-1/4 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-2xl flex flex-col items-center">
+      <div className="relative z-10 container mx-auto flex max-w-2xl flex-col items-center px-6 text-center md:px-12">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="relative mb-8"
         >
-          <div className="text-[150px] md:text-[200px] font-bold leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/10 select-none">
+          <div className="bg-gradient-to-b from-white to-white/10 bg-clip-text text-[150px] leading-none font-bold tracking-tighter text-transparent select-none md:text-[200px]">
             404
           </div>
-          <div className="absolute inset-0 bg-gradient-to-tr from-sp-accent/30 to-sp-accent/30 blur-2xl -z-10 rounded-full scale-50" />
+          <div className="from-sp-accent/30 to-sp-accent/30 absolute inset-0 -z-10 scale-50 rounded-full bg-gradient-to-tr blur-2xl" />
         </motion.div>
-        
-        <motion.h1 
+
+        <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-3xl md:text-5xl font-bold mb-6"
+          className="mb-6 text-3xl font-bold md:text-5xl"
         >
           Page not found
         </motion.h1>
-        
-        <motion.p 
+
+        <motion.p
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-lg text-foreground/60 mb-12 leading-relaxed"
+          className="text-foreground/60 mb-12 text-lg leading-relaxed"
         >
-          The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let&apos;s get you back on track.
+          The page you are looking for might have been removed, had its name changed, or is
+          temporarily unavailable. Let&apos;s get you back on track.
         </motion.p>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col gap-4 sm:flex-row"
         >
           <Link
             href="/"
-            className="px-8 py-4 rounded-full bg-sp-accent text-white font-medium hover:bg-sp-accent/90 transition-all shadow-[0_0_20px_var(--sp-accent-dark)] hover:shadow-[0_0_30px_rgba(255,112,67,0.5)] flex items-center justify-center gap-2"
+            className="bg-sp-accent hover:bg-sp-accent/90 flex items-center justify-center gap-2 rounded-full px-8 py-4 font-medium text-white shadow-[0_0_20px_var(--sp-accent-dark)] transition-all hover:shadow-[0_0_30px_rgba(255,112,67,0.5)]"
           >
             <Home size={18} />
             Back to Home
           </Link>
           <button
             onClick={() => window.history.back()}
-            className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+            className="bg-sp-surface-subtle border-sp-border-dark hover:bg-sp-surface-hover flex items-center justify-center gap-2 rounded-full border px-8 py-4 font-medium text-white transition-all"
           >
             <ArrowLeft size={18} />
             Go Back
@@ -66,5 +67,5 @@ export default function NotFound() {
         </motion.div>
       </div>
     </div>
-  );
+  )
 }

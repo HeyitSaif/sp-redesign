@@ -14,17 +14,19 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { locale, slug } = await params
-  if (locale === 'en') return { title: 'Not Found' }
+  if (locale === 'en') notFound()
 
   const cs = caseStudies.de.find((c) => c.slug === slug)
-  if (!cs) return { title: 'Not Found' }
+  if (!cs) notFound()
+
+  const description =
+    typeof cs.intro === 'string'
+      ? cs.intro.slice(0, 160) + '...'
+      : cs.intro[0].slice(0, 160) + '...'
 
   return generatePageMetadata({
     title: cs.title,
-    description:
-      typeof cs.intro === 'string'
-        ? cs.intro.slice(0, 160) + '...'
-        : cs.intro[0].slice(0, 160) + '...',
+    description,
     keywords: ['fallstudie', cs.clientName, cs.industryBadge, 'softwareentwicklung'],
     locale,
     ogType: 'article',
@@ -35,6 +37,8 @@ export async function generateMetadata({
         url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'}/en/case-studies/${slug}`,
       },
     ],
+    publishedTime: '2024-01-01T00:00:00.000Z',
+    authors: ['SolutionPlus'],
   })
 }
 
@@ -54,7 +58,13 @@ export default async function FallstudieRoute({
     typeof cs.intro === 'string'
       ? cs.intro.slice(0, 160) + '...'
       : cs.intro[0].slice(0, 160) + '...'
-  const articleSchema = generateArticleSchema(cs.title, description, pageUrl)
+  const ogImageUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(cs.title)}&description=${encodeURIComponent(description.slice(0, 200))}`
+  const articleSchema = generateArticleSchema(cs.title, description, pageUrl, {
+    image: ogImageUrl,
+    datePublished: '2024-01-01',
+    dateModified: '2024-01-01',
+    author: 'SolutionPlus',
+  })
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'SolutionPlus', url: `${SITE_URL}/${locale}` },
     { name: 'Fallstudien', url: `${SITE_URL}/${locale}/fallstudien` },

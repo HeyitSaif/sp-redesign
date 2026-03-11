@@ -30,7 +30,7 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
       />
 
       {/* Abstract UI Framework Container */}
-      <div className="relative flex h-[70%] w-[70%] flex-col overflow-hidden rounded-xl border border-white/20 bg-black/40 shadow-2xl backdrop-blur-md">
+      <div className="border-sp-border-dark bg-sp-surface-elevated relative flex h-[70%] w-[70%] flex-col overflow-hidden rounded-xl border shadow-2xl">
         {/* Header bar */}
         <div className="flex h-8 w-full items-center gap-1.5 border-b border-white/10 bg-white/5 px-3">
           <div className="h-2 w-2 rounded-full bg-red-500/80" />

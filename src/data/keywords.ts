@@ -136,4 +136,15 @@ export const PAGE_KEYWORDS: Record<
     primary: ["mobile app development", "iOS", "Android", "cross-platform"],
     secondary: ["Flutter", "React Native", "native app", "app modernization"],
   },
+  services: {
+    primary: ["software services", "development services", "tech solutions"],
+    secondary: [
+      "MVP development",
+      "dedicated teams",
+      "AI automation",
+      "web development",
+      "mobile development",
+      "UI/UX design",
+    ],
+  },
 };

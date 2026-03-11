@@ -22,6 +22,153 @@ import type { Metadata } from 'next'
 import { generatePageMetadata, getCanonicalUrl, getAlternateUrls } from '@/lib/seo'
 import { getKeywordsForPage, extractKeywordsFromContent } from '@/lib/keywords'
 
+/** Custom pages without markdown: title and description per locale */
+const CUSTOM_PAGE_METADATA: Record<
+  string,
+  { title: { en: string; de: string }; description: { en: string; de: string } }
+> = {
+  services: {
+    title: { en: 'Services', de: 'Leistungen' },
+    description: {
+      en: 'Discover our services.',
+      de: 'Entdecken Sie unsere Dienstleistungen.',
+    },
+  },
+  leistungen: {
+    title: { en: 'Services', de: 'Leistungen' },
+    description: {
+      en: 'Discover our services.',
+      de: 'Entdecken Sie unsere Dienstleistungen.',
+    },
+  },
+  startup: {
+    title: { en: 'Startup', de: 'Startup' },
+    description: {
+      en: 'Launch fast with a risk-free MVP or feature build.',
+      de: 'Starten Sie schnell mit einem risikofreien MVP oder Feature-Build.',
+    },
+  },
+  startups: {
+    title: { en: 'Startup', de: 'Startup' },
+    description: {
+      en: 'Launch fast with a risk-free MVP or feature build.',
+      de: 'Starten Sie schnell mit einem risikofreien MVP oder Feature-Build.',
+    },
+  },
+  'scale-up': {
+    title: { en: 'Scale-up', de: 'Scale-up' },
+    description: {
+      en: 'Build-operate-transfer (BOT) teams for growth-stage companies.',
+      de: 'Build-Operate-Transfer (BOT) Teams für wachsende Unternehmen.',
+    },
+  },
+  scaleups: {
+    title: { en: 'Scale-up', de: 'Scale-up' },
+    description: {
+      en: 'Build-operate-transfer (BOT) teams for growth-stage companies.',
+      de: 'Build-Operate-Transfer (BOT) Teams für wachsende Unternehmen.',
+    },
+  },
+  'contact-us': {
+    title: { en: 'Contact Us', de: 'Kontakt' },
+    description: {
+      en: 'Get in touch with SolutionPlus. Book a call or send your project details.',
+      de: 'Kontaktieren Sie SolutionPlus. Buchen Sie einen Call oder senden Sie Ihre Projektinfos.',
+    },
+  },
+  'kontakt-solutionplus': {
+    title: { en: 'Contact Us', de: 'Kontakt' },
+    description: {
+      en: 'Get in touch with SolutionPlus. Book a call or send your project details.',
+      de: 'Kontaktieren Sie SolutionPlus. Buchen Sie einen Call oder senden Sie Ihre Projektinfos.',
+    },
+  },
+  'about-team': {
+    title: { en: 'About Us', de: 'Über uns' },
+    description: {
+      en: 'Meet the SolutionPlus team. German leadership meets Pakistani engineering.',
+      de: 'Lernen Sie das SolutionPlus-Team kennen. Deutsche Führung trifft pakistanische Ingenieurskunst.',
+    },
+  },
+  'ueber-solutionplus': {
+    title: { en: 'About Us', de: 'Über uns' },
+    description: {
+      en: 'Meet the SolutionPlus team. German leadership meets Pakistani engineering.',
+      de: 'Lernen Sie das SolutionPlus-Team kennen. Deutsche Führung trifft pakistanische Ingenieurskunst.',
+    },
+  },
+  'mvp-sprint-package': {
+    title: { en: 'MVP Sprint Package', de: 'MVP-Sprint-Paket' },
+    description: {
+      en: 'Fixed-scope MVP in 6 weeks. Fully managed, investor-ready.',
+      de: 'Festumfangs-MVP in 6 Wochen. Vollständig gemanagt, investorenbereit.',
+    },
+  },
+  'mvp-sprint-paket': {
+    title: { en: 'MVP Sprint Package', de: 'MVP-Sprint-Paket' },
+    description: {
+      en: 'Fixed-scope MVP in 6 weeks. Fully managed, investor-ready.',
+      de: 'Festumfangs-MVP in 6 Wochen. Vollständig gemanagt, investorenbereit.',
+    },
+  },
+  'dedicated-delivery-teams': {
+    title: { en: 'Dedicated Delivery Teams', de: 'Dedizierte Teams' },
+    description: {
+      en: 'Build-operate-transfer teams aligned to your workflow. Scale without lock-in.',
+      de: 'Build-Operate-Transfer Teams abgestimmt auf Ihren Workflow. Skalieren ohne Lock-in.',
+    },
+  },
+  'dedizierte-teams': {
+    title: { en: 'Dedicated Delivery Teams', de: 'Dedizierte Teams' },
+    description: {
+      en: 'Build-operate-transfer teams aligned to your workflow. Scale without lock-in.',
+      de: 'Build-Operate-Transfer Teams abgestimmt auf Ihren Workflow. Skalieren ohne Lock-in.',
+    },
+  },
+  'product-modernization': {
+    title: { en: 'Product Modernization', de: 'Software-Modernisierung' },
+    description: {
+      en: 'Legacy code upgrade, tech debt reduction, and software migration.',
+      de: 'Legacy-Code-Upgrade, Tech-Debt-Reduktion und Software-Migration.',
+    },
+  },
+  'software-modernisierung': {
+    title: { en: 'Product Modernization', de: 'Software-Modernisierung' },
+    description: {
+      en: 'Legacy code upgrade, tech debt reduction, and software migration.',
+      de: 'Legacy-Code-Upgrade, Tech-Debt-Reduktion und Software-Migration.',
+    },
+  },
+  careers: {
+    title: { en: 'Careers', de: 'Karriere' },
+    description: {
+      en: 'Join the SolutionPlus team. Remote engineering and product development careers.',
+      de: 'Werden Sie Teil des SolutionPlus-Teams. Remote-Engineering und Produktentwicklung.',
+    },
+  },
+  karriere: {
+    title: { en: 'Careers', de: 'Karriere' },
+    description: {
+      en: 'Join the SolutionPlus team. Remote engineering and product development careers.',
+      de: 'Werden Sie Teil des SolutionPlus-Teams. Remote-Engineering und Produktentwicklung.',
+    },
+  },
+  'entrepreneur-with-an-idea': {
+    title: { en: 'Entrepreneur with an Idea', de: 'Gründer mit Idee' },
+    description: {
+      en: 'Turn your idea into a product. No-code alternative with full ownership.',
+      de: 'Verwandeln Sie Ihre Idee in ein Produkt. No-Code-Alternative mit vollem Eigentum.',
+    },
+  },
+  'gruender-idee-startup-partner': {
+    title: { en: 'Entrepreneur with an Idea', de: 'Gründer mit Idee' },
+    description: {
+      en: 'Turn your idea into a product. No-code alternative with full ownership.',
+      de: 'Verwandeln Sie Ihre Idee in ein Produkt. No-Code-Alternative mit vollem Eigentum.',
+    },
+  },
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -29,7 +176,25 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params
 
-  // Check if it's a service page
+  // Custom pages without markdown – provide metadata directly
+  const customMeta = CUSTOM_PAGE_METADATA[slug]
+  if (customMeta) {
+    const isDe = locale === 'de'
+    const title = customMeta.title[isDe ? 'de' : 'en']
+    const description = customMeta.description[isDe ? 'de' : 'en']
+    const { primary, secondary } = getKeywordsForPage(slug)
+    const keywords = [...primary, ...secondary]
+    return generatePageMetadata({
+      title,
+      description,
+      keywords,
+      canonicalUrl: getCanonicalUrl(locale, slug),
+      alternateLocales: getAlternateUrls(locale, slug),
+      locale,
+    })
+  }
+
+  // Service detail pages (from servicesData)
   if (
     [
       'ai-automation',

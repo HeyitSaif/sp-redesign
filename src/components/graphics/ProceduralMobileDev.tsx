@@ -28,7 +28,7 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
 
       {/* Smartphone Frame */}
       <motion.div
-        className="relative z-10 flex h-[85%] w-[45%] flex-col overflow-hidden rounded-[2rem] border-[4px] border-white/20 bg-[#121316] shadow-2xl backdrop-blur-sm"
+        className="border-sp-border-dark relative z-10 flex h-[85%] w-[45%] flex-col overflow-hidden rounded-[2rem] border-[4px] bg-[#121316] shadow-2xl"
         initial={animated ? { y: 30, opacity: 0 } : false}
         animate={animated ? { y: 0, opacity: 1 } : false}
         transition={{ duration: 0.7 }}
@@ -94,7 +94,7 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
 
       {/* Floating platform badges (iOS/Android abstract) */}
       <motion.div
-        className="absolute top-[30%] left-[15%] z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-lg backdrop-blur-md"
+        className="border-sp-border-dark bg-sp-surface-subtle absolute top-[30%] left-[15%] z-20 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg"
         animate={animated ? { y: [0, -15, 0], rotate: [0, 5, 0] } : undefined}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
       >
@@ -115,7 +115,7 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
       </motion.div>
 
       <motion.div
-        className="border-sp-accent/30 bg-sp-accent/10 absolute right-[15%] bottom-[30%] z-20 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg backdrop-blur-md"
+        className="border-sp-accent/30 bg-sp-accent/10 absolute right-[15%] bottom-[30%] z-20 flex h-12 w-12 items-center justify-center rounded-full border shadow-lg"
         animate={animated ? { y: [0, 15, 0], rotate: [0, -5, 0] } : undefined}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
       >

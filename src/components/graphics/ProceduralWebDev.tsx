@@ -72,7 +72,7 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
 
       {/* Floating Server Rack / Database Node 1 */}
       <motion.div
-        className="absolute bottom-[15%] left-[10%] z-20 flex h-16 w-32 flex-col justify-center gap-1 rounded-lg border border-white/20 bg-black/60 p-2 shadow-xl backdrop-blur-md"
+        className="border-sp-border-dark bg-sp-surface-elevated absolute bottom-[15%] left-[10%] z-20 flex h-16 w-32 flex-col justify-center gap-1 rounded-lg border p-2 shadow-xl"
         initial={animated ? { x: -20, opacity: 0 } : false}
         animate={animated ? { x: 0, opacity: 1 } : false}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -87,7 +87,7 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
 
       {/* Floating Server Rack / Database Node 2 */}
       <motion.div
-        className="border-sp-accent/30 bg-sp-accent/10 absolute top-[20%] right-[10%] z-0 flex h-20 w-24 flex-col items-center justify-center rounded-lg border shadow-xl backdrop-blur-md"
+        className="border-sp-accent/30 bg-sp-accent/10 absolute top-[20%] right-[10%] z-0 flex h-20 w-24 flex-col items-center justify-center rounded-lg border shadow-xl"
         initial={animated ? { x: 20, opacity: 0 } : false}
         animate={animated ? { x: 0, opacity: 1 } : false}
         transition={{ duration: 0.6, delay: 0.6 }}

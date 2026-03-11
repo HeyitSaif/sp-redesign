@@ -305,10 +305,10 @@ export function Header({ locale }: { locale: string }) {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8 lg:px-10">
       <div
         className={cn(
-          'mx-auto w-full max-w-7xl rounded-2xl border transition-all duration-300',
+          'border-sp-border-dark mx-auto w-full max-w-7xl rounded-2xl border transition-all duration-300',
           isScrolled
-            ? 'bg-sp-bg-dark/90 border-white/10 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.9)] backdrop-blur-xl'
-            : 'bg-sp-bg-dark/70 border-white/5 backdrop-blur-lg'
+            ? 'bg-sp-surface-elevated shadow-[0_18px_40px_-20px_rgba(0,0,0,0.9)]'
+            : 'bg-sp-surface-elevated'
         )}
       >
         <div
@@ -319,7 +319,7 @@ export function Header({ locale }: { locale: string }) {
         >
           <Link
             href={`/${locale}`}
-            className="group flex items-center gap-3 rounded-xl p-1.5 transition-colors outline-none hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white/40"
+            className="group hover:bg-sp-surface-subtle focus-visible:ring-sp-accent/50 flex items-center gap-3 rounded-xl p-1.5 transition-colors outline-none focus-visible:ring-2"
           >
             <Image
               src="/logo.png"
@@ -329,7 +329,7 @@ export function Header({ locale }: { locale: string }) {
               className="h-8 w-auto object-contain brightness-0 invert transition duration-300 group-hover:opacity-100 md:h-9"
               priority
             />
-            <span className="hidden text-xs font-medium tracking-[0.16em] text-white/55 uppercase xl:inline-block">
+            <span className="text-sp-text-muted hidden text-xs font-medium tracking-[0.16em] uppercase xl:inline-block">
               {locale === 'de' ? 'Engineering Partner' : 'Product Engineering'}
             </span>
           </Link>
@@ -349,8 +349,8 @@ export function Header({ locale }: { locale: string }) {
                   className={cn(
                     'flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold tracking-wide transition-colors outline-none',
                     desktopOpen === section.name
-                      ? 'text-sp-accent bg-white/10'
-                      : 'text-white/80 hover:bg-white/5 hover:text-white'
+                      ? 'text-sp-accent bg-sp-surface-subtle'
+                      : 'hover:bg-sp-surface-subtle text-white'
                   )}
                   aria-haspopup="true"
                   aria-expanded={desktopOpen === section.name}
@@ -372,7 +372,7 @@ export function Header({ locale }: { locale: string }) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.98 }}
                       transition={{ duration: 0.18, ease: 'easeOut' }}
-                      className="bg-sp-bg-dark/95 absolute top-[calc(100%+10px)] left-1/2 z-50 w-[560px] -translate-x-1/2 rounded-2xl border border-white/10 p-3 shadow-[0_24px_65px_-28px_rgba(0,0,0,0.95)] backdrop-blur-xl"
+                      className="bg-sp-surface-elevated border-sp-border-dark absolute top-[calc(100%+10px)] left-1/2 z-50 w-[560px] -translate-x-1/2 rounded-2xl border p-3 shadow-[0_24px_65px_-28px_rgba(0,0,0,0.95)]"
                     >
                       <div className="grid grid-cols-2 gap-2">
                         {section.items.map((item) => {
@@ -386,11 +386,11 @@ export function Header({ locale }: { locale: string }) {
                             >
                               <Link
                                 href={`/${locale}${item.href}`}
-                                className="group h-full rounded-xl border border-transparent bg-white/2 p-3 transition-all outline-none hover:border-white/10 hover:bg-white/5 focus-visible:border-white/20"
+                                className="group bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover focus-visible:border-sp-accent/50 h-full rounded-xl border border-transparent p-3 transition-all outline-none"
                                 onClick={() => setDesktopOpen(null)}
                               >
                                 <div className="mb-2.5 flex items-center gap-2.5">
-                                  <div className="group-hover:text-sp-accent group-hover:border-sp-accent/30 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/85">
+                                  <div className="group-hover:text-sp-accent group-hover:border-sp-accent/30 border-sp-border-dark bg-sp-surface-hover flex h-8 w-8 items-center justify-center rounded-lg border text-white">
                                     <Icon size={15} />
                                   </div>
                                   <span className="flex items-center gap-2 text-sm font-semibold text-white/90 transition-colors group-hover:text-white">
@@ -402,7 +402,7 @@ export function Header({ locale }: { locale: string }) {
                                     )}
                                   </span>
                                 </div>
-                                <p className="text-xs leading-relaxed text-white/55 group-hover:text-white/70">
+                                <p className="text-sp-text-muted text-xs leading-relaxed group-hover:text-white">
                                   {item.description}
                                 </p>
                               </Link>
@@ -417,12 +417,12 @@ export function Header({ locale }: { locale: string }) {
                                   )}
                                 >
                                   <div className="overflow-hidden">
-                                    <div className="mt-1 ml-4 flex flex-col gap-1 border-l border-white/10 pl-3">
+                                    <div className="border-sp-border-dark mt-1 ml-4 flex flex-col gap-1 border-l pl-3">
                                       {item.children.slice(1).map((child) => (
                                         <Link
                                           key={child.name}
                                           href={`/${locale}${child.href}`}
-                                          className="hover:text-sp-accent group/child flex items-center justify-between py-1.5 text-xs text-white/60 transition-colors"
+                                          className="hover:text-sp-accent group/child text-sp-text-muted flex items-center justify-between py-1.5 text-xs transition-colors"
                                           onClick={() => setDesktopOpen(null)}
                                         >
                                           <span className="truncate pr-2">{child.name}</span>
@@ -441,10 +441,10 @@ export function Header({ locale }: { locale: string }) {
                         })}
                       </div>
                       {section.name === 'Services' && (
-                        <div className="mt-2 border-t border-white/10 pt-2">
+                        <div className="border-sp-border-dark mt-2 border-t pt-2">
                           <Link
                             href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
-                            className="group hover:text-sp-accent flex w-full items-center justify-between rounded-xl bg-white/5 p-3 text-sm font-semibold text-white/90 transition-all outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
+                            className="group hover:text-sp-accent bg-sp-surface-subtle hover:bg-sp-surface-hover focus-visible:ring-sp-accent/50 flex w-full items-center justify-between rounded-xl p-3 text-sm font-semibold text-white transition-all outline-none focus-visible:ring-2"
                             onClick={() => setDesktopOpen(null)}
                           >
                             {locale === 'de' ? 'Alle Leistungen ansehen' : 'View All Services'}
@@ -473,7 +473,7 @@ export function Header({ locale }: { locale: string }) {
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40 lg:hidden"
+            className="border-sp-border-dark bg-sp-surface-subtle hover:bg-sp-surface-hover focus-visible:ring-sp-accent/50 inline-flex h-11 w-11 items-center justify-center rounded-xl border text-white transition-colors focus-visible:ring-2 lg:hidden"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
@@ -491,7 +491,7 @@ export function Header({ locale }: { locale: string }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-[2px] lg:hidden"
+              className="fixed inset-0 z-40 bg-black/80 lg:hidden"
               onClick={() => setMobileOpen(false)}
               aria-label="Close mobile menu backdrop"
             />
@@ -500,15 +500,18 @@ export function Header({ locale }: { locale: string }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.22, ease: 'easeOut' }}
-              className="bg-sp-bg-dark/98 relative z-50 mt-3 overflow-hidden rounded-2xl border border-white/10 px-4 pt-3 pb-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] backdrop-blur-xl lg:hidden"
+              className="bg-sp-surface-elevated border-sp-border-dark relative z-50 mt-3 overflow-hidden rounded-2xl border px-4 pt-3 pb-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] lg:hidden"
             >
               <div className="no-scrollbar max-h-[72vh] overflow-y-auto pr-1">
                 <div className="space-y-2">
                   {navData.map((section) => (
-                    <div key={section.name} className="rounded-xl border border-white/5 bg-white/5">
+                    <div
+                      key={section.name}
+                      className="border-sp-border-dark bg-sp-surface-subtle rounded-xl border"
+                    >
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-white/90"
+                        className="flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold text-white"
                         onClick={() =>
                           setMobileExpanded((prev) => (prev === section.name ? null : section.name))
                         }
@@ -520,7 +523,7 @@ export function Header({ locale }: { locale: string }) {
                         <ChevronDown
                           size={16}
                           className={cn(
-                            'text-white/60 transition-transform duration-200',
+                            'text-sp-text-muted transition-transform duration-200',
                             mobileExpanded === section.name && 'text-sp-accent rotate-180'
                           )}
                         />
@@ -542,14 +545,14 @@ export function Header({ locale }: { locale: string }) {
                                     <div className="flex items-center">
                                       <Link
                                         href={`/${locale}${item.href}`}
-                                        className="flex flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/10"
+                                        className="hover:bg-sp-surface-hover flex flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-colors"
                                         onClick={() => setMobileOpen(false)}
                                       >
-                                        <div className="text-sp-accent/80 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/5">
+                                        <div className="text-sp-accent border-sp-border-dark bg-sp-surface-hover mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border">
                                           <Icon size={14} />
                                         </div>
                                         <div>
-                                          <p className="flex items-center gap-2 text-sm font-semibold text-white/90">
+                                          <p className="flex items-center gap-2 text-sm font-semibold text-white">
                                             {item.name}
                                             {item.badge && (
                                               <span className="bg-sp-accent/20 text-sp-accent rounded-full px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase">
@@ -557,7 +560,7 @@ export function Header({ locale }: { locale: string }) {
                                               </span>
                                             )}
                                           </p>
-                                          <p className="text-xs leading-relaxed text-white/55">
+                                          <p className="text-sp-text-muted text-xs leading-relaxed">
                                             {item.description}
                                           </p>
                                         </div>
@@ -565,7 +568,7 @@ export function Header({ locale }: { locale: string }) {
                                       {item.children && (
                                         <button
                                           type="button"
-                                          className="ml-2 rounded-lg p-2 text-white/60 hover:bg-white/10 hover:text-white"
+                                          className="text-sp-text-muted hover:bg-sp-surface-hover ml-2 rounded-lg p-2 hover:text-white"
                                           onClick={(e) => {
                                             e.preventDefault()
                                             e.stopPropagation()
@@ -590,14 +593,14 @@ export function Header({ locale }: { locale: string }) {
 
                                     {item.children && (
                                       <div
-                                        className="mt-1 mb-2 ml-11 flex-col gap-1 border-l border-white/10 pl-3"
+                                        className="border-sp-border-dark mt-1 mb-2 ml-11 flex-col gap-1 border-l pl-3"
                                         style={{ display: 'none' }}
                                       >
                                         {item.children.slice(1).map((child) => (
                                           <Link
                                             key={child.name}
                                             href={`/${locale}${child.href}`}
-                                            className="py-1.5 text-xs text-white/60 transition-colors hover:text-white"
+                                            className="text-sp-text-muted py-1.5 text-xs transition-colors hover:text-white"
                                             onClick={() => setMobileOpen(false)}
                                           >
                                             {child.name}
@@ -611,7 +614,7 @@ export function Header({ locale }: { locale: string }) {
                               {section.name === 'Services' && (
                                 <Link
                                   href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
-                                  className="mt-2 flex w-full items-center justify-between rounded-lg bg-white/5 px-4 py-3 text-sm font-semibold text-white/90 transition-colors hover:bg-white/10"
+                                  className="bg-sp-surface-subtle hover:bg-sp-surface-hover mt-2 flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-white transition-colors"
                                   onClick={() => setMobileOpen(false)}
                                 >
                                   {locale === 'de'

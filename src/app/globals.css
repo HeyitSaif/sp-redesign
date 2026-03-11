@@ -6,17 +6,19 @@
   --sp-accent: #ff7043;
   --sp-accent-dark: #d85f36;
   /* hover/darker */
-  --sp-text-on-light: #5b616b;
-  --sp-text-dark: #383636;
+  --sp-text-on-light: #4a4f57;
+  --sp-text-dark: #1f1f1f;
+  --sp-text-muted: #9ca3af;
   --sp-border-light: #d6d7d9;
   --sp-border-testimonial: #878787;
+  --sp-border-dark: #2d3138;
   --sp-star-filled: #ffb900;
   --sp-bg-dark: #0a0b0d;
-  /* wayh approx */
   --sp-bg-light: #ffffff;
-  /* xsdn approx */
   --sp-bg-medium: #f5f5f5;
-  /* nhtu approx */
+  --sp-surface-elevated: #141618;
+  --sp-surface-subtle: #111315;
+  --sp-surface-hover: #1a1c1e;
   --sp-link-hover: #1595ce;
 
   --background: var(--sp-bg-dark);
@@ -45,6 +47,11 @@
   --color-sp-bg-dark: var(--sp-bg-dark);
   --color-sp-bg-light: var(--sp-bg-light);
   --color-sp-bg-medium: var(--sp-bg-medium);
+  --color-sp-surface-elevated: var(--sp-surface-elevated);
+  --color-sp-surface-subtle: var(--sp-surface-subtle);
+  --color-sp-surface-hover: var(--sp-surface-hover);
+  --color-sp-text-muted: var(--sp-text-muted);
+  --color-sp-border-dark: var(--sp-border-dark);
   --color-sp-link-hover: var(--sp-link-hover);
 
   --animate-shimmer: shimmer 2.5s infinite linear;

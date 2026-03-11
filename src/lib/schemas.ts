@@ -1,11 +1,13 @@
 import type { StructuredDataSchema } from "@/types/seo";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://solutionplus.io";
+const ORG_ID = `${SITE_URL}/#organization`;
 
 export function generateOrganizationSchema(): StructuredDataSchema {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "SolutionPlus",
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
@@ -36,14 +38,7 @@ export function generateWebSiteSchema(locale: string): StructuredDataSchema {
     url: `${SITE_URL}${basePath}`,
     description:
       "Build, launch, and scale software with SolutionPlus. German leadership, Pakistani engineering talent.",
-    publisher: {
-      "@type": "Organization",
-      name: "SolutionPlus",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
-      },
-    },
+    publisher: { "@id": ORG_ID },
     inLanguage: locale === "de" ? "de" : "en",
   };
 }
@@ -88,14 +83,24 @@ export function generateArticleSchema(
   title: string,
   description: string,
   url: string,
-  options?: { datePublished?: string; dateModified?: string; author?: string }
+  options?: {
+    datePublished?: string;
+    dateModified?: string;
+    author?: string;
+    image?: string | string[];
+  }
 ): StructuredDataSchema {
+  const images = options?.image
+    ? (Array.isArray(options.image) ? options.image : [options.image])
+    : [`${SITE_URL}/logo.png`];
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: title,
     description,
     url,
+    image: images,
     publisher: {
       "@type": "Organization",
       name: "SolutionPlus",
@@ -108,7 +113,7 @@ export function generateArticleSchema(
     ...(options?.dateModified && { dateModified: options.dateModified }),
     ...(options?.author && {
       author: {
-        "@type": "Organization",
+        "@type": "Person",
         name: options.author,
       },
     }),

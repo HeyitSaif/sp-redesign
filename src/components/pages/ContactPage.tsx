@@ -48,13 +48,13 @@ export function ContactPage({ locale }: { locale: string }) {
                   {isDe ? 'das Ihr Unternehmen voranbringt.' : 'that moves your business forward'}
                 </span>
               </h1>
-              
+
               <div className="mb-6 flex flex-wrap gap-4">
-                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase">
+                <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-400 uppercase">
                   {supportData[isDe ? 'de' : 'en'].contact.responseTime}
                 </span>
               </div>
-              
+
               <p className="text-foreground/70 mb-12 max-w-xl text-xl leading-relaxed">
                 {isDe
                   ? 'Erzählen Sie uns, was Sie bauen. Bringen Sie uns Ihre Idee oder Ihre nächste Herausforderung, und wir helfen Ihnen, mit Zuversicht voranzukommen.'
@@ -89,7 +89,7 @@ export function ContactPage({ locale }: { locale: string }) {
                     transition={{ type: 'spring', stiffness: 300 }}
                     className="group flex items-start gap-5"
                   >
-                    <div className="text-sp-accent group-hover:bg-sp-accent/20 group-hover:border-sp-accent/50 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-lg transition-all duration-300 group-hover:text-white group-hover:shadow-[0_0_20px_var(--sp-accent-dark)]">
+                    <div className="text-sp-accent group-hover:bg-sp-accent/20 group-hover:border-sp-accent/50 border-sp-border-dark bg-sp-surface-subtle flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border shadow-lg transition-all duration-300 group-hover:text-white group-hover:shadow-[0_0_20px_var(--sp-accent-dark)]">
                       <item.icon size={24} />
                     </div>
                     <div>
@@ -109,9 +109,7 @@ export function ContactPage({ locale }: { locale: string }) {
                             {item.content}
                           </p>
                           {item.subtext && (
-                            <p className="text-foreground/50 text-sm italic">
-                              {item.subtext}
-                            </p>
+                            <p className="text-foreground/50 text-sm italic">{item.subtext}</p>
                           )}
                         </div>
                       )}
@@ -122,33 +120,42 @@ export function ContactPage({ locale }: { locale: string }) {
 
               {/* What to expect */}
               <div className="mt-16 border-t border-white/10 pt-8">
-                <h3 className="text-white font-semibold mb-6">
+                <h3 className="mb-6 font-semibold text-white">
                   {isDe ? 'Was Sie erwartet' : 'What to expect'}
                 </h3>
                 <ul className="space-y-4">
                   {supportData[isDe ? 'de' : 'en'].contact.whatToExpect.map((bullet, i) => (
-                    <li key={i} className="flex items-center gap-3 text-foreground/70">
+                    <li key={i} className="text-foreground/70 flex items-center gap-3">
                       <CheckCircle2 size={18} className="text-sp-accent" />
                       <span>{bullet}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-8 text-foreground/50 text-sm">
-                  {isDe ? 'Möchten Sie sich zuerst informieren? Sehen Sie sich unsere ' : 'Prefer to learn first? See our '}
-                  <Link href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`} className="text-sp-accent hover:underline">
+                <p className="text-foreground/50 mt-8 text-sm">
+                  {isDe
+                    ? 'Möchten Sie sich zuerst informieren? Sehen Sie sich unsere '
+                    : 'Prefer to learn first? See our '}
+                  <Link
+                    href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
+                    className="text-sp-accent hover:underline"
+                  >
                     {isDe ? 'Fallstudien' : 'Case Studies'}
-                  </Link>
-                  {' '}{isDe ? 'oder das' : 'or the'}{' '}
-                  <Link href={`/${locale}/${isDe ? 'mvp-sprint-paket' : 'mvp-sprint-package'}`} className="text-sp-accent hover:underline">
+                  </Link>{' '}
+                  {isDe ? 'oder das' : 'or the'}{' '}
+                  <Link
+                    href={`/${locale}/${isDe ? 'mvp-sprint-paket' : 'mvp-sprint-package'}`}
+                    className="text-sp-accent hover:underline"
+                  >
                     MVP Sprint
-                  </Link>.
+                  </Link>
+                  .
                 </p>
               </div>
             </Reveal>
           </div>
 
           <Reveal direction="left" delay={0.2}>
-            <div className="group bg-[#181a1c]/80 relative overflow-x-clip rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12">
+            <div className="group bg-sp-surface-elevated border-sp-border-dark hover:border-sp-accent/30 relative overflow-x-clip rounded-[2rem] border p-8 shadow-2xl transition-all duration-500 md:p-12">
               <div className="from-sp-accent/5 to-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
 
               <AnimatePresence>
@@ -157,7 +164,7 @@ export function ContactPage({ locale }: { locale: string }) {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-emerald-500/50 bg-emerald-500/20 p-4 text-emerald-300 backdrop-blur-md"
+                    className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-emerald-600 bg-emerald-900 p-4 text-emerald-100"
                   >
                     <CheckCircle2 size={20} />
                     <span className="font-medium">{state?.message || 'Success!'}</span>
@@ -168,7 +175,7 @@ export function ContactPage({ locale }: { locale: string }) {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
-                    className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-red-500/50 bg-red-500/20 p-4 text-red-300 backdrop-blur-md"
+                    className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-red-600 bg-red-900 p-4 text-red-100"
                   >
                     <span className="font-medium">{state?.error}</span>
                   </motion.div>
@@ -178,42 +185,42 @@ export function ContactPage({ locale }: { locale: string }) {
               <form action={formAction} className="relative z-10 mt-4 space-y-8">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="group/input relative space-y-3">
-                    <label className="text-foreground/80 group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
+                    <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
                       {isDe ? 'Name*' : 'Name*'}
                     </label>
                     <input
                       type="text"
                       name="name"
-                      className="focus:border-sp-accent/50 focus:ring-sp-accent/10 w-full rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-white shadow-inner transition-all outline-none focus:bg-white/10 focus:ring-4"
+                      className="focus:border-sp-accent/50 focus:ring-sp-accent/10 border-sp-border-dark bg-sp-surface-subtle focus:bg-sp-surface-hover w-full rounded-xl border px-5 py-4 text-white shadow-inner transition-all outline-none focus:ring-4"
                       required
                     />
                   </div>
                   <div className="group/input relative space-y-3">
-                    <label className="text-foreground/80 group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
+                    <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
                       {isDe ? 'Email*' : 'Email*'}
                     </label>
                     <input
                       type="email"
                       name="email"
-                      className="focus:border-sp-accent/50 focus:ring-sp-accent/10 w-full rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-white shadow-inner transition-all outline-none focus:bg-white/10 focus:ring-4"
+                      className="focus:border-sp-accent/50 focus:ring-sp-accent/10 border-sp-border-dark bg-sp-surface-subtle focus:bg-sp-surface-hover w-full rounded-xl border px-5 py-4 text-white shadow-inner transition-all outline-none focus:ring-4"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="group/input relative space-y-3">
-                  <label className="text-foreground/80 group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
+                  <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
                     {isDe ? 'Betreff' : 'Subject'}
                   </label>
                   <input
                     type="text"
                     name="subject"
-                    className="focus:border-sp-accent/50 focus:ring-sp-accent/10 w-full rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-white shadow-inner transition-all outline-none focus:bg-white/10 focus:ring-4"
+                    className="focus:border-sp-accent/50 focus:ring-sp-accent/10 border-sp-border-dark bg-sp-surface-subtle focus:bg-sp-surface-hover w-full rounded-xl border px-5 py-4 text-white shadow-inner transition-all outline-none focus:ring-4"
                   />
                 </div>
 
                 <div className="group/input relative space-y-3">
-                  <label className="text-foreground/80 group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
+                  <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
                     {isDe
                       ? 'Welches Problem möchten Sie lösen? (Optional)'
                       : 'What challenge are you looking to solve? (Optional)'}
@@ -221,7 +228,7 @@ export function ContactPage({ locale }: { locale: string }) {
                   <textarea
                     name="message"
                     rows={4}
-                    className="focus:border-sp-accent/50 focus:ring-sp-accent/10 w-full resize-none rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-white shadow-inner transition-all outline-none focus:bg-white/10 focus:ring-4"
+                    className="focus:border-sp-accent/50 focus:ring-sp-accent/10 border-sp-border-dark bg-sp-surface-subtle focus:bg-sp-surface-hover w-full resize-none rounded-xl border px-5 py-4 text-white shadow-inner transition-all outline-none focus:ring-4"
                   />
                 </div>
 
@@ -231,7 +238,7 @@ export function ContactPage({ locale }: { locale: string }) {
                       <input
                         type="checkbox"
                         name="marketing"
-                        className="peer checked:bg-sp-accent checked:border-sp-accent group-hover/check:border-sp-accent/50 h-6 w-6 cursor-pointer appearance-none rounded-lg border border-white/20 bg-white/5 shadow-inner transition-all duration-300"
+                        className="peer checked:bg-sp-accent checked:border-sp-accent group-hover/check:border-sp-accent/50 border-sp-border-dark bg-sp-surface-subtle h-6 w-6 cursor-pointer appearance-none rounded-lg border shadow-inner transition-all duration-300"
                       />
                       <div className="pointer-events-none absolute scale-50 text-white opacity-0 transition-opacity duration-300 peer-checked:scale-100 peer-checked:opacity-100">
                         <svg
@@ -248,7 +255,7 @@ export function ContactPage({ locale }: { locale: string }) {
                         </svg>
                       </div>
                     </div>
-                    <span className="text-foreground/70 text-[15px] transition-colors group-hover/check:text-white">
+                    <span className="text-sp-text-muted text-[15px] transition-colors group-hover/check:text-white">
                       {isDe ? 'Marketing E-Mails' : 'Marketing Emails'}
                     </span>
                   </label>
@@ -258,7 +265,7 @@ export function ContactPage({ locale }: { locale: string }) {
                       <input
                         type="checkbox"
                         name="news"
-                        className="peer checked:bg-sp-accent checked:border-sp-accent group-hover/check:border-sp-accent/50 h-6 w-6 cursor-pointer appearance-none rounded-lg border border-white/20 bg-white/5 shadow-inner transition-all duration-300"
+                        className="peer checked:bg-sp-accent checked:border-sp-accent group-hover/check:border-sp-accent/50 border-sp-border-dark bg-sp-surface-subtle h-6 w-6 cursor-pointer appearance-none rounded-lg border shadow-inner transition-all duration-300"
                       />
                       <div className="pointer-events-none absolute scale-50 text-white opacity-0 transition-opacity duration-300 peer-checked:scale-100 peer-checked:opacity-100">
                         <svg
@@ -275,7 +282,7 @@ export function ContactPage({ locale }: { locale: string }) {
                         </svg>
                       </div>
                     </div>
-                    <span className="text-foreground/70 text-[15px] transition-colors group-hover/check:text-white">
+                    <span className="text-sp-text-muted text-[15px] transition-colors group-hover/check:text-white">
                       {isDe ? 'Neuigkeiten & Updates' : 'News & Updates Emails'}
                     </span>
                   </label>

@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Layers } from 'lucide-react'
+import { ArrowRight, Cpu, PenTool, Code, Smartphone, Layers } from 'lucide-react'
 import Link from 'next/link'
 import { Reveal } from '@/components/animations/Reveal'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
@@ -12,6 +13,59 @@ import { ProceduralAIAutomation } from '@/components/graphics/ProceduralAIAutoma
 import { ProceduralUIDesign } from '@/components/graphics/ProceduralUIDesign'
 import { ProceduralWebDev } from '@/components/graphics/ProceduralWebDev'
 import { ProceduralMobileDev } from '@/components/graphics/ProceduralMobileDev'
+import { cn } from '@/lib/utils'
+
+const SERVICE_ICONS: Record<string, typeof Cpu> = {
+  'ai-automation': Cpu,
+  'ui-ux-design': PenTool,
+  'web-app-development': Code,
+  'mobile-app-development': Smartphone,
+}
+
+const MAX_TILT = 10
+
+function TiltCard({
+  href,
+  children,
+  className,
+}: {
+  href: string
+  children: React.ReactNode
+  className: string
+}) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    const tiltX = (y - 0.5) * -2 * MAX_TILT
+    const tiltY = (x - 0.5) * 2 * MAX_TILT
+    setTilt({ x: tiltX, y: tiltY })
+  }
+
+  const handleMouseLeave = () => setTilt({ x: 0, y: 0 })
+
+  return (
+    <div
+      className="h-full"
+      style={{ perspective: '1000px' }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Link
+        href={href}
+        className={className}
+        style={{
+          transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transition: 'transform 0.15s ease-out',
+        }}
+      >
+        {children}
+      </Link>
+    </div>
+  )
+}
 
 export function ServicesIndexPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -21,99 +75,178 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
     tagline: s.tagline[isDe ? 'de' : 'en'],
     slug: s.slugs[isDe ? 'de' : 'en'],
     description: s.heroDescription[isDe ? 'de' : 'en'],
-    key: s.slugs.en, // Use EN slug as key
+    key: s.slugs.en,
   }))
 
-  const getGraphic = (key: string, index: number) => {
+  const getGraphic = (key: string) => {
     switch (key) {
       case 'ai-automation':
-        return <ProceduralAIAutomation animated={true} />
+        return <ProceduralAIAutomation animated />
       case 'ui-ux-design':
-        return <ProceduralUIDesign animated={true} />
+        return <ProceduralUIDesign animated />
       case 'web-app-development':
-        return <ProceduralWebDev animated={true} />
+        return <ProceduralWebDev animated />
       case 'mobile-app-development':
-        return <ProceduralMobileDev animated={true} />
+        return <ProceduralMobileDev animated />
       default:
-        return <ProceduralGeometricMesh variant="mixed" animated={true} />
+        return <ProceduralGeometricMesh variant="mixed" animated />
     }
   }
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: (i: number) => ({
+      opacity: 1,
+      transition: { delay: i * 0.08, staggerChildren: 0.06 },
+    }),
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  }
+
   return (
-    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-28 pb-24">
       <FloatiesBackground />
 
-      <section className="relative flex min-h-[50vh] flex-col items-center justify-center px-6 py-20 text-center md:px-12">
-        <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
-
-        <Reveal>
-          <div className="border-sp-accent/20 bg-sp-accent/10 text-sp-accent mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium">
-            <Layers size={16} />
-            {isDe ? 'Unsere Leistungen' : 'Our Services'}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
-          <h1 className="mb-6 max-w-4xl text-5xl leading-[1.1] font-bold tracking-tight md:text-7xl">
-            {isDe ? 'Von der Idee zur skalierbaren ' : 'From idea to scalable '}
-            <span className="text-sp-accent">{isDe ? 'Realität.' : 'reality.'}</span>
-          </h1>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <p className="text-foreground/70 mx-auto max-w-2xl text-xl leading-relaxed">
-            {isDe
-              ? 'Wir entwerfen, entwickeln und automatisieren digitale Produkte, die branchenweit Maßstäbe setzen. Skalierbar, zuverlässig und innovativ.'
-              : 'We design, build, and automate digital products that set industry standards. Scalable, reliable, and innovative.'}
-          </p>
-        </Reveal>
-      </section>
-
-      {/* Services Grid */}
-      <section className="relative z-10 container mx-auto px-6 py-12 md:px-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-          {allServices.map((service, i) => (
-            <Reveal key={service.slug} delay={0.1 * i} direction="up">
-              <Link
-                href={`/${locale}/${service.slug}`}
-                className="group bg-sp-bg-dark/50 flex h-full flex-col overflow-hidden rounded-[2rem] border border-white/5 p-8 backdrop-blur-sm transition-all duration-500 hover:border-white/20 hover:bg-white/5 hover:shadow-[0_32px_80px_-20px_rgba(0,0,0,0.2)]"
-              >
-                <div className="relative mb-8 h-48 w-full overflow-hidden rounded-2xl border border-white/5 bg-black/20 group-hover:border-white/10">
-                  <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
-                    {getGraphic(service.key, i)}
-                  </div>
-                </div>
-                <h2 className="group-hover:text-sp-accent mb-4 text-3xl font-bold text-white transition-colors">
-                  {service.title}
-                </h2>
-                <h3 className="mb-4 text-xl font-semibold text-white/80">{service.tagline}</h3>
-                <p className="mb-8 flex-grow leading-relaxed text-white/60">
-                  {service.description.slice(0, 150)}...
-                </p>
-                <div className="text-sp-accent mt-auto flex items-center gap-2 font-medium">
-                  {isDe ? 'Mehr erfahren' : 'Learn more'}
-                  <ArrowRight
-                    size={18}
-                    className="transition-transform group-hover:translate-x-2"
-                  />
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+      {/* Hero — Bold, editorial */}
+      <section className="relative flex min-h-[55vh] flex-col items-center justify-center px-6 py-24 text-center md:px-12 lg:py-32">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="bg-sp-accent/[0.07] absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,112,67,0.06),transparent)]" />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 mb-6"
+        >
+          <span className="border-sp-accent/30 bg-sp-accent/10 text-sp-accent inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold tracking-wide">
+            <Layers size={16} strokeWidth={2.5} />
+            {isDe ? 'Unsere Leistungen' : 'Our Services'}
+          </span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 mb-8 max-w-4xl text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.05] font-black tracking-tight"
+        >
+          {isDe ? 'Von der Idee zur ' : 'From idea to '}
+          <span className="relative">
+            <span className="text-sp-accent relative z-10">
+              {isDe ? 'skalierbaren Realität' : 'scalable reality'}
+            </span>
+            <span className="bg-sp-accent/30 absolute right-0 -bottom-1 left-0 h-1" />
+          </span>
+          .
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          className="text-sp-text-muted relative z-10 mx-auto max-w-2xl text-lg leading-relaxed md:text-xl"
+        >
+          {isDe
+            ? 'Wir entwerfen, entwickeln und automatisieren digitale Produkte, die branchenweit Maßstäbe setzen.'
+            : 'We design, build, and automate digital products that set industry standards. Scalable, reliable, and innovative.'}
+        </motion.p>
       </section>
 
-      {/* Contact Section */}
-      <section className="bg-sp-bg-medium relative mt-24 overflow-x-clip py-24 md:py-32 lg:py-40">
-        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
+      {/* Section divider */}
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="via-sp-border-dark h-px bg-gradient-to-r from-transparent to-transparent" />
+      </div>
 
-        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
+      {/* Services Grid — Premium cards */}
+      <section className="relative z-10 container mx-auto px-6 py-16 md:px-12 lg:py-24">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-12% 0px' }}
+          className="grid gap-6 md:grid-cols-2 lg:gap-8"
+        >
+          {allServices.map((service, i) => {
+            const Icon = SERVICE_ICONS[service.key] ?? Layers
+            return (
+              <motion.div key={service.slug} variants={itemVariants} className="pt-2">
+                <TiltCard
+                  href={`/${locale}/${service.slug}`}
+                  className={cn(
+                    'group relative flex h-full flex-col overflow-hidden rounded-[1.75rem]',
+                    'border-sp-border-dark bg-sp-surface-elevated border',
+                    '-mt-2',
+                    'transition-[border-color,box-shadow] duration-200 ease-out',
+                    'hover:border-sp-accent/40 hover:shadow-xl',
+                    'focus-visible:ring-sp-accent/50 focus-visible:ring-offset-sp-bg-dark focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none'
+                  )}
+                >
+                  {/* Hover glow overlay */}
+                  <div className="bg-sp-accent/[0.06] pointer-events-none absolute inset-0 rounded-[1.75rem] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100" />
+                  {/* Graphic container */}
+                  <div className="relative h-52 overflow-hidden md:h-56">
+                    <div className="from-sp-surface-subtle to-sp-surface-elevated absolute inset-0 bg-gradient-to-b" />
+                    <div className="absolute inset-0 flex items-center justify-center p-4">
+                      {getGraphic(service.key)}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-1 flex-col p-6 md:p-8">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="bg-sp-accent/10 text-sp-accent group-hover:bg-sp-accent/20 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-200">
+                        <Icon size={18} strokeWidth={2} />
+                      </div>
+                      <h2 className="group-hover:text-sp-accent text-2xl font-bold tracking-tight text-white transition-colors duration-200 ease-out md:text-3xl">
+                        {service.title}
+                      </h2>
+                    </div>
+                    <p className="text-sp-text-muted mb-4 text-base font-medium">
+                      {service.tagline}
+                    </p>
+                    <p className="text-sp-text-muted mb-6 line-clamp-3 grow text-sm leading-relaxed">
+                      {service.description.slice(0, 150)}…
+                    </p>
+
+                    {/* CTA */}
+                    <span className="text-sp-accent mb-1 flex items-center gap-2 text-sm font-semibold tracking-wide">
+                      {isDe ? 'Mehr erfahren' : 'Learn more'}
+                      <ArrowRight
+                        size={18}
+                        className="shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1"
+                        strokeWidth={2.5}
+                      />
+                    </span>
+                  </div>
+                </TiltCard>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+      </section>
+
+      {/* Contact Section — Refined */}
+      <section className="bg-sp-bg-medium relative mt-24 overflow-x-clip py-24 md:py-32 lg:py-40">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="bg-sp-accent/6 absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
+        </div>
+
+        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
+              <h2 className="text-sp-text-dark mb-6 text-4xl font-black tracking-tight md:text-5xl lg:text-6xl">
                 {isDe ? 'Lassen Sie uns zusammenarbeiten' : "Let's work together"}
               </h2>
-              <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
+              <p className="text-sp-text-on-light text-xl leading-relaxed md:text-2xl">
                 {isDe
                   ? 'Buchen Sie eine Beratung und erfahren Sie, wie wir Ihr Produkt voranbringen.'
                   : 'Book a consultation to see how we can push your product forward.'}
@@ -121,7 +254,7 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
             </div>
           </Reveal>
 
-          <Reveal direction="left" delay={0.2}>
+          <Reveal direction="left" delay={0.15}>
             <ContactFormSection locale={locale} />
           </Reveal>
         </div>

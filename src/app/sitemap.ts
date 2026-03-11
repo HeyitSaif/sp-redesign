@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import type { PageFrontmatter } from "@/lib/markdown";
+import { SLUG_LOCALE_MAP } from "@/lib/seo";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solutionplus.io";
 const contentDir = path.join(process.cwd(), "src/content");
@@ -100,26 +101,55 @@ function getChangeFrequency(slug: string): "always" | "hourly" | "daily" | "week
   return "monthly";
 }
 
+function getAlternateSlug(slug: string, fromLocale: "en" | "de"): string | undefined {
+  const key = slug || "index";
+  const mapping = SLUG_LOCALE_MAP[key];
+  if (!mapping) return undefined;
+  return fromLocale === "en" ? mapping.de : mapping.en;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const sitemap: MetadataRoute.Sitemap = [];
 
   for (const slug of EN_SLUGS) {
     const urlPath = slug ? `/en/${slug}` : "/en";
+    const deSlug = getAlternateSlug(slug || "index", "en");
+    const dePath = deSlug ? `/de/${deSlug}` : "/de";
     sitemap.push({
       url: `${baseUrl}${urlPath}`,
       lastModified: getLastModified("en", slug),
       changeFrequency: getChangeFrequency(slug),
       priority: getPriority(slug),
+      alternates: deSlug !== undefined
+        ? {
+            languages: {
+              "en-US": `${baseUrl}${urlPath}`,
+              "de-DE": `${baseUrl}${dePath}`,
+              "x-default": `${baseUrl}${urlPath}`,
+            },
+          }
+        : undefined,
     });
   }
 
   for (const slug of DE_SLUGS) {
     const urlPath = slug ? `/de/${slug}` : "/de";
+    const enSlug = getAlternateSlug(slug || "index", "de");
+    const enPath = enSlug ? `/en/${enSlug}` : "/en";
     sitemap.push({
       url: `${baseUrl}${urlPath}`,
       lastModified: getLastModified("de", slug),
       changeFrequency: getChangeFrequency(slug),
       priority: getPriority(slug),
+      alternates: enSlug !== undefined
+        ? {
+            languages: {
+              "en-US": `${baseUrl}${enPath}`,
+              "de-DE": `${baseUrl}${urlPath}`,
+              "x-default": `${baseUrl}${enPath}`,
+            },
+          }
+        : undefined,
     });
   }
 

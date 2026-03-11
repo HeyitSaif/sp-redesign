@@ -125,7 +125,7 @@ export function MvpSprintPage({ locale }: { locale: string }) {
                     {i === 1 && <ProceduralNetwork nodeCount={12} animated={true} />}
                     {i === 2 && <ProceduralDataGrid animated={true} />}
                     {i === 3 && <ProceduralIsometricBlocks layers={2} animated={true} />}
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                       {feature.icon}
                     </div>
                   </div>
@@ -362,31 +362,47 @@ export function MvpSprintPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 grid max-w-3xl gap-4 md:grid-cols-2">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">B2B SaaS</div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
+                    B2B SaaS
+                  </div>
                   <div className="text-base font-semibold text-white">Democorder</div>
-                  <div className="text-xs text-white/60">{isDe ? 'Konzept → Produktion in 6 Monaten' : 'Concept → production in 6 months'}</div>
+                  <div className="text-xs text-white/60">
+                    {isDe
+                      ? 'Konzept → Produktion in 6 Monaten'
+                      : 'Concept → production in 6 months'}
+                  </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={18}
+                />
               </Link>
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/tecsofiy`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">B2B Automation</div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
+                    B2B Automation
+                  </div>
                   <div className="text-base font-semibold text-white">Tecsofy</div>
-                  <div className="text-xs text-white/60">{isDe ? 'Kern-Automation in 1 Woche live' : 'Core automations live in 1 week'}</div>
+                  <div className="text-xs text-white/60">
+                    {isDe ? 'Kern-Automation in 1 Woche live' : 'Core automations live in 1 week'}
+                  </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={18}
+                />
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>

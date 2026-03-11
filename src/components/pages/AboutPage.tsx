@@ -86,7 +86,9 @@ export function AboutPage({ locale }: { locale: string }) {
                     <ImageWithShimmer
                       src={persona.img}
                       alt={persona.title}
-                      className="h-full w-full object-contain p-4"
+                      wrapperClassName="h-full w-full"
+                      aspectRatio="aspect-square"
+                      className="h-full w-full object-cover p-4"
                     />
                   </div>
                   <h3 className="text-sp-text-dark mb-4 text-2xl font-bold">{persona.title}</h3>
@@ -343,14 +345,14 @@ export function AboutPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
             <Reveal>
-              <span className="text-sp-accent mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
+              <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle mb-8 inline-block rounded-full border px-4 py-2 text-sm font-medium">
                 {isDe ? 'Über Uns' : 'About Us'}
               </span>
               <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
                 The <span className="text-gradient">partner</span> behind your next product
                 milestone.
               </h1>
-              <p className="text-foreground/70 mb-8 text-xl leading-relaxed">
+              <p className="text-sp-text-muted mb-8 text-xl leading-relaxed">
                 {isDe
                   ? 'Wir haben SolutionPlus nicht gegründet, um ein weiteres Dev-Shop zu sein. Wir haben es gebaut, weil wir in Ihren Schuhen gesteckt haben; schnell liefern, richtig einstellen und Dinge ohne Ausreden erledigen.'
                   : "We didn't start SolutionPlus to be another dev shop. We built it because we've been in your shoes; racing to deliver, hire right, and get things done without excuses."}
@@ -389,7 +391,7 @@ export function AboutPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto px-6 md:px-12">
           <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-clip rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+              <div className="group bg-sp-bg-medium relative h-full overflow-x-clip rounded-[2rem] border border-black/10 p-10 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                 <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute top-0 right-0 p-8 opacity-5 transition-all duration-500 group-hover:scale-110 group-hover:opacity-20">
                   <Globe2 size={120} className="text-sp-accent" />
@@ -406,7 +408,7 @@ export function AboutPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-clip rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+              <div className="group bg-sp-bg-medium relative h-full overflow-x-clip rounded-[2rem] border border-black/10 p-10 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                 <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute top-0 right-0 p-8 opacity-5 transition-all duration-500 group-hover:scale-110 group-hover:opacity-20">
                   <Target size={120} className="text-sp-accent" />
@@ -425,7 +427,7 @@ export function AboutPage({ locale }: { locale: string }) {
 
           {/* Stats Strip */}
           <Reveal direction="up" delay={0.3}>
-            <div className="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-16 md:grid-cols-4">
+            <div className="border-sp-border-dark mt-16 grid grid-cols-2 gap-8 border-t pt-16 md:grid-cols-4">
               {[
                 { value: supportData[isDe ? 'de' : 'en'].stats.engineers },
                 { value: supportData[isDe ? 'de' : 'en'].stats.clients },
@@ -437,7 +439,7 @@ export function AboutPage({ locale }: { locale: string }) {
                   className="flex flex-col items-center justify-center gap-2 text-center"
                 >
                   <span className="text-3xl font-bold text-white">{stat.value.split(' ')[0]}</span>
-                  <span className="text-foreground/70 text-sm font-medium tracking-wide uppercase">
+                  <span className="text-sp-text-muted text-sm font-medium tracking-wide uppercase">
                     {stat.value.split(' ').slice(1).join(' ')}
                   </span>
                 </div>
@@ -459,7 +461,7 @@ export function AboutPage({ locale }: { locale: string }) {
           <div className="mx-auto grid max-w-6xl gap-8 text-left md:grid-cols-3">
             {team.map((member, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium/80 overflow-x-clip rounded-[2rem] border border-black/5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                <div className="group bg-sp-bg-medium overflow-x-clip rounded-[2rem] border border-black/10 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                   <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-x-clip">
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141618] via-transparent to-transparent opacity-80" />
                     <ImageWithShimmer

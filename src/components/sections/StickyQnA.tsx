@@ -72,7 +72,7 @@ function StackedCard({ item, index, total }: { item: FaqItem; index: number; tot
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="hover:border-sp-accent/30 bg-sp-bg-medium sticky overflow-x-clip rounded-[2.5rem] border border-white/5 p-8 shadow-2xl transition-colors duration-500 md:p-14"
+      className="hover:border-sp-accent/30 bg-sp-bg-medium border-sp-border-light sticky overflow-x-clip rounded-[2.5rem] border p-8 shadow-2xl transition-colors duration-500 md:p-14"
       style={{
         top: `calc(140px + ${index * 30}px)`,
         zIndex: index,

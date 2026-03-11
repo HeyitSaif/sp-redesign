@@ -23,7 +23,7 @@ export function StartupPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
             <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
-              <span className="text-sp-accent rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
+              <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle rounded-full border px-4 py-2 text-sm font-medium">
                 For Startups
               </span>
               <Badge variant="outline" className="text-white/60">
@@ -55,7 +55,7 @@ export function StartupPage({ locale }: { locale: string }) {
               </Link>
               <a
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
+                className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 Learn more
               </a>
@@ -119,7 +119,7 @@ export function StartupPage({ locale }: { locale: string }) {
                   'Flexibility to grow, easily expand your team or evolve into a long-term setup when you&apos;re ready.',
                 ].map((item, i) => (
                   <Reveal key={i} delay={0.1 * i} direction="right">
-                    <div className="flex gap-4 rounded-2xl border border-white/5 bg-white/5 p-6 backdrop-blur-md">
+                    <div className="border-sp-border-dark bg-sp-surface-subtle flex gap-4 rounded-2xl border p-6">
                       <div className="mt-1 shrink-0">
                         <CheckCircle2 className="text-sp-accent" />
                       </div>
@@ -158,7 +158,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 </div>
                 <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
                   <ProceduralGeometricMesh variant="mixed" animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                     <Users size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 </div>
                 <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
                   <ProceduralDataGrid animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                     <Target size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 </div>
                 <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
                   <ProceduralNetwork nodeCount={15} animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                     <Rocket size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -425,31 +425,49 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 grid max-w-3xl gap-4 md:grid-cols-2">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">B2B SaaS</div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
+                    B2B SaaS
+                  </div>
                   <div className="text-base font-semibold text-white">Democorder</div>
-                  <div className="text-xs text-white/60">{locale === 'de' ? '28 % Umfang reduziert, 0 kritische Bugs' : '28% scope cut, 0 critical bugs'}</div>
+                  <div className="text-xs text-white/60">
+                    {locale === 'de'
+                      ? '28 % Umfang reduziert, 0 kritische Bugs'
+                      : '28% scope cut, 0 critical bugs'}
+                  </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={18}
+                />
               </Link>
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/hospitality`}
-                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
               >
                 <div>
-                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">Hospitality</div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
+                    Hospitality
+                  </div>
                   <div className="text-base font-semibold text-white">Hotel Korona & Parkhotel</div>
-                  <div className="text-xs text-white/60">{locale === 'de' ? 'Direktbuchungswebsites, Full-Stack' : 'Direct booking websites, full-stack'}</div>
+                  <div className="text-xs text-white/60">
+                    {locale === 'de'
+                      ? 'Direktbuchungswebsites, Full-Stack'
+                      : 'Direct booking websites, full-stack'}
+                  </div>
                 </div>
-                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+                <ArrowRight
+                  className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100"
+                  size={18}
+                />
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>

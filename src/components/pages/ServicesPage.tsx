@@ -71,7 +71,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
+                  className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
                 >
                   {isDe ? 'Mehr erfahren' : 'Learn more'}
                 </a>
@@ -142,7 +142,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                     {i === 1 && <ProceduralNetwork nodeCount={15} animated={true} />}
                     {i === 2 && <ProceduralDataGrid animated={true} />}
                     {i === 3 && <ProceduralGeometricMesh variant="circle" animated={true} />}
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
                       {feature.icon}
                     </div>
                   </div>
@@ -426,7 +426,7 @@ export function ServicesPage({ locale }: { locale: string }) {
 
       {/* Related reading */}
       <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
-        <div className="container mx-auto px-6 md:px-12 text-center">
+        <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
             <h3 className="mb-8 text-2xl font-bold text-white">
               {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
@@ -434,7 +434,7 @@ export function ServicesPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="bg-white/5 border border-white/10 text-white/80 hover:border-sp-accent hover:text-sp-accent rounded-full px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>

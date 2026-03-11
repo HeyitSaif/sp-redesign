@@ -84,12 +84,12 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
                 {data.industryBadge}
               </div>
               {data.duration && (
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium tracking-wide text-white/80 uppercase">
+                <div className="border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium tracking-wide uppercase">
                   {supportData[isDe ? 'de' : 'en'].caseStudies.duration}: {data.duration}
                 </div>
               )}
               {data.deliveryModel && (
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium tracking-wide text-white/80 uppercase">
+                <div className="border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium tracking-wide uppercase">
                   {data.deliveryModel}
                 </div>
               )}
@@ -318,7 +318,7 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
       {(data.whyItWorkedTitle || data.whyItWorkedPoints) && (
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
-            <div className="border-l-sp-accent relative mx-auto mb-12 max-w-4xl overflow-hidden rounded-r-[2rem] border border-l-4 border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl md:p-12">
+            <div className="border-l-sp-accent border-sp-border-dark bg-sp-surface-subtle relative mx-auto mb-12 max-w-4xl overflow-hidden rounded-r-[2rem] border border-l-4 p-8 shadow-2xl md:p-12">
               <div className="bg-sp-accent/5 absolute top-0 right-0 h-full w-[40%] rounded-full blur-3xl" />
               {data.whyItWorkedTitle && (
                 <h2 className="relative z-10 mb-6 text-3xl font-bold text-white">
@@ -333,7 +333,7 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {data.whyItWorkedPoints.map((point, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="up">
-                  <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-md transition-transform hover:-translate-y-1">
+                  <div className="border-sp-border-dark bg-sp-surface-subtle h-full rounded-2xl border p-8 shadow-xl transition-transform hover:-translate-y-1">
                     <h3 className="group-hover:text-sp-accent mb-4 text-xl font-bold text-white transition-colors">
                       {point.title}
                     </h3>
@@ -487,7 +487,7 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             <div className="mt-12 flex justify-center">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="text-sp-text-dark hover:border-sp-accent hover:text-sp-accent rounded-full border border-black/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="text-sp-text-dark hover:border-sp-accent hover:text-sp-accent bg-sp-bg-light rounded-full border border-black/10 px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {isDe ? 'Alle Fallstudien ansehen' : 'View All Case Studies'}
               </Link>

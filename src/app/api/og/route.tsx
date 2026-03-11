@@ -3,19 +3,42 @@ import { checkRateLimit, RATE_LIMITS } from '@/lib/rate-limit'
 
 export const runtime = 'edge'
 
+const SOCIAL_CRAWLERS = [
+  'facebookexternalhit',
+  'Facebot',
+  'Twitterbot',
+  'LinkedInBot',
+  'Pinterest',
+  'Slackbot',
+  'WhatsApp',
+  'TelegramBot',
+  'Discordbot',
+]
+
+function isSocialCrawler(userAgent: string | null): boolean {
+  if (!userAgent) return false
+  const ua = userAgent.toLowerCase()
+  return SOCIAL_CRAWLERS.some((bot) => ua.includes(bot.toLowerCase()))
+}
+
 export async function GET(request: Request) {
-  const ip =
-    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
-    request.headers.get('x-real-ip') ??
-    'unknown'
-  const { allowed, retryAfter } = checkRateLimit(`og:${ip}`, RATE_LIMITS.og)
-  if (!allowed) {
-    return new Response('Too Many Requests', {
-      status: 429,
-      headers: {
-        'Retry-After': String(retryAfter ?? 60),
-      },
-    })
+  const userAgent = request.headers.get('user-agent')
+  const skipRateLimit = isSocialCrawler(userAgent)
+
+  if (!skipRateLimit) {
+    const ip =
+      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+      request.headers.get('x-real-ip') ??
+      'unknown'
+    const { allowed, retryAfter } = checkRateLimit(`og:${ip}`, RATE_LIMITS.og)
+    if (!allowed) {
+      return new Response('Too Many Requests', {
+        status: 429,
+        headers: {
+          'Retry-After': String(retryAfter ?? 60),
+        },
+      })
+    }
   }
 
   const { searchParams } = new URL(request.url)
@@ -69,6 +92,12 @@ export async function GET(request: Request) {
         </div>
       </div>
     </div>,
-    { width: 1200, height: 630 }
+    {
+      width: 1200,
+      height: 630,
+      headers: {
+        'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800',
+      },
+    }
   )
 }

@@ -9,17 +9,21 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  if (locale === 'de') return { title: 'Not Found' }
+  if (locale === 'de') notFound()
 
   return generatePageMetadata({
     title: 'Case Studies',
-    description: 'Explore how we helped start-ups, scale-ups, and established enterprises turn their vision into reality.',
+    description:
+      'Explore how we helped start-ups, scale-ups, and established enterprises turn their vision into reality.',
     keywords: ['case studies', 'success stories', 'portfolio', 'software development'],
     locale,
     canonicalUrl: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'}/${locale}/case-studies`,
     alternateLocales: [
-      { locale: 'de', url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'}/de/fallstudien` }
-    ]
+      {
+        locale: 'de',
+        url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'}/de/fallstudien`,
+      },
+    ],
   })
 }
 
