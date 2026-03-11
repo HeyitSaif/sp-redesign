@@ -3,8 +3,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import type { ComponentType } from 'react'
+import { Button } from '@/components/ui/Button'
 import {
   ArrowRight,
   Briefcase,
@@ -269,6 +271,7 @@ const NAV_DATA_DE: NavSection[] = [
 ]
 
 export function Header({ locale }: { locale: string }) {
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
   const [hoveredSubmenu, setHoveredSubmenu] = useState<string | null>(null)
@@ -277,6 +280,21 @@ export function Header({ locale }: { locale: string }) {
 
   const navData = locale === 'de' ? NAV_DATA_DE : NAV_DATA_EN
   const contactHref = locale === 'de' ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`
+
+  const isItemActive = (href: string) => {
+    const fullHref = `/${locale}${href}`
+    if (pathname === fullHref) return true
+    if (pathname.startsWith(`${fullHref}/`)) return true
+    return false
+  }
+
+  const isSectionActive = (section: NavSection) => {
+    return section.items.some((item) => {
+      if (isItemActive(item.href)) return true
+      if (item.children && item.children.some((child) => isItemActive(child.href))) return true
+      return false
+    })
+  }
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24)
@@ -349,8 +367,10 @@ export function Header({ locale }: { locale: string }) {
                   className={cn(
                     'flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold tracking-wide transition-colors outline-none',
                     desktopOpen === section.name
-                      ? 'text-sp-accent bg-sp-surface-subtle'
-                      : 'hover:bg-sp-surface-subtle text-white'
+                      ? 'text-sp-accent bg-sp-surface-hover'
+                      : isSectionActive(section)
+                        ? 'text-sp-accent bg-sp-surface-subtle'
+                        : 'text-sp-text-muted hover:bg-sp-surface-hover hover:text-white'
                   )}
                   aria-haspopup="true"
                   aria-expanded={desktopOpen === section.name}
@@ -386,14 +406,33 @@ export function Header({ locale }: { locale: string }) {
                             >
                               <Link
                                 href={`/${locale}${item.href}`}
-                                className="group bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover focus-visible:border-sp-accent/50 h-full rounded-xl border border-transparent p-3 transition-all outline-none"
+                                className={cn(
+                                  'group focus-visible:border-sp-accent/50 h-full rounded-xl border p-3 transition-all outline-none',
+                                  isItemActive(item.href)
+                                    ? 'border-sp-border-dark bg-sp-surface-hover'
+                                    : 'bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover border-transparent'
+                                )}
                                 onClick={() => setDesktopOpen(null)}
                               >
                                 <div className="mb-2.5 flex items-center gap-2.5">
-                                  <div className="group-hover:text-sp-accent group-hover:border-sp-accent/30 border-sp-border-dark bg-sp-surface-hover flex h-8 w-8 items-center justify-center rounded-lg border text-white">
+                                  <div
+                                    className={cn(
+                                      'flex h-8 w-8 items-center justify-center rounded-lg border transition-colors',
+                                      isItemActive(item.href)
+                                        ? 'text-sp-accent border-sp-accent/40 bg-sp-surface-hover'
+                                        : 'group-hover:text-sp-accent group-hover:border-sp-accent/40 border-sp-border-dark bg-sp-surface-hover text-white'
+                                    )}
+                                  >
                                     <Icon size={15} />
                                   </div>
-                                  <span className="flex items-center gap-2 text-sm font-semibold text-white/90 transition-colors group-hover:text-white">
+                                  <span
+                                    className={cn(
+                                      'flex items-center gap-2 text-sm font-semibold transition-colors',
+                                      isItemActive(item.href)
+                                        ? 'text-sp-accent'
+                                        : 'text-white/90 group-hover:text-white'
+                                    )}
+                                  >
                                     {item.name}
                                     {item.badge && (
                                       <span className="bg-sp-accent/20 text-sp-accent rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
@@ -402,7 +441,14 @@ export function Header({ locale }: { locale: string }) {
                                     )}
                                   </span>
                                 </div>
-                                <p className="text-sp-text-muted text-xs leading-relaxed group-hover:text-white">
+                                <p
+                                  className={cn(
+                                    'text-xs leading-relaxed',
+                                    isItemActive(item.href)
+                                      ? 'text-white/80'
+                                      : 'text-sp-text-muted group-hover:text-white'
+                                  )}
+                                >
                                   {item.description}
                                 </p>
                               </Link>
@@ -422,13 +468,23 @@ export function Header({ locale }: { locale: string }) {
                                         <Link
                                           key={child.name}
                                           href={`/${locale}${child.href}`}
-                                          className="hover:text-sp-accent group/child text-sp-text-muted flex items-center justify-between py-1.5 text-xs transition-colors"
+                                          className={cn(
+                                            'hover:text-sp-accent group/child flex items-center justify-between py-1.5 text-xs transition-colors',
+                                            isItemActive(child.href)
+                                              ? 'text-sp-accent'
+                                              : 'text-sp-text-muted'
+                                          )}
                                           onClick={() => setDesktopOpen(null)}
                                         >
                                           <span className="truncate pr-2">{child.name}</span>
                                           <ChevronRight
                                             size={12}
-                                            className="text-sp-accent -translate-x-2 opacity-0 transition-all group-hover/child:translate-x-0 group-hover/child:opacity-100"
+                                            className={cn(
+                                              'text-sp-accent -translate-x-2 transition-all group-hover/child:translate-x-0 group-hover/child:opacity-100',
+                                              isItemActive(child.href)
+                                                ? 'translate-x-0 opacity-100'
+                                                : 'opacity-0'
+                                            )}
                                           />
                                         </Link>
                                       ))}
@@ -463,12 +519,9 @@ export function Header({ locale }: { locale: string }) {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <Link
-              href={contactHref}
-              className="group border-sp-accent bg-sp-accent hover:bg-sp-accent-dark hover:border-sp-accent-dark hover:shadow-sp-accent/20 flex items-center gap-2 rounded-full border px-6 py-2.5 text-sm font-semibold tracking-wide text-white shadow-sm transition-colors outline-none"
-            >
+            <Button href={contactHref} variant="primary" size="sm">
               {locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
-            </Link>
+            </Button>
           </div>
 
           <button
@@ -517,7 +570,13 @@ export function Header({ locale }: { locale: string }) {
                         }
                         aria-expanded={mobileExpanded === section.name}
                       >
-                        <span className={mobileExpanded === section.name ? 'text-sp-accent' : ''}>
+                        <span
+                          className={
+                            mobileExpanded === section.name || isSectionActive(section)
+                              ? 'text-sp-accent'
+                              : ''
+                          }
+                        >
                           {section.name}
                         </span>
                         <ChevronDown
@@ -545,14 +604,33 @@ export function Header({ locale }: { locale: string }) {
                                     <div className="flex items-center">
                                       <Link
                                         href={`/${locale}${item.href}`}
-                                        className="hover:bg-sp-surface-hover flex flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-colors"
+                                        className={cn(
+                                          'flex flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-colors',
+                                          isItemActive(item.href)
+                                            ? 'bg-sp-surface-hover border-sp-border-dark border'
+                                            : 'hover:bg-sp-surface-hover border border-transparent'
+                                        )}
                                         onClick={() => setMobileOpen(false)}
                                       >
-                                        <div className="text-sp-accent border-sp-border-dark bg-sp-surface-hover mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border">
+                                        <div
+                                          className={cn(
+                                            'mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border transition-colors',
+                                            isItemActive(item.href)
+                                              ? 'text-sp-accent border-sp-accent/40 bg-sp-surface-subtle'
+                                              : 'text-sp-accent border-sp-border-dark bg-sp-surface-hover'
+                                          )}
+                                        >
                                           <Icon size={14} />
                                         </div>
                                         <div>
-                                          <p className="flex items-center gap-2 text-sm font-semibold text-white">
+                                          <p
+                                            className={cn(
+                                              'flex items-center gap-2 text-sm font-semibold',
+                                              isItemActive(item.href)
+                                                ? 'text-sp-accent'
+                                                : 'text-white'
+                                            )}
+                                          >
                                             {item.name}
                                             {item.badge && (
                                               <span className="bg-sp-accent/20 text-sp-accent rounded-full px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase">
@@ -600,7 +678,12 @@ export function Header({ locale }: { locale: string }) {
                                           <Link
                                             key={child.name}
                                             href={`/${locale}${child.href}`}
-                                            className="text-sp-text-muted py-1.5 text-xs transition-colors hover:text-white"
+                                            className={cn(
+                                              'py-1.5 text-xs transition-colors hover:text-white',
+                                              isItemActive(child.href)
+                                                ? 'text-sp-accent'
+                                                : 'text-sp-text-muted'
+                                            )}
                                             onClick={() => setMobileOpen(false)}
                                           >
                                             {child.name}
@@ -632,14 +715,16 @@ export function Header({ locale }: { locale: string }) {
                 </div>
               </div>
 
-              <Link
+              <Button
                 href={contactHref}
-                className="border-sp-accent bg-sp-accent hover:bg-sp-accent-dark mt-4 flex h-12 w-full items-center justify-center gap-2 rounded-full border text-sm font-semibold tracking-wide text-white transition-colors"
+                variant="primary"
+                size="md"
+                className="mt-4 w-full justify-center"
                 onClick={() => setMobileOpen(false)}
               >
                 {locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                 <ArrowRight size={16} />
-              </Link>
+              </Button>
             </motion.div>
           </>
         )}

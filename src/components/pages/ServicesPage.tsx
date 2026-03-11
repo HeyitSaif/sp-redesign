@@ -3,6 +3,7 @@ import { ProceduralIsometricBlocks } from '@/components/graphics/ProceduralIsome
 import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
 import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
 import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
+import { Button } from '@/components/ui/Button'
 
 import { Reveal } from '@/components/animations/Reveal'
 import {
@@ -28,14 +29,14 @@ export function ServicesPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-24 pb-16 md:pt-32 md:pb-24">
       <FloatiesBackground />
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
         <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <div>
             <Reveal>
               <div className="mb-8 flex flex-wrap items-center gap-3">
@@ -47,7 +48,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                   {supportData[isDe ? 'de' : 'en'].services.idealFor}: Existing Products
                 </Badge>
               </div>
-              <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
+              <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
                 {isDe ? 'Machen Sie Ihr Produkt bereit für ' : 'Make your product ready for '}{' '}
                 <span className="text-sp-accent">{isDe ? 'die Zukunft' : "what's next."}</span>
               </h1>
@@ -58,23 +59,20 @@ export function ServicesPage({ locale }: { locale: string }) {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link
+                <Button
+                  variant="primary"
+                  size="md"
                   href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
                 >
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                   {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
                   <ArrowRight
                     size={18}
                     className="transition-transform group-hover:translate-x-1"
                   />
-                </Link>
-                <a
-                  href="#how-it-works"
-                  className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
-                >
+                </Button>
+                <Button variant="secondary" size="md" href="#how-it-works">
                   {isDe ? 'Mehr erfahren' : 'Learn more'}
-                </a>
+                </Button>
               </div>
             </Reveal>
           </div>
@@ -95,16 +93,16 @@ export function ServicesPage({ locale }: { locale: string }) {
       {/* Why it matters */}
       <section
         id="how-it-works"
-        className="bg-sp-bg-dark relative scroll-mt-24 border-y border-white/5 py-24"
+        className="bg-sp-bg-dark border-sp-border-dark relative scroll-mt-10 border-y py-12 md:mt-16 md:mt-24 md:py-16 lg:py-24"
       >
-        <div className="container mx-auto px-6 text-center md:px-12">
+        <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+            <h2 className="mb-10 text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Warum es wichtig ist' : 'Why it matters for your business'}
             </h2>
           </Reveal>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
             {[
               {
                 icon: <TrendingUp size={32} className="text-sp-accent" />,
@@ -136,13 +134,13 @@ export function ServicesPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium group relative h-full overflow-hidden rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
-                  <div className="bg-sp-bg-dark relative mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                <div className="bg-sp-bg-medium group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/5 p-5 transition-all duration-300 hover:border-black/10 md:p-8">
+                  <div className="bg-sp-bg-dark border-sp-border-dark relative mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl border md:h-40 md:rounded-2xl">
                     {i === 0 && <ProceduralIsometricBlocks layers={2} animated={true} />}
                     {i === 1 && <ProceduralNetwork nodeCount={15} animated={true} />}
                     {i === 2 && <ProceduralDataGrid animated={true} />}
                     {i === 3 && <ProceduralGeometricMesh variant="circle" animated={true} />}
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
+                    <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 z-10 flex items-center justify-center transition-colors duration-500">
                       {feature.icon}
                     </div>
                   </div>
@@ -160,9 +158,9 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* What You'll Get */}
-      <section className="relative overflow-x-clip py-24">
+      <section className="relative overflow-x-clip py-12 md:py-16 lg:py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
-        <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
+        <div className="container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal direction="right">
             <div className="bg-sp-bg-medium relative h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[400px]">
               <ImageWithShimmer
@@ -176,7 +174,7 @@ export function ServicesPage({ locale }: { locale: string }) {
 
           <div>
             <Reveal>
-              <h2 className="mb-10 text-3xl font-bold md:text-5xl">
+              <h2 className="mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
                 {isDe ? 'Was Sie bekommen' : "What You'll Get"}
               </h2>
             </Reveal>
@@ -199,7 +197,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                   : 'Regression testing to ensure stability',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="left">
-                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
+                  <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 overflow-hidden rounded-2xl border border-black/5 p-5 transition-colors md:p-6">
                     <CheckCircle2 className="text-sp-accent mt-1 shrink-0" />
                     <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
@@ -211,15 +209,15 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* Who is it for */}
-      <section className="bg-sp-bg-dark relative border-y border-white/5 py-24">
-        <div className="container mx-auto px-6 text-center md:px-12">
+      <section className="bg-sp-bg-dark border-sp-border-dark relative border-y py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+            <h2 className="mb-10 text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Für wen ist das?' : 'Who is it for'}
             </h2>
           </Reveal>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 md:gap-8">
             {[
               {
                 title: isDe ? 'Scale-ups' : 'Scale-ups',
@@ -243,7 +241,7 @@ export function ServicesPage({ locale }: { locale: string }) {
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
+                <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex h-full flex-col items-center overflow-hidden rounded-2xl border border-black/5 p-5 text-center transition-all duration-300 md:p-8">
                   <div className="mb-6 h-24 w-24">
                     <ImageWithShimmer
                       src={persona.img}
@@ -268,13 +266,13 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-sp-bg-medium relative overflow-x-clip py-24 md:py-32 lg:py-40">
-        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
+      <section className="bg-sp-bg-medium relative overflow-x-clip py-12 md:py-16 lg:py-24 xl:py-32">
+        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl leading-[1.1] font-black tracking-tight md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
                   ? 'Geben Sie Ihrem Produkt ein zweites Leben'
                   : 'Give your product a second life'}
@@ -333,11 +331,11 @@ export function ServicesPage({ locale }: { locale: string }) {
       />
 
       {/* Testimonials */}
-      <section className="bg-sp-bg-dark border-t border-white/5 py-24 md:py-32 lg:py-40">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="bg-sp-bg-dark border-sp-border-dark border-t py-12 md:py-16 lg:py-24 xl:py-32">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
                   ? 'Sie werden nicht der Erste sein, der uns vertraut'
                   : "You won't be the first to trust us"}
@@ -345,9 +343,9 @@ export function ServicesPage({ locale }: { locale: string }) {
             </div>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 md:gap-8 md:gap-12">
             <Reveal direction="up" delay={0.1}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -385,7 +383,7 @@ export function ServicesPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -425,8 +423,8 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* Related reading */}
-      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
-        <div className="container mx-auto px-6 text-center md:px-12">
+      <section className="bg-sp-bg-dark relative z-10 py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
             <h3 className="mb-8 text-2xl font-bold text-white">
               {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
@@ -434,12 +432,12 @@ export function ServicesPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-5 py-2 text-sm font-semibold tracking-wide uppercase transition-colors md:px-6"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            <div className="mt-16 text-center">
+            <div className="mt-10 text-center md:mt-16">
               <p className="text-foreground/70 mb-6 text-lg">
                 {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
               </p>
@@ -455,25 +453,25 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-clip border-t py-32">
-        <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
+      <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-clip border-t py-12 md:py-16 lg:py-24">
+        <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="text-sp-text-dark mb-8 text-4xl font-bold md:text-6xl">
+            <h2 className="text-sp-text-dark mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {isDe ? 'Erweitern Sie Ihre' : 'Grow your'}{' '}
               <span className="text-sp-accent">{isDe ? 'Kapazitäten.' : 'capacity.'}</span>
             </h2>
-            <p className="text-sp-text-on-light mb-12 text-xl">
+            <p className="text-sp-text-on-light mb-8 text-xl md:mb-12">
               {isDe
                 ? 'Holen Sie sich ein dediziertes Entwicklungsteam, das nach Ihren Standards und Ihrem Zeitplan arbeitet.'
                 : 'Get a dedicated engineering team that works to your standards and on your schedule.'}
             </p>
-            <Link
+            <Button
+              variant="primary"
+              size="lg"
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Team-Setup anfragen' : 'Get a team setup'}
-            </Link>
+            </Button>
           </Reveal>
         </div>
       </section>

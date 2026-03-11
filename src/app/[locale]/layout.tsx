@@ -20,6 +20,13 @@ const geistMono = Geist_Mono({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'
 
+export const viewport = {
+  themeColor: '#0a0b0d',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export async function generateMetadata({
   params,
 }: {

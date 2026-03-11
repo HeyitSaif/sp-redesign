@@ -33,16 +33,16 @@ export function ContactPage({ locale }: { locale: string }) {
   }, [state?.success])
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-24 pb-16 md:pt-32 md:pb-24">
       <FloatiesBackground />
-      <section className="relative flex min-h-[50vh] items-center overflow-x-clip py-20">
+      <section className="relative flex min-h-[50vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[600px] w-[600px] rounded-full blur-[150px]" />
         <div className="bg-sp-accent/10 pointer-events-none absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
           <div>
             <Reveal>
-              <h1 className="mb-8 text-4xl leading-[1.1] font-bold tracking-tight md:text-6xl lg:text-7xl">
+              <h1 className="mb-8 text-3xl md:text-4xl leading-[1.1] font-bold tracking-tight md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
                 {isDe ? 'Starten Sie das Gespräch,' : 'Start the conversation'}{' '}
                 <span className="text-sp-accent bg-clip-text">
                   {isDe ? 'das Ihr Unternehmen voranbringt.' : 'that moves your business forward'}
@@ -55,13 +55,13 @@ export function ContactPage({ locale }: { locale: string }) {
                 </span>
               </div>
 
-              <p className="text-foreground/70 mb-12 max-w-xl text-xl leading-relaxed">
+              <p className="text-foreground/70 mb-8 md:mb-12 max-w-xl text-xl leading-relaxed">
                 {isDe
                   ? 'Erzählen Sie uns, was Sie bauen. Bringen Sie uns Ihre Idee oder Ihre nächste Herausforderung, und wir helfen Ihnen, mit Zuversicht voranzukommen.'
                   : "Tell us what you're building. Bring us your idea or your next challenge, and we'll help you move forward with confidence."}
               </p>
 
-              <div className="mt-16 space-y-8">
+              <div className="mt-10 md:mt-16 space-y-8">
                 {[
                   {
                     icon: Mail,
@@ -72,7 +72,7 @@ export function ContactPage({ locale }: { locale: string }) {
                   {
                     icon: MapPin,
                     title: isDe ? 'Standorte' : 'Locations',
-                    content: `Berlin, ${isDe ? 'Deutschland' : 'Germany'}\nLahore, Pakistan`,
+                    content: `Berlin, ${isDe ? 'Deutschland' : 'Germany'}\nDubai, UAE\nPakistan`,
                     subtext: supportData[isDe ? 'de' : 'en'].contact.officeHours,
                     href: null,
                   },
@@ -89,7 +89,7 @@ export function ContactPage({ locale }: { locale: string }) {
                     transition={{ type: 'spring', stiffness: 300 }}
                     className="group flex items-start gap-5"
                   >
-                    <div className="text-sp-accent group-hover:bg-sp-accent/20 group-hover:border-sp-accent/50 border-sp-border-dark bg-sp-surface-subtle flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border shadow-lg transition-all duration-300 group-hover:text-white group-hover:shadow-[0_0_20px_var(--sp-accent-dark)]">
+                    <div className="text-sp-accent group-hover:bg-sp-accent/20 group-hover:border-sp-accent/40 border-sp-border-dark bg-sp-surface-subtle flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl overflow-hidden border shadow-lg transition-all duration-300 group-hover:text-white group-hover:shadow-[0_0_20px_var(--sp-accent-dark)]">
                       <item.icon size={24} />
                     </div>
                     <div>
@@ -119,7 +119,7 @@ export function ContactPage({ locale }: { locale: string }) {
               </div>
 
               {/* What to expect */}
-              <div className="mt-16 border-t border-white/10 pt-8">
+              <div className="mt-10 md:mt-16 border-t border-sp-border-dark pt-8">
                 <h3 className="mb-6 font-semibold text-white">
                   {isDe ? 'Was Sie erwartet' : 'What to expect'}
                 </h3>
@@ -155,7 +155,7 @@ export function ContactPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left" delay={0.2}>
-            <div className="group bg-sp-surface-elevated border-sp-border-dark hover:border-sp-accent/30 relative overflow-x-clip rounded-[2rem] border p-8 shadow-2xl transition-all duration-500 md:p-12">
+            <div className="group bg-sp-surface-elevated border-sp-border-dark hover:border-sp-accent/40 relative overflow-x-clip rounded-2xl overflow-hidden border p-5 md:p-8 shadow-2xl transition-all duration-500 md:p-5 md:p-8 md:p-12">
               <div className="from-sp-accent/5 to-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
 
               <AnimatePresence>
@@ -183,7 +183,7 @@ export function ContactPage({ locale }: { locale: string }) {
               </AnimatePresence>
 
               <form action={formAction} className="relative z-10 mt-4 space-y-8">
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-5 md:gap-6 md:grid-cols-2">
                   <div className="group/input relative space-y-3">
                     <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
                       {isDe ? 'Name*' : 'Name*'}
@@ -317,15 +317,15 @@ export function ContactPage({ locale }: { locale: string }) {
         </div>
       </section>
       {/* Who is it for */}
-      <section className="bg-sp-bg-dark relative mt-20 border-t border-white/5 py-24">
-        <div className="container mx-auto px-6 text-center md:px-12">
+      <section className="bg-sp-bg-dark relative mt-20 border-t border-sp-border-dark py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+            <h2 className="mb-10 md:mb-16 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Für wen ist das?' : 'Who is it for'}
             </h2>
           </Reveal>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:gap-8 md:grid-cols-3">
             {[
               {
                 title: isDe ? 'Scale-ups' : 'Scale-ups',
@@ -349,7 +349,7 @@ export function ContactPage({ locale }: { locale: string }) {
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
+                <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex h-full flex-col items-center rounded-2xl overflow-hidden border border-black/5 p-5 md:p-8 text-center transition-all duration-300">
                   <div className="mb-6 h-24 w-24">
                     <ImageWithShimmer
                       src={persona.img}

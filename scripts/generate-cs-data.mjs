@@ -177,16 +177,15 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
     },
     {
       slug: 'hospitality',
-      clientName: 'Hotel Korona & Parkhotel',
+      clientName: 'Hotel Korona',
       tagline: 'Turning Hospitality Websites into Direct Revenue Channels',
       industryBadge: 'Hospitality',
-      title: 'Hotel Korona & Parkhotel Trebbin » Turning Hospitality Websites into Direct Revenue Channels',
+      title: 'Hotel Korona » Turning Hospitality Websites into Direct Revenue Channels',
       intro: [
-        '**Hotel Korona**: A castle-style seaside hotel in the Utes resort area, Crimea. The property offers 54 rooms, a swimming pool, private beach access, multiple dining options, and resort-level amenities.',
-        '**Parkhotel Trebbin**: A family-run 3-star hotel near Berlin with 38 modern rooms, a regional restaurant, and flexible event spaces accommodating up to 100 guests.'
+        '**Hotel Korona**: A castle-style seaside hotel in the Utes resort area, Crimea. The property offers 54 rooms, a swimming pool, private beach access, multiple dining options, and resort-level amenities.'
       ],
       challengeTitle: 'The Challenge',
-      challengeText: 'Despite strong physical properties, both hotels shared the same structural problem:',
+      challengeText: 'Despite a strong physical property, the hotel faced a structural problem:',
       challengeBullets: [
         'No meaningful digital presence',
         'No direct booking channel',
@@ -195,7 +194,7 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         'No consistent digital brand identity'
       ],
       approachTitle: 'Our Solution',
-      approachText: 'SolutionPlus designed and delivered full-scale hospitality websites that function as both marketing platforms and direct booking engines. The objective was simple: reduce platform dependency and give the hotels ownership over their bookings, pricing, and customer relationships.',
+      approachText: 'SolutionPlus designed and delivered a full-scale hospitality website that functions as both a marketing platform and direct booking engine. The objective was simple: reduce platform dependency and give the hotel ownership over its bookings, pricing, and customer relationships.',
       builtTitle: 'What We Built',
       builtSections: [
         {
@@ -207,24 +206,14 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
             'WhatsApp and contact form integration for immediate guest communication',
             'Mobile-first experience for international and seasonal travelers'
           ]
-        },
-        {
-          title: 'Parkhotel Trebbin (parkhotel-trebbin.de)',
-          bullets: [
-            'Modern multilingual website aligned with 3-star positioning',
-            'Clear room categorization (single, double, suites) with integrated booking engine',
-            'Dedicated sections for restaurant and event spaces to support additional revenue streams',
-            'Location and accessibility content for Berlin and Potsdam visitors',
-            'Professional presentation designed to build trust with both leisure and business guests'
-          ]
         }
       ],
       services: 'Planning, Project Management, Design, Frontend Development, Backend Development, QA, Google Analytics & Search Console',
       metricsTitle: 'The Results',
       metricsTable: [
-        { label: 'Direct Revenue Ownership', value: 'Both hotels now capture bookings directly, significantly reducing reliance on commission-heavy platforms.' },
+        { label: 'Direct Revenue Ownership', value: 'The hotel now captures bookings directly, significantly reducing reliance on commission-heavy platforms.' },
         { label: 'Stronger Digital Marketing', value: 'Websites function as always-on sales assets, presenting rooms clearly.' },
-        { label: 'Established Brand Presence', value: 'Each property now has a credible, competitive digital identity.' },
+        { label: 'Established Brand Presence', value: 'The property now has a credible, competitive digital identity.' },
         { label: 'Lower Booking Friction', value: 'Guests can move seamlessly from discovery to reservation.' },
         { label: 'More Predictable Revenue', value: 'Control over pricing, availability, and promotions enables better planning.' }
       ],
@@ -356,16 +345,15 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
     },
     {
       slug: 'hospitality',
-      clientName: 'Hotel Korona & Parkhotel',
+      clientName: 'Hotel Korona',
       tagline: 'Von Hospitality-Websites zu direkten Umsatzkanälen',
       industryBadge: 'Hospitality',
-      title: 'Hotel Korona & Parkhotel Trebbin » Von Hospitality-Websites zu direkten Umsatzkanälen',
+      title: 'Hotel Korona » Von Hospitality-Websites zu direkten Umsatzkanälen',
       intro: [
-        '**Hotel Korona**: Ein Schloss-artiges Strandhotel im Utes-Resort, Krim. 54 Zimmer, Swimmingpool, Privatstrand, mehrere Restaurants und Resort-Amenities.',
-        '**Parkhotel Trebbin**: Ein familiengeführtes 3-Sterne-Hotel bei Berlin mit 38 modernen Zimmern, regionalem Restaurant und flexiblen Event-Spaces für bis zu 100 Gäste.'
+        '**Hotel Korona**: Ein Schloss-artiges Strandhotel im Utes-Resort, Krim. 54 Zimmer, Swimmingpool, Privatstrand, mehrere Restaurants und Resort-Amenities.'
       ],
       challengeTitle: 'Die Herausforderung',
-      challengeText: 'Trotz starker physischer Anlagen teilten beide Hotels dasselbe strukturelle Problem:',
+      challengeText: 'Trotz starker physischer Anlage hatte das Hotel dasselbe strukturelle Problem:',
       challengeBullets: [
         'Keine sinnvolle digitale Präsenz',
         'Kein direkter Buchungskanal',
@@ -374,7 +362,7 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         'Keine konsistente digitale Markenidentität'
       ],
       approachTitle: 'Unsere Lösung',
-      approachText: 'SolutionPlus designed und lieferte vollständige Hospitality-Websites, die sowohl als Marketingplattformen als auch als direkte Buchungsmaschinen dienen. Das Ziel war einfach: Plattformabhängigkeit reduzieren und den Hotels die Kontrolle über Buchungen, Preise und Kundenbeziehungen geben.',
+      approachText: 'SolutionPlus designed und lieferte eine vollständige Hospitality-Website, die sowohl als Marketingplattform als auch als direkte Buchungsmaschine dient. Das Ziel war einfach: Plattformabhängigkeit reduzieren und dem Hotel die Kontrolle über Buchungen, Preise und Kundenbeziehungen geben.',
       builtTitle: 'Was wir gebaut haben',
       builtSections: [
         {
@@ -386,22 +374,12 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
             'WhatsApp- und Kontaktformular-Integration für direkte Gästekommunikation',
             'Mobile-first für internationale und saisonale Reisende'
           ]
-        },
-        {
-          title: 'Parkhotel Trebbin (parkhotel-trebbin.de)',
-          bullets: [
-            'Moderne mehrsprachige Website im 3-Sterne-Positioning',
-            'Klare Zimmerkategorisierung (Einzel, Doppel, Suiten) mit integrierter Buchungsmaschine',
-            'Eigene Bereiche für Restaurant und Event-Spaces',
-            'Standort- und Erreichbarkeitsinhalte für Berlin- und Potsdam-Besucher',
-            'Professionelle Darstellung für Freizeit- und Geschäftsgäste'
-          ]
         }
       ],
       services: 'Planung, Projektmanagement, Design, Frontend & Backend Entwicklung, QA',
       metricsTitle: 'Die Ergebnisse',
       metricsTable: [
-        { label: 'Direkte Umsatzkontrolle', value: 'Beide Hotels erfassen Buchungen direkt' },
+        { label: 'Direkte Umsatzkontrolle', value: 'Das Hotel erfasst Buchungen direkt' },
         { label: 'Stärkere digitale Marketingfähigkeit', value: 'Etablierte Markenpräsenz' },
         { label: 'Geringere Buchungsreibung', value: 'Vorhersehbarere Umsatzpipeline' }
       ],

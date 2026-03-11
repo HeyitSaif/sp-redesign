@@ -4,7 +4,7 @@ export const supportData = {
       engineers: '50+ engineers',
       clients: '30+ clients',
       years: '10+ years',
-      locations: 'Berlin & Lahore',
+      locations: 'Berlin & Pakistan',
     },
     contact: {
       responseTime: 'Typical response time: within 24 hours',
@@ -17,7 +17,7 @@ export const supportData = {
       ],
     },
     footer: {
-      locations: 'Berlin HQ · Lahore engineering hub',
+      locations: 'Berlin HQ · UAE Registered · Pakistan engineering hub',
     },
     home: {
       valueProps: {
@@ -25,9 +25,9 @@ export const supportData = {
         scaleup: { badge: 'For scaling teams', subtext: 'Flexible engagement' },
         relocation: { badge: 'For relocation', subtext: 'German immigration support' },
       },
-      fillerBridge: 'Berlin + Lahore · 10+ years combined · ISO-aligned delivery',
+      fillerBridge: 'Berlin + Pakistan · 10+ years combined · ISO-aligned delivery',
       germanDiscipline: {
-        caption: 'Our Lahore engineering hub',
+        caption: 'Our Pakistan engineering hub',
       },
       cta: 'No commitment. We\'ll discuss your project and next steps.',
     },
@@ -52,7 +52,7 @@ export const supportData = {
       engineers: '50+ Entwickler',
       clients: '30+ Kunden',
       years: '10+ Jahre',
-      locations: 'Berlin & Lahore',
+      locations: 'Berlin & Pakistan',
     },
     contact: {
       responseTime: 'Typische Antwortzeit: innerhalb von 24 Stunden',
@@ -65,7 +65,7 @@ export const supportData = {
       ],
     },
     footer: {
-      locations: 'Berlin HQ · Lahore Entwicklungszentrum',
+      locations: 'Berlin HQ · VAE Registriert · Pakistan Entwicklungszentrum',
     },
     home: {
       valueProps: {
@@ -73,9 +73,9 @@ export const supportData = {
         scaleup: { badge: 'Für skalierende Teams', subtext: 'Flexibles Engagement' },
         relocation: { badge: 'Für Relocation', subtext: 'Unterstützung bei der Einwanderung' },
       },
-      fillerBridge: 'Berlin + Lahore · 10+ Jahre Erfahrung · ISO-konforme Lieferung',
+      fillerBridge: 'Berlin + Pakistan · 10+ Jahre Erfahrung · ISO-konforme Lieferung',
       germanDiscipline: {
-        caption: 'Unser Entwicklungszentrum in Lahore',
+        caption: 'Unser Entwicklungszentrum in Pakistan',
       },
       cta: 'Unverbindlich. Wir besprechen Ihr Projekt und die nächsten Schritte.',
     },

@@ -8,7 +8,7 @@ interface BadgeProps {
 
 export function Badge({ children, className, variant = 'primary' }: BadgeProps) {
   const baseStyles =
-    'inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase'
+    'inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide uppercase'
 
   const variants = {
     primary: 'bg-sp-accent/10 text-sp-accent border border-sp-accent/20',

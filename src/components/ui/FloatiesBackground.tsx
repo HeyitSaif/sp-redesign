@@ -7,7 +7,9 @@ export function FloatiesBackground() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    // A small timeout avoids synchronous setState in effect
+    const t = setTimeout(() => setMounted(true), 0)
+    return () => clearTimeout(t)
   }, [])
 
   if (!mounted) return null
@@ -16,7 +18,7 @@ export function FloatiesBackground() {
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
       {/* Circle 1 */}
       <motion.div
-        className="bg-sp-accent/5 absolute top-[10%] left-[5%] h-64 w-64 rounded-full blur-3xl"
+        className="bg-sp-accent/5 absolute top-[10%] left-[5%] h-64 w-64 rounded-full blur-[120px]"
         animate={{
           y: [0, -40, 0],
           x: [0, 20, 0],
@@ -31,7 +33,7 @@ export function FloatiesBackground() {
 
       {/* Pill 1 */}
       <motion.div
-        className="bg-sp-accent/5 absolute top-[40%] right-[10%] h-32 w-80 rotate-45 rounded-full blur-3xl"
+        className="bg-sp-accent/5 absolute top-[40%] right-[10%] h-32 w-80 rotate-45 rounded-full blur-[120px]"
         animate={{
           y: [0, 50, 0],
           x: [0, -30, 0],
@@ -46,7 +48,7 @@ export function FloatiesBackground() {
 
       {/* Circle 2 */}
       <motion.div
-        className="bg-sp-accent/5 absolute bottom-[20%] left-[20%] h-96 w-96 rounded-full blur-3xl"
+        className="bg-sp-accent/5 absolute bottom-[20%] left-[20%] h-96 w-96 rounded-full blur-[120px]"
         animate={{
           y: [0, 60, 0],
           scale: [1, 1.2, 1],

@@ -106,18 +106,18 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
     },
   }
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-clip pt-28 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-24 pb-16 md:pt-28 md:pb-24">
       <FloatiesBackground />
 
       {/* Hero — Bold, editorial */}
-      <section className="relative flex min-h-[55vh] flex-col items-center justify-center px-6 py-24 text-center md:px-12 lg:py-32">
+      <section className="relative flex min-h-[55vh] flex-col items-center justify-center px-5 py-16 text-center md:px-12 md:py-24 lg:py-32">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="bg-sp-accent/[0.07] absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
+          <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(255,112,67,0.06),transparent)]" />
         </div>
 
@@ -162,18 +162,18 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
       </section>
 
       {/* Section divider */}
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-5 md:px-8 lg:px-12">
         <div className="via-sp-border-dark h-px bg-gradient-to-r from-transparent to-transparent" />
       </div>
 
       {/* Services Grid — Premium cards */}
-      <section className="relative z-10 container mx-auto px-6 py-16 md:px-12 lg:py-24">
+      <section className="relative z-10 container mx-auto px-5 py-12 md:px-12 md:py-16 lg:py-12 lg:py-24">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-12% 0px' }}
-          className="grid gap-6 md:grid-cols-2 lg:gap-8"
+          className="grid gap-5 md:grid-cols-2 md:gap-6 md:gap-8 lg:gap-5"
         >
           {allServices.map((service, i) => {
             const Icon = SERVICE_ICONS[service.key] ?? Layers
@@ -182,7 +182,7 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
                 <TiltCard
                   href={`/${locale}/${service.slug}`}
                   className={cn(
-                    'group relative flex h-full flex-col overflow-hidden rounded-[1.75rem]',
+                    'group relative flex h-full flex-col overflow-hidden rounded-2xl',
                     'border-sp-border-dark bg-sp-surface-elevated border',
                     '-mt-2',
                     'transition-[border-color,box-shadow] duration-200 ease-out',
@@ -191,9 +191,9 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
                   )}
                 >
                   {/* Hover glow overlay */}
-                  <div className="bg-sp-accent/[0.06] pointer-events-none absolute inset-0 rounded-[1.75rem] opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100" />
+                  <div className="bg-sp-accent/[0.06] pointer-events-none absolute inset-0 overflow-hidden rounded-2xl opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100" />
                   {/* Graphic container */}
-                  <div className="relative h-52 overflow-hidden md:h-56">
+                  <div className="relative h-44 overflow-hidden md:h-52 lg:h-56">
                     <div className="from-sp-surface-subtle to-sp-surface-elevated absolute inset-0 bg-gradient-to-b" />
                     <div className="absolute inset-0 flex items-center justify-center p-4">
                       {getGraphic(service.key)}
@@ -201,7 +201,7 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-1 flex-col p-6 md:p-8">
+                  <div className="flex flex-1 flex-col p-5 md:p-5 md:p-6 md:p-8">
                     <div className="mb-3 flex items-center gap-3">
                       <div className="bg-sp-accent/10 text-sp-accent group-hover:bg-sp-accent/20 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors duration-200">
                         <Icon size={18} strokeWidth={2} />
@@ -235,15 +235,15 @@ export function ServicesIndexPage({ locale }: { locale: string }) {
       </section>
 
       {/* Contact Section — Refined */}
-      <section className="bg-sp-bg-medium relative mt-24 overflow-x-clip py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-medium relative mt-10 overflow-x-clip py-12 md:mt-16 md:mt-24 md:py-16 lg:py-24 xl:py-32">
         <div className="pointer-events-none absolute inset-0">
-          <div className="bg-sp-accent/6 absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
+          <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
         </div>
 
-        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:gap-20 lg:px-12">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="text-sp-text-dark mb-6 text-4xl font-black tracking-tight md:text-5xl lg:text-6xl">
+              <h2 className="text-sp-text-dark mb-6 text-3xl font-black tracking-tight md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-3xl">
                 {isDe ? 'Lassen Sie uns zusammenarbeiten' : "Let's work together"}
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed md:text-2xl">

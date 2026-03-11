@@ -11,17 +11,17 @@ interface ProceduralWebDevProps {
 export function ProceduralWebDev({ className, animated = true }: ProceduralWebDevProps) {
   // A composition representing code, terminal windows, and server stacks building up
   const linesOfCode = [
-    { w: '60%', c: 'bg-white/40', delay: 0 },
+    { w: '60%', c: 'bg-sp-surface-hover', delay: 0 },
     { w: '80%', c: 'bg-sp-accent/60', delay: 0.2 },
-    { w: '40%', c: 'bg-white/30', delay: 0.4 },
-    { w: '70%', c: 'bg-white/40', delay: 0.6 },
+    { w: '40%', c: 'bg-sp-surface-subtle', delay: 0.4 },
+    { w: '70%', c: 'bg-sp-surface-hover', delay: 0.6 },
     { w: '50%', c: 'bg-sp-accent/40', delay: 0.8 },
   ]
 
   return (
     <div
       className={cn(
-        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden',
+        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl',
         className
       )}
     >
@@ -36,18 +36,18 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
 
       {/* Main Code Editor Window */}
       <motion.div
-        className="relative z-10 flex h-[65%] w-[60%] flex-col overflow-hidden rounded-xl border border-white/20 bg-[#0d0e12] shadow-2xl"
+        className="border-sp-border-dark bg-sp-surface-elevated relative z-10 flex h-[65%] w-[60%] flex-col overflow-hidden rounded-xl border shadow-2xl"
         initial={animated ? { y: 20, opacity: 0 } : false}
         animate={animated ? { y: 0, opacity: 1 } : false}
         transition={{ duration: 0.6 }}
       >
-        <div className="flex h-6 w-full items-center justify-between border-b border-white/10 bg-white/5 px-3">
+        <div className="border-sp-border-dark bg-sp-surface-subtle flex h-6 w-full items-center justify-between border-b px-3">
           <div className="flex gap-1.5">
             <div className="h-2 w-2 rounded-full bg-red-500/80" />
             <div className="h-2 w-2 rounded-full bg-yellow-500/80" />
             <div className="h-2 w-2 rounded-full bg-green-500/80" />
           </div>
-          <div className="text-[8px] tracking-widest text-white/40">app.tsx</div>
+          <div className="text-sp-text-muted text-[8px] tracking-widest">app.tsx</div>
         </div>
         <div className="flex flex-col gap-3 p-4">
           {linesOfCode.map((line, i) => (
@@ -79,10 +79,10 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
       >
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
-          <div className="h-1.5 w-16 rounded-full bg-white/20" />
+          <div className="bg-sp-surface-hover h-1.5 w-16 rounded-full" />
         </div>
-        <div className="h-1.5 w-full rounded-full bg-white/10" />
-        <div className="h-1.5 w-3/4 rounded-full bg-white/10" />
+        <div className="bg-sp-surface-subtle border-sp-border-dark h-1.5 w-full rounded-full border" />
+        <div className="bg-sp-surface-subtle border-sp-border-dark h-1.5 w-3/4 rounded-full border" />
       </motion.div>
 
       {/* Floating Server Rack / Database Node 2 */}

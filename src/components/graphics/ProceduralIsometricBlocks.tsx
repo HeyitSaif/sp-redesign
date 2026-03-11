@@ -14,109 +14,134 @@ export function ProceduralIsometricBlocks({
   layers = 3,
   animated = true,
 }: ProceduralIsometricBlocksProps) {
-  const blocks = Array.from({ length: layers }).map((_, i) => i)
+  const showMiddle = layers >= 3
 
   return (
     <div
       className={cn(
-        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl border border-white/5',
+        'bg-sp-bg-dark border-sp-border-dark relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border p-6 sm:gap-6 sm:p-8',
         className
       )}
     >
-      <div className="from-sp-accent/5 absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+      <div className="from-sp-accent/5 absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] via-transparent to-transparent" />
 
-      <div
-        className="transform-style-3d relative perspective-[1000px]"
-        style={{
-          transform: 'rotateX(60deg) rotateZ(-45deg)',
-        }}
+      {/* Vertical Connector Line */}
+      <div className="absolute inset-y-12 left-1/2 z-0 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-sp-border-dark to-transparent" />
+
+      {animated && (
+        <motion.div
+          animate={{ top: ['10%', '90%', '10%'] }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+          className="via-sp-accent absolute left-1/2 z-0 h-24 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent to-transparent shadow-[0_0_8px_rgba(255,112,67,0.5)]"
+        />
+      )}
+
+      {/* Top Layer: UI/Experience */}
+      <motion.div
+        initial={animated ? { opacity: 0, y: 30 } : false}
+        animate={animated ? { opacity: 1, y: 0 } : false}
+        transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+        className="bg-sp-surface-elevated border-sp-border-dark relative z-30 flex h-20 w-10/12 max-w-[20rem] items-center overflow-hidden rounded-xl border p-4 shadow-lg sm:h-24"
       >
-        {blocks.map((layer, index) => {
-          const isTop = index === layers - 1
-          const yOffset = index * 40
+        <div className="flex w-full items-center gap-4">
+          <div className="bg-sp-surface-subtle border-sp-border-dark flex h-10 w-10 shrink-0 items-center justify-center rounded-full border">
+            <div className="bg-sp-accent/20 border-sp-accent/50 relative h-3 w-3 rounded-full border">
+              {animated && (
+                <motion.div
+                  animate={{ scale: [1, 1.8, 1], opacity: [0.6, 0, 0.6] }}
+                  transition={{ duration: 2.5, repeat: Infinity }}
+                  className="bg-sp-accent/40 absolute inset-0 rounded-full blur-[2px]"
+                />
+              )}
+            </div>
+          </div>
+          <div className="flex grow flex-col gap-2.5">
+            <div className="bg-sp-surface-subtle h-2.5 w-1/3 rounded-full" />
+            <div className="bg-sp-border-dark h-1.5 w-3/4 rounded-full" />
+            <div className="bg-sp-border-dark h-1.5 w-1/2 rounded-full" />
+          </div>
+        </div>
 
-          return (
-            <motion.div
-              key={layer}
-              className="absolute top-1/2 left-1/2"
-              initial={
-                animated
-                  ? {
-                      x: '-50%',
-                      y: '-50%',
-                      translateZ: 0,
-                      opacity: 0,
-                    }
-                  : {
-                      x: '-50%',
-                      y: '-50%',
-                      translateZ: yOffset,
-                      opacity: 1,
-                    }
-              }
-              animate={
-                animated
-                  ? {
-                      translateZ: yOffset,
-                      opacity: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                duration: 1,
-                delay: index * 0.2,
-                ease: 'easeOut',
-              }}
-            >
-              {/* The Block */}
+        {/* Subtle glass reflection sweep */}
+        {animated && (
+          <motion.div
+            animate={{ left: ['-100%', '200%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 1 }}
+            className="via-sp-accent/5 absolute top-0 bottom-0 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent to-transparent"
+          />
+        )}
+      </motion.div>
+
+      {/* Middle Layer: Logic/API */}
+      {showMiddle && (
+        <motion.div
+          initial={animated ? { opacity: 0, y: 30 } : false}
+          animate={animated ? { opacity: 1, y: 0 } : false}
+          transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+          className="bg-sp-surface-elevated border-sp-border-dark relative z-20 flex h-20 w-11/12 max-w-[22rem] items-center justify-between overflow-hidden rounded-xl border p-4 shadow-lg sm:h-24"
+        >
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4">
+            <div className="bg-sp-border-dark relative h-[1px] w-full">
+              {animated && (
+                <motion.div
+                  animate={{ left: ['0%', '100%'] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
+                  className="bg-sp-accent absolute top-1/2 h-[1px] w-12 -translate-y-1/2 shadow-[0_0_8px_rgba(255,112,67,0.8)]"
+                />
+              )}
+            </div>
+          </div>
+          <div className="bg-sp-surface-subtle border-sp-border-dark z-10 flex h-8 w-8 items-center justify-center rounded-lg border">
+            <div className="bg-sp-text-muted h-1.5 w-1.5 rounded-full" />
+          </div>
+          <div className="bg-sp-bg-dark border-sp-accent/30 z-10 relative flex h-10 w-10 items-center justify-center rounded-lg border shadow-[0_0_15px_rgba(255,112,67,0.15)]">
+            {animated && (
               <motion.div
-                className="relative h-48 w-48 sm:h-64 sm:w-64"
-                animate={
-                  animated
-                    ? {
-                        translateZ: [yOffset, yOffset + 10, yOffset],
-                      }
-                    : {}
-                }
-                transition={
-                  animated
-                    ? {
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                        delay: index * 0.5,
-                      }
-                    : {}
-                }
-              >
-                {/* Top face */}
-                <div
-                  className={cn(
-                    'absolute inset-0 border transition-colors duration-500',
-                    isTop
-                      ? 'bg-sp-accent/20 border-sp-accent/50 shadow-[inset_0_0_20px_rgba(255,112,67,0.2)]'
-                      : 'bg-sp-surface-subtle border-sp-border-dark'
-                  )}
-                >
-                  {/* Decorative internal lines on top layer */}
-                  {isTop && (
-                    <div className="border-sp-accent/30 absolute inset-4 grid grid-cols-2 grid-rows-2 gap-4 border p-4">
-                      <div className="bg-sp-accent/40 rounded-sm"></div>
-                      <div className="bg-sp-accent/20 rounded-sm"></div>
-                      <div className="bg-sp-accent/10 rounded-sm"></div>
-                      <div className="bg-sp-accent/30 rounded-sm"></div>
-                    </div>
-                  )}
-                </div>
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                className="border-sp-accent/40 absolute inset-0 rounded-lg border border-dashed"
+              />
+            )}
+            <div className="bg-sp-accent h-2.5 w-2.5 rounded-sm" />
+          </div>
+          <div className="bg-sp-surface-subtle border-sp-border-dark z-10 flex h-8 w-8 items-center justify-center rounded-lg border">
+            <div className="bg-sp-text-muted h-1.5 w-1.5 rounded-full" />
+          </div>
+        </motion.div>
+      )}
 
-                {/* 3D depth shadows (fake sides since we are just stacking 2D planes in 3D space) */}
-                <div className="absolute top-full left-0 h-8 w-full origin-top skew-x-[-45deg] bg-gradient-to-b from-white/10 to-transparent opacity-50" />
-                <div className="absolute top-0 left-full h-full w-8 origin-left skew-y-[-45deg] bg-gradient-to-r from-white/10 to-transparent opacity-50" />
-              </motion.div>
-            </motion.div>
-          )
-        })}
-      </div>
+      {/* Bottom Layer: Infrastructure/Data */}
+      <motion.div
+        initial={animated ? { opacity: 0, y: 30 } : false}
+        animate={animated ? { opacity: 1, y: 0 } : false}
+        transition={{ duration: 0.7, delay: 0, ease: 'easeOut' }}
+        className="bg-sp-surface-elevated border-sp-border-dark relative z-10 flex h-20 w-full max-w-sm items-end justify-center overflow-hidden rounded-xl border px-3 pt-4 shadow-lg sm:h-24"
+      >
+        <div className="flex h-full w-full items-end justify-between gap-1 sm:gap-2">
+          {[40, 70, 50, 90, 60, 30, 80].map((h, i) => (
+            <div
+              key={i}
+              className="bg-sp-surface-subtle border-sp-border-dark relative flex-1 overflow-hidden rounded-t-md border-x border-t"
+              style={{ height: `${h}%` }}
+            >
+              {animated && (
+                <motion.div
+                  initial={{ y: '100%' }}
+                  animate={{ y: ['100%', '-100%'] }}
+                  transition={{
+                    duration: 1.5 + (i % 3),
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: 'linear',
+                  }}
+                  className="via-sp-accent/30 absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-transparent to-transparent"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="from-sp-bg-dark/90 pointer-events-none absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t to-transparent" />
+      </motion.div>
     </div>
   )
 }

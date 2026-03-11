@@ -15,7 +15,7 @@ export function ProceduralAIAutomation({
   return (
     <div
       className={cn(
-        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden',
+        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl',
         className
       )}
     >
@@ -23,8 +23,8 @@ export function ProceduralAIAutomation({
 
       {/* Ambient blur orbs per design patterns */}
       <div className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2">
-        <div className="bg-sp-accent/5 absolute top-[20%] left-[10%] h-[35%] w-[35%] rounded-full blur-[80px]" />
-        <div className="bg-sp-accent/8 absolute right-[10%] bottom-[20%] h-[30%] w-[30%] rounded-full blur-[100px]" />
+        <div className="bg-sp-accent/5 absolute top-[20%] left-[10%] h-[35%] w-[35%] rounded-full blur-[120px]" />
+        <div className="bg-sp-accent/10 absolute right-[10%] bottom-[20%] h-[30%] w-[30%] rounded-full blur-[120px]" />
       </div>
 
       {/* Subtle gradient overlay */}
@@ -44,9 +44,9 @@ export function ProceduralAIAutomation({
         >
           <div className="border-sp-border-dark bg-sp-surface-subtle flex h-14 w-14 items-center justify-center rounded-xl border">
             <div className="flex flex-col gap-0.5">
-              <div className="h-2 w-6 rounded-sm bg-white/30" />
-              <div className="h-2 w-5 rounded-sm bg-white/20" />
-              <div className="h-2 w-4 rounded-sm bg-white/15" />
+              <div className="bg-sp-surface-hover h-2 w-6 rounded-sm" />
+              <div className="bg-sp-border-dark h-2 w-5 rounded-sm" />
+              <div className="bg-sp-border-dark h-2 w-4 rounded-sm" />
             </div>
           </div>
         </motion.div>

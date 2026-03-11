@@ -4,6 +4,7 @@ import { useActionState, useEffect, useState, startTransition } from 'react'
 import { submitContactForm } from '@/app/actions/contact'
 import { CheckCircle2, Loader2, ArrowRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Button } from '@/components/ui/Button'
 
 const initialState = {
   success: false,
@@ -29,10 +30,10 @@ export function ContactFormSection({ locale }: { locale: string }) {
 
   return (
     <div
-      className="bg-sp-surface-elevated group border-sp-border-dark hover:border-sp-accent/30 relative overflow-x-clip rounded-[2rem] border p-8 shadow-2xl transition-all duration-500 md:p-12"
+      className="bg-sp-surface-elevated group border-sp-border-dark hover:border-sp-accent/40 relative overflow-x-clip rounded-2xl border p-5 md:p-8 shadow-2xl transition-all duration-500 md:p-5 md:p-8 md:p-12"
       id="contact"
     >
-      <div className="from-sp-accent/5 to-sp-accent-dark/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="bg-sp-accent/5 absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <AnimatePresence>
         {showSuccess && (
@@ -40,7 +41,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-emerald-600 bg-emerald-900 p-4 text-emerald-100"
+            className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-2xl border-b border-emerald-600 bg-emerald-900 p-4 text-emerald-100"
           >
             <CheckCircle2 size={20} />
             <span className="font-medium">{state?.message || 'Success!'}</span>
@@ -51,7 +52,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-[2rem] border-b border-red-600 bg-red-900 p-4 text-red-100"
+            className="absolute top-0 right-0 left-0 z-50 flex items-center gap-3 rounded-t-2xl border-b border-red-600 bg-red-900 p-4 text-red-100"
           >
             <span className="font-medium">{state?.error}</span>
           </motion.div>
@@ -59,7 +60,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
       </AnimatePresence>
 
       <form action={formAction} className="relative z-10 mt-4 space-y-8">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:gap-6 md:grid-cols-2">
           <div className="group/input relative space-y-3">
             <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
               {isDe ? 'Name*' : 'Name*'}
@@ -164,26 +165,21 @@ export function ContactFormSection({ locale }: { locale: string }) {
           </label>
         </div>
 
-        <motion.button
+        <Button
           type="submit"
+          variant="primary"
+          size="form"
+          className="mt-8 w-full"
           disabled={isPending}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="bg-sp-accent hover:bg-sp-accent-dark group relative mt-8 flex w-full items-center justify-center gap-3 overflow-x-clip rounded-xl px-8 py-5 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,112,67,0.3)] transition-all hover:shadow-[0_0_40px_rgba(255,112,67,0.6)]"
+          isLoading={isPending}
         >
-          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-          {isPending ? (
+          {!isPending && (
             <>
-              <Loader2 size={20} className="animate-spin" />{' '}
-              {isDe ? 'Wird gesendet...' : 'Sending...'}
-            </>
-          ) : (
-            <>
-              {isDe ? 'Nachricht Senden' : 'Submit Message'}{' '}
+              {isDe ? 'Nachricht Senden' : 'Submit Message'}
               <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
             </>
           )}
-        </motion.button>
+        </Button>
       </form>
     </div>
   )

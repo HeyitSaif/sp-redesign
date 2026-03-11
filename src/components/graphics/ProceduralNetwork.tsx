@@ -10,6 +10,7 @@ interface Node {
   y: number
   size: number
   delay: number
+  animDuration: number
 }
 
 interface ProceduralNetworkProps {
@@ -24,13 +25,19 @@ export function ProceduralNetwork({
   animated = true 
 }: ProceduralNetworkProps) {
   
+  const pseudoRandom = (seed: number) => {
+    const x = Math.sin(seed + 1) * 10000;
+    return x - Math.floor(x);
+  }
+
   const nodes = useMemo<Node[]>(() => {
     return Array.from({ length: nodeCount }).map((_, i) => ({
       id: i,
-      x: 10 + Math.random() * 80, // % from left
-      y: 10 + Math.random() * 80, // % from top
-      size: 4 + Math.random() * 8, // px
-      delay: Math.random() * 5,
+      x: 10 + pseudoRandom(i * 10) * 80, // % from left
+      y: 10 + pseudoRandom(i * 10 + 1) * 80, // % from top
+      size: 4 + pseudoRandom(i * 10 + 2) * 8, // px
+      delay: pseudoRandom(i * 10 + 3) * 5,
+      animDuration: 3 + pseudoRandom(i * 10 + 4) * 2,
     }))
   }, [nodeCount])
 
@@ -103,7 +110,7 @@ export function ProceduralNetwork({
             opacity: [0.7, 1, 0.7],
           } : {}}
           transition={animated ? {
-            duration: 3 + Math.random() * 2,
+            duration: node.animDuration,
             repeat: Infinity,
             delay: node.delay,
             ease: "easeInOut"

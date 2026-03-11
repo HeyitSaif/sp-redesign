@@ -11,14 +11,14 @@
   --sp-text-muted: #9ca3af;
   --sp-border-light: #d6d7d9;
   --sp-border-testimonial: #878787;
-  --sp-border-dark: #2d3138;
+  --sp-border-dark: #2a2d35;
   --sp-star-filled: #ffb900;
   --sp-bg-dark: #0a0b0d;
   --sp-bg-light: #ffffff;
   --sp-bg-medium: #f5f5f5;
-  --sp-surface-elevated: #141618;
-  --sp-surface-subtle: #111315;
-  --sp-surface-hover: #1a1c1e;
+  --sp-surface-elevated: #181a1e;
+  --sp-surface-subtle: #121417;
+  --sp-surface-hover: #1e2126;
   --sp-link-hover: #1595ce;
 
   --background: var(--sp-bg-dark);
@@ -94,6 +94,35 @@
 html,
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--sp-accent);
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: var(--sp-accent);
+  color: #fff;
+}
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sp-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sp-border-dark);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sp-accent);
 }
 
 body {
@@ -101,6 +130,9 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   min-height: 100svh;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .no-scrollbar::-webkit-scrollbar {

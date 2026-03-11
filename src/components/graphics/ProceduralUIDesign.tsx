@@ -13,7 +13,7 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
   return (
     <div
       className={cn(
-        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden',
+        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl',
         className
       )}
     >
@@ -32,7 +32,7 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
       {/* Abstract UI Framework Container */}
       <div className="border-sp-border-dark bg-sp-surface-elevated relative flex h-[70%] w-[70%] flex-col overflow-hidden rounded-xl border shadow-2xl">
         {/* Header bar */}
-        <div className="flex h-8 w-full items-center gap-1.5 border-b border-white/10 bg-white/5 px-3">
+        <div className="border-sp-border-dark bg-sp-surface-subtle flex h-8 w-full items-center gap-1.5 border-b px-3">
           <div className="h-2 w-2 rounded-full bg-red-500/80" />
           <div className="h-2 w-2 rounded-full bg-yellow-500/80" />
           <div className="h-2 w-2 rounded-full bg-green-500/80" />
@@ -42,15 +42,15 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
         <div className="flex flex-1 gap-4 p-4">
           {/* Sidebar */}
           <motion.div
-            className="flex h-full w-1/4 flex-col gap-2 rounded-lg border border-white/10 bg-white/5 p-2"
+            className="border-sp-border-dark bg-sp-surface-subtle flex h-full w-1/4 flex-col gap-2 rounded-lg border p-2"
             initial={animated ? { x: -20, opacity: 0 } : false}
             animate={animated ? { x: 0, opacity: 1 } : false}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="h-4 w-3/4 rounded-md bg-white/20" />
-            <div className="h-3 w-1/2 rounded-md bg-white/10" />
-            <div className="h-3 w-2/3 rounded-md bg-white/10" />
-            <div className="h-3 w-5/6 rounded-md bg-white/10" />
+            <div className="bg-sp-surface-hover h-4 w-3/4 rounded-md" />
+            <div className="bg-sp-border-dark h-3 w-1/2 rounded-md" />
+            <div className="bg-sp-border-dark h-3 w-2/3 rounded-md" />
+            <div className="bg-sp-border-dark h-3 w-5/6 rounded-md" />
           </motion.div>
 
           {/* Main content grid */}
@@ -63,13 +63,13 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
             />
             <div className="grid flex-1 grid-cols-2 gap-4">
               <motion.div
-                className="h-full w-full rounded-lg border border-white/10 bg-white/5"
+                className="border-sp-border-dark bg-sp-surface-subtle h-full w-full rounded-lg border"
                 initial={animated ? { scale: 0.8, opacity: 0 } : false}
                 animate={animated ? { scale: 1, opacity: 1 } : false}
                 transition={{ duration: 0.8, delay: 0.6 }}
               />
               <motion.div
-                className="h-full w-full rounded-lg border border-white/10 bg-white/5"
+                className="border-sp-border-dark bg-sp-surface-subtle h-full w-full rounded-lg border"
                 initial={animated ? { scale: 0.8, opacity: 0 } : false}
                 animate={animated ? { scale: 1, opacity: 1 } : false}
                 transition={{ duration: 0.8, delay: 0.8 }}

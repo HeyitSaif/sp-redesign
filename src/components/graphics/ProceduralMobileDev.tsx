@@ -13,7 +13,7 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
   return (
     <div
       className={cn(
-        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden',
+        'bg-sp-bg-dark relative flex h-full w-full items-center justify-center overflow-hidden rounded-2xl',
         className
       )}
     >
@@ -28,14 +28,14 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
 
       {/* Smartphone Frame */}
       <motion.div
-        className="border-sp-border-dark relative z-10 flex h-[85%] w-[45%] flex-col overflow-hidden rounded-[2rem] border-[4px] bg-[#121316] shadow-2xl"
+        className="border-sp-border-dark relative z-10 flex h-[85%] w-[45%] flex-col overflow-hidden rounded-2xl border-[4px] bg-[#121316] shadow-2xl"
         initial={animated ? { y: 30, opacity: 0 } : false}
         animate={animated ? { y: 0, opacity: 1 } : false}
         transition={{ duration: 0.7 }}
       >
         {/* Notch */}
-        <div className="absolute top-0 left-1/2 flex h-4 w-16 -translate-x-1/2 items-center justify-center rounded-b-xl bg-white/20">
-          <div className="h-1 w-4 rounded-full bg-black/50" />
+        <div className="bg-sp-surface-hover border-sp-border-dark absolute top-0 left-1/2 flex h-4 w-16 -translate-x-1/2 items-center justify-center rounded-b-xl border-x border-b">
+          <div className="bg-sp-bg-dark h-1 w-4 rounded-full" />
         </div>
 
         {/* Screen Content */}
@@ -49,8 +49,8 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
           >
             <div className="bg-sp-accent/40 h-8 w-8 rounded-full" />
             <div className="flex flex-col gap-1">
-              <div className="h-2 w-16 rounded-full bg-white/40" />
-              <div className="h-1.5 w-10 rounded-full bg-white/20" />
+              <div className="bg-sp-surface-hover h-2 w-16 rounded-full" />
+              <div className="bg-sp-border-dark h-1.5 w-10 rounded-full" />
             </div>
           </motion.div>
 
@@ -67,27 +67,27 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
             {[0, 1, 2, 3].map((i) => (
               <motion.div
                 key={i}
-                className="flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5"
+                className="bg-sp-surface-subtle border-sp-border-dark flex aspect-square flex-col items-center justify-center gap-2 rounded-xl border"
                 initial={animated ? { y: 20, opacity: 0 } : false}
                 animate={animated ? { y: 0, opacity: 1 } : false}
                 transition={{ duration: 0.4, delay: 0.7 + i * 0.1 }}
               >
                 <div className="bg-sp-accent/50 h-6 w-6 rounded-md" />
-                <div className="h-1 w-8 rounded-full bg-white/20" />
+                <div className="bg-sp-border-dark h-1 w-8 rounded-full" />
               </motion.div>
             ))}
           </div>
 
           {/* Bottom Nav Bar */}
           <motion.div
-            className="mt-auto flex h-10 w-full items-center justify-around rounded-2xl bg-white/10 px-2"
+            className="bg-sp-surface-subtle border-sp-border-dark mt-auto flex h-10 w-full items-center justify-around rounded-2xl border px-2"
             initial={animated ? { y: 20, opacity: 0 } : false}
             animate={animated ? { y: 0, opacity: 1 } : false}
             transition={{ duration: 0.5, delay: 1.2 }}
           >
             <div className="bg-sp-accent h-1 w-6 rounded-full" />
-            <div className="h-1 w-6 rounded-full bg-white/30" />
-            <div className="h-1 w-6 rounded-full bg-white/30" />
+            <div className="bg-sp-border-dark h-1 w-6 rounded-full" />
+            <div className="bg-sp-border-dark h-1 w-6 rounded-full" />
           </motion.div>
         </div>
       </motion.div>

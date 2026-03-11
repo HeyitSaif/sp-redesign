@@ -3,24 +3,35 @@ import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
 import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
 import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
 import { Reveal } from '@/components/animations/Reveal'
-import { ArrowRight, CheckCircle2, Target, Rocket, Users, Code2 } from 'lucide-react'
+import {
+  ArrowRight,
+  CheckCircle2,
+  Target,
+  Rocket,
+  Users,
+  Code2,
+  Wallet,
+  UserPlus,
+  ShieldAlert,
+} from 'lucide-react'
 import Link from 'next/link'
 import { StickyQnA } from '@/components/sections/StickyQnA'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
+import { Button } from '@/components/ui/Button'
 
 import { supportData } from '@/data/support-content'
 import { Badge } from '@/components/ui/Badge'
 
 export function StartupPage({ locale }: { locale: string }) {
   return (
-    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-24 pb-16 md:pt-32 md:pb-24">
       <FloatiesBackground />
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
-        <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[100px]" />
-        <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
+        <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[120px]" />
+        <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
               <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle rounded-full border px-4 py-2 text-sm font-medium">
@@ -30,11 +41,11 @@ export function StartupPage({ locale }: { locale: string }) {
                 {supportData[locale === 'de' ? 'de' : 'en'].services.idealFor}: Pre-Seed to Series A
               </Badge>
             </div>
-            <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-7xl">
+            <h1 className="mb-8 text-3xl md:text-4xl leading-[1.1] font-bold md:text-7xl">
               The more you <span className="text-gradient">grow</span>, the harder it gets to stay
               on track.
             </h1>
-            <p className="text-foreground/70 mx-auto mb-12 max-w-2xl text-xl">
+            <p className="text-foreground/70 mx-auto mb-8 md:mb-12 max-w-2xl text-xl">
               We provide the designers, developers, QA, and delivery management so you can focus on
               strategy and product. You lead the vision, we handle the execution.
             </p>
@@ -45,56 +56,64 @@ export function StartupPage({ locale }: { locale: string }) {
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
+              <Button
+                variant="primary"
+                size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
               >
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                 Set up a short call{' '}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-              <a
+              </Button>
+              <Button
+                variant="secondary"
+                size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 Learn more
-              </a>
+              </Button>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* What you&apos;re probably thinking */}
-      <section id="what-youre-thinking" className="bg-sp-bg-dark scroll-mt-24 py-24">
-        <div className="container mx-auto px-6 md:px-12">
+      <section id="what-youre-thinking" className="bg-sp-bg-dark scroll-mt-10 md:mt-16 md:mt-24 py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
-            <h2 className="mb-16 text-center text-3xl font-bold md:text-5xl">
+            <h2 className="mb-10 md:mb-16 text-center text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
               What you&apos;re probably thinking?
             </h2>
           </Reveal>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:gap-8 md:grid-cols-3">
             <Reveal delay={0.1}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
-                <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm">
+                  <Wallet className="text-sp-accent" size={28} />
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  We can&apos;t afford to keep hiring in-house just yet.
+                  &quot;We can&apos;t afford to keep hiring in-house just yet.&quot;
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
-                <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm">
+                  <Users className="text-sp-accent" size={28} />
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  Our current team is maxed out; we need extra hands that won&apos;t derail the
-                  roadmap.
+                  &quot;Our current team is maxed out; we need extra hands that won&apos;t derail
+                  the roadmap.&quot;
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
-                <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm">
+                  <ShieldAlert className="text-sp-accent" size={28} />
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  We&apos;ve had bad luck with freelancers. We need someone reliable this time.
+                  &quot;We&apos;ve had bad luck with freelancers. We need someone reliable this
+                  time.&quot;
                 </p>
               </div>
             </Reveal>
@@ -103,13 +122,13 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* Why this works */}
-      <section className="relative overflow-x-clip py-24">
+      <section className="relative overflow-x-clip py-12 md:py-16 lg:py-24">
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 right-0 h-1/2 w-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
+          <div className="grid items-center gap-10 md:gap-16 lg:grid-cols-2">
             <div>
               <Reveal>
-                <h2 className="mb-8 text-3xl font-bold md:text-5xl">Why this works</h2>
+                <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">Why this works</h2>
               </Reveal>
               <div className="space-y-6">
                 {[
@@ -119,7 +138,7 @@ export function StartupPage({ locale }: { locale: string }) {
                   'Flexibility to grow, easily expand your team or evolve into a long-term setup when you&apos;re ready.',
                 ].map((item, i) => (
                   <Reveal key={i} delay={0.1 * i} direction="right">
-                    <div className="border-sp-border-dark bg-sp-surface-subtle flex gap-4 rounded-2xl border p-6">
+                    <div className="border-sp-border-dark bg-sp-surface-subtle flex gap-4 overflow-hidden rounded-2xl border p-5 md:p-6">
                       <div className="mt-1 shrink-0">
                         <CheckCircle2 className="text-sp-accent" />
                       </div>
@@ -144,21 +163,21 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* How we help you move forward */}
-      <section className="bg-sp-bg-dark py-24">
-        <div className="container mx-auto max-w-4xl px-6 text-center md:px-12">
+      <section className="bg-sp-bg-dark py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-16 text-3xl font-bold md:text-5xl">How we help you move forward!</h2>
+            <h2 className="mb-10 md:mb-16 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">How we help you move forward!</h2>
           </Reveal>
 
-          <div className="grid gap-8 text-left md:grid-cols-3">
+          <div className="grid gap-5 md:gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   01
                 </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
                   <ProceduralGeometricMesh variant="mixed" animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
+                  <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Users size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -173,13 +192,13 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   02
                 </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
                   <ProceduralDataGrid animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
+                  <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Target size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -194,13 +213,13 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   03
                 </div>
-                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
                   <ProceduralNetwork nodeCount={15} animated={true} />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/60 transition-colors duration-500 group-hover:bg-black/50">
+                  <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Rocket size={32} className="text-sp-accent" />
                   </div>
                 </div>
@@ -217,13 +236,13 @@ export function StartupPage({ locale }: { locale: string }) {
         </div>
       </section>
 
-      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
-        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-12 md:py-16 lg:py-24 xl:py-32">
+        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+              <h2 className="mb-10 text-3xl md:text-4xl md:text-5xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
                   ? 'Lassen Sie uns lösen, was Sie bremst'
                   : "Let's solve what's slowing you down"}
@@ -300,11 +319,11 @@ export function StartupPage({ locale }: { locale: string }) {
       />
 
       {/* Testimonials */}
-      <section className="bg-sp-bg-medium py-24 md:py-32 lg:py-40">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="bg-sp-bg-medium py-12 md:py-16 lg:py-24 xl:py-32">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl md:text-4xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
                   ? 'Was Gründer wie Sie über uns sagten'
                   : 'What founders like you said about us'}
@@ -312,9 +331,9 @@ export function StartupPage({ locale }: { locale: string }) {
             </div>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-5 md:gap-8 md:gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -352,7 +371,7 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -392,32 +411,32 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* CTA */}
-      <section className="bg-sp-bg-dark relative overflow-x-clip py-32">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-12 md:py-16 lg:py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 rounded-full blur-[150px]" />
-        <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
+        <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <h4 className="mb-6 text-sm font-bold tracking-[0.2em] text-white/80 uppercase md:text-base">
               {locale === 'de' ? 'Sie haben es so weit geschafft' : "You've made it this far"}
             </h4>
-            <h2 className="mb-8 text-4xl font-bold text-white md:text-6xl">
+            <h2 className="mb-8 text-3xl md:text-4xl font-bold text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {locale === 'de'
                 ? 'Lassen Sie uns Ihre Vision in etwas Finanzierbares und Unvergessliches verwandeln.'
                 : "Let's turn your vision into something fundable and unforgettable."}
             </h2>
-            <Link
+            <Button
+              variant="primary"
+              size="lg"
               href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative mt-8 inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {locale === 'de' ? 'Kurzes Gespräch vereinbaren' : 'Set up a short call'}
-            </Link>
+            </Button>
           </Reveal>
         </div>
       </section>
 
       {/* Related reading */}
-      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="bg-sp-bg-dark relative z-10 py-12 md:py-16 lg:py-24">
+        <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <h3 className="mb-8 text-center text-2xl font-bold text-white">
               {supportData[locale === 'de' ? 'de' : 'en'].caseStudies.readMore}
@@ -425,7 +444,7 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 grid max-w-3xl gap-4 md:grid-cols-2">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-all"
               >
                 <div>
                   <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
@@ -445,7 +464,7 @@ export function StartupPage({ locale }: { locale: string }) {
               </Link>
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/hospitality`}
-                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl border p-6 transition-all"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-all"
               >
                 <div>
                   <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
@@ -467,12 +486,12 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-5 md:px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
               >
                 {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            <div className="mt-16 text-center">
+            <div className="mt-10 md:mt-16 text-center">
               <p className="text-foreground/70 mb-6 text-lg">
                 {supportData[locale === 'de' ? 'de' : 'en'].services.stillHaveQuestions}
               </p>

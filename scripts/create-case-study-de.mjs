@@ -123,20 +123,17 @@ Bereit, etwas zu bauen, das unter Druck standhält?
 Sprechen wir über Ihr Produkt und wie man es von Anfang an richtig aufbaut.
 `,
 
-  'hospitality-case-study': `Fallstudie: Hotel Korona & Parkhotel Trebbin
+  'hospitality-case-study': `Fallstudie: Hotel Korona
 Von Hospitality-Websites zu direkten Umsatzkanälen
 
-Die Kunden
+Der Kunde
 
 Hotel Korona
 Ein Schloss-artiges Strandhotel im Utes-Resort, Krim. 54 Zimmer, Swimmingpool, Privatstrand, mehrere Restaurants und Resort-Amenities.
 
-Parkhotel Trebbin
-Ein familiengeführtes 3-Sterne-Hotel bei Berlin mit 38 modernen Zimmern, regionalem Restaurant und flexiblen Event-Spaces für bis zu 100 Gäste.
-
 Die Herausforderung
 
-Trotz starker physischer Anlagen teilten beide Hotels dasselbe strukturelle Problem:
+Trotz starker physischer Anlage hatte das Hotel dasselbe strukturelle Problem:
 
 • Keine sinnvolle digitale Präsenz
 • Kein direkter Buchungskanal
@@ -149,8 +146,8 @@ Kurz: Die Nachfrage war da, die Kontrolle nicht.
 Unsere Lösung
 Websites für Hospitality-Umsatz, nicht nur Sichtbarkeit
 
-SolutionPlus designed und lieferte vollständige Hospitality-Websites, die sowohl als Marketingplattformen als auch als direkte Buchungsmaschinen dienen.
-Das Ziel war einfach: Plattformabhängigkeit reduzieren und den Hotels die Kontrolle über Buchungen, Preise und Kundenbeziehungen geben.
+SolutionPlus designed und lieferte eine vollständige Hospitality-Website, die sowohl als Marketingplattform als auch als direkte Buchungsmaschine dient.
+Das Ziel war einfach: Plattformabhängigkeit reduzieren und dem Hotel die Kontrolle über Buchungen, Preise und Kundenbeziehungen geben.
 
 Was wir gebaut haben
 
@@ -161,16 +158,9 @@ Hotel Korona (hotelkorona.ru)
 • WhatsApp- und Kontaktformular-Integration für direkte Gästekommunikation
 • Mobile-first für internationale und saisonale Reisende
 
-Parkhotel Trebbin (parkhotel-trebbin.de)
-• Moderne mehrsprachige Website im 3-Sterne-Positioning
-• Klare Zimmerkategorisierung (Einzel, Doppel, Suiten) mit integrierter Buchungsmaschine
-• Eigene Bereiche für Restaurant und Event-Spaces
-• Standort- und Erreichbarkeitsinhalte für Berlin- und Potsdam-Besucher
-• Professionelle Darstellung für Freizeit- und Geschäftsgäste
-
 Die Ergebnisse
 
-• Direkte Umsatzkontrolle: Beide Hotels erfassen Buchungen direkt
+• Direkte Umsatzkontrolle: Das Hotel erfasst Buchungen direkt
 • Stärkere digitale Marketingfähigkeit
 • Etablierte Markenpräsenz
 • Geringere Buchungsreibung
@@ -256,8 +246,7 @@ Produkt von Grund auf aufbauen und MVP liefern. Planung, technische Schätzung u
 CS# 3 – Fallstudien Website-Entwicklung
 
 Projekt 1: Hotel Korona
-Projekt 2: Parkhotel Trebbin - TBC
-Projekt 3: Octalgo
+Projekt 2: Octalgo
 
 Services: Planung, Projektmanagement & Schätzung, Front- & Back-End-Entwicklung, Design, QA
 
