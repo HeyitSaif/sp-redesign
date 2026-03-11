@@ -54,7 +54,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
 
   return (
     <div
-      className="bg-sp-bg-dark relative flex min-h-[100vh] items-center overflow-x-clip"
+      className="bg-sp-bg-dark relative flex min-h-[100svh] items-center overflow-x-clip"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -78,7 +78,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-12 lg:gap-24">
+      <div className="relative z-10 container mx-auto grid items-center gap-10 px-6 py-24 md:px-12 md:py-0 lg:grid-cols-12 lg:gap-24">
         <div className="lg:col-span-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -88,7 +88,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             >
-              <h1 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-7xl lg:text-8xl">
+              <h1 className="mb-10 text-4xl leading-[1.1] font-black tracking-tight text-white sm:text-5xl md:text-7xl lg:text-8xl">
                 {slides[current].headline}
               </h1>
             </motion.div>
@@ -105,10 +105,12 @@ export function HeroCarousel({ locale }: { locale: string }) {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
               className="max-w-sm"
             >
-              <p className="mb-8 text-xl leading-relaxed text-white">{slides[current].subtext}</p>
+              <p className="mb-8 text-lg leading-relaxed text-white md:text-xl">
+                {slides[current].subtext}
+              </p>
               <Link
                 href={slides[current].href}
-                className="group border-sp-accent hover:bg-sp-accent inline-flex items-center gap-3 rounded-full border bg-transparent px-8 py-4 text-lg font-medium text-white transition-colors"
+                className="group border-sp-accent hover:bg-sp-accent inline-flex items-center gap-3 rounded-full border bg-transparent px-6 py-3 text-base font-medium text-white transition-colors md:px-8 md:py-4 md:text-lg"
               >
                 {slides[current].cta}
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />

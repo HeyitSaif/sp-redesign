@@ -90,11 +90,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <HeroCarousel locale={locale} />
 
       {/* 2. What we do — and do well */}
-      <section className="bg-sp-bg-light text-sp-text-dark relative border-y border-white/5 py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-light text-sp-text-dark relative border-y border-white/5 py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-6 md:px-12 lg:px-16">
           <div className="mx-auto mb-16 max-w-4xl text-center">
             <Reveal>
-              <h2 className="text-sp-text-dark mb-10 text-5xl font-black tracking-tight md:mb-14 md:text-7xl lg:text-8xl">
+              <h2 className="text-sp-text-dark mb-10 text-4xl font-black tracking-tight sm:text-5xl md:mb-14 md:text-7xl lg:text-8xl">
                 {isDe ? 'Was wir tun — und gut machen' : 'What we do — and do well'}
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed font-light md:text-3xl">
@@ -222,11 +222,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </div>
 
       {/* 3. German discipline + Pakistani engineering */}
-      <section className="bg-sp-bg-medium text-sp-text-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-medium text-sp-text-dark relative overflow-x-clip py-16 md:py-24 lg:py-32">
         <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <Reveal>
-              <h2 className="text-sp-text-dark mb-12 text-4xl leading-[1.2] font-black tracking-tight md:text-6xl">
+              <h2 className="text-sp-text-dark mb-12 text-3xl leading-[1.2] font-black tracking-tight sm:text-4xl md:text-6xl">
                 {isDe
                   ? 'Wir kombinieren deutsche Disziplin mit pakistanischer Spitzeningenieurskunst. So liefern wir Qualität.'
                   : 'We combine German discipline with top-tier Pakistani engineering. It’s how we deliver quality.'}
@@ -294,14 +294,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* 4. Contact section — Ready to skip the scroll */}
       <section
         id="contact"
-        className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40"
+        className="bg-sp-bg-dark relative overflow-x-clip py-16 md:py-24 lg:py-32"
       >
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-6 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+              <h2 className="mb-6 text-4xl leading-[1.1] font-black tracking-tight text-white sm:text-5xl md:text-6xl">
                 {isDe
                   ? 'Bereit, das Scrollen zu überspringen und ein echtes Gespräch zu beginnen?'
                   : 'Ready to skip the scroll and start a real conversation?'}
@@ -332,10 +332,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* 5. FAQ — Our essential perspectives on investing */}
-      <section className="bg-sp-bg-medium text-sp-text-dark py-24 md:py-32">
+      <section className="bg-sp-bg-medium text-sp-text-dark py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
-            <h2 className="text-sp-accent mb-16 text-center text-4xl font-bold tracking-tight md:text-5xl">
+            <h2 className="text-sp-accent mb-16 text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               {isDe
                 ? 'Unsere wesentlichen Perspektiven zum Thema Investieren'
                 : 'Our essential perspectives on investing'}
@@ -390,11 +390,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </div>
 
       {/* 7. Testimonials */}
-      <section className="bg-sp-bg-medium py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-medium py-16 md:py-24 lg:py-32">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl font-bold sm:text-4xl md:text-6xl">
                 {isDe
                   ? 'Sie werden nicht der Erste sein, der uns vertraut'
                   : 'You won’t be the first to trust us'}
@@ -409,7 +409,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-8 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -460,7 +460,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-8 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -505,7 +505,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </section>
 
       {/* 8. Start a project CTA */}
-      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-16 md:py-24">
         {/* Accent background overlay per HTML */}
         <div className="bg-sp-accent absolute inset-0 opacity-20 mix-blend-multiply" />
         <div className="absolute inset-0 bg-[url('/images/Gradient-28-scaled.jpg')] bg-cover bg-center opacity-30 mix-blend-overlay" />
@@ -515,7 +515,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <h4 className="mb-6 text-sm font-bold tracking-[0.2em] text-white/80 uppercase md:text-base">
               {isDe ? 'Starten Sie ein Projekt' : 'Start a project'}
             </h4>
-            <h3 className="mb-14 text-4xl font-bold tracking-tight text-white md:text-6xl">
+            <h3 className="mb-14 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-6xl">
               {isDe
                 ? 'Ihr Wachstum muss nicht warten. Unser Team ist bereit, wenn Sie es sind.'
                 : 'Your growth doesn’t have to wait. Our team is ready when you are.'}
@@ -523,7 +523,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="flex flex-col items-center justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="hover:text-sp-bg-dark inline-flex items-center gap-3 rounded-full border border-white bg-transparent px-10 py-5 text-xl font-medium text-white transition-colors hover:bg-white"
+                className="hover:text-sp-bg-dark inline-flex items-center gap-3 rounded-full border border-white bg-transparent px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-white md:px-10 md:py-5 md:text-xl"
               >
                 {isDe ? 'Kontakt aufnehmen' : 'Contact Us'}
               </Link>

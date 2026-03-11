@@ -14,13 +14,13 @@ export function StickyQnA({ items, locale }: { items: FaqItem[]; locale: string 
   const isDe = locale === 'de'
 
   return (
-    <section className="bg-sp-bg-dark relative border-y border-white/5 pb-24 lg:pb-0">
+    <section className="bg-sp-bg-dark relative border-y border-white/5 pb-16 lg:pb-0">
       <div className="container mx-auto px-6 md:px-12">
         <div className="relative flex flex-col gap-16 lg:flex-row lg:gap-24 lg:py-40">
           {/* Sticky Left Column */}
-          <div className="z-10 self-start pt-24 lg:sticky lg:top-40 lg:w-[45%] lg:pt-0">
+          <div className="z-10 self-start pt-16 lg:sticky lg:top-40 lg:w-[45%] lg:pt-0">
             <Reveal direction="up">
-              <h2 className="text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl lg:text-7xl">
+              <h2 className="text-4xl leading-[1.1] font-black tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
                 {isDe
                   ? 'Sie sind nicht der Erste, der fragt, und wir sind bereit.'
                   : 'You’re not the first to ask, and we’re ready.'}
@@ -72,7 +72,7 @@ function StackedCard({ item, index, total }: { item: FaqItem; index: number; tot
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="hover:border-sp-accent/30 bg-sp-bg-medium sticky overflow-x-clip rounded-[2.5rem] border border-white/5 p-10 shadow-2xl transition-colors duration-500 md:p-14"
+      className="hover:border-sp-accent/30 bg-sp-bg-medium sticky overflow-x-clip rounded-[2.5rem] border border-white/5 p-8 shadow-2xl transition-colors duration-500 md:p-14"
       style={{
         top: `calc(140px + ${index * 30}px)`,
         zIndex: index,
@@ -93,7 +93,9 @@ function StackedCard({ item, index, total }: { item: FaqItem; index: number; tot
           <h3 className="text-sp-text-dark mb-6 text-2xl leading-[1.3] font-bold tracking-tight md:text-3xl lg:text-4xl">
             {item.q}
           </h3>
-          <p className="text-sp-text-on-light text-lg leading-relaxed font-light md:text-xl">{item.a}</p>
+          <p className="text-sp-text-on-light text-lg leading-relaxed font-light md:text-xl">
+            {item.a}
+          </p>
         </div>
       </div>
     </motion.div>
