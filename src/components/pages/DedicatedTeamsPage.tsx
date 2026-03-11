@@ -91,7 +91,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             </h2>
           </Reveal>
 
-          <div className="grid gap-5 md:grid-cols-2 md:gap-6 md:gap-8 lg:grid-cols-4">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
             {[
               {
                 icon: <Gauge size={32} className="text-sp-accent" />,
@@ -123,8 +123,8 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/5 p-5 transition-all duration-300 hover:border-black/10 md:p-8">
-                  <div className="bg-sp-bg-dark border-sp-border-dark relative mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl border md:h-40 md:rounded-2xl">
+                <div className="bg-sp-bg-medium group relative flex h-full flex-col overflow-hidden rounded-3xl border border-black/5 p-6 transition-all duration-300 hover:border-black/10 md:p-6 lg:p-8">
+                  <div className="bg-sp-bg-dark border-sp-border-dark relative mb-6 h-32 w-full shrink-0 overflow-hidden rounded-2xl border">
                     {i === 0 && <ProceduralProcessPipeline steps={4} animated={true} />}
                     {i === 1 && <ProceduralNetwork nodeCount={12} animated={true} />}
                     {i === 2 && <ProceduralDataGrid animated={true} />}
