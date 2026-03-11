@@ -6,6 +6,10 @@ import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+import { ProceduralCodeEditor } from '@/components/graphics/ProceduralCodeEditor'
 
 export function DedicatedTeamsPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -61,13 +65,8 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/When-speed-matters-and-teams-are-stretched-getting-an-MVP-live-can-feel-impossible.%E2%80%A8-12-scaled-uai-2560x1706.jpg"
-                alt="Dedicated Delivery Teams"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralNetwork animated={true} nodeCount={30} />
             </div>
           </Reveal>
         </div>
@@ -117,12 +116,12 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8 transition-all duration-300 hover:border-white/20">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
                     {feature.icon}
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-white">{feature.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed">{feature.desc}</p>
+                  <h3 className="mb-4 text-xl font-bold text-sp-text-dark">{feature.title}</h3>
+                  <p className="text-sp-text-on-light leading-relaxed">{feature.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -153,9 +152,9 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                   : 'Transparent delivery reports and sprint planning',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
-                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                     <Code2 className="text-sp-accent mt-1 shrink-0" />
-                    <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
+                    <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
                 </Reveal>
               ))}
@@ -163,13 +162,8 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/What-youll-ge-t-14-scaled-uai-2560x1706.jpg"
-                alt="What you'll get"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralCodeEditor animated={true} />
             </div>
           </Reveal>
         </div>
@@ -208,16 +202,17 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-white/5 p-8 text-center transition-all duration-300">
+                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
                   <div className="mb-6 h-24 w-24">
-                    <img
+                    <ImageWithShimmer
                       src={persona.img}
                       alt={persona.title}
-                      className="h-full w-full object-contain"
+                      wrapperClassName="h-full w-full"
+                      className="object-contain"
                     />
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold">{persona.title}</h3>
-                  <p className="text-foreground/70 mb-8 flex-grow">{persona.desc}</p>
+                  <h3 className="text-sp-text-dark mb-4 text-2xl font-bold">{persona.title}</h3>
+                  <p className="text-sp-text-on-light mb-8 flex-grow">{persona.desc}</p>
                   <Link
                     href={`/${locale}/${isDe ? (persona.link === 'scale-up' ? 'scaleups' : persona.link === 'startup' ? 'startups' : 'gruender-idee-startup-partner') : persona.link}`}
                     className="text-sp-accent mt-auto flex items-center gap-2 font-medium transition-colors hover:text-white"
@@ -238,22 +233,17 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
                 {isDe ? 'Kalkulieren Sie Ihr Team-Setup' : 'Calculate your team setup'}
               </h2>
-              <p className="text-foreground/70 text-2xl leading-relaxed font-light">
+              <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
                 {isDe
                   ? 'Schätzen Sie Ihre Teamgröße und die monatlichen Kosten. Wir zeigen Ihnen, wie Sie schnell operativ werden und sicherstellen, dass das Team ab der ersten Woche liefert.'
                   : "Estimate your team size and monthly commitment. We'll share how to make it operational fast and ensure it's delivering from week one."}
               </p>
             </div>
-            <div className="bg-sp-bg-medium mt-12 overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-uai-1460x973.jpg"
-                alt="Calculate your team setup"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium mt-12 overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-96">
+              <ProceduralDataGrid animated={true} />
             </div>
           </Reveal>
 
@@ -305,7 +295,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold text-white md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold md:text-6xl">
                 {isDe
                   ? 'Sie werden nicht der Erste sein, der uns vertraut'
                   : "You won't be the first to trust us"}
@@ -339,10 +329,10 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
-                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full rounded-full"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
@@ -377,10 +367,11 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
                       alt="Aghaz Invest Logo"
-                      className="h-full w-full object-cover p-2"
+                      wrapperClassName="h-full w-full rounded-full"
+                      className="p-2"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>
@@ -395,13 +386,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-hidden border-t py-32">
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-8 text-4xl font-bold md:text-6xl">
+            <h2 className="text-sp-text-dark mb-8 text-4xl font-bold md:text-6xl">
               {isDe ? 'Geben Sie Ihrem Produkt' : 'Give your product'}{' '}
               <span className="text-sp-accent">
                 {isDe ? 'ein zweites Leben.' : 'a second life.'}
               </span>
             </h2>
-            <p className="text-foreground/70 mb-12 text-xl">
+            <p className="text-sp-text-on-light mb-12 text-xl">
               {isDe
                 ? 'Wir modernisieren Ihr Produkt in Phasen, sodass es live bleibt, während wir es verbessern.'
                 : 'We modernize your product in phases so it stays live while we improve it.'}

@@ -10,21 +10,21 @@ import { type CaseStudyContent } from '@/data/case-studies'
 export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStudyContent }) {
   const isDe = locale === 'de'
 
-  const renderText = (text?: string | string[]) => {
+  const renderText = (text?: string | string[], darkText = false) => {
     if (!text) return null
     if (Array.isArray(text)) {
       return text.map((p, i) => (
-        <p key={i} className="mb-4 text-foreground/80 leading-relaxed text-lg font-light">
+        <p key={i} className={`mb-4 leading-relaxed text-lg font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}>
           {p.includes('**') 
-            ? p.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className="font-bold text-white">{part.replace(/\*\*/g, '')}</strong> : part)
+            ? p.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}>{part.replace(/\*\*/g, '')}</strong> : part)
             : p}
         </p>
       ))
     }
     return (
-      <p className="mb-4 text-foreground/80 leading-relaxed text-lg font-light">
+      <p className={`mb-4 leading-relaxed text-lg font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}>
         {text.includes('**') 
-            ? text.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className="font-bold text-white">{part.replace(/\*\*/g, '')}</strong> : part)
+            ? text.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}>{part.replace(/\*\*/g, '')}</strong> : part)
             : text}
       </p>
     )
@@ -75,13 +75,13 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           {data.challengeTitle && (
             <Reveal direction="up" delay={0.1}>
               <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-white/5 p-8 md:p-12">
-                <h2 className="mb-6 text-3xl font-bold text-white">{data.challengeTitle}</h2>
-                {renderText(data.challengeText)}
+                <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.challengeTitle}</h2>
+                {renderText(data.challengeText, true)}
                 
                 {data.challengeBullets && (
                   <ul className="mt-6 space-y-4">
                     {data.challengeBullets.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-4 text-foreground/80 leading-relaxed">
+                      <li key={i} className="flex items-start gap-4 text-sp-text-on-light leading-relaxed">
                         <span className="text-sp-accent mt-1 text-xl font-bold">•</span>
                         <span>{bullet}</span>
                       </li>
@@ -90,11 +90,11 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
                 )}
                 
                 {data.challengeTable && (
-                  <div className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                  <div className="mt-8 overflow-hidden rounded-xl border border-black/10 bg-black/5">
                     {data.challengeTable.map((row, i) => (
-                      <div key={i} className={`flex flex-col md:flex-row border-white/10 p-4 ${i !== data.challengeTable!.length - 1 ? 'border-b' : ''}`}>
-                        <div className="font-semibold text-white md:w-1/3 mb-2 md:mb-0">{row.label || (row as any).col1}</div>
-                        <div className="text-foreground/70 md:w-2/3">{(row as any).value || (row as any).col2}</div>
+                      <div key={i} className={`flex flex-col md:flex-row border-black/10 p-4 ${i !== data.challengeTable!.length - 1 ? 'border-b' : ''}`}>
+                        <div className="font-semibold text-sp-text-dark md:w-1/3 mb-2 md:mb-0">{row.label || (row as any).col1}</div>
+                        <div className="text-sp-text-on-light md:w-2/3">{(row as any).value || (row as any).col2}</div>
                       </div>
                     ))}
                   </div>
@@ -106,8 +106,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           {data.approachTitle && (
             <Reveal direction="up" delay={0.2}>
               <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-white/5 p-8 md:p-12">
-                <h2 className="mb-6 text-3xl font-bold text-white">{data.approachTitle}</h2>
-                {renderText(data.approachText)}
+                <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.approachTitle}</h2>
+                {renderText(data.approachText, true)}
               </div>
             </Reveal>
           )}
@@ -119,8 +119,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
-              <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-white mb-6">
-                "{data.quote}"
+              <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-sp-text-dark mb-6">
+                &quot;{data.quote}&quot;
               </blockquote>
             </div>
           </Reveal>
@@ -140,8 +140,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
               {data.builtBullets.map((bullet, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="up">
                   <div className="bg-sp-bg-medium h-full rounded-2xl border border-white/5 p-8">
-                    {bullet.title && <h3 className="mb-4 text-xl font-bold text-white">{bullet.title}</h3>}
-                    <p className="text-foreground/70 leading-relaxed">{bullet.desc}</p>
+                    {bullet.title && <h3 className="mb-4 text-xl font-bold text-sp-text-dark">{bullet.title}</h3>}
+                    <p className="text-sp-text-on-light leading-relaxed">{bullet.desc}</p>
                   </div>
                 </Reveal>
               ))}
@@ -153,19 +153,19 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
               {data.builtSections.map((section, i) => (
                 <Reveal key={i} direction="up">
                   <div className="bg-sp-bg-medium rounded-[2rem] border border-white/5 p-8 md:p-12">
-                    <h3 className="mb-6 text-2xl font-bold text-white">{section.title}</h3>
-                    {section.desc && <p className="mb-8 text-foreground/80 leading-relaxed text-lg">{section.desc}</p>}
-                    
-                    {section.bullets && (
-                      <div className="grid gap-4 md:grid-cols-2">
-                        {section.bullets.map((bullet, j) => (
-                          <div key={j} className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/5">
-                            <CheckCircle2 className="text-sp-accent shrink-0" size={20} />
-                            <span className="text-foreground/90">{bullet}</span>
-                          </div>
-                        ))}
+                <h3 className="mb-6 text-2xl font-bold text-sp-text-dark">{section.title}</h3>
+                {section.desc && <p className="mb-8 text-sp-text-on-light leading-relaxed text-lg">{section.desc}</p>}
+                
+                {section.bullets && (
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {section.bullets.map((bullet, j) => (
+                      <div key={j} className="flex items-start gap-4 bg-black/5 p-4 rounded-xl border border-black/5">
+                        <CheckCircle2 className="text-sp-accent shrink-0" size={20} />
+                        <span className="text-sp-text-dark/90">{bullet}</span>
                       </div>
-                    )}
+                    ))}
+                  </div>
+                )}
                   </div>
                 </Reveal>
               ))}
@@ -182,17 +182,17 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             {renderText(data.architectureText)}
             
             {data.architectureTable && (
-              <div className="mt-12 overflow-hidden rounded-2xl border border-white/10 bg-sp-bg-medium">
-                <div className="hidden md:grid grid-cols-3 gap-4 border-b border-white/10 p-6 bg-white/5 font-bold text-white uppercase tracking-wider text-sm">
+              <div className="mt-12 overflow-hidden rounded-2xl border border-black/10 bg-sp-bg-medium">
+                <div className="hidden md:grid grid-cols-3 gap-4 border-b border-black/10 p-6 bg-black/5 font-bold text-sp-text-dark uppercase tracking-wider text-sm">
                   <div>Layer</div>
                   <div>Choice</div>
                   <div>Reason</div>
                 </div>
                 {data.architectureTable.map((row, i) => (
-                  <div key={i} className={`grid md:grid-cols-3 gap-2 md:gap-4 p-6 ${i !== data.architectureTable!.length - 1 ? 'border-b border-white/10' : ''}`}>
-                    <div className="font-bold text-sp-accent md:text-white mb-1 md:mb-0">{row.col1}</div>
-                    <div className="font-semibold text-white mb-2 md:mb-0">{row.col2}</div>
-                    <div className="text-foreground/70">{row.col3}</div>
+                  <div key={i} className={`grid md:grid-cols-3 gap-2 md:gap-4 p-6 ${i !== data.architectureTable!.length - 1 ? 'border-b border-black/10' : ''}`}>
+                    <div className="font-bold text-sp-accent md:text-sp-text-dark mb-1 md:mb-0">{row.col1}</div>
+                    <div className="font-semibold text-sp-text-dark mb-2 md:mb-0">{row.col2}</div>
+                    <div className="text-sp-text-on-light">{row.col3}</div>
                   </div>
                 ))}
               </div>
@@ -210,9 +210,9 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {data.metricsTable?.map((metric, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="up">
-                  <div className="bg-sp-bg-medium flex h-full flex-col justify-center rounded-[2rem] border border-white/5 p-8 text-center hover:border-sp-accent/30 transition-colors">
+                  <div className="bg-sp-bg-medium flex h-full flex-col justify-center rounded-[2rem] border border-black/5 p-8 text-center hover:border-sp-accent/30 transition-colors">
                     <p className="text-sp-accent mb-4 text-sm font-bold uppercase tracking-widest">{metric.label}</p>
-                    <p className="text-xl font-bold text-white md:text-2xl">{metric.value}</p>
+                    <p className="text-xl font-bold text-sp-text-dark md:text-2xl">{metric.value}</p>
                   </div>
                 </Reveal>
               ))}
@@ -226,8 +226,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
             <div className="mx-auto max-w-4xl bg-sp-bg-medium border-l-4 border-sp-accent p-8 md:p-12 rounded-r-[2rem] shadow-2xl">
-              <h2 className="mb-6 text-3xl font-bold text-white">{data.whyItWorkedTitle}</h2>
-              {renderText(data.whyItWorkedText)}
+              <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.whyItWorkedTitle}</h2>
+              {renderText(data.whyItWorkedText, true)}
             </div>
           </Reveal>
         </section>
@@ -243,13 +243,13 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             </div>
             
             {data.tools && (
-              <p className="text-xl md:text-2xl font-light text-white mb-4 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-xl md:text-2xl font-light text-sp-text-dark mb-4 leading-relaxed max-w-4xl mx-auto">
                 {data.tools}
               </p>
             )}
             
             {data.services && (
-              <p className="text-lg text-foreground/70 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-lg text-sp-text-on-light leading-relaxed max-w-4xl mx-auto">
                 {data.services}
               </p>
             )}
@@ -263,8 +263,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
               {data.keyTakeaway && (
-                <blockquote className="text-3xl md:text-5xl font-bold leading-tight text-white mb-6">
-                  "{data.keyTakeaway}"
+                <blockquote className="text-3xl md:text-5xl font-bold leading-tight text-sp-text-dark mb-6">
+                  &quot;{data.keyTakeaway}&quot;
                 </blockquote>
               )}
               
@@ -277,8 +277,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
                       </svg>
                     ))}
                   </div>
-                  <blockquote className="text-xl md:text-2xl font-light italic leading-relaxed text-white mb-8">
-                    "{data.testimonial.quote}"
+                  <blockquote className="text-xl md:text-2xl font-light italic leading-relaxed text-sp-text-dark mb-8">
+                    &quot;{data.testimonial.quote}&quot;
                   </blockquote>
                   <p className="text-sp-accent font-bold text-lg">{data.testimonial.author}</p>
                 </div>
@@ -293,12 +293,12 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
                 {isDe
                   ? 'Bereit für ähnliche Ergebnisse?'
                   : 'Ready for similar results?'}
               </h2>
-              <p className="text-foreground/70 text-2xl leading-relaxed font-light">
+              <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
                 {isDe
                   ? 'Lassen Sie uns darüber sprechen, wie wir Ihre Herausforderungen in Erfolgsgeschichten verwandeln können.'
                   : 'Let\'s talk about how we can turn your challenges into success stories.'}

@@ -86,14 +86,14 @@ function StackedCard({ item, index, total }: { item: FaqItem; index: number; tot
           <span className="text-sp-accent font-mono text-lg font-bold tracking-wider">
             0{index + 1}
           </span>
-          <div className="h-px w-16 bg-white/10" />
+          <div className="h-px w-16 bg-black/10" />
         </div>
 
         <div>
-          <h3 className="mb-6 text-2xl leading-[1.3] font-bold tracking-tight text-white md:text-3xl lg:text-4xl">
+          <h3 className="text-sp-text-dark mb-6 text-2xl leading-[1.3] font-bold tracking-tight md:text-3xl lg:text-4xl">
             {item.q}
           </h3>
-          <p className="text-lg leading-relaxed font-light text-white/60 md:text-xl">{item.a}</p>
+          <p className="text-sp-text-on-light text-lg leading-relaxed font-light md:text-xl">{item.a}</p>
         </div>
       </div>
     </motion.div>

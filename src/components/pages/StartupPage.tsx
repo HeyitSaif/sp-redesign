@@ -2,6 +2,9 @@ import { Reveal } from '@/components/animations/Reveal'
 import { ArrowRight, CheckCircle2, Target, Rocket, Users, Code2 } from 'lucide-react'
 import Link from 'next/link'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
+import { ProceduralIsometricBlocks } from '@/components/graphics/ProceduralIsometricBlocks'
+import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 
@@ -55,26 +58,26 @@ export function StartupPage({ locale }: { locale: string }) {
           </Reveal>
           <div className="grid gap-8 md:grid-cols-3">
             <Reveal delay={0.1}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   We can&apos;t afford to keep hiring in-house just yet.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   Our current team is maxed out; we need extra hands that won&apos;t derail the
                   roadmap.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-4xl">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   We&apos;ve had bad luck with freelancers. We need someone reliable this time.
                 </p>
               </div>
@@ -111,13 +114,8 @@ export function StartupPage({ locale }: { locale: string }) {
               </div>
             </div>
             <Reveal direction="left">
-              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://solutionplus.io/wp-content/uploads/2025/09/What-you-get-with-us-scaled.jpg"
-                  alt="What you get with us"
-                  className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-                />
+              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[500px]">
+                <ProceduralGeometricMesh variant="mixed" animated={true} />
               </div>
             </Reveal>
           </div>
@@ -133,15 +131,15 @@ export function StartupPage({ locale }: { locale: string }) {
 
           <div className="grid gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   01
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <Users size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">Flexible Delivery Pods</h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Flexible Delivery Pods</h3>
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   Sprint-ready teams that plug into your workflows: Senior developers, UI/UX QA, led
                   by experienced German delivery managers.
                 </p>
@@ -149,15 +147,15 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   02
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <Target size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">Reliable Execution</h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Reliable Execution</h3>
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   No black-box delivery, no daily chasing. Our teams integrate into your rhythm,
                   with shared tools, clear timelines, and high accountability.
                 </p>
@@ -165,15 +163,15 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   03
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <Rocket size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">Scale Without Risk</h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Scale Without Risk</h3>
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   Start with a delivery sprint, then grow into a dedicated team. Add specialists in
                   your team as you go, without blowing your burn rate.
                 </p>
@@ -304,10 +302,10 @@ export function StartupPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
-                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full rounded-full"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
@@ -342,10 +340,11 @@ export function StartupPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
                       alt="Aghaz Invest Logo"
-                      className="h-full w-full object-cover p-2"
+                      wrapperClassName="h-full w-full rounded-full"
+                      className="p-2"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>

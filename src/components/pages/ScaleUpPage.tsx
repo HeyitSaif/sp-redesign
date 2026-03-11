@@ -14,6 +14,9 @@ import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
 
 export function ScaleUpPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -71,13 +74,8 @@ export function ScaleUpPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <Reveal direction="right">
-              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://solutionplus.io/wp-content/uploads/2025/09/Why-Scaleups-Work-With-Us-14-uai-1460x973.jpg"
-                  alt="Why Scaleups Work With Us"
-                  className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-                />
+              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
+                <ProceduralNetwork nodeCount={25} animated={true} />
               </div>
             </Reveal>
             <div>
@@ -102,11 +100,11 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                     : "You've outgrown patchwork vendors, and need true delivery ownership.",
                 ].map((item, i) => (
                   <Reveal key={i} delay={0.1 * i} direction="left">
-                    <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                    <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                       <div className="mt-1 shrink-0">
                         <Target className="text-sp-accent" />
                       </div>
-                      <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
+                      <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                     </div>
                   </Reveal>
                 ))}
@@ -157,12 +155,12 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8 transition-all duration-300 hover:border-white/20">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
                     {feature.icon}
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-white">{feature.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed">{feature.desc}</p>
+                  <h3 className="mb-3 text-xl font-bold text-sp-text-dark">{feature.title}</h3>
+                  <p className="text-sp-text-on-light leading-relaxed">{feature.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -372,10 +370,10 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
-                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full rounded-full"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
@@ -410,10 +408,11 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
                       alt="Aghaz Invest Logo"
-                      className="h-full w-full object-cover p-2"
+                      wrapperClassName="h-full w-full rounded-full"
+                      className="p-2"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>

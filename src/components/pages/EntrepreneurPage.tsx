@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
+import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
 
 export function EntrepreneurPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -58,13 +61,8 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/Why-this-works-14-scaled-uai-2560x1706.jpg"
-                alt="Entrepreneur Idea"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralGeometricMesh variant="circle" animated={true} />
             </div>
           </Reveal>
         </div>
@@ -81,9 +79,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
 
           <div className="grid gap-8 md:grid-cols-3">
             <Reveal delay={0.1}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-5xl opacity-50">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Ich habe noch keinen CTO oder technischen Mitgründer.'
                     : "I don't have a CTO or tech co-founder yet."}
@@ -91,9 +89,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-5xl opacity-50">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Entwickler einzustellen kostet Zeit und Geld, das ich nicht habe.'
                     : "Hiring devs takes time and money I don't have."}
@@ -101,9 +99,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8">
                 <div className="text-sp-accent mb-4 font-serif text-5xl opacity-50">&quot;</div>
-                <p className="text-xl font-medium text-white/90">
+                <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Ich möchte einfach etwas Echtes launchen, um es Investoren oder Nutzern zu zeigen.'
                     : 'I just want to launch something real to show investors or users.'}
@@ -140,9 +138,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   : 'No long timelines or bloated processes. Just working software, delivered on time.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
-                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                     <Target className="text-sp-accent mt-1 shrink-0" />
-                    <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
+                    <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
                 </Reveal>
               ))}
@@ -150,13 +148,8 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/What-you-get-with-us-14-scaled-uai-2560x1706.jpg"
-                alt="Why it works"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralProcessPipeline steps={3} animated={true} />
             </div>
           </Reveal>
         </div>
@@ -173,17 +166,17 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
 
           <div className="grid gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   01
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <Rocket size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
                   {isDe ? 'MVPs in 4–6 Wochen' : 'MVPs in 4–6 weeks'}
                 </h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   {isDe
                     ? 'Wir starten schnell, priorisieren den Kernwert und bringen Sie schnell auf den Markt.'
                     : 'We move fast, prioritize core value, and get you to market quickly.'}
@@ -192,19 +185,19 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   02
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <Coins size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
                   {isDe
                     ? 'Fester Umfang. Transparenter Preis.'
                     : 'Fixed scope. Transparent pricing.'}
                 </h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   {isDe
                     ? 'Keine Überraschungen oder versteckten Kosten. Klare Logik über den gesamten Zyklus hinweg.'
                     : 'No surprises or hidden fees. Clear logic throughout the entire cycle.'}
@@ -213,17 +206,17 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-white/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-white/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
                   03
                 </div>
                 <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
                   <LayoutDashboard size={24} />
                 </div>
-                <h3 className="mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
                   {isDe ? 'Deutsch-geführt, global gebaut' : 'German-managed, globally built'}
                 </h3>
-                <p className="text-foreground/60 relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   {isDe
                     ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unsere Ingenieure in Pakistan mit Sorgfalt bauen.'
                     : "You'll work with a German-based delivery lead, while our engineers in Pakistan build with care."}
@@ -342,10 +335,10 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
-                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full rounded-full"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
@@ -380,10 +373,11 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
                       alt="Aghaz Invest Logo"
-                      className="h-full w-full object-cover p-2"
+                      wrapperClassName="h-full w-full rounded-full"
+                      className="p-2"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>

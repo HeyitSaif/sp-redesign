@@ -7,7 +7,10 @@ import { generatePageMetadata } from '@/lib/seo'
 import { HeroCarousel } from '@/components/sections/HeroCarousel'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { InvestingFaqAccordion } from '@/components/sections/InvestingFaqAccordion'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
 
 export async function generateMetadata({
   params,
@@ -65,14 +68,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Reveal>
 
             <Reveal delay={0.2} className="mt-20">
-              <div className="mx-auto max-w-5xl overflow-x-hidden rounded-[2rem] shadow-2xl">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://solutionplus.io/wp-content/uploads/2025/09/3-Step-Visual-JPEG-03-scaled.jpg"
-                  alt={isDe ? 'Drei Schritte zum Erfolg' : 'Three step visual'}
-                  className="h-auto w-full object-cover"
-                  loading="lazy"
-                />
+              <div className="w-full h-64 md:h-80 lg:h-96 rounded-2xl shadow-2xl overflow-hidden">
+                <ProceduralProcessPipeline steps={3} animated={true} />
               </div>
             </Reveal>
           </div>
@@ -177,15 +174,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <Reveal direction="left">
-            <div className="relative overflow-x-hidden rounded-[2rem] shadow-2xl">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/We-combine-German-discipline-with-top-tier-Pakistani-engineering-14-scaled.jpg"
-                alt="German discipline with Pakistani engineering"
-                className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
+            <div className="relative overflow-x-hidden rounded-[2rem] shadow-2xl h-64 md:h-80 lg:h-[400px]">
+              <ProceduralNetwork animated={true} nodeCount={25} />
             </div>
           </Reveal>
         </div>
@@ -322,10 +312,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-x-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
-                      className="h-full w-full object-cover"
+                      wrapperClassName="h-full w-full rounded-full"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
@@ -360,10 +350,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-x-hidden rounded-full bg-gray-100">
-                    <img
+                    <ImageWithShimmer
                       src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
                       alt="Aghaz Invest Logo"
-                      className="h-full w-full object-cover p-2"
+                      wrapperClassName="h-full w-full rounded-full"
+                      className="p-2"
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>

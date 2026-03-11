@@ -1,3 +1,4 @@
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Reveal } from '@/components/animations/Reveal'
@@ -75,10 +76,11 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
                 h1: ({ node, ...props }) => <h1 className="text-gradient" {...props} />,
                 img: ({ node, ...props }) => (
                   <div className="bg-sp-bg-medium relative my-16 overflow-x-hidden rounded-[3rem] border border-white/10 p-3 shadow-[0_20px_80px_rgba(0,0,0,0.5)]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      className="m-0 h-auto w-full rounded-[2.5rem] object-cover opacity-80 mix-blend-luminosity transition-all duration-1000 hover:mix-blend-normal"
-                      {...props}
+                    <ImageWithShimmer
+                      src={typeof props.src === 'string' ? props.src : ''}
+                      alt={props.alt || ''}
+                      wrapperClassName="w-full rounded-[2.5rem] overflow-hidden"
+                      className="m-0 h-auto object-cover opacity-80 mix-blend-luminosity transition-all duration-1000 hover:mix-blend-normal"
                     />
                   </div>
                 ),

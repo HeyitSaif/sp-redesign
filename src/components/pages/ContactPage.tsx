@@ -7,6 +7,7 @@ import { submitContactForm } from '@/app/actions/contact'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import Link from 'next/link'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 
 const initialState = {
   success: false,
@@ -106,7 +107,7 @@ export function ContactPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left" delay={0.2}>
-            <div className="group bg-sp-bg-medium/80 relative overflow-x-hidden rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12">
+            <div className="group bg-[#181a1c]/80 relative overflow-x-hidden rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12">
               <div className="from-sp-accent/5 to-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
 
               <AnimatePresence>
@@ -300,16 +301,17 @@ export function ContactPage({ locale }: { locale: string }) {
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-white/5 p-8 text-center transition-all duration-300">
+                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
                   <div className="mb-6 h-24 w-24">
-                    <img
+                    <ImageWithShimmer
                       src={persona.img}
                       alt={persona.title}
-                      className="h-full w-full object-contain"
+                      wrapperClassName="h-full w-full"
+                      className="object-contain"
                     />
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold">{persona.title}</h3>
-                  <p className="text-foreground/70 mb-8 flex-grow">{persona.desc}</p>
+                  <h3 className="text-sp-text-dark mb-4 text-2xl font-bold">{persona.title}</h3>
+                  <p className="text-sp-text-on-light mb-8 flex-grow">{persona.desc}</p>
                   <Link
                     href={`/${locale}/${isDe ? (persona.link === 'scale-up' ? 'scaleups' : persona.link === 'startup' ? 'startups' : 'gruender-idee-startup-partner') : persona.link}`}
                     className="text-sp-accent mt-auto flex items-center gap-2 font-medium transition-colors hover:text-white"

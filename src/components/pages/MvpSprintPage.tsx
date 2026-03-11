@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
 
 export function MvpSprintPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -53,13 +56,8 @@ export function MvpSprintPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/When-your-roadmap-moves-faster-than-hiring-can-keep-upt-load-scaled-uai-2560x1706.jpg"
-                alt="MVP Sprint Process"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralProcessPipeline steps={4} animated={true} />
             </div>
           </Reveal>
         </div>
@@ -106,12 +104,12 @@ export function MvpSprintPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8 transition-all duration-300 hover:border-white/20">
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
+              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
                     {feature.icon}
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-white">{feature.title}</h3>
-                  <p className="text-foreground/60 leading-relaxed">{feature.desc}</p>
+                  <h3 className="mb-4 text-xl font-bold text-sp-text-dark">{feature.title}</h3>
+                  <p className="text-sp-text-on-light leading-relaxed">{feature.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -124,13 +122,8 @@ export function MvpSprintPage({ locale }: { locale: string }) {
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
         <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal direction="right">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/What-youll-get-14-uai-1460x973.jpg"
-                alt="What you'll get"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralDataGrid animated={true} />
             </div>
           </Reveal>
 
@@ -156,9 +149,9 @@ export function MvpSprintPage({ locale }: { locale: string }) {
                   : 'Full code and documentation ready for handover',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="left">
-                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                     <CheckCircle2 className="text-sp-accent mt-1 shrink-0" />
-                    <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
+                    <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
                 </Reveal>
               ))}
@@ -200,16 +193,17 @@ export function MvpSprintPage({ locale }: { locale: string }) {
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
-                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-white/5 p-8 text-center transition-all duration-300">
+                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
                   <div className="mb-6 h-24 w-24">
-                    <img
+                    <ImageWithShimmer
                       src={persona.img}
                       alt={persona.title}
-                      className="h-full w-full object-contain"
+                      wrapperClassName="h-full w-full"
+                      className="object-contain"
                     />
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold">{persona.title}</h3>
-                  <p className="text-foreground/70 mb-8 flex-grow">{persona.desc}</p>
+                  <h3 className="text-sp-text-dark mb-4 text-2xl font-bold">{persona.title}</h3>
+                  <p className="text-sp-text-on-light mb-8 flex-grow">{persona.desc}</p>
                   <Link
                     href={`/${locale}/${isDe ? (persona.link === 'scale-up' ? 'scaleups' : persona.link === 'startup' ? 'startups' : 'gruender-idee-startup-partner') : persona.link}`}
                     className="text-sp-accent mt-auto flex items-center gap-2 font-medium transition-colors hover:text-white"
@@ -230,22 +224,17 @@ export function MvpSprintPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
                 {isDe ? 'Kalkulieren Sie Ihr Team-Setup' : 'Calculate your team setup'}
               </h2>
-              <p className="text-foreground/70 text-2xl leading-relaxed font-light">
+              <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
                 {isDe
                   ? 'Erhalten Sie in wenigen Minuten eine grobe Schätzung. Keine versteckten Gebühren, keine Überraschungen; nur eine klare Schätzung basierend auf dem Umfang und Zeitplan Ihres Projekts.'
                   : "Get a ballpark figure in minutes. No hidden fees, no surprises; just a clear estimate based on your project's scope and timeline."}
               </p>
             </div>
-            <div className="bg-sp-bg-medium mt-12 overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-your-team-setup-14-1-scaled-uai-2560x1706.jpg"
-                alt="Calculate your team setup"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium mt-12 overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-96">
+              <ProceduralDataGrid animated={true} />
             </div>
           </Reveal>
 

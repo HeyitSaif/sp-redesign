@@ -56,15 +56,15 @@ export function CaseStudiesIndexPage({ locale }: { locale: string }) {
                     <ArrowRight className="text-sp-accent/50 group-hover:text-sp-accent transition-all group-hover:translate-x-1" />
                   </div>
                   
-                  <h2 className="mb-4 text-3xl font-bold leading-tight text-white group-hover:text-sp-accent transition-colors">
+                  <h2 className="mb-4 text-3xl font-bold leading-tight text-sp-text-dark group-hover:text-sp-accent transition-colors">
                     {cs.clientName}
                   </h2>
                   
-                  <p className="text-foreground/70 mb-8 flex-1 text-lg font-medium leading-relaxed">
+                  <p className="text-sp-text-on-light mb-8 flex-1 text-lg font-medium leading-relaxed">
                     {cs.tagline}
                   </p>
                   
-                  <div className="mt-auto border-t border-white/10 pt-6">
+                  <div className="mt-auto border-t border-black/10 pt-6">
                     <span className="text-sp-accent inline-flex items-center gap-2 font-medium">
                       {isDe ? 'Fallstudie lesen' : 'Read Case Study'}
                     </span>
@@ -80,11 +80,11 @@ export function CaseStudiesIndexPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-hidden border-t py-32">
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-8 text-4xl font-bold md:text-6xl">
+            <h2 className="text-sp-text-dark mb-8 text-4xl font-bold md:text-6xl">
               {isDe ? 'Bereit für Ihr ' : 'Ready for your '}{' '}
               <span className="text-sp-accent">{isDe ? 'nächstes Projekt?' : 'next project?'}</span>
             </h2>
-            <p className="text-foreground/70 mb-12 text-xl">
+            <p className="text-sp-text-on-light mb-12 text-xl">
               {isDe
                 ? 'Lassen Sie uns darüber sprechen, wie wir Ihre Idee strukturiert und erfolgreich umsetzen können.'
                 : 'Let\'s talk about how we can build your idea with structure and success.'}

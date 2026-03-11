@@ -2,9 +2,14 @@
 
 import { Reveal } from '@/components/animations/Reveal'
 import { ArrowRight, Globe2, Heart, Lightbulb, TrendingUp, ShieldCheck, Cpu } from 'lucide-react'
+import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { StickyQnA } from '@/components/sections/StickyQnA'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralCodeEditor } from '@/components/graphics/ProceduralCodeEditor'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
 
 export function CareersPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -50,13 +55,8 @@ export function CareersPage({ locale }: { locale: string }) {
             </Reveal>
           </div>
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/09/Careers-13-scaled-uai-1444x1444.jpg"
-                alt="Careers at SolutionPlus"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralNetwork animated={true} nodeCount={35} />
             </div>
           </Reveal>
         </div>
@@ -107,15 +107,15 @@ export function CareersPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-hidden rounded-[2rem] border border-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
+                <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-hidden rounded-[2rem] border border-black/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                   <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="group-hover:bg-sp-accent/10 group-hover:border-sp-accent/30 group-hover:text-sp-accent mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white shadow-lg transition-all duration-500 group-hover:scale-110">
+                  <div className="group-hover:bg-sp-accent/10 group-hover:border-sp-accent/30 group-hover:text-sp-accent mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5 text-sp-text-dark shadow-lg transition-all duration-500 group-hover:scale-110">
                     {feature.icon}
                   </div>
-                  <h3 className="group-hover:text-sp-accent mb-4 text-xl font-bold text-white transition-colors">
+                  <h3 className="group-hover:text-sp-accent mb-4 text-xl font-bold text-sp-text-dark transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-foreground/70 group-hover:text-foreground/90 leading-relaxed transition-colors">
+                  <p className="text-sp-text-on-light group-hover:text-sp-text-on-light/90 leading-relaxed transition-colors">
                     {feature.desc}
                   </p>
                 </div>
@@ -153,9 +153,9 @@ export function CareersPage({ locale }: { locale: string }) {
                   : 'Grow globally. Gain exposure as a developer, teammate, and professional.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
-                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                     <Heart className="text-sp-accent mt-1 shrink-0" />
-                    <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
+                    <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
                 </Reveal>
               ))}
@@ -163,13 +163,8 @@ export function CareersPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/10/Work-in-a-respectful-culture.-Stress-free-supportive-and-built-on-trust.png"
-                alt="Culture"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
+              <ProceduralNetwork animated={true} nodeCount={20} />
             </div>
           </Reveal>
         </div>
@@ -206,15 +201,12 @@ export function CareersPage({ locale }: { locale: string }) {
               },
             ].map((role, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group hover:border-sp-accent/30 bg-sp-bg-medium block cursor-pointer overflow-x-hidden rounded-3xl border border-white/5 transition-all">
-                  <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-x-hidden">
+                <div className="group hover:border-sp-accent/30 bg-sp-bg-medium block cursor-pointer overflow-hidden rounded-3xl border border-white/5 transition-all">
+                  <div className="bg-sp-bg-dark relative aspect-[4/5] overflow-hidden p-4">
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141618] via-transparent to-transparent opacity-80" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={role.img}
-                      alt={role.title}
-                      className="h-full w-full object-cover object-center opacity-70 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
-                    />
+                    {i === 0 && <ProceduralCodeEditor animated={true} />}
+                    {i === 1 && <ProceduralDataGrid animated={true} />}
+                    {i === 2 && <ProceduralNetwork nodeCount={15} animated={true} />}
                   </div>
                   <div className="relative z-20 -mt-20 p-8">
                     <h3 className="mb-2 text-2xl font-bold text-white">{role.title}</h3>
@@ -251,13 +243,8 @@ export function CareersPage({ locale }: { locale: string }) {
           </Reveal>
 
           <Reveal direction="up">
-            <div className="bg-sp-bg-medium relative mx-auto max-w-4xl overflow-x-hidden rounded-3xl border border-white/10 p-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://solutionplus.io/wp-content/uploads/2025/10/how-we-hire-scaled.jpg"
-                alt="How We Hire"
-                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
-              />
+            <div className="bg-sp-bg-medium relative mx-auto max-w-4xl overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80">
+              <ProceduralProcessPipeline steps={4} animated={true} />
             </div>
           </Reveal>
         </div>
