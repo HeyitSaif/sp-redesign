@@ -1,12 +1,28 @@
 import { ImageResponse } from 'next/og'
+import { checkRateLimit, RATE_LIMITS } from '@/lib/rate-limit'
 
 export const runtime = 'edge'
 
 export async function GET(request: Request) {
+  const ip =
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    request.headers.get('x-real-ip') ??
+    'unknown'
+  const { allowed, retryAfter } = checkRateLimit(`og:${ip}`, RATE_LIMITS.og)
+  if (!allowed) {
+    return new Response('Too Many Requests', {
+      status: 429,
+      headers: {
+        'Retry-After': String(retryAfter ?? 60),
+      },
+    })
+  }
+
   const { searchParams } = new URL(request.url)
-  const title = searchParams.get('title') ?? 'SolutionPlus'
-  const description =
+  const title = String(searchParams.get('title') ?? 'SolutionPlus').slice(0, 200)
+  const description = String(
     searchParams.get('description') ?? 'Build, Launch, and Scale Software with SolutionPlus'
+  ).slice(0, 500)
 
   return new ImageResponse(
     <div
