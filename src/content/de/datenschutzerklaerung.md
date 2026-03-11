@@ -1,14 +1,7 @@
 ---
-url: https://solutionplus.io/de/datenschutzerklaerung/
-title: Datenschutzerklärung - SolutionPlus
-description: Bei SolutionPlus nehmen wir Ihre Privatsphäre ernst. Diese Richtlinie erklärt, welche Daten wir erheben, wie wir sie nutzen und Ihre Rechte.
-keywords:
-  - Datenschutzerklärung
-  - Datenschutz
-  - SolutionPlus Datenschutz
-  - DSGVO
-publishedAt: 2025-09-10
-scraped_at: 2026-01-31T11:38:55.054Z
+source_url: https://solutionplus.io/de/datenschutzerklaerung/
+scraped_at: 2026-03-02
+tool: firecrawl
 ---
 
 # Datenschutzerklärung
@@ -24,7 +17,7 @@ Die **Solution Plus Tech Consultancy FZE**  ~~~~ ist ein IT-Beratungs- und Softw
 Bei Fragen zur Datenschutzerklärung erreichen Sie uns unter:
 
 - **E-Mail:** admin@solutionplus.io
-- **Adresse:** \[Unternehmensadresse einfügen\]
+- **Adresse:** [Unternehmensadresse einfügen]
 
 **2\. Welche Daten wir erheben**
 
@@ -71,7 +64,7 @@ Sie haben jederzeit das Recht:
 
 - Auskunft über Ihre gespeicherten Daten zu erhalten
 - Daten zu berichtigen oder zu aktualisieren
-- Löschung Ihrer Daten zu verlangen („Recht auf Vergessenwerden“)
+- Löschung Ihrer Daten zu verlangen („Recht auf Vergessenwerden")
 - Verarbeitung einzuschränken oder zu widersprechen
 - Eine erteilte Einwilligung zu widerrufen (z. B. für Marketing)
 - Ihre Daten in einem maschinenlesbaren Format zu erhalten (Datenübertragbarkeit)

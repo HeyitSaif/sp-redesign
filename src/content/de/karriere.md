@@ -1,14 +1,7 @@
 ---
-url: https://solutionplus.io/de/karriere/
-title: Karriere bei SolutionPlus – Produkte mit Wirkung
-description: Werden Sie Teil unseres Teams. Wir suchen Ingenieure, Designer und Macher, die Herausforderungen lieben. Remote, global, sinnstiftend.
-keywords:
-  - Karriere
-  - Software-Ingenieur Jobs
-  - SolutionPlus Karriere
-  - Team beitreten
-publishedAt: 2025-01-01
-scraped_at: 2026-01-31T11:38:55.050Z
+source_url: https://solutionplus.io/de/karriere/
+scraped_at: 2026-03-02
+tool: firecrawl
 ---
 
 # Mit Sinn bauen. Ohne Grenzen wachsen.

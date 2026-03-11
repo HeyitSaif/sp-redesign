@@ -20,6 +20,11 @@ const EN_SLUGS = [
   "startup",
   "terms-and-conditions",
   "privacy-policy",
+  "case-studies",
+  "case-studies/tecsofiy",
+  "case-studies/automotive-ai",
+  "case-studies/democorder",
+  "case-studies/hospitality",
 ];
 
 const DE_SLUGS = [
@@ -35,6 +40,11 @@ const DE_SLUGS = [
   "startups",
   "allgemeine-geschaeftsbedingungen-agb",
   "datenschutzerklaerung",
+  "fallstudien",
+  "fallstudien/tecsofiy",
+  "fallstudien/automotive-ai",
+  "fallstudien/democorder",
+  "fallstudien/hospitality",
 ];
 
 function getLastModified(locale: string, slug: string): Date {

@@ -1,14 +1,7 @@
 ---
-url: https://solutionplus.io/de/ueber-solutionplus/
-title: Über SolutionPlus – Leitung aus DE, Tech aus PK
-description: Deutsche Führung trifft pakistanische Top-Entwickler. Erfahren Sie, wie SolutionPlus erstklassige Software mit voller Verantwortung liefert.
-keywords:
-  - SolutionPlus
-  - deutsche Führung
-  - pakistanische Entwickler
-  - Software-Delivery-Partner
-publishedAt: 2025-01-01
-scraped_at: 2026-01-31T11:38:55.052Z
+source_url: https://solutionplus.io/de/ueber-solutionplus/
+scraped_at: 2026-03-02
+tool: firecrawl
 ---
 
 ### About us
@@ -23,7 +16,7 @@ Wir haben SolutionPlus nicht gegründet, um einfach die nächste Softwarebude zu
 
 Wir haben es gegründet, weil wir selbst in Ihrer Lage waren: unter Zeitdruck, auf der Suche nach den richtigen Leuten, mit dem Druck, Ergebnisse zu liefern – ohne Ausreden. Unsere Gründer haben Teams in Europa, den USA und Südasien geleitet und dabei immer wieder dasselbe erlebt: Tolle Ideen scheitern selten an der Vision, sondern fast immer an der Umsetzung.
 
-Genau deshalb haben wir das aufgebaut, was wir uns damals selbst gewünscht hätten: ein Partner, der hält, was er verspricht. Ein globales Delivery-Team, das sich anfühlt wie Ihr lokales. Mit Ingenieuren und Produktverantwortlichen, die über Grenzen hinweg Hand in Hand arbeiten – direkt, reibungslos, effektiv.
+Genau deshalb haben wir das aufgebaut, was wir uns damals selbst gewünscht hätten: ein Partner, der hält, was er verspricht. Ein globales Delivery-Team, das sich anfühlt wie Ihr lokales. Mit Ingenieuren und Produktverantwortlichen, die über Grenzen hinweg Hand in Hand arbeiten – direkt, reibungslos, effektiv.
 
 ![](https://solutionplus.io/wp-content/uploads/2025/09/Careers-13-scaled-uai-1444x1444.jpg)
 
@@ -127,7 +120,7 @@ Email\*
 
 Subject
 
-What challenge are you looking to solve? (Optional)
+What challenge are you looking to solve? (Optional)
 
 Marketing Emails
 

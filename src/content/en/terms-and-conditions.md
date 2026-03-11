@@ -1,21 +1,29 @@
 ---
-url: https://solutionplus.io/terms-and-conditions/
-title: Terms and Conditions - SolutionPlus
-description: SolutionPlus is a global IT consulting and software delivery partner. Read our terms and conditions for service agreements and legal information.
-keywords:
-  - terms and conditions
-  - SolutionPlus terms
-  - legal
-  - service terms
-publishedAt: 2025-09-10
-scraped_at: 2026-01-31T11:38:55.051Z
+source_url: https://solutionplus.io/terms-and-conditions/
+scraped_at: 2026-03-02
+tool: firecrawl
 ---
+
+[![SolutionPlus](https://solutionplus.io/wp-content/uploads/2025/09/LOGO-SVG-01.png)](https://solutionplus.io/)
+
+- [What We Do](https://solutionplus.io/terms-and-conditions/#)
+  - [Product Modernization](https://solutionplus.io/product-modernization/)
+  - [MVP Sprint Package](https://solutionplus.io/mvp-sprint-package/)
+  - [Dedicated Teams](https://solutionplus.io/dedicated-delivery-teams/)
+- [Who We Serve](https://solutionplus.io/terms-and-conditions/#)
+  - [Entrepreneur with an Idea](https://solutionplus.io/entrepreneur-with-an-idea/)
+  - [Startups](https://solutionplus.io/startup/)
+  - [Scale-ups](https://solutionplus.io/scale-up/)
+- [Who We Are](https://solutionplus.io/terms-and-conditions/#)
+  - [About SolutionPlus](https://solutionplus.io/about-team/)
+  - [Careers at SolutionPlus](https://solutionplus.io/careers/)
+- [Get in touch](https://solutionplus.io/contact-us/)
 
 # Terms and Conditions
 
 **_Last updated: 10-09-2025_**
 
-These Terms and Conditions (“Terms”) govern your use of the SolutionPlus website (www.solutionplus.io) and our services. By accessing or using our site and services, you agree to these Terms.
+These Terms and Conditions ("Terms") govern your use of the SolutionPlus website (www.solutionplus.io) and our services. By accessing or using our site and services, you agree to these Terms.
 
 **1\. Who we are**
 
@@ -55,7 +63,7 @@ These Terms are governed by the laws of Germany. Any disputes will be subject to
 
 **9\. Updates to Terms**
 
-We may update these Terms periodically. Any changes will be posted on this page with a revised “Last updated” date. Continued use of our website and services constitutes acceptance of the updated Terms.
+We may update these Terms periodically. Any changes will be posted on this page with a revised "Last updated" date. Continued use of our website and services constitutes acceptance of the updated Terms.
 
 **10\. Contact**
 
@@ -65,4 +73,28 @@ For questions regarding these Terms, please contact us at:
 
 **Address:** \[Insert Company Address\]
 
+Go from big idea to tangible success. **SolutionPlus** provides the framework for ambitious projects, from launching products to scaling teams and relocating talent.
+
+Navigation
+
+[About](https://solutionplus.io/en/about1/)[Startups](https://solutionplus.io/en/startup/)[Scale ups](https://solutionplus.io/en/scale-up/)[MVP Sprint Package](https://solutionplus.io/en/mvp-sprint-package-2/)[Dedicated Delivery Teams](https://solutionplus.io/en/dedicated-delivery-teams-2/)
+
+Legal
+
+[Privacy Policy](https://solutionplus.io/privacy-policy/)[Terms of Use](https://solutionplus.io/terms-and-conditions/)[Career](https://solutionplus.io/career/)[Accessibility](https://solutionplus.io/terms-and-conditions/#)
+
+Headquarter
+
+Kollwitzstraße 76, 10435 Berlin+46 8123 4567
+
+[Buy Now · $59](https://1.envato.market/k1yPV)
+
+[Ask for Quote](https://solutionplus.io/contact-us-now/)
+
+© 2026 SolutionPlus. All rights reserved
+
 [Scroll to top](https://solutionplus.io/terms-and-conditions/#)
+
+### Privacy Preference Center
+
+#### Privacy Preferences

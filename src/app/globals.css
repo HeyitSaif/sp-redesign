@@ -2,10 +2,27 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #141618;
-  --foreground: #f4f4f5;
-  --primary: #5c6bc0;
-  --secondary: #ff7043;
+  /* solutionplus.io scraped palette */
+  --sp-accent: #ff7043;
+  --sp-accent-dark: #d85f36;
+  /* hover/darker */
+  --sp-text-on-light: #5b616b;
+  --sp-text-dark: #383636;
+  --sp-border-light: #d6d7d9;
+  --sp-border-testimonial: #878787;
+  --sp-star-filled: #ffb900;
+  --sp-bg-dark: #0a0b0d;
+  /* wayh approx */
+  --sp-bg-light: #ffffff;
+  /* xsdn approx */
+  --sp-bg-medium: #f5f5f5;
+  /* nhtu approx */
+  --sp-link-hover: #1595ce;
+
+  --background: var(--sp-bg-dark);
+  --foreground: #ffffff;
+  --primary: var(--sp-accent);
+  --secondary: var(--sp-accent);
 }
 
 @theme inline {
@@ -16,6 +33,19 @@
   --color-brand-black: #141618;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Scraped variables for explicit usage in Tailwind classes */
+  --color-sp-accent: var(--sp-accent);
+  --color-sp-accent-dark: var(--sp-accent-dark);
+  --color-sp-text-on-light: var(--sp-text-on-light);
+  --color-sp-text-dark: var(--sp-text-dark);
+  --color-sp-border-light: var(--sp-border-light);
+  --color-sp-border-testimonial: var(--sp-border-testimonial);
+  --color-sp-star-filled: var(--sp-star-filled);
+  --color-sp-bg-dark: var(--sp-bg-dark);
+  --color-sp-bg-light: var(--sp-bg-light);
+  --color-sp-bg-medium: var(--sp-bg-medium);
+  --color-sp-link-hover: var(--sp-link-hover);
 
   --animate-shimmer: shimmer 2.5s infinite linear;
   --animate-fade-in: fade-in 0.6s ease-out forwards;
@@ -88,11 +118,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--sp-accent-dark);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(135deg, #ff9e80 0%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,11 +130,11 @@ body {
 
 /* Skeuomorphic Utility Classes */
 .skeuo-btn {
-  background: linear-gradient(180deg, #6c7bd0 0%, #4b5aab 100%);
+  background: linear-gradient(180deg, #ff8a65 0%, #d85f36 100%);
   box-shadow:
-    0 4px 0 #3b4787,
+    0 4px 0 #b34a26,
     0 10px 20px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   transition: all 0.1s ease-in-out;
 }
@@ -112,7 +142,7 @@ body {
 .skeuo-btn:active {
   transform: translateY(4px) !important;
   box-shadow:
-    0 0 0 #3b4787,
+    0 0 0 #b34a26,
     0 2px 5px rgba(0, 0, 0, 0.4),
     inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }

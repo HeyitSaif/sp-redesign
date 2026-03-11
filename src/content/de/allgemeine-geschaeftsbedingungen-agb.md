@@ -1,21 +1,14 @@
 ---
-url: https://solutionplus.io/de/allgemeine-geschaeftsbedingungen-agb/
-title: Allgemeine Geschäftsbedingungen (AGB) - SolutionPlus
-description: SolutionPlus ist ein globaler IT-Beratungs- und Software-Delivery-Partner. Lesen Sie unsere AGB für Servicevereinbarungen und rechtliche Informationen.
-keywords:
-  - Allgemeine Geschäftsbedingungen
-  - AGB SolutionPlus
-  - rechtlich
-  - Servicebedingungen
-publishedAt: 2025-09-10
-scraped_at: 2026-01-31T11:38:55.054Z
+source_url: https://solutionplus.io/de/allgemeine-geschaeftsbedingungen-agb/
+scraped_at: 2026-03-02
+tool: firecrawl
 ---
 
 # Allgemeine Geschäftsbedingungen (AGB)
 
 **Letzte Aktualisierung: 10.09.2025**
 
-Diese Allgemeinen Geschäftsbedingungen („AGB“) regeln die Nutzung der Website **www.solutionplus.io** sowie unserer Dienstleistungen. Mit dem Zugriff auf unsere Website oder der Nutzung unserer Services erklären Sie sich mit diesen AGB einverstanden.
+Diese Allgemeinen Geschäftsbedingungen („AGB") regeln die Nutzung der Website **www.solutionplus.io** sowie unserer Dienstleistungen. Mit dem Zugriff auf unsere Website oder der Nutzung unserer Services erklären Sie sich mit diesen AGB einverstanden.
 
 **1\. Wer wir sind**
 
@@ -58,7 +51,7 @@ Unsere Website kann Links zu externen Websites enthalten. Für deren Inhalte, Da
 
 **7\. Datenschutz**
 
-Der Schutz Ihrer Daten ist uns wichtig. Informationen zur Erhebung und Verarbeitung personenbezogener Daten finden Sie in unserer \[Datenschutzerklärung\].
+Der Schutz Ihrer Daten ist uns wichtig. Informationen zur Erhebung und Verarbeitung personenbezogener Daten finden Sie in unserer [Datenschutzerklärung].
 
 **8\. Anwendbares Recht**
 
@@ -66,7 +59,7 @@ Diese AGB unterliegen deutschem Recht. Gerichtsstand ist Berlin, sofern nicht ve
 
 **9\. Änderungen der AGB**
 
-Wir können diese AGB von Zeit zu Zeit anpassen. Änderungen werden auf dieser Seite mit aktualisiertem „Letzte Aktualisierung“-Datum veröffentlicht.
+Wir können diese AGB von Zeit zu Zeit anpassen. Änderungen werden auf dieser Seite mit aktualisiertem „Letzte Aktualisierung"-Datum veröffentlicht.
 
 Die fortgesetzte Nutzung unserer Website oder Services gilt als Zustimmung zu den geänderten Bedingungen.
 

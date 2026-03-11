@@ -1,60 +1,78 @@
-"use client";
+'use client'
 
-import { Reveal } from "@/components/animations/Reveal";
-import { ArrowRight, Target, Sparkles, Activity, ShieldAlert, RefreshCcw, TrendingUp, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
+import { Reveal } from '@/components/animations/Reveal'
+import {
+  ArrowRight,
+  Target,
+  Sparkles,
+  Activity,
+  ShieldAlert,
+  RefreshCcw,
+  TrendingUp,
+  CheckCircle2,
+} from 'lucide-react'
+import Link from 'next/link'
+import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
+import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { StickyQnA } from '@/components/sections/StickyQnA'
 
 export function ServicesPage({ locale }: { locale: string }) {
-  const isDe = locale === "de";
+  const isDe = locale === 'de'
 
   return (
-    <div className="flex flex-col w-full overflow-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+      <FloatiesBackground />
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
-        
-        <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-hidden py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
+        <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
+
+        <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
             <Reveal>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8">
+              <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium">
                 <RefreshCcw size={16} />
-                {isDe ? "Software Modernisierung" : "Product Modernization"}
+                {isDe ? 'Software Modernisierung' : 'Product Modernization'}
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-8">
-                {isDe ? "Machen Sie Ihr Produkt bereit für " : "Make your product ready for "} <span className="text-primary">{isDe ? "die Zukunft" : "what's next."}</span>
+              <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
+                {isDe ? 'Machen Sie Ihr Produkt bereit für ' : 'Make your product ready for '}{' '}
+                <span className="text-sp-accent">{isDe ? 'die Zukunft' : "what's next."}</span>
               </h1>
-              <p className="text-xl text-foreground/70 mb-10 max-w-xl leading-relaxed">
-                {isDe 
-                  ? "Alter Code, veraltetes Design und umständliche Workflows bremsen das Wachstum. Wir modernisieren Ihre bestehende Software, damit sie sicher, skalierbar und wettbewerbsfähig wird – ohne kompletten Neuaufbau."
+              <p className="text-foreground/70 mb-10 max-w-xl text-xl leading-relaxed">
+                {isDe
+                  ? 'Alter Code, veraltetes Design und umständliche Workflows bremsen das Wachstum. Wir modernisieren Ihre bestehende Software, damit sie sicher, skalierbar und wettbewerbsfähig wird – ohne kompletten Neuaufbau.'
                   : "Old code, outdated design, and clunky workflows hold products back from growth. We modernize your existing software so it's secure, scalable, and competitive without a full rebuild."}
               </p>
-              
+
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href={`/${locale}/${isDe ? "kontakt-solutionplus" : "contact-us"}`}
-                  className="px-8 py-4 rounded-full bg-primary text-white font-bold tracking-wide hover:bg-[#6c7bd0] transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(92,107,192,0.4)] hover:shadow-[0_8px_30px_-4px_rgba(92,107,192,0.6)] hover:-translate-y-1 active:scale-95 inline-flex items-center gap-2 relative overflow-hidden group"
+                  href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
-                  {isDe ? "Jetzt anfragen" : "Get Started"} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
+                  {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="px-8 py-4 rounded-full bg-white/5 text-white font-medium border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-md hover:-translate-y-1 active:scale-95 shadow-lg"
+                  className="rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 active:scale-95"
                 >
-                  {isDe ? "Mehr erfahren" : "Learn more"}
+                  {isDe ? 'Mehr erfahren' : 'Learn more'}
                 </a>
               </div>
             </Reveal>
           </div>
-          
+
           <Reveal direction="left">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#141618] p-2 rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-white/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="https://solutionplus.io/wp-content/uploads/2025/09/old-code-14-1-scaled-uai-2560x1706.jpg" 
-                alt="Product Modernization" 
-                className="rounded-2xl w-full h-auto object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+              <img
+                src="https://solutionplus.io/wp-content/uploads/2025/09/old-code-14-1-scaled-uai-2560x1706.jpg"
+                alt="Product Modernization"
+                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -62,41 +80,54 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* Why it matters */}
-      <section id="how-it-works" className="py-24 bg-[#0f1112] border-y border-white/5 relative scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12 text-center">
+      <section
+        id="how-it-works"
+        className="bg-sp-bg-dark relative scroll-mt-24 border-y border-white/5 py-24"
+      >
+        <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold mb-16">{isDe ? "Warum es wichtig ist" : "Why it matters for your business"}</h2>
+            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+              {isDe ? 'Warum es wichtig ist' : 'Why it matters for your business'}
+            </h2>
           </Reveal>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: <TrendingUp size={32} className="text-secondary" />,
-                title: isDe ? "Kosten reduzieren" : "Reduce costs",
-                desc: isDe ? "Reduzieren Sie Wartungskosten durch den Austausch fragiler Legacy-Komponenten." : "Reduce maintenance costs by replacing fragile legacy components."
+                icon: <TrendingUp size={32} className="text-sp-accent" />,
+                title: isDe ? 'Kosten reduzieren' : 'Reduce costs',
+                desc: isDe
+                  ? 'Reduzieren Sie Wartungskosten durch den Austausch fragiler Legacy-Komponenten.'
+                  : 'Reduce maintenance costs by replacing fragile legacy components.',
               },
               {
-                icon: <ShieldAlert size={32} className="text-primary" />,
-                title: isDe ? "Sicherheit & Leistung" : "Improve security",
-                desc: isDe ? "Verbessern Sie Leistung und Sicherheit, um aktuelle Standards zu erfüllen." : "Improve performance and security to meet current standards."
+                icon: <ShieldAlert size={32} className="text-sp-accent" />,
+                title: isDe ? 'Sicherheit & Leistung' : 'Improve security',
+                desc: isDe
+                  ? 'Verbessern Sie Leistung und Sicherheit, um aktuelle Standards zu erfüllen.'
+                  : 'Improve performance and security to meet current standards.',
               },
               {
-                icon: <Sparkles size={32} className="text-primary" />,
-                title: isDe ? "Wettbewerbsfähig bleiben" : "Stay competitive",
-                desc: isDe ? "Halten Sie Ihr Produkt mit aktualisierter UX und neuen Funktionen wettbewerbsfähig." : "Keep your product competitive with updated UX and new features."
+                icon: <Sparkles size={32} className="text-sp-accent" />,
+                title: isDe ? 'Wettbewerbsfähig bleiben' : 'Stay competitive',
+                desc: isDe
+                  ? 'Halten Sie Ihr Produkt mit aktualisierter UX und neuen Funktionen wettbewerbsfähig.'
+                  : 'Keep your product competitive with updated UX and new features.',
               },
               {
-                icon: <Activity size={32} className="text-secondary" />,
-                title: isDe ? "Unterbrechungen vermeiden" : "Avoid disruption",
-                desc: isDe ? "Vermeiden Sie die Unterbrechung eines kompletten Neuaufbaus." : "Avoid the disruption of a full rewrite."
-              }
+                icon: <Activity size={32} className="text-sp-accent" />,
+                title: isDe ? 'Unterbrechungen vermeiden' : 'Avoid disruption',
+                desc: isDe
+                  ? 'Vermeiden Sie die Unterbrechung eines kompletten Neuaufbaus.'
+                  : 'Avoid the disruption of a full rewrite.',
+              },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="p-8 rounded-3xl bg-[#141618] border border-white/5 hover:border-white/20 transition-all duration-300 h-full">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10">
+                <div className="bg-sp-bg-medium h-full rounded-3xl border border-white/5 p-8 transition-all duration-300 hover:border-white/20">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{feature.title}</h3>
+                  <h3 className="mb-4 text-xl font-bold text-white">{feature.title}</h3>
                   <p className="text-foreground/60 leading-relaxed">{feature.desc}</p>
                 </div>
               </Reveal>
@@ -106,35 +137,47 @@ export function ServicesPage({ locale }: { locale: string }) {
       </section>
 
       {/* What You'll Get */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="relative overflow-x-hidden py-24">
+        <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
+        <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal direction="right">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 p-2 bg-[#141618]">
+            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-white/10 p-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="https://solutionplus.io/wp-content/uploads/2025/09/What-youll-ge-t-14-1-scaled-uai-2560x1706.jpg" 
-                alt="What you'll get" 
-                className="rounded-2xl w-full h-auto object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+              <img
+                src="https://solutionplus.io/wp-content/uploads/2025/09/What-youll-ge-t-14-1-scaled-uai-2560x1706.jpg"
+                alt="What you'll get"
+                className="h-auto w-full rounded-2xl object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
               />
             </div>
           </Reveal>
-          
+
           <div>
             <Reveal>
-              <h2 className="text-3xl md:text-5xl font-bold mb-10">{isDe ? "Was Sie bekommen" : "What You'll Get"}</h2>
+              <h2 className="mb-10 text-3xl font-bold md:text-5xl">
+                {isDe ? 'Was Sie bekommen' : "What You'll Get"}
+              </h2>
             </Reveal>
             <div className="space-y-6">
               {[
-                isDe ? "Technisches Audit und Modernisierungs-Roadmap" : "Technical audit and modernization roadmap",
-                isDe ? "Architektur-Upgrades und Code-Refactoring" : "Architecture upgrades and code refactoring",
-                isDe ? "Leistungsoptimierung und Sicherheitsverbesserungen" : "Performance tuning and security enhancements",
-                isDe ? "UX/UI-Updates für aktuelle Nutzererwartungen" : "UX/UI updates for current user expectations",
-                isDe ? "Regressionstests zur Gewährleistung der Stabilität" : "Regression testing to ensure stability"
+                isDe
+                  ? 'Technisches Audit und Modernisierungs-Roadmap'
+                  : 'Technical audit and modernization roadmap',
+                isDe
+                  ? 'Architektur-Upgrades und Code-Refactoring'
+                  : 'Architecture upgrades and code refactoring',
+                isDe
+                  ? 'Leistungsoptimierung und Sicherheitsverbesserungen'
+                  : 'Performance tuning and security enhancements',
+                isDe
+                  ? 'UX/UI-Updates für aktuelle Nutzererwartungen'
+                  : 'UX/UI updates for current user expectations',
+                isDe
+                  ? 'Regressionstests zur Gewährleistung der Stabilität'
+                  : 'Regression testing to ensure stability',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="left">
-                  <div className="flex items-start gap-4 p-6 rounded-2xl bg-[#141618] border border-white/5 hover:border-primary/30 transition-colors">
-                    <CheckCircle2 className="text-primary shrink-0 mt-1" />
+                  <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-white/5 p-6 transition-colors">
+                    <CheckCircle2 className="text-sp-accent mt-1 shrink-0" />
                     <p className="text-foreground/80 leading-relaxed font-medium">{item}</p>
                   </div>
                 </Reveal>
@@ -144,28 +187,241 @@ export function ServicesPage({ locale }: { locale: string }) {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden bg-primary/5 border-t border-primary/10 mt-12">
-        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-4xl">
+      {/* Who is it for */}
+      <section className="bg-sp-bg-dark relative border-y border-white/5 py-24">
+        <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              {isDe ? "Erweitern Sie Ihre" : "Grow your"} <span className="text-primary">{isDe ? "Kapazitäten." : "capacity."}</span>
+            <h2 className="mb-16 text-3xl font-bold md:text-5xl">
+              {isDe ? 'Für wen ist das?' : 'Who is it for'}
             </h2>
-            <p className="text-xl text-foreground/70 mb-12">
-              {isDe 
-                ? "Holen Sie sich ein dediziertes Entwicklungsteam, das nach Ihren Standards und Ihrem Zeitplan arbeitet."
-                : "Get a dedicated engineering team that works to your standards and on your schedule."}
+          </Reveal>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              {
+                title: isDe ? 'Scale-ups' : 'Scale-ups',
+                desc: isDe ? 'Innovationsteams in Unternehmen' : 'Innovation teams in corporates',
+                link: 'scale-up',
+                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Scale-ups-1.png',
+              },
+              {
+                title: isDe ? 'Start-ups' : 'Start-ups',
+                desc: isDe
+                  ? 'Gründer in Pre-Seed- bis Series-A-Phasen'
+                  : 'Founders in pre-Seed to Series A stages',
+                link: 'startup',
+                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Start-ups-1.png',
+              },
+              {
+                title: isDe ? 'Gründer mit Idee' : 'Entrepreneur with an Idea',
+                desc: isDe ? 'Die einen Tech-Partner brauchen' : 'who need a tech partner',
+                link: 'entrepreneur-with-an-idea',
+                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Entrepreneur-with-an-Idea-1.png',
+              },
+            ].map((persona, i) => (
+              <Reveal key={i} delay={0.1 * i} direction="up">
+                <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-white/5 p-8 text-center transition-all duration-300">
+                  <div className="mb-6 h-24 w-24">
+                    <img
+                      src={persona.img}
+                      alt={persona.title}
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <h3 className="mb-4 text-2xl font-bold">{persona.title}</h3>
+                  <p className="text-foreground/70 mb-8 flex-grow">{persona.desc}</p>
+                  <Link
+                    href={`/${locale}/${isDe ? (persona.link === 'scale-up' ? 'scaleups' : persona.link === 'startup' ? 'startups' : 'gruender-idee-startup-partner') : persona.link}`}
+                    className="text-sp-accent mt-auto flex items-center gap-2 font-medium transition-colors hover:text-white"
+                  >
+                    {isDe ? 'Mehr erfahren' : 'Learn more'} <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="bg-sp-bg-medium relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+        <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
+
+        <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
+          <Reveal>
+            <div className="max-w-xl">
+              <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
+                {isDe
+                  ? 'Geben Sie Ihrem Produkt ein zweites Leben'
+                  : 'Give your product a second life'}
+              </h2>
+              <p className="text-foreground/70 text-2xl leading-relaxed font-light">
+                {isDe
+                  ? 'Wir modernisieren Ihr Produkt in Phasen, sodass es live bleibt, während wir es verbessern.'
+                  : 'We modernize your product in phases so it stays live while we improve it.'}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal direction="left" delay={0.2}>
+            <ContactFormSection locale={locale} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <StickyQnA
+        locale={locale}
+        items={[
+          {
+            q: isDe
+              ? 'Wird unsere aktuelle Plattform während der Modernisierung ausfallen?'
+              : 'Will our current platform go down during modernization?',
+            a: isDe
+              ? 'Nein. Wir verwenden phasenweise Rollouts und Parallelsysteme, um sicherzustellen, dass Ihr Produkt für Benutzer voll funktionsfähig bleibt, während wir Backend oder Frontend aktualisieren.'
+              : 'No. We use phased rollouts and parallel systems to ensure your product remains fully operational for users while we update the backend or frontend.',
+          },
+          {
+            q: isDe
+              ? 'Können Sie die Architektur verbessern, ohne das Design zu verändern?'
+              : 'Can you improve the architecture without changing the design?',
+            a: isDe
+              ? 'Ja. Wenn Ihre Benutzeroberfläche einwandfrei funktioniert, können wir uns ausschließlich auf das Refactoring des Codes, die Cloud-Migration oder die Datenbankoptimierung konzentrieren, um das System zu beschleunigen.'
+              : 'Yes. If your UI works perfectly, we can focus entirely on code refactoring, cloud migration, or database optimization to speed up the system.',
+          },
+          {
+            q: isDe
+              ? 'Sollten wir das Produkt komplett neu aufbauen oder stückweise reparieren?'
+              : 'Should we completely rebuild the product or fix it piece by piece?',
+            a: isDe
+              ? 'Das hängt von Ihrer Codebasis ab. Wir beginnen immer mit einem technischen Audit, um festzustellen, ob ein Refactoring ausreicht oder ob ein Neuaufbau langfristig kostengünstiger ist.'
+              : 'It depends on your codebase. We always start with a technical audit to determine if refactoring is enough or if a rebuild is more cost-effective long-term.',
+          },
+          {
+            q: isDe
+              ? 'Ist unser Code nach Abschluss gut dokumentiert?'
+              : "Will our code be well documented once it's done?",
+            a: isDe
+              ? 'Absolut. Wir übergeben sauberen, kommentierten Code sowie eine vollständige technische Dokumentation, sodass jedes Team die Wartung problemlos übernehmen kann.'
+              : 'Absolutely. We hand over clean, commented code along with full technical documentation, so any team can take over maintenance easily.',
+          },
+        ]}
+      />
+
+      {/* Testimonials */}
+      <section className="bg-sp-bg-dark border-t border-white/5 py-24 md:py-32 lg:py-40">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
+            <div className="mx-auto mb-20 max-w-4xl text-center">
+              <h2 className="text-sp-text-dark mb-10 text-4xl font-bold text-white md:text-6xl">
+                {isDe
+                  ? 'Sie werden nicht der Erste sein, der uns vertraut'
+                  : "You won't be the first to trust us"}
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
+            <Reveal direction="up" delay={0.1}>
+              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+                <div className="mb-8 flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="h-6 w-6 text-sp-star-filled"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
+                  Automotive Artificial Intelligence (AAI) GmBh
+                </h3>
+                <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
+                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
+                  mapping and visualization. The attention to detail and ability to handle complex
+                  data sets made them the perfect partner for an industry as demanding as
+                  ours.&quot;
+                </blockquote>
+                <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                    <img
+                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      alt="AAI Logo"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <p className="text-sp-text-dark font-semibold">
+                    Automotive Artificial Intelligence (AAI) GmBh
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal direction="up" delay={0.2}>
+              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+                <div className="mb-8 flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="h-6 w-6 text-sp-star-filled"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
+                <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
+                  &quot;Solution Plus turned our vision for a digital investment platform into
+                  reality. They built a robust MERN stack foundation and seamlessly integrated with
+                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
+                  handle financial data securely while still moving fast. Thanks to their work, we
+                  were able to launch confidently and scale without worrying about the
+                  technology.&quot;
+                </blockquote>
+                <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
+                    <img
+                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      alt="Aghaz Invest Logo"
+                      className="h-full w-full object-cover p-2"
+                    />
+                  </div>
+                  <p className="text-sp-text-dark font-semibold">Aghaz Invest</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-hidden border-t py-32">
+        <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
+          <Reveal>
+            <h2 className="mb-8 text-4xl font-bold md:text-6xl">
+              {isDe ? 'Erweitern Sie Ihre' : 'Grow your'}{' '}
+              <span className="text-sp-accent">{isDe ? 'Kapazitäten.' : 'capacity.'}</span>
+            </h2>
+            <p className="text-foreground/70 mb-12 text-xl">
+              {isDe
+                ? 'Holen Sie sich ein dediziertes Entwicklungsteam, das nach Ihren Standards und Ihrem Zeitplan arbeitet.'
+                : 'Get a dedicated engineering team that works to your standards and on your schedule.'}
             </p>
-              <Link
-              href={`/${locale}/${isDe ? "kontakt-solutionplus" : "contact-us"}`}
-              className="px-10 py-5 inline-block rounded-full bg-primary text-white font-bold tracking-wide text-lg hover:bg-[#6c7bd0] transition-all duration-300 shadow-[0_4px_20px_-4px_rgba(92,107,192,0.4)] hover:shadow-[0_8px_40px_-4px_rgba(92,107,192,0.6)] hover:-translate-y-1 active:scale-95 relative overflow-hidden group"
+            <Link
+              href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
-              {isDe ? "Team-Setup anfragen" : "Get a team setup"}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
+              {isDe ? 'Team-Setup anfragen' : 'Get a team setup'}
             </Link>
           </Reveal>
         </div>
       </section>
     </div>
-  );
+  )
 }
