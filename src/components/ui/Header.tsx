@@ -29,6 +29,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { caseStudies } from '@/data/case-studies'
+import { getLocalizedPath, LOCALES } from '@/lib/locale-paths'
 
 interface NavChild {
   name: string
@@ -519,6 +520,31 @@ export function Header({ locale }: { locale: string }) {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
+            <div
+              className="border-sp-border-dark bg-sp-surface-subtle flex items-center rounded-xl border p-0.5"
+              role="group"
+              aria-label={locale === 'de' ? 'Sprache wechseln' : 'Switch language'}
+            >
+              {LOCALES.map((loc) => {
+                const href = getLocalizedPath(loc, pathname)
+                const isActive = locale === loc
+                return (
+                  <Link
+                    key={loc}
+                    href={href}
+                    className={cn(
+                      'rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors',
+                      isActive
+                        ? 'bg-sp-surface-hover text-white'
+                        : 'text-sp-text-muted hover:bg-sp-surface-hover hover:text-white'
+                    )}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {loc.toUpperCase()}
+                  </Link>
+                )
+              })}
+            </div>
             <Button href={contactHref} variant="primary" size="sm">
               {locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
             </Button>
@@ -713,6 +739,33 @@ export function Header({ locale }: { locale: string }) {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              <div
+                className="border-sp-border-dark bg-sp-surface-subtle mt-4 flex items-center justify-center gap-0 rounded-xl border p-0.5"
+                role="group"
+                aria-label={locale === 'de' ? 'Sprache wechseln' : 'Switch language'}
+              >
+                {LOCALES.map((loc) => {
+                  const href = getLocalizedPath(loc, pathname)
+                  const isActive = locale === loc
+                  return (
+                    <Link
+                      key={loc}
+                      href={href}
+                      className={cn(
+                        'flex-1 rounded-lg px-4 py-2.5 text-center text-sm font-semibold transition-colors',
+                        isActive
+                          ? 'bg-sp-surface-hover text-white'
+                          : 'text-sp-text-muted hover:bg-sp-surface-hover hover:text-white'
+                      )}
+                      onClick={() => setMobileOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {loc === 'en' ? 'English' : 'Deutsch'}
+                    </Link>
+                  )
+                })}
               </div>
 
               <Button
