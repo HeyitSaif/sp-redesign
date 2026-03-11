@@ -15,7 +15,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
         : "We'll build your MVP; fast, reliable, and pitch-ready.",
       cta: isDe ? 'So funktioniert unser Modell' : 'See how our model works',
       href: `/${locale}#contact`,
-      image: 'https://solutionplus.io/wp-content/uploads/2025/09/Hero-Img-1-2-scaled.jpg',
+      image: '/images/Hero-Img-1-2-scaled.jpg',
     },
     {
       headline: isDe
@@ -26,7 +26,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
         : 'Get dependable dev team without draining time, budget, or momentum.',
       cta: isDe ? 'Über Skalierung sprechen' : "Let's talk scale",
       href: `/${locale}#contact`,
-      image: 'https://solutionplus.io/wp-content/uploads/2025/09/Hero-Img-12-scaled.jpg',
+      image: '/images/Hero-Img-12-scaled.jpg',
     },
     {
       headline: isDe
@@ -37,7 +37,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
         : 'Bring in senior engineers you can rely on, with none of the overhead.',
       cta: isDe ? 'Schneller entwickeln' : 'Start building faster',
       href: `/${locale}#contact`,
-      image: 'https://solutionplus.io/wp-content/uploads/2025/09/Hero-Img-3-1-scaled.jpg',
+      image: '/images/Hero-Img-3-1-scaled.jpg',
     },
   ]
 
@@ -54,7 +54,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
 
   return (
     <div
-      className="bg-sp-bg-dark relative flex min-h-[100vh] items-center overflow-x-hidden"
+      className="bg-sp-bg-dark relative flex min-h-[100vh] items-center overflow-x-clip"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -125,7 +125,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Go to slide ${i + 1}`}
-            className="group relative flex h-3 w-12 items-center justify-center overflow-x-hidden rounded-full"
+            className="group relative flex h-3 w-12 items-center justify-center overflow-x-clip rounded-full"
           >
             <div className="absolute inset-0 bg-white/20 transition-colors group-hover:bg-white/40" />
             {i === current && (

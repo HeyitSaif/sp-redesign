@@ -3,10 +3,8 @@ import { ArrowRight, Globe2, Target, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
-import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
-import { ProceduralIsometricBlocks } from '@/components/graphics/ProceduralIsometricBlocks'
-import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { supportData } from '@/data/support-content'
 
 export function AboutPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
@@ -15,31 +13,34 @@ export function AboutPage({ locale }: { locale: string }) {
     {
       name: 'Saif Qureshi',
       role: isDe ? 'CEO & Gründer' : 'CEO & Founder',
+      focus: isDe ? 'Fintech, SaaS, Web3, AI' : 'Fintech, SaaS, Web3, AI',
       desc: isDe
         ? 'Mit über 7 Jahren Erfahrung in Fintech, SaaS, Web3 und AI leitet Saif SolutionPlus als CEO, um skalierbare Produkte zu liefern.'
         : 'Blending 7+ years in fintech, SaaS, Web3, and AI, Saif leads SolutionPlus as CEO to deliver scalable products.',
-      img: 'https://solutionplus.io/wp-content/uploads/2025/09/1-1-uai-848x1060.png',
+      img: '/images/1-1-uai-848x1060.png',
     },
     {
       name: 'Matthias Frank',
       role: 'Chief Operation Officer',
+      focus: isDe ? 'Operationen, Qualitätssicherung' : 'Operations, QA',
       desc: isDe
         ? 'Mit 10 Jahren Erfahrung in komplexen Softwareprojekten sichert Matthias Lieferungen in deutscher Qualität mit globalen Talenten.'
         : 'Drawing on 10 years in complex software projects, Matthias ensures German-quality delivery with global talent.',
-      img: 'https://solutionplus.io/wp-content/uploads/2025/09/2-1-uai-848x1060.png',
+      img: '/images/2-1-uai-848x1060.png',
     },
     {
       name: 'Sana Shahid',
       role: 'Chief Marketing Officer',
+      focus: 'Marketing, Kommunikation',
       desc: isDe
         ? 'Sana leitet das Marketing bei SolutionPlus und nutzt 8 Jahre globale Erfahrung, um Strategie in Wachstum zu verwandeln.'
         : 'Guiding marketing and communications at SolutionPlus, Sana uses 8 years of global experience to turn strategy into growth.',
-      img: 'https://solutionplus.io/wp-content/uploads/2025/09/3-1-uai-848x1060.png',
+      img: '/images/3-1-uai-848x1060.png',
     },
   ]
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
       {/* Hero */}
       <section className="bg-sp-bg-dark relative border-y border-white/5 py-24">
@@ -58,7 +59,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 link: 'mvp-sprint-paket',
                 linkEn: 'mvp-sprint-package',
                 btnText: isDe ? 'Mein MVP bauen' : 'Build my MVP',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Startups-building-their-first-product-1.png',
+                img: '/images/Startups-building-their-first-product-1.png',
               },
               {
                 title: isDe ? 'Skalierende' : 'Scaling',
@@ -68,7 +69,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 link: 'scaleups',
                 linkEn: 'scale-up',
                 btnText: isDe ? 'Mein Team skalieren' : 'Scale my team',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Scaling-tech-teams-that-need-reliability-1.png',
+                img: '/images/Scaling-tech-teams-that-need-reliability-1.png',
               },
               {
                 title: isDe ? 'Unternehmen' : 'Companies',
@@ -76,15 +77,17 @@ export function AboutPage({ locale }: { locale: string }) {
                 link: 'dedizierte-teams',
                 linkEn: 'dedicated-delivery-teams',
                 btnText: isDe ? 'Global gehen' : 'Go global',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Companies-expanding-across-borders-2.png',
+                img: '/images/Companies-expanding-across-borders-2.png',
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
                 <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex h-full flex-col items-center rounded-[2rem] border border-black/5 p-8 text-center transition-all duration-300">
-                  <div className="mb-6 h-32 w-32 relative overflow-hidden rounded-xl bg-sp-bg-dark border border-white/5">
-                    {i === 0 && <ProceduralNetwork nodeCount={5} animated={true} />}
-                    {i === 1 && <ProceduralDataGrid animated={true} />}
-                    {i === 2 && <ProceduralIsometricBlocks layers={2} animated={true} />}
+                  <div className="bg-sp-bg-medium relative mb-6 h-32 w-32 overflow-hidden rounded-xl border border-black/5">
+                    <ImageWithShimmer
+                      src={persona.img}
+                      alt={persona.title}
+                      className="h-full w-full object-contain p-4"
+                    />
                   </div>
                   <h3 className="text-sp-text-dark mb-4 text-2xl font-bold">{persona.title}</h3>
                   <p className="text-sp-text-on-light mb-8 flex-grow">{persona.desc}</p>
@@ -118,7 +121,7 @@ export function AboutPage({ locale }: { locale: string }) {
           <div className="grid gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
               <div className="group bg-sp-bg-medium relative h-full rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 text-9xl font-bold transition-colors">
                   1
                 </div>
                 <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
@@ -136,7 +139,7 @@ export function AboutPage({ locale }: { locale: string }) {
 
             <Reveal delay={0.2} direction="up">
               <div className="group bg-sp-bg-medium relative h-full rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 text-9xl font-bold transition-colors">
                   2
                 </div>
                 <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
@@ -152,7 +155,7 @@ export function AboutPage({ locale }: { locale: string }) {
 
             <Reveal delay={0.3} direction="up">
               <div className="group bg-sp-bg-medium relative h-full rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 text-9xl font-bold transition-colors">
                   3
                 </div>
                 <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
@@ -191,12 +194,12 @@ export function AboutPage({ locale }: { locale: string }) {
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -216,7 +219,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      src="/images/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
                       wrapperClassName="h-full w-full rounded-full"
                     />
@@ -229,12 +232,12 @@ export function AboutPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -254,7 +257,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      src="/images/1-150x150.png"
                       alt="Aghaz Invest Logo"
                       wrapperClassName="h-full w-full rounded-full"
                       className="p-2"
@@ -269,7 +272,7 @@ export function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-sp-bg-dark relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -295,7 +298,7 @@ export function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Why companies work with us */}
-      <section className="relative overflow-x-hidden py-24">
+      <section className="relative overflow-x-clip py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
@@ -324,14 +327,16 @@ export function AboutPage({ locale }: { locale: string }) {
               <Reveal key={i} delay={0.1 * i} direction="up">
                 <div className="hover:border-sp-accent/30 bg-sp-bg-medium flex items-start gap-4 rounded-2xl border border-black/5 p-6 transition-colors">
                   <CheckCircle2 className="text-sp-accent mt-1 shrink-0" />
-                  <p className="text-sp-text-on-light text-lg leading-relaxed font-medium">{item}</p>
+                  <p className="text-sp-text-on-light text-lg leading-relaxed font-medium">
+                    {item}
+                  </p>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
-      <section className="relative flex min-h-[60vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-20">
         <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full blur-[150px]" />
 
@@ -353,7 +358,7 @@ export function AboutPage({ locale }: { locale: string }) {
               <div className="flex gap-4">
                 <Link
                   href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-                  className="bg-sp-accent group hover:bg-sp-accent-dark relative flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                  className="bg-sp-accent group hover:bg-sp-accent-dark relative flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
                 >
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                   {isDe ? 'Sprechen Sie mit uns' : "Let's talk"}{' '}
@@ -366,25 +371,30 @@ export function AboutPage({ locale }: { locale: string }) {
             </Reveal>
           </div>
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
-              <ProceduralNetwork animated={true} nodeCount={40} />
+            <div className="bg-sp-bg-medium relative h-64 rotate-2 overflow-x-clip rounded-3xl border border-black/10 p-2 transition-transform duration-500 hover:rotate-0 md:h-80 lg:h-[400px]">
+              <ImageWithShimmer
+                src="/images/Careers-13-scaled-uai-1444x1444.jpg"
+                alt="Team Collaboration"
+                wrapperClassName="rounded-2xl"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-sp-bg-dark relative overflow-x-hidden border-y border-white/5 py-24">
+      <section className="bg-sp-bg-dark relative overflow-x-clip border-y border-white/5 py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 left-1/2 h-[300px] w-full -translate-x-1/2 -translate-y-1/2 blur-[120px]" />
         <div className="relative z-10 container mx-auto px-6 md:px-12">
           <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-hidden rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-clip rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                 <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute top-0 right-0 p-8 opacity-5 transition-all duration-500 group-hover:scale-110 group-hover:opacity-20">
                   <Globe2 size={120} className="text-sp-accent" />
                 </div>
-                  <h2 className="text-sp-text-dark relative z-10 mb-6 text-3xl font-bold transition-transform duration-300 group-hover:translate-x-2">
+                <h2 className="text-sp-text-dark relative z-10 mb-6 text-3xl font-bold transition-transform duration-300 group-hover:translate-x-2">
                   {isDe ? 'Vision' : 'Vision'}
                 </h2>
                 <p className="text-sp-text-on-light relative z-10 text-xl leading-relaxed">
@@ -396,12 +406,12 @@ export function AboutPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-hidden rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+              <div className="group bg-sp-bg-medium/80 relative h-full overflow-x-clip rounded-[2rem] border border-black/5 p-10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
                 <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute top-0 right-0 p-8 opacity-5 transition-all duration-500 group-hover:scale-110 group-hover:opacity-20">
                   <Target size={120} className="text-sp-accent" />
                 </div>
-                  <h2 className="text-sp-text-dark relative z-10 mb-6 text-3xl font-bold transition-transform duration-300 group-hover:translate-x-2">
+                <h2 className="text-sp-text-dark relative z-10 mb-6 text-3xl font-bold transition-transform duration-300 group-hover:translate-x-2">
                   {isDe ? 'Mission' : 'Mission'}
                 </h2>
                 <p className="text-sp-text-on-light relative z-10 text-xl leading-relaxed">
@@ -412,6 +422,28 @@ export function AboutPage({ locale }: { locale: string }) {
               </div>
             </Reveal>
           </div>
+
+          {/* Stats Strip */}
+          <Reveal direction="up" delay={0.3}>
+            <div className="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-16 md:grid-cols-4">
+              {[
+                { value: supportData[isDe ? 'de' : 'en'].stats.engineers },
+                { value: supportData[isDe ? 'de' : 'en'].stats.clients },
+                { value: supportData[isDe ? 'de' : 'en'].stats.years },
+                { value: supportData[isDe ? 'de' : 'en'].stats.locations },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center justify-center gap-2 text-center"
+                >
+                  <span className="text-3xl font-bold text-white">{stat.value.split(' ')[0]}</span>
+                  <span className="text-foreground/70 text-sm font-medium tracking-wide uppercase">
+                    {stat.value.split(' ').slice(1).join(' ')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -427,8 +459,8 @@ export function AboutPage({ locale }: { locale: string }) {
           <div className="mx-auto grid max-w-6xl gap-8 text-left md:grid-cols-3">
             {team.map((member, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium/80 overflow-x-hidden rounded-[2rem] border border-black/5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
-                  <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-x-hidden">
+                <div className="group bg-sp-bg-medium/80 overflow-x-clip rounded-[2rem] border border-black/5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                  <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-x-clip">
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141618] via-transparent to-transparent opacity-80" />
                     <ImageWithShimmer
                       src={member.img}
@@ -438,10 +470,15 @@ export function AboutPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <div className="relative z-20 -mt-12 bg-gradient-to-t from-[#141618] to-transparent p-8 pt-12">
-                    <h3 className="group-hover:text-sp-accent mb-2 text-2xl font-bold text-sp-text-dark transition-colors">
+                    <h3 className="group-hover:text-sp-accent text-sp-text-dark mb-2 text-2xl font-bold transition-colors">
                       {member.name}
                     </h3>
-                    <p className="text-sp-accent mb-4 font-medium">{member.role}</p>
+                    <p className="text-sp-accent mb-2 font-medium">{member.role}</p>
+                    {member.focus && (
+                      <p className="text-sp-text-on-light/60 mb-4 text-xs font-semibold tracking-wider uppercase">
+                        {member.focus}
+                      </p>
+                    )}
                     <p className="text-sp-text-on-light text-sm leading-relaxed">{member.desc}</p>
                   </div>
                 </div>
@@ -452,7 +489,7 @@ export function AboutPage({ locale }: { locale: string }) {
       </section>
 
       {/* Global CTA */}
-      <section className="border-sp-accent/10 bg-sp-bg-dark relative mt-12 overflow-x-hidden border-t py-32">
+      <section className="border-sp-accent/10 bg-sp-bg-dark relative mt-12 overflow-x-clip border-t py-32">
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
@@ -461,7 +498,7 @@ export function AboutPage({ locale }: { locale: string }) {
             </h2>
             <Link
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Projekt starten' : 'Start your project'}

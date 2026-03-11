@@ -1,4 +1,7 @@
 'use client'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
 
 import { Reveal } from '@/components/animations/Reveal'
 import { ArrowRight, Lightbulb, Rocket, Target, Zap, LayoutDashboard, Coins } from 'lucide-react'
@@ -7,26 +10,32 @@ import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
-import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
-import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
+
+import { supportData } from '@/data/support-content'
+import { Badge } from '@/components/ui/Badge'
 
 export function EntrepreneurPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
         <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 left-0 h-[800px] w-[800px] rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
             <Reveal>
-              <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium">
-                <Lightbulb size={16} />
-                {isDe ? 'Für Gründer' : 'For Entrepreneurs'}
+              <div className="mb-8 flex flex-wrap items-center gap-3">
+                <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium">
+                  <Lightbulb size={16} />
+                  {isDe ? 'Für Gründer' : 'For Entrepreneurs'}
+                </div>
+                <Badge variant="outline" className="text-white/60">
+                  {supportData[isDe ? 'de' : 'en'].services.idealFor}: Pre-Seed / Idea Phase
+                </Badge>
               </div>
               <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
                 {isDe ? 'Ihre Idee verdient mehr als ' : 'Your idea deserves more than '}{' '}
@@ -41,7 +50,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
                 >
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                   {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
@@ -61,8 +70,13 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
-              <ProceduralGeometricMesh variant="circle" animated={true} />
+            <div className="bg-sp-bg-medium relative h-64 rotate-2 overflow-x-clip rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:h-80 lg:h-[400px]">
+              <ImageWithShimmer
+                src="/images/Why-this-works-14-scaled-uai-2560x1706.jpg"
+                alt="Entrepreneur Idea"
+                wrapperClassName="rounded-2xl h-full w-full"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
         </div>
@@ -113,7 +127,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* Why this works */}
-      <section className="relative overflow-x-hidden py-24">
+      <section className="relative overflow-x-clip py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
         <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
@@ -148,8 +162,13 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
-              <ProceduralProcessPipeline steps={3} animated={true} />
+            <div className="bg-sp-bg-medium relative h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[400px]">
+              <ImageWithShimmer
+                src="/images/What-you-get-with-us-14-scaled-uai-2560x1706.jpg"
+                alt="Why it works"
+                wrapperClassName="rounded-2xl h-full w-full"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
         </div>
@@ -166,17 +185,20 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
 
           <div className="grid gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   01
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <Rocket size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralProcessPipeline steps={4} animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <Rocket size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
                   {isDe ? 'MVPs in 4–6 Wochen' : 'MVPs in 4–6 weeks'}
                 </h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   {isDe
                     ? 'Wir starten schnell, priorisieren den Kernwert und bringen Sie schnell auf den Markt.'
                     : 'We move fast, prioritize core value, and get you to market quickly.'}
@@ -185,19 +207,22 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   02
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <Coins size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralDataGrid animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <Coins size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
                   {isDe
                     ? 'Fester Umfang. Transparenter Preis.'
                     : 'Fixed scope. Transparent pricing.'}
                 </h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   {isDe
                     ? 'Keine Überraschungen oder versteckten Kosten. Klare Logik über den gesamten Zyklus hinweg.'
                     : 'No surprises or hidden fees. Clear logic throughout the entire cycle.'}
@@ -206,17 +231,20 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   03
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <LayoutDashboard size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralNetwork nodeCount={15} animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <LayoutDashboard size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
                   {isDe ? 'Deutsch-geführt, global gebaut' : 'German-managed, globally built'}
                 </h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   {isDe
                     ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unsere Ingenieure in Pakistan mit Sorgfalt bauen.'
                     : "You'll work with a German-based delivery lead, while our engineers in Pakistan build with care."}
@@ -228,7 +256,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-sp-bg-dark relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -311,12 +339,12 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -336,7 +364,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      src="/images/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
                       wrapperClassName="h-full w-full rounded-full"
                     />
@@ -349,12 +377,12 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -374,7 +402,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      src="/images/1-150x150.png"
                       alt="Aghaz Invest Logo"
                       wrapperClassName="h-full w-full rounded-full"
                       className="p-2"
@@ -388,8 +416,55 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
         </div>
       </section>
 
+      {/* Related reading */}
+      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
+            <h3 className="mb-8 text-center text-2xl font-bold text-white">
+              {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
+            </h3>
+            <div className="mx-auto mb-10 max-w-2xl">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/democorder`}
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+              >
+                <div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">
+                    B2B SaaS · {isDe ? 'Fallstudie' : 'Case Study'}
+                  </div>
+                  <div className="text-lg font-semibold text-white">Democorder</div>
+                  <div className="text-sm text-white/60">
+                    {isDe ? 'Von der Idee zur produktionsreifen B2B-Plattform in 6 Monaten' : 'From idea to production-ready B2B SaaS in 6 months'}
+                  </div>
+                </div>
+                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={20} />
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
+                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+              >
+                {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
+              </Link>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-foreground/70 mb-6 text-lg">
+                {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
+              </p>
+              <Link
+                href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                className="text-sp-accent hover:text-sp-accent-dark font-medium underline underline-offset-4"
+              >
+                {isDe ? 'Sprechen Sie mit uns' : "Let's talk"}
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="bg-sp-accent/5 border-sp-accent/10 relative overflow-x-hidden border-t py-32">
+      <section className="bg-sp-accent/5 border-sp-accent/10 relative overflow-x-clip border-t py-32">
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
             <h2 className="mb-8 text-4xl font-bold md:text-6xl">
@@ -403,7 +478,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </p>
             <Link
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Jetzt sprechen' : 'Start talking'}

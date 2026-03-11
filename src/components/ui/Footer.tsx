@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Mail, Phone, MapPin } from 'lucide-react'
+import { supportData } from '@/data/support-content'
 
 export function Footer({ locale }: { locale: string }) {
   const currentYear = new Date().getFullYear()
@@ -7,9 +8,9 @@ export function Footer({ locale }: { locale: string }) {
 
   return (
     <footer className="text-sp-text-on-light bg-sp-bg-medium relative overflow-hidden px-10 py-24 md:px-20 md:py-32 lg:px-32 lg:py-40">
-      <div className="relative z-10 container mx-auto grid grid-cols-1 gap-16 md:grid-cols-4 md:gap-20">
+      <div className="relative z-10 container mx-auto grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-12 xl:gap-20">
         {/* Blurb & Social */}
-        <div className="md:col-span-1">
+        <div className="md:col-span-2 lg:col-span-2">
           <p className="text-sp-text-dark mb-8 text-base leading-relaxed font-light md:text-lg">
             {isDe
               ? 'Von der großen Idee zum greifbaren Erfolg. SolutionPlus bietet den Rahmen für ambitionierte Projekte, von der Produkteinführung bis hin zur Skalierung von Teams und der Verlagerung von Talenten.'
@@ -120,6 +121,47 @@ export function Footer({ locale }: { locale: string }) {
           </ul>
         </div>
 
+        {/* Services */}
+        <div>
+          <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">
+            Services
+          </h4>
+          <ul className="flex flex-col gap-4">
+            <li>
+              <Link
+                href={isDe ? `/${locale}/ki-automatisierung` : `/${locale}/ai-automation`}
+                className="hover:text-sp-link-hover text-base transition-colors"
+              >
+                {isDe ? 'KI-Automatisierung' : 'AI Automation'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`/${locale}/ui-ux-design`}
+                className="hover:text-sp-link-hover text-base transition-colors"
+              >
+                UI/UX Design
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={isDe ? `/${locale}/web-entwicklung` : `/${locale}/web-app-development`}
+                className="hover:text-sp-link-hover text-base transition-colors"
+              >
+                {isDe ? 'Web-Entwicklung' : 'Web App Development'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={isDe ? `/${locale}/mobile-app-entwicklung` : `/${locale}/mobile-app-development`}
+                className="hover:text-sp-link-hover text-base transition-colors"
+              >
+                {isDe ? 'Mobile App-Entwicklung' : 'Mobile App Development'}
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* Legal */}
         <div>
           <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">
@@ -166,7 +208,12 @@ export function Footer({ locale }: { locale: string }) {
           <ul className="flex flex-col gap-6">
             <li className="flex items-start gap-3 text-base">
               <MapPin className="text-sp-text-on-light shrink-0" size={20} />
-              <span>Kollwitzstraße 76, 10435 Berlin</span>
+              <div className="flex flex-col gap-1">
+                <span>Kollwitzstraße 76, 10435 Berlin</span>
+                <span className="text-sp-text-on-light/60 text-sm italic">
+                  {supportData[isDe ? 'de' : 'en'].footer.locations}
+                </span>
+              </div>
             </li>
             <li className="flex items-center gap-3 text-base">
               <Phone className="text-sp-text-on-light shrink-0" size={20} />

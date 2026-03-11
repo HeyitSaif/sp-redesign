@@ -29,13 +29,10 @@ export function ImageWithShimmer({
 }: ImageWithShimmerProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
-  // Use next/image for internal or remote patterns, but we need to check if it's an external url
-  // that isn't in remotePatterns. Actually, we can just use regular <img> if fill is false and we don't have w/h
-  // but next.config.ts has solutionplus.io in remotePatterns.
-  const isSolutionPlus = src.includes('solutionplus.io')
+  // Use next/image for internal paths (/images/...) or configured remote patterns
   const isInternal = src.startsWith('/')
-  
-  const canUseNextImage = isSolutionPlus || isInternal
+  const isRemoteConfigured = src.includes('solutionplus.io')
+  const canUseNextImage = isInternal || isRemoteConfigured
 
   return (
     <div
@@ -49,12 +46,13 @@ export function ImageWithShimmer({
       <div
         className={cn(
           'absolute inset-0 bg-white/5',
-          !isLoaded && 'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent'
+          !isLoaded &&
+            'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent'
         )}
       />
 
       {/* Image */}
-      {canUseNextImage ? (
+      {canUseNextImage && (fill || (width && height)) ? (
         <Image
           src={src}
           alt={alt}

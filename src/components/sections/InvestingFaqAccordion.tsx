@@ -75,7 +75,7 @@ export function InvestingFaqAccordion({ locale }: { locale: string }) {
         return (
           <div
             key={index}
-            className="group border-sp-border-light/20 overflow-x-hidden border-b transition-colors"
+            className="group border-sp-border-light/20 overflow-x-clip border-b transition-colors"
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}

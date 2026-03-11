@@ -87,7 +87,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background selection:bg-sp-accent/30 relative flex min-h-screen flex-col overflow-x-hidden antialiased selection:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background selection:bg-sp-accent/30 relative flex min-h-screen flex-col overflow-x-clip antialiased selection:text-white`}
       >
         <StructuredData data={[orgSchema, siteSchema]} />
         <ParticleBackground />

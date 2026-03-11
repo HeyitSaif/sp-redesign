@@ -15,23 +15,29 @@ import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
-import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
-import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+
+import { supportData } from '@/data/support-content'
+import { Badge } from '@/components/ui/Badge'
 
 export function ScaleUpPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
       {/* Hero Section */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[100px]" />
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
-            <span className="text-sp-accent mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
-              {isDe ? 'Für Scale-Ups' : 'For Scale-ups'}
-            </span>
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+              <span className="text-sp-accent rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
+                {isDe ? 'Für Scale-Ups' : 'For Scale-ups'}
+              </span>
+              <Badge variant="outline" className="text-white/60">
+                {supportData[isDe ? 'de' : 'en'].services.idealFor}: Series A+
+              </Badge>
+            </div>
             <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-7xl">
               {isDe
                 ? 'Ihre Roadmap ist ehrgeizig. Wir helfen Ihnen, ihr'
@@ -48,7 +54,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
               >
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                 {isDe ? 'Gespräch vereinbaren' : 'Set up a short call'}{' '}
@@ -68,14 +74,19 @@ export function ScaleUpPage({ locale }: { locale: string }) {
       {/* Why Scaleups Work With Us */}
       <section
         id="how-we-help"
-        className="bg-sp-bg-dark relative scroll-mt-24 overflow-x-hidden border-y border-white/5 py-24"
+        className="bg-sp-bg-dark relative scroll-mt-24 overflow-x-clip border-y border-white/5 py-24"
       >
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 right-0 h-1/2 w-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <Reveal direction="right">
-              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
-                <ProceduralNetwork nodeCount={25} animated={true} />
+              <div className="bg-sp-bg-medium relative h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[400px]">
+                <ImageWithShimmer
+                  src="/images/Why-Scaleups-Work-With-Us-14-uai-1460x973.jpg"
+                  alt="Why Scaleups Work With Us"
+                  wrapperClassName="rounded-2xl h-full w-full"
+                  className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                />
               </div>
             </Reveal>
             <div>
@@ -155,11 +166,11 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
+                <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
                     {feature.icon}
                   </div>
-                  <h3 className="mb-3 text-xl font-bold text-sp-text-dark">{feature.title}</h3>
+                  <h3 className="text-sp-text-dark mb-3 text-xl font-bold">{feature.title}</h3>
                   <p className="text-sp-text-on-light leading-relaxed">{feature.desc}</p>
                 </div>
               </Reveal>
@@ -218,7 +229,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
       </section>
 
       {/* Industries */}
-      <section className="relative overflow-x-hidden py-24">
+      <section className="relative overflow-x-clip py-24">
         <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
             <h2 className="mb-16 text-3xl font-bold md:text-5xl">
@@ -246,7 +257,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-sp-bg-dark relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -346,12 +357,12 @@ export function ScaleUpPage({ locale }: { locale: string }) {
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -371,7 +382,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      src="/images/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
                       wrapperClassName="h-full w-full rounded-full"
                     />
@@ -384,12 +395,12 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -409,7 +420,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      src="/images/1-150x150.png"
                       alt="Aghaz Invest Logo"
                       wrapperClassName="h-full w-full rounded-full"
                       className="p-2"
@@ -424,7 +435,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
       </section>
 
       {/* Global CTA */}
-      <section className="bg-sp-accent/5 relative overflow-x-hidden border-t border-white/5 py-32">
+      <section className="bg-sp-accent/5 relative overflow-x-clip border-t border-white/5 py-32">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
@@ -436,11 +447,58 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             </h2>
             <Link
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Sprechen Sie mit uns' : 'Talk to us'}
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Related reading */}
+      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
+            <h3 className="mb-8 text-center text-2xl font-bold text-white">
+              {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
+            </h3>
+            <div className="mx-auto mb-10 max-w-2xl">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/automotive-ai`}
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+              >
+                <div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">
+                    Automotive · ISO 26262
+                  </div>
+                  <div className="text-lg font-semibold text-white">Automotive AI (AAI)</div>
+                  <div className="text-sm text-white/60">
+                    {isDe ? '2 komplexe Plattformen parallel, konsistente technische Leitung' : '2 complex platforms built in parallel with consistent technical lead'}
+                  </div>
+                </div>
+                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={20} />
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
+                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+              >
+                {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
+              </Link>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-foreground/70 mb-6 text-lg">
+                {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
+              </p>
+              <Link
+                href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                className="text-sp-accent hover:text-sp-accent-dark font-medium underline underline-offset-4"
+              >
+                {isDe ? 'Sprechen Sie mit uns' : "Let's talk"}
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

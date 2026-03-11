@@ -1,4 +1,8 @@
 'use client'
+import { ProceduralIsometricBlocks } from '@/components/graphics/ProceduralIsometricBlocks'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+import { ProceduralProcessPipeline } from '@/components/graphics/ProceduralProcessPipeline'
 
 import { Reveal } from '@/components/animations/Reveal'
 import { ArrowRight, Users, CheckCircle2, Globe2, Gauge, LineChart, Code2 } from 'lucide-react'
@@ -7,18 +11,18 @@ import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { StickyQnA } from '@/components/sections/StickyQnA'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
-import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
-import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
-import { ProceduralCodeEditor } from '@/components/graphics/ProceduralCodeEditor'
+
+import { supportData } from '@/data/support-content'
+import { Badge } from '@/components/ui/Badge'
 
 export function DedicatedTeamsPage({ locale }: { locale: string }) {
   const isDe = locale === 'de'
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
         <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[800px] w-[800px] rounded-full blur-[150px]" />
 
@@ -45,7 +49,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                  className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
                 >
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                   {isDe ? 'Gespräch vereinbaren' : 'Get Started'}{' '}
@@ -65,8 +69,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative rotate-2 overflow-x-hidden rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 h-64 md:h-80 lg:h-[400px]">
-              <ProceduralNetwork animated={true} nodeCount={30} />
+            <div className="bg-sp-bg-medium relative h-64 rotate-2 overflow-x-clip rounded-3xl border border-black/10 p-2 shadow-2xl transition-transform duration-500 hover:rotate-0 md:h-80 lg:h-[400px]">
+              <ImageWithShimmer
+                src="/images/When-speed-matters-and-teams-are-stretched-getting-an-MVP-live-can-feel-impossible._E2_80_A8-12-scaled-uai-2560x1706.jpg"
+                alt="Dedicated Delivery Teams"
+                wrapperClassName="rounded-2xl h-full w-full"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
         </div>
@@ -116,12 +125,22 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-              <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-black/10 bg-black/5">
-                    {feature.icon}
+                <div className="bg-sp-bg-medium group relative h-full overflow-hidden rounded-3xl border border-black/5 p-8 transition-all duration-300 hover:border-black/20">
+                  <div className="bg-sp-bg-dark relative mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                    {i === 0 && <ProceduralProcessPipeline steps={4} animated={true} />}
+                    {i === 1 && <ProceduralNetwork nodeCount={12} animated={true} />}
+                    {i === 2 && <ProceduralDataGrid animated={true} />}
+                    {i === 3 && <ProceduralIsometricBlocks layers={3} animated={true} />}
+                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                      {feature.icon}
+                    </div>
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-sp-text-dark">{feature.title}</h3>
-                  <p className="text-sp-text-on-light leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sp-text-on-light relative z-20 leading-relaxed">
+                    {feature.desc}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -130,7 +149,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
       </section>
 
       {/* What You'll Get */}
-      <section className="relative overflow-x-hidden py-24">
+      <section className="relative overflow-x-clip py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
         <div className="container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
           <div>
@@ -162,8 +181,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
           </div>
 
           <Reveal direction="left">
-            <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[400px]">
-              <ProceduralCodeEditor animated={true} />
+            <div className="bg-sp-bg-medium relative h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[400px]">
+              <ImageWithShimmer
+                src="/images/What-youll-ge-t-14-scaled-uai-2560x1706.jpg"
+                alt="What you'll get"
+                wrapperClassName="rounded-2xl h-full w-full"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
         </div>
@@ -184,7 +208,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 title: isDe ? 'Scale-ups' : 'Scale-ups',
                 desc: isDe ? 'Innovationsteams in Unternehmen' : 'Innovation teams in corporates',
                 link: 'scale-up',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Scale-ups-1.png',
+                img: '/images/Scale-ups-1.png',
               },
               {
                 title: isDe ? 'Start-ups' : 'Start-ups',
@@ -192,13 +216,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                   ? 'Gründer in Pre-Seed- bis Series-A-Phasen'
                   : 'Founders in pre-Seed to Series A stages',
                 link: 'startup',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Start-ups-1.png',
+                img: '/images/Start-ups-1.png',
               },
               {
                 title: isDe ? 'Gründer mit Idee' : 'Entrepreneur with an Idea',
                 desc: isDe ? 'Die einen Tech-Partner brauchen' : 'who need a tech partner',
                 link: 'entrepreneur-with-an-idea',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Entrepreneur-with-an-Idea-1.png',
+                img: '/images/Entrepreneur-with-an-Idea-1.png',
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">
@@ -227,7 +251,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
       </section>
 
       {/* Calculate your team setup / Contact */}
-      <section className="bg-sp-bg-medium relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-medium relative overflow-x-clip py-24 md:py-32 lg:py-40">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -242,8 +266,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                   : "Estimate your team size and monthly commitment. We'll share how to make it operational fast and ensure it's delivering from week one."}
               </p>
             </div>
-            <div className="bg-sp-bg-medium mt-12 overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-96">
-              <ProceduralDataGrid animated={true} />
+            <div className="bg-sp-bg-medium mt-12 h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-96">
+              <ImageWithShimmer
+                src="/images/Calculate-you-MVP-investment-14-uai-1460x973.jpg"
+                alt="Calculate your team setup"
+                wrapperClassName="rounded-2xl h-full w-full"
+                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+              />
             </div>
           </Reveal>
 
@@ -305,12 +334,12 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -330,7 +359,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      src="/images/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
                       wrapperClassName="h-full w-full rounded-full"
                     />
@@ -343,12 +372,12 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -368,7 +397,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      src="/images/1-150x150.png"
                       alt="Aghaz Invest Logo"
                       wrapperClassName="h-full w-full rounded-full"
                       className="p-2"
@@ -383,7 +412,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-hidden border-t py-32">
+      <section className="bg-sp-bg-medium border-sp-accent/10 relative overflow-x-clip border-t py-32">
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
             <h2 className="text-sp-text-dark mb-8 text-4xl font-bold md:text-6xl">
@@ -399,11 +428,58 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             </p>
             <Link
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Berechnen Sie Ihr Team-Setup' : 'Calculate your team setup'}
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Related reading */}
+      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
+            <h3 className="mb-8 text-center text-2xl font-bold text-white">
+              {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
+            </h3>
+            <div className="mx-auto mb-10 max-w-2xl">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/automotive-ai`}
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+              >
+                <div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">
+                    Automotive AI · {isDe ? 'Dedizierte Teams' : 'Dedicated Teams'}
+                  </div>
+                  <div className="text-lg font-semibold text-white">Automotive AI (AAI)</div>
+                  <div className="text-sm text-white/60">
+                    {isDe ? '2 Plattformen parallel gebaut, null Delivery-Reibung' : '2 platforms built in parallel, zero delivery friction'}
+                  </div>
+                </div>
+                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={20} />
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
+                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+              >
+                {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
+              </Link>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-foreground/70 mb-6 text-lg">
+                {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
+              </p>
+              <Link
+                href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                className="text-sp-accent hover:text-sp-accent-dark font-medium underline underline-offset-4"
+              >
+                {isDe ? 'Sprechen Sie mit uns' : "Let's talk"}
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

@@ -29,7 +29,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
 
   return (
     <div
-      className="bg-sp-bg-dark/80 group relative overflow-x-hidden rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12"
+      className="bg-sp-bg-dark/80 group relative overflow-x-clip rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12"
       id="contact"
     >
       <div className="from-sp-accent/5 to-sp-accent-dark/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
@@ -169,7 +169,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
           disabled={isPending}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-sp-accent hover:bg-sp-accent-dark group relative mt-8 flex w-full items-center justify-center gap-3 overflow-x-hidden rounded-xl px-8 py-5 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,112,67,0.3)] transition-all hover:shadow-[0_0_40px_rgba(255,112,67,0.6)]"
+          className="bg-sp-accent hover:bg-sp-accent-dark group relative mt-8 flex w-full items-center justify-center gap-3 overflow-x-clip rounded-xl px-8 py-5 text-lg font-bold text-white shadow-[0_0_20px_rgba(255,112,67,0.3)] transition-all hover:shadow-[0_0_40px_rgba(255,112,67,0.6)]"
         >
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
           {isPending ? (

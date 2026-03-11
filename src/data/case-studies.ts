@@ -4,7 +4,10 @@ export type CaseStudyContent = {
   slug: string
   clientName: string
   tagline: string
+  executiveSummary?: string
   industryBadge: string
+  duration?: string
+  deliveryModel?: string
 
   title: string
   intro: string | string[]
@@ -40,6 +43,12 @@ export type CaseStudyContent = {
 
   whyItWorkedTitle?: string
   whyItWorkedText?: string | string[]
+  whyItWorkedPoints?: { title: string; desc: string }[]
+
+  comparisonTitle?: string
+  comparisonPoints?: { bad: string; good: string }[]
+
+  keyMetricsPreview?: { label: string; value: string }[]
 
   testimonial?: { quote: string; author: string }
 
@@ -52,8 +61,11 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
       slug: 'tecsofiy',
       clientName: 'Tecsofy',
       tagline: 'Process-First Automation for B2B Operations',
+      executiveSummary: 'Streamlined B2B operations by automating email routing and scheduling, eliminating coordination overhead within one week.',
       industryBadge: 'B2B Automation',
       title: 'Tecsofy » Process-First Automation for B2B Operations',
+      duration: '4 Weeks',
+      deliveryModel: 'Process Design & Automation',
       intro: 'Tecsofy manages customer communication across sales and service channels. As volume grew, so did the coordination load. Teams were spending more time managing handoffs than serving customers. The tools were there. The workflow logic was not.',
       challengeTitle: 'The Challenge',
       challengeTable: [
@@ -81,17 +93,28 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Net outcome', value: 'Coordination time decreased, customer-facing work increased' }
       ],
       whyItWorkedTitle: 'Why This Engagement Worked',
-      whyItWorkedText: [
-        'Automation built on unclear processes does not solve the problem. It scales it.',
-        'By defining process logic before writing a single workflow, Tecsofy avoided that pattern. The automation running today reinforces structure. It did not create it.'
+      whyItWorkedText: 'By defining process logic before writing a single workflow, Tecsofy avoided the pattern of scaling broken processes. The automation running today reinforces structure. It did not create it.',
+      whyItWorkedPoints: [
+        { title: 'Process Before Technology', desc: 'We mapped how work moved before touching any tooling. Routing rules and ownership came before automation.' },
+        { title: 'Quick Wins First', desc: 'Core automations were live within the first week. Early results built internal confidence and buy-in.' },
+        { title: 'No Tool Sprawl', desc: 'We optimized what already existed instead of replacing it. No unnecessary rebuilds, no added complexity.' },
+        { title: 'Sustainable Efficiency', desc: 'Automation that reflects real process logic gets used. Adoption was high because the system matched how people actually worked.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Time to first automation', value: '1 week' },
+        { label: 'Tools integrated', value: '6+' },
+        { label: 'Coordination overhead', value: 'Eliminated' }
       ]
     },
     {
       slug: 'automotive-ai',
       clientName: 'Automotive AI',
       tagline: 'Building Two Automotive Platforms in Parallel',
+      executiveSummary: 'Engineered two distinct, compliance-heavy automotive platforms simultaneously without coordination friction or architectural rework.',
       industryBadge: 'Automotive AI',
       title: 'Automotive AI (AAI) » Building Two Automotive Platforms in Parallel',
+      duration: 'Ongoing',
+      deliveryModel: 'Dedicated Teams',
       intro: 'Automotive AI GmbH delivers automotive intelligence and simulation solutions in a regulated, performance-critical environment. Their work supports safety-sensitive systems where traceability, validation, and technical reliability are non-negotiable.',
       challengeTitle: 'The Challenge',
       challengeText: 'AAI needed to build two independent products from scratch simultaneously, both reaching production-ready MVP stage on strict timelines. Each platform had to integrate with existing workflows, handle complex automotive data structures, and scale without architectural rework — all without creating coordination overhead between the two streams.\n\nThey needed a delivery partner who could take ownership and operate with minimal handholding.',
@@ -130,7 +153,18 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Ongoing collaboration', value: 'Active, grounded in technical transparency' }
       ],
       whyItWorkedTitle: 'Why It Worked',
-      whyItWorkedText: 'Domain familiarity shaped the decisions that mattered most. We invested time in understanding automotive safety logic, simulation tooling, and regulatory context before designing anything. Milestone-based execution kept two simultaneous workstreams aligned and uncertainty manageable. A consistent technical lead across both products preserved context and reduced the overhead that typically builds up when parallel efforts are run by different teams.',
+      whyItWorkedText: 'Domain familiarity shaped the decisions that mattered most. We invested time in understanding automotive safety logic, simulation tooling, and regulatory context before designing anything.',
+      whyItWorkedPoints: [
+        { title: 'Domain Immersion', desc: 'We invested time in understanding automotive workflows, constraints, and data realities before writing a single line of code.' },
+        { title: 'Structure Meets Engineering Depth', desc: 'Berlin-connected delivery discipline paired with experienced engineering teams ensured clarity without compromising technical quality.' },
+        { title: 'Transparent Execution', desc: 'Clear milestones, visible progress, and no surprises. AAI always knew where things stood.' },
+        { title: 'Embedded Teams', desc: 'AAI worked with engineers who felt like an internal extension, without long-term hiring risk or lock-in.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Platforms built', value: '2 in parallel' },
+        { label: 'Delivery friction', value: 'Zero' },
+        { label: 'Compliance', value: 'ISO 26262 + SOTIF' }
+      ],
       testimonial: {
         quote: 'SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. Their attention to detail and ability to handle complex data sets made them the right partner for an industry as demanding as ours.',
         author: 'Automotive AI GmbH'
@@ -140,8 +174,11 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
       slug: 'democorder',
       clientName: 'Democorder',
       tagline: 'From Concept to Production-Ready B2B SaaS',
+      executiveSummary: 'Refined the product concept to reduce scope by 28% and delivered a multi-tenant B2B SaaS platform in 6 months.',
       industryBadge: 'B2B SaaS',
       title: 'Democorder » From Concept Clarification to Production-Ready B2B SaaS',
+      duration: '6 Months',
+      deliveryModel: 'MVP Sprint',
       intro: 'Democorder approached us with a clear product ambition and no internal technical team. The founder had received proposals from several agencies ranging from $80K to $250K, each recommending a different stack and a different approach. The problem was not a shortage of options. It was the absence of a framework for evaluating them.',
       challengeTitle: 'What We Did First',
       challengeText: 'Before selecting any tooling, we tested the assumptions behind the product. User interviews and workflow mapping produced two findings that changed the direction of the build.',
@@ -171,14 +208,35 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Test coverage on critical user paths', value: '92%' }
       ],
       whyItWorkedTitle: 'Why This Engagement Worked',
-      whyItWorkedText: 'The decisions that shaped this product were made before the first sprint, not during it. Validating the problem early changed what got built. Designing the architecture around realistic constraints changed how it held up. Embedding governance logic from the beginning meant the platform did not need to be partially rebuilt once real usage patterns emerged. The result was a stable, maintainable SaaS platform built around evidence rather than assumptions, and a system that reflects considered judgment at every layer.'
+      whyItWorkedText: 'The decisions that shaped this product were made before the first sprint, not during it.',
+      whyItWorkedPoints: [
+        { title: 'Thinking Partner, Not Just a Vendor', desc: 'We challenged assumptions, validated decisions, and refined the product continuously — from strategy to QA.' },
+        { title: 'Founder-Aware Execution', desc: 'Resources scaled up or down based on phase needs. No fixed team overhead during planning phases.' },
+        { title: 'End-to-End Ownership', desc: 'From strategy to QA, there was no handoff friction or context loss. The same technical lead was present throughout.' },
+        { title: 'Validation Before Code', desc: 'Spending two weeks validating the problem changed what got built. Designing for real constraints changed how it held up.' }
+      ],
+      comparisonTitle: 'What Made This Different',
+      comparisonPoints: [
+        { bad: 'Jumped straight to wireframes without problem validation', good: 'Spent 2 weeks validating the problem was worth solving' },
+        { bad: 'Proposed their favorite stack regardless of project needs', good: 'Recommended cheaper solutions where appropriate (saved ~$40K using Supabase)' },
+        { bad: 'Required 6-month fixed contracts with upfront payment', good: 'Flexed team size up/down based on phase needs' },
+        { bad: 'Context loss at each handoff between strategy, design, and dev', good: 'Maintained continuity with same technical lead across all phases' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Concept to production', value: '6 months' },
+        { label: 'Scope cut via validation', value: '28%' },
+        { label: 'Critical bugs on launch', value: '0' }
+      ]
     },
     {
       slug: 'hospitality',
       clientName: 'Hotel Korona & Parkhotel',
       tagline: 'Turning Hospitality Websites into Direct Revenue Channels',
+      executiveSummary: 'Designed and delivered dual hospitality platforms with integrated booking engines, reducing dependency on commission-heavy third parties.',
       industryBadge: 'Hospitality',
       title: 'Hotel Korona & Parkhotel Trebbin » Turning Hospitality Websites into Direct Revenue Channels',
+      duration: '3 Months',
+      deliveryModel: 'Digital Presence',
       intro: [
         '**Hotel Korona**: A castle-style seaside hotel in the Utes resort area, Crimea. The property offers 54 rooms, a swimming pool, private beach access, multiple dining options, and resort-level amenities.',
         '**Parkhotel Trebbin**: A family-run 3-star hotel near Berlin with 38 modern rooms, a regional restaurant, and flexible event spaces accommodating up to 100 guests.'
@@ -226,6 +284,18 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Lower Booking Friction', value: 'Guests can move seamlessly from discovery to reservation.' },
         { label: 'More Predictable Revenue', value: 'Control over pricing, availability, and promotions enables better planning.' }
       ],
+      whyItWorkedTitle: 'Why This Partnership Worked',
+      whyItWorkedPoints: [
+        { title: 'Hospitality-Focused Thinking', desc: 'We designed around booking behavior, seasonality, and revenue pressure — not generic web templates.' },
+        { title: 'End-to-End Ownership', desc: 'From strategy to launch, the hotels worked with one accountable partner through every stage.' },
+        { title: 'User-Centric Design', desc: 'Every page was built to reduce friction in the guest booking journey, from discovery to reservation.' },
+        { title: 'Reliable Technical Integration', desc: 'Booking systems were treated as revenue-critical infrastructure, not add-ons.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Hotels launched', value: '2 properties' },
+        { label: 'Booking model', value: 'Direct revenue' },
+        { label: 'Services', value: 'Full-stack' }
+      ],
       keyTakeaway: 'A hotel website is not a brochure. It\'s a revenue engine.'
     }
   ],
@@ -234,8 +304,11 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
       slug: 'tecsofiy',
       clientName: 'Tecsofy',
       tagline: 'Prozessorientierte Automation für B2B-Betriebe',
+      executiveSummary: 'Optimierte B2B-Prozesse durch Automatisierung von E-Mail-Routing und Terminplanung, was den Koordinationsaufwand innerhalb einer Woche eliminierte.',
       industryBadge: 'B2B Automation',
       title: 'Tecsofy » Prozessorientierte Automation für B2B-Betriebe',
+      duration: '4 Wochen',
+      deliveryModel: 'Prozessdesign & Automatisierung',
       intro: 'Tecsofy steuert die Kundenkommunikation über Vertriebs- und Servicekanäle. Mit wachsendem Volumen stieg auch der Koordinationsaufwand. Teams verbrachten mehr Zeit mit der Handhabung von Übergaben als mit der Kundenbetreuung. Die Tools waren vorhanden. Die Workflow-Logik nicht.',
       challengeTitle: 'Die Herausforderung',
       challengeTable: [
@@ -263,17 +336,28 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Nettoergebnis', value: 'Koordinationszeit gesenkt, kundenorientierte Arbeit gestiegen' }
       ],
       whyItWorkedTitle: 'Warum dieses Engagement funktioniert hat',
-      whyItWorkedText: [
-        'Automation auf unklaren Prozessen löst das Problem nicht. Sie skaliert es.',
-        'Indem Tecsofy die Prozesslogik vor dem ersten Workflow definierte, hat das Unternehmen dieses Muster vermieden. Die heute laufende Automation verstärkt Struktur. Sie hat sie nicht geschaffen.'
+      whyItWorkedText: 'Indem Tecsofy die Prozesslogik vor dem ersten Workflow definierte, wurde das Muster des Skalierens ineffizienter Prozesse vermieden.',
+      whyItWorkedPoints: [
+        { title: 'Prozess vor Technologie', desc: 'Wir haben kartiert, wie Arbeit fließt, bevor wir ein Tool anfassten. Routing-Regeln und Verantwortlichkeiten kamen vor der Automation.' },
+        { title: 'Schnelle Ergebnisse zuerst', desc: 'Kern-Automationen waren innerhalb der ersten Woche live. Frühe Ergebnisse bauten internes Vertrauen und Akzeptanz auf.' },
+        { title: 'Kein Tool-Wildwuchs', desc: 'Wir optimierten, was bereits existierte, statt es zu ersetzen. Keine unnötigen Neubauten, keine zusätzliche Komplexität.' },
+        { title: 'Nachhaltige Effizienz', desc: 'Automation, die echte Prozesslogik widerspiegelt, wird genutzt. Adoption war hoch, weil das System dem tatsächlichen Arbeitsablauf entsprach.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Zeit bis erste Automation', value: '1 Woche' },
+        { label: 'Integrierte Tools', value: '6+' },
+        { label: 'Koordinationsaufwand', value: 'Eliminiert' }
       ]
     },
     {
       slug: 'automotive-ai',
       clientName: 'Automotive AI',
       tagline: 'Zwei Automotive-Plattformen parallel im Aufbau',
+      executiveSummary: 'Entwickelte zwei separate, compliance-kritische Automotive-Plattformen parallel ohne Koordinationsprobleme oder Architektur-Nachbesserungen.',
       industryBadge: 'Automotive AI',
       title: 'Automotive AI (AAI) » Zwei Automotive-Plattformen parallel im Aufbau',
+      duration: 'Laufend',
+      deliveryModel: 'Dedizierte Teams',
       intro: 'Automotive AI GmbH liefert Automotive Intelligence und Simulationslösungen in einem regulierten, leistungskritischen Umfeld. Ihre Arbeit unterstützt sicherheitsrelevante Systeme, bei denen Rückverfolgbarkeit, Validierung und technische Zuverlässigkeit nicht verhandelbar sind.',
       challengeTitle: 'Die Herausforderung',
       challengeText: 'AAI musste zwei unabhängige Produkte gleichzeitig von Grund auf aufbauen, beide mit strengen Zeitplänen bis zur produktionsreifen MVP-Phase. Jede Plattform musste sich in bestehende Workflows integrieren, komplexe Automotive-Datenstrukturen verarbeiten und ohne Architekturumbau skalieren – ohne Koordinationsaufwand zwischen den beiden Strängen.\n\nSie brauchten einen Delivery-Partner, der Verantwortung übernimmt und mit minimaler Handholding arbeitet.',
@@ -312,7 +396,18 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Laufende Zusammenarbeit', value: 'Aktiv, auf technischer Transparenz basierend' }
       ],
       whyItWorkedTitle: 'Warum es funktioniert hat',
-      whyItWorkedText: 'Domänenkenntnis prägte die wichtigsten Entscheidungen. Wir investierten Zeit in das Verständnis von Automotive-Safety-Logik, Simulationstools und regulatorischem Kontext, bevor wir etwas entwarfen. Meilenstein-basierte Ausführung hielt zwei parallele Workstreams ausgerichtet und Unsicherheit managbar.',
+      whyItWorkedText: 'Domänenkenntnis prägte die wichtigsten Entscheidungen. Wir investierten Zeit in das Verständnis von Automotive-Safety-Logik und regulatorischem Kontext, bevor wir etwas entwarfen.',
+      whyItWorkedPoints: [
+        { title: 'Domänen-Immersion', desc: 'Wir investierten Zeit in das Verständnis von Automotive-Workflows, Einschränkungen und Datenschwerpunkten, bevor eine einzige Codezeile geschrieben wurde.' },
+        { title: 'Struktur trifft Engineering-Tiefe', desc: 'Berlin-verknüpfte Delivery-Disziplin gepaart mit erfahrenen Engineering-Teams sicherte Klarheit ohne technische Kompromisse.' },
+        { title: 'Transparente Ausführung', desc: 'Klare Meilensteine, sichtbarer Fortschritt und keine Überraschungen. AAI wusste jederzeit, wo die Dinge standen.' },
+        { title: 'Eingebettete Teams', desc: 'AAI arbeitete mit Ingenieuren, die wie eine interne Erweiterung wirkten – ohne langfristiges Einstellungsrisiko oder Abhängigkeit.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Gebaute Plattformen', value: '2 parallel' },
+        { label: 'Delivery-Reibung', value: 'Null' },
+        { label: 'Compliance', value: 'ISO 26262 + SOTIF' }
+      ],
       testimonial: {
         quote: 'SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. Their attention to detail and ability to handle complex data sets made them the right partner for an industry as demanding as ours.',
         author: 'Automotive AI GmbH'
@@ -322,8 +417,11 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
       slug: 'democorder',
       clientName: 'Democorder',
       tagline: 'Von der Konzeptklärung zum produktionsreifen B2B-SaaS',
+      executiveSummary: 'Verfeinerte das Produktkonzept, um den Umfang um 28 % zu reduzieren, und lieferte in 6 Monaten eine mandantenfähige B2B-SaaS-Plattform.',
       industryBadge: 'B2B SaaS',
       title: 'Democorder » Von der Konzeptklärung zum produktionsreifen B2B-SaaS',
+      duration: '6 Monate',
+      deliveryModel: 'MVP Sprint',
       intro: 'Democorder kam mit klarem Produktambition und ohne internes Technik-Team zu uns. Der Gründer hatte Angebote von mehreren Agenturen zwischen 80.000 und 250.000 € erhalten, mit unterschiedlichen Stacks und Ansätzen. Das Problem war nicht der Mangel an Optionen. Es war das Fehlen eines Rahmens zur Bewertung.\n\nDie erste Frage war nicht, welchen Stack zu verwenden. Sondern: Was soll tatsächlich gebaut werden, in welcher Reihenfolge, unter realen Bedingungen.',
       challengeTitle: 'Was wir zuerst taten',
       challengeText: 'Vor der Auswahl eines Tools testeten wir die Annahmen hinter dem Produkt. Nutzerinterviews und Workflow-Mapping ergaben zwei Erkenntnisse, die die Richtung des Builds änderten.',
@@ -350,14 +448,35 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Engineering-Zeit durch Architektur gespart', value: '~4–6 Wochen' }
       ],
       whyItWorkedTitle: 'Warum dieses Engagement funktioniert hat',
-      whyItWorkedText: 'Die Entscheidungen, die dieses Produkt prägten, wurden vor dem ersten Sprint getroffen, nicht währenddessen. Frühe Problemvalidierung änderte, was gebaut wurde. Architektur um realistische Einschränkungen bedeutete, dass die Plattform nicht nachgebessert werden musste, sobald reale Nutzungsmuster auftraten.'
+      whyItWorkedText: 'Die Entscheidungen, die dieses Produkt prägten, wurden vor dem ersten Sprint getroffen, nicht währenddessen.',
+      whyItWorkedPoints: [
+        { title: 'Denkpartner, kein Dienstleister', desc: 'Wir hinterfragten Annahmen, validierten Entscheidungen und verfeinerten das Produkt kontinuierlich – von Strategie bis QA.' },
+        { title: 'Founder-bewusste Ausführung', desc: 'Ressourcen skaliert nach Phasenbedarf. Keine fixen Team-Kosten in Planungsphasen.' },
+        { title: 'End-to-End-Verantwortung', desc: 'Von Strategie bis QA kein Übergabeverlust. Dieselbe technische Führung war durchgehend präsent.' },
+        { title: 'Validierung vor Code', desc: 'Zwei Wochen Problemvalidierung änderten, was gebaut wurde. Architektur für reale Einschränkungen änderte, wie es standhält.' }
+      ],
+      comparisonTitle: 'Was uns unterscheidet',
+      comparisonPoints: [
+        { bad: 'Sofort zu Wireframes gesprungen ohne Problemvalidierung', good: '2 Wochen für Problemvalidierung investiert' },
+        { bad: 'Lieblingsstack empfohlen unabhängig von Projektbedarf', good: 'Günstigere Lösungen empfohlen, wo geeignet (ca. 40.000 € gespart via Supabase)' },
+        { bad: '6-Monats-Festverträge mit Vorauszahlung gefordert', good: 'Teamgröße je nach Phasenbedarf flexibel angepasst' },
+        { bad: 'Kontextverlust bei jedem Handoff zwischen Strategie, Design und Dev', good: 'Dieselbe technische Leitung über alle Phasen hinweg' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Konzept bis Produktion', value: '6 Monate' },
+        { label: 'Umfang durch Validierung', value: '-28 %' },
+        { label: 'Kritische Bugs bei Launch', value: '0' }
+      ]
     },
     {
       slug: 'hospitality',
       clientName: 'Hotel Korona & Parkhotel',
       tagline: 'Von Hospitality-Websites zu direkten Umsatzkanälen',
+      executiveSummary: 'Entwickelte zwei Hospitality-Plattformen mit integrierten Buchungssystemen, was die Abhängigkeit von teuren Drittanbietern reduzierte.',
       industryBadge: 'Hospitality',
       title: 'Hotel Korona & Parkhotel Trebbin » Von Hospitality-Websites zu direkten Umsatzkanälen',
+      duration: '3 Monate',
+      deliveryModel: 'Digitale Präsenz',
       intro: [
         '**Hotel Korona**: Ein Schloss-artiges Strandhotel im Utes-Resort, Krim. 54 Zimmer, Swimmingpool, Privatstrand, mehrere Restaurants und Resort-Amenities.',
         '**Parkhotel Trebbin**: Ein familiengeführtes 3-Sterne-Hotel bei Berlin mit 38 modernen Zimmern, regionalem Restaurant und flexiblen Event-Spaces für bis zu 100 Gäste.'
@@ -402,6 +521,18 @@ export const caseStudies: Record<'en' | 'de', CaseStudyContent[]> = {
         { label: 'Direkte Umsatzkontrolle', value: 'Beide Hotels erfassen Buchungen direkt' },
         { label: 'Stärkere digitale Marketingfähigkeit', value: 'Etablierte Markenpräsenz' },
         { label: 'Geringere Buchungsreibung', value: 'Vorhersehbarere Umsatzpipeline' }
+      ],
+      whyItWorkedTitle: 'Warum diese Partnerschaft funktioniert hat',
+      whyItWorkedPoints: [
+        { title: 'Hospitality-fokussiertes Denken', desc: 'Wir haben rund um Buchungsverhalten, Saisonalität und Umsatzdruck konzipiert – nicht mit generischen Web-Vorlagen.' },
+        { title: 'End-to-End-Verantwortung', desc: 'Von Strategie bis Launch arbeiteten die Hotels mit einem verantwortlichen Partner durch jede Phase.' },
+        { title: 'Nutzerzentriertes Design', desc: 'Jede Seite wurde gebaut, um die Reibung im Buchungsprozess zu reduzieren – von der Entdeckung bis zur Buchung.' },
+        { title: 'Zuverlässige technische Integration', desc: 'Buchungssysteme wurden als umsatzkritische Infrastruktur behandelt, nicht als Add-ons.' }
+      ],
+      keyMetricsPreview: [
+        { label: 'Gestartete Hotels', value: '2 Standorte' },
+        { label: 'Buchungsmodell', value: 'Direktumsatz' },
+        { label: 'Services', value: 'Full-Stack' }
       ],
       keyTakeaway: 'Eine Hotelwebsite ist keine Broschüre. Sie ist eine Umsatzmaschine.'
     }

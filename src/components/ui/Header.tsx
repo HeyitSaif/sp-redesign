@@ -19,14 +19,28 @@ import {
   X,
   Zap,
   BookOpen,
+  Cpu,
+  PenTool,
+  Code,
+  Smartphone,
+  ChevronRight,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { caseStudies } from '@/data/case-studies'
+
+interface NavChild {
+  name: string
+  description?: string
+  href: string
+}
 
 interface NavItem {
   name: string
   description: string
   href: string
   icon: ComponentType<{ size?: number; className?: string }>
+  badge?: string
+  children?: NavChild[]
 }
 
 interface NavSection {
@@ -55,6 +69,35 @@ const NAV_DATA_EN: NavSection[] = [
         description: 'Scale delivery with managed remote engineering teams.',
         href: '/dedicated-delivery-teams',
         icon: Users,
+      },
+    ],
+  },
+  {
+    name: 'Services',
+    items: [
+      {
+        name: 'AI Automation',
+        description: 'Automate workflows and optimize processes.',
+        href: '/ai-automation',
+        icon: Cpu,
+      },
+      {
+        name: 'UI/UX Design',
+        description: 'Intuitive, accessible, and user-centered design.',
+        href: '/ui-ux-design',
+        icon: PenTool,
+      },
+      {
+        name: 'Web App Development',
+        description: 'Scalable platforms built with modern stacks.',
+        href: '/web-app-development',
+        icon: Code,
+      },
+      {
+        name: 'Mobile App Development',
+        description: 'Cross-platform and native mobile solutions.',
+        href: '/mobile-app-development',
+        icon: Smartphone,
       },
     ],
   },
@@ -95,6 +138,15 @@ const NAV_DATA_EN: NavSection[] = [
         description: 'Explore how we helped clients from idea to production.',
         href: '/case-studies',
         icon: BookOpen,
+        badge: 'New',
+        children: [
+          { name: 'All Case Studies', href: '/case-studies' },
+          ...caseStudies.en.map((cs) => ({
+            name: cs.clientName,
+            description: cs.tagline,
+            href: `/case-studies/${cs.slug}`,
+          })),
+        ],
       },
       {
         name: 'Careers at SolutionPlus',
@@ -127,6 +179,35 @@ const NAV_DATA_DE: NavSection[] = [
         description: 'Ihre Delivery mit unseren Remote-Teams skalieren.',
         href: '/dedizierte-teams',
         icon: Users,
+      },
+    ],
+  },
+  {
+    name: 'Services',
+    items: [
+      {
+        name: 'KI-Automatisierung',
+        description: 'Workflows automatisieren und Prozesse optimieren.',
+        href: '/ki-automatisierung',
+        icon: Cpu,
+      },
+      {
+        name: 'UI/UX Design',
+        description: 'Intuitives, barrierefreies und nutzerzentriertes Design.',
+        href: '/ui-ux-design',
+        icon: PenTool,
+      },
+      {
+        name: 'Web-Entwicklung',
+        description: 'Skalierbare Plattformen mit modernen Stacks.',
+        href: '/web-entwicklung',
+        icon: Code,
+      },
+      {
+        name: 'Mobile App-Entwicklung',
+        description: 'Plattformübergreifende und native mobile Lösungen.',
+        href: '/mobile-app-entwicklung',
+        icon: Smartphone,
       },
     ],
   },
@@ -167,6 +248,15 @@ const NAV_DATA_DE: NavSection[] = [
         description: 'Wie wir Kunden von der Idee bis zur Produktion begleitet haben.',
         href: '/fallstudien',
         icon: BookOpen,
+        badge: 'Neu',
+        children: [
+          { name: 'Alle Fallstudien', href: '/fallstudien' },
+          ...caseStudies.de.map((cs) => ({
+            name: cs.clientName,
+            description: cs.tagline,
+            href: `/fallstudien/${cs.slug}`,
+          })),
+        ],
       },
       {
         name: 'Karriere bei SolutionPlus',
@@ -181,6 +271,7 @@ const NAV_DATA_DE: NavSection[] = [
 export function Header({ locale }: { locale: string }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
+  const [hoveredSubmenu, setHoveredSubmenu] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
 
@@ -287,27 +378,83 @@ export function Header({ locale }: { locale: string }) {
                         {section.items.map((item) => {
                           const Icon = item.icon
                           return (
-                            <Link
+                            <div
                               key={item.name}
-                              href={`/${locale}${item.href}`}
-                              className="group rounded-xl border border-transparent bg-white/2 p-3 transition-all outline-none hover:border-white/10 hover:bg-white/5 focus-visible:border-white/20"
-                              onClick={() => setDesktopOpen(null)}
+                              className="group/item flex flex-col gap-1"
+                              onMouseEnter={() => setHoveredSubmenu(item.name)}
+                              onMouseLeave={() => setHoveredSubmenu(null)}
                             >
-                              <div className="mb-2.5 flex items-center gap-2.5">
-                                <div className="group-hover:text-sp-accent group-hover:border-sp-accent/30 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/85">
-                                  <Icon size={15} />
+                              <Link
+                                href={`/${locale}${item.href}`}
+                                className="group h-full rounded-xl border border-transparent bg-white/2 p-3 transition-all outline-none hover:border-white/10 hover:bg-white/5 focus-visible:border-white/20"
+                                onClick={() => setDesktopOpen(null)}
+                              >
+                                <div className="mb-2.5 flex items-center gap-2.5">
+                                  <div className="group-hover:text-sp-accent group-hover:border-sp-accent/30 flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/85">
+                                    <Icon size={15} />
+                                  </div>
+                                  <span className="flex items-center gap-2 text-sm font-semibold text-white/90 transition-colors group-hover:text-white">
+                                    {item.name}
+                                    {item.badge && (
+                                      <span className="bg-sp-accent/20 text-sp-accent rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
+                                        {item.badge}
+                                      </span>
+                                    )}
+                                  </span>
                                 </div>
-                                <span className="text-sm font-semibold text-white/90 transition-colors group-hover:text-white">
-                                  {item.name}
-                                </span>
-                              </div>
-                              <p className="text-xs leading-relaxed text-white/55 group-hover:text-white/70">
-                                {item.description}
-                              </p>
-                            </Link>
+                                <p className="text-xs leading-relaxed text-white/55 group-hover:text-white/70">
+                                  {item.description}
+                                </p>
+                              </Link>
+
+                              {item.children && (
+                                <div
+                                  className={cn(
+                                    'grid transition-all duration-300 ease-in-out',
+                                    hoveredSubmenu === item.name
+                                      ? 'grid-rows-[1fr] opacity-100'
+                                      : 'grid-rows-[0fr] opacity-0'
+                                  )}
+                                >
+                                  <div className="overflow-hidden">
+                                    <div className="mt-1 ml-4 flex flex-col gap-1 border-l border-white/10 pl-3">
+                                      {item.children.slice(1).map((child) => (
+                                        <Link
+                                          key={child.name}
+                                          href={`/${locale}${child.href}`}
+                                          className="hover:text-sp-accent group/child flex items-center justify-between py-1.5 text-xs text-white/60 transition-colors"
+                                          onClick={() => setDesktopOpen(null)}
+                                        >
+                                          <span className="truncate pr-2">{child.name}</span>
+                                          <ChevronRight
+                                            size={12}
+                                            className="text-sp-accent -translate-x-2 opacity-0 transition-all group-hover/child:translate-x-0 group-hover/child:opacity-100"
+                                          />
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           )
                         })}
                       </div>
+                      {section.name === 'Services' && (
+                        <div className="mt-2 border-t border-white/10 pt-2">
+                          <Link
+                            href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
+                            className="group hover:text-sp-accent flex w-full items-center justify-between rounded-xl bg-white/5 p-3 text-sm font-semibold text-white/90 transition-all outline-none hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/40"
+                            onClick={() => setDesktopOpen(null)}
+                          >
+                            {locale === 'de' ? 'Alle Leistungen ansehen' : 'View All Services'}
+                            <ArrowRight
+                              size={16}
+                              className="text-sp-accent transition-transform group-hover:translate-x-1"
+                            />
+                          </Link>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -391,26 +538,88 @@ export function Header({ locale }: { locale: string }) {
                               {section.items.map((item) => {
                                 const Icon = item.icon
                                 return (
-                                  <Link
-                                    key={item.name}
-                                    href={`/${locale}${item.href}`}
-                                    className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/10"
-                                    onClick={() => setMobileOpen(false)}
-                                  >
-                                    <div className="text-sp-accent/80 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/5">
-                                      <Icon size={14} />
+                                  <div key={item.name} className="flex flex-col">
+                                    <div className="flex items-center">
+                                      <Link
+                                        href={`/${locale}${item.href}`}
+                                        className="flex flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-white/10"
+                                        onClick={() => setMobileOpen(false)}
+                                      >
+                                        <div className="text-sp-accent/80 mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/5">
+                                          <Icon size={14} />
+                                        </div>
+                                        <div>
+                                          <p className="flex items-center gap-2 text-sm font-semibold text-white/90">
+                                            {item.name}
+                                            {item.badge && (
+                                              <span className="bg-sp-accent/20 text-sp-accent rounded-full px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase">
+                                                {item.badge}
+                                              </span>
+                                            )}
+                                          </p>
+                                          <p className="text-xs leading-relaxed text-white/55">
+                                            {item.description}
+                                          </p>
+                                        </div>
+                                      </Link>
+                                      {item.children && (
+                                        <button
+                                          type="button"
+                                          className="ml-2 rounded-lg p-2 text-white/60 hover:bg-white/10 hover:text-white"
+                                          onClick={(e) => {
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            // Find the next sibling of the parent container
+                                            const el = e.currentTarget.parentElement
+                                              ?.nextElementSibling as HTMLElement
+                                            if (el) {
+                                              const isHidden =
+                                                el.style.display === 'none' || !el.style.display
+                                              el.style.display = isHidden ? 'flex' : 'none'
+                                              e.currentTarget.style.transform = isHidden
+                                                ? 'rotate(180deg)'
+                                                : 'rotate(0deg)'
+                                            }
+                                          }}
+                                          style={{ transition: 'transform 0.2s' }}
+                                        >
+                                          <ChevronDown size={16} />
+                                        </button>
+                                      )}
                                     </div>
-                                    <div>
-                                      <p className="text-sm font-semibold text-white/90">
-                                        {item.name}
-                                      </p>
-                                      <p className="text-xs leading-relaxed text-white/55">
-                                        {item.description}
-                                      </p>
-                                    </div>
-                                  </Link>
+
+                                    {item.children && (
+                                      <div
+                                        className="mt-1 mb-2 ml-11 flex-col gap-1 border-l border-white/10 pl-3"
+                                        style={{ display: 'none' }}
+                                      >
+                                        {item.children.slice(1).map((child) => (
+                                          <Link
+                                            key={child.name}
+                                            href={`/${locale}${child.href}`}
+                                            className="py-1.5 text-xs text-white/60 transition-colors hover:text-white"
+                                            onClick={() => setMobileOpen(false)}
+                                          >
+                                            {child.name}
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
                                 )
                               })}
+                              {section.name === 'Services' && (
+                                <Link
+                                  href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
+                                  className="mt-2 flex w-full items-center justify-between rounded-lg bg-white/5 px-4 py-3 text-sm font-semibold text-white/90 transition-colors hover:bg-white/10"
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {locale === 'de'
+                                    ? 'Alle Leistungen ansehen'
+                                    : 'View All Services'}
+                                  <ArrowRight size={16} className="text-sp-accent" />
+                                </Link>
+                              )}
                             </div>
                           </motion.div>
                         )}

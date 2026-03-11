@@ -1,25 +1,35 @@
+'use client'
+import { ProceduralDataGrid } from '@/components/graphics/ProceduralDataGrid'
+import { ProceduralNetwork } from '@/components/graphics/ProceduralNetwork'
+import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
 import { Reveal } from '@/components/animations/Reveal'
 import { ArrowRight, CheckCircle2, Target, Rocket, Users, Code2 } from 'lucide-react'
 import Link from 'next/link'
 import { StickyQnA } from '@/components/sections/StickyQnA'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
-import { ProceduralIsometricBlocks } from '@/components/graphics/ProceduralIsometricBlocks'
-import { ProceduralGeometricMesh } from '@/components/graphics/ProceduralGeometricMesh'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 
+import { supportData } from '@/data/support-content'
+import { Badge } from '@/components/ui/Badge'
+
 export function StartupPage({ locale }: { locale: string }) {
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-20">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[100px]" />
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
-            <span className="text-sp-accent mb-8 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
-              For Startups
-            </span>
+            <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+              <span className="text-sp-accent rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium">
+                For Startups
+              </span>
+              <Badge variant="outline" className="text-white/60">
+                {supportData[locale === 'de' ? 'de' : 'en'].services.idealFor}: Pre-Seed to Series A
+              </Badge>
+            </div>
             <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-7xl">
               The more you <span className="text-gradient">grow</span>, the harder it gets to stay
               on track.
@@ -28,10 +38,16 @@ export function StartupPage({ locale }: { locale: string }) {
               We provide the designers, developers, QA, and delivery management so you can focus on
               strategy and product. You lead the vision, we handle the execution.
             </p>
+            <div className="mb-10 text-center">
+              <span className="text-sm font-semibold tracking-wider text-white/50 uppercase">
+                {supportData[locale === 'de' ? 'de' : 'en'].services.deliveryModel}: Managed remote
+                engineering teams
+              </span>
+            </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-                className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-hidden rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
               >
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                 Set up a short call{' '}
@@ -87,7 +103,7 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* Why this works */}
-      <section className="relative overflow-x-hidden py-24">
+      <section className="relative overflow-x-clip py-24">
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 right-0 h-1/2 w-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -114,8 +130,13 @@ export function StartupPage({ locale }: { locale: string }) {
               </div>
             </div>
             <Reveal direction="left">
-              <div className="bg-sp-bg-medium relative overflow-x-hidden rounded-3xl border border-black/10 p-2 h-64 md:h-80 lg:h-[500px]">
-                <ProceduralGeometricMesh variant="mixed" animated={true} />
+              <div className="bg-sp-bg-medium relative h-64 overflow-x-clip rounded-3xl border border-black/10 p-2 md:h-80 lg:h-[500px]">
+                <ImageWithShimmer
+                  src="/images/What-you-get-with-us-scaled.jpg"
+                  alt="What you get with us"
+                  wrapperClassName="rounded-2xl h-full w-full"
+                  className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                />
               </div>
             </Reveal>
           </div>
@@ -131,15 +152,20 @@ export function StartupPage({ locale }: { locale: string }) {
 
           <div className="grid gap-8 text-left md:grid-cols-3">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   01
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <Users size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralGeometricMesh variant="mixed" animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <Users size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Flexible Delivery Pods</h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
+                  Flexible Delivery Pods
+                </h3>
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   Sprint-ready teams that plug into your workflows: Senior developers, UI/UX QA, led
                   by experienced German delivery managers.
                 </p>
@@ -147,15 +173,20 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   02
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <Target size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralDataGrid animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <Target size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Reliable Execution</h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
+                  Reliable Execution
+                </h3>
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   No black-box delivery, no daily chasing. Our teams integrate into your rhythm,
                   with shared tools, clear timelines, and high accountability.
                 </p>
@@ -163,15 +194,20 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
-                <div className="group-hover:text-sp-accent/[0.1] absolute -top-6 -right-6 text-9xl font-bold text-sp-text-dark/[0.03] transition-colors">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-8 transition-transform duration-300 hover:-translate-y-2">
+                <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   03
                 </div>
-                <div className="bg-sp-accent/20 text-sp-accent mb-6 flex h-14 w-14 items-center justify-center rounded-full">
-                  <Rocket size={24} />
+                <div className="bg-sp-bg-dark relative z-10 mb-6 h-32 w-full overflow-hidden rounded-2xl border border-white/5">
+                  <ProceduralNetwork nodeCount={15} animated={true} />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition-colors duration-500 group-hover:bg-black/20">
+                    <Rocket size={32} className="text-sp-accent" />
+                  </div>
                 </div>
-                <h3 className="text-sp-text-dark mb-4 text-xl font-bold">Scale Without Risk</h3>
-                <p className="text-sp-text-on-light relative z-10 leading-relaxed">
+                <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
+                  Scale Without Risk
+                </h3>
+                <p className="text-sp-text-on-light relative z-20 leading-relaxed">
                   Start with a delivery sprint, then grow into a dedicated team. Add specialists in
                   your team as you go, without blowing your burn rate.
                 </p>
@@ -181,7 +217,7 @@ export function StartupPage({ locale }: { locale: string }) {
         </div>
       </section>
 
-      <section className="bg-sp-bg-dark relative overflow-x-hidden py-24 md:py-32 lg:py-40">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-24 md:py-32 lg:py-40">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]" />
 
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -278,12 +314,12 @@ export function StartupPage({ locale }: { locale: string }) {
 
           <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
             <Reveal direction="up" delay={0.1}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -303,7 +339,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/Calculate-you-MVP-investment-14-150x150.jpg"
+                      src="/images/Calculate-you-MVP-investment-14-150x150.jpg"
                       alt="AAI Logo"
                       wrapperClassName="h-full w-full rounded-full"
                     />
@@ -316,12 +352,12 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="flex h-full flex-col rounded-[2rem] border border-sp-border-testimonial bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col rounded-[2rem] border bg-white p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className="h-6 w-6 text-sp-star-filled"
+                      className="text-sp-star-filled h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -341,7 +377,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
                     <ImageWithShimmer
-                      src="https://solutionplus.io/wp-content/uploads/2025/09/1-150x150.png"
+                      src="/images/1-150x150.png"
                       alt="Aghaz Invest Logo"
                       wrapperClassName="h-full w-full rounded-full"
                       className="p-2"
@@ -356,7 +392,7 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* CTA */}
-      <section className="bg-sp-bg-dark relative overflow-x-hidden py-32">
+      <section className="bg-sp-bg-dark relative overflow-x-clip py-32">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 rounded-full blur-[150px]" />
         <div className="relative z-10 container mx-auto max-w-4xl px-6 text-center md:px-12">
           <Reveal>
@@ -370,11 +406,65 @@ export function StartupPage({ locale }: { locale: string }) {
             </h2>
             <Link
               href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
-              className="bg-sp-accent group hover:bg-sp-accent-dark relative mt-8 inline-block overflow-x-hidden rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              className="bg-sp-accent group hover:bg-sp-accent-dark relative mt-8 inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {locale === 'de' ? 'Kurzes Gespräch vereinbaren' : 'Set up a short call'}
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Related reading */}
+      <section className="bg-sp-bg-dark relative z-10 py-24 md:py-32">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
+            <h3 className="mb-8 text-center text-2xl font-bold text-white">
+              {supportData[locale === 'de' ? 'de' : 'en'].caseStudies.readMore}
+            </h3>
+            <div className="mx-auto mb-10 grid max-w-3xl gap-4 md:grid-cols-2">
+              <Link
+                href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/democorder`}
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+              >
+                <div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">B2B SaaS</div>
+                  <div className="text-base font-semibold text-white">Democorder</div>
+                  <div className="text-xs text-white/60">{locale === 'de' ? '28 % Umfang reduziert, 0 kritische Bugs' : '28% scope cut, 0 critical bugs'}</div>
+                </div>
+                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+              </Link>
+              <Link
+                href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/hospitality`}
+                className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-sp-accent/40 hover:bg-sp-accent/5"
+              >
+                <div>
+                  <div className="text-sp-accent mb-1 text-xs font-bold uppercase tracking-widest">Hospitality</div>
+                  <div className="text-base font-semibold text-white">Hotel Korona & Parkhotel</div>
+                  <div className="text-xs text-white/60">{locale === 'de' ? 'Direktbuchungswebsites, Full-Stack' : 'Direct booking websites, full-stack'}</div>
+                </div>
+                <ArrowRight className="text-sp-accent shrink-0 opacity-60 transition-all group-hover:translate-x-1 group-hover:opacity-100" size={18} />
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
+                className="hover:border-sp-accent hover:text-sp-accent rounded-full border border-white/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide text-white/80 uppercase transition-colors"
+              >
+                {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
+              </Link>
+            </div>
+            <div className="mt-16 text-center">
+              <p className="text-foreground/70 mb-6 text-lg">
+                {supportData[locale === 'de' ? 'de' : 'en'].services.stillHaveQuestions}
+              </p>
+              <Link
+                href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+                className="text-sp-accent hover:text-sp-accent-dark font-medium underline underline-offset-4"
+              >
+                {locale === 'de' ? 'Sprechen Sie mit uns' : "Let's talk"}
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

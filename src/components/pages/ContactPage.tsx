@@ -7,6 +7,7 @@ import { submitContactForm } from '@/app/actions/contact'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import Link from 'next/link'
+import { supportData } from '@/data/support-content'
 import { ImageWithShimmer } from '@/components/ui/ImageWithShimmer'
 
 const initialState = {
@@ -32,9 +33,9 @@ export function ContactPage({ locale }: { locale: string }) {
   }, [state?.success])
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
-      <section className="relative flex min-h-[50vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[50vh] items-center overflow-x-clip py-20">
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[600px] w-[600px] rounded-full blur-[150px]" />
         <div className="bg-sp-accent/10 pointer-events-none absolute bottom-0 left-0 h-[600px] w-[600px] rounded-full blur-[150px]" />
 
@@ -47,6 +48,13 @@ export function ContactPage({ locale }: { locale: string }) {
                   {isDe ? 'das Ihr Unternehmen voranbringt.' : 'that moves your business forward'}
                 </span>
               </h1>
+              
+              <div className="mb-6 flex flex-wrap gap-4">
+                <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase">
+                  {supportData[isDe ? 'de' : 'en'].contact.responseTime}
+                </span>
+              </div>
+              
               <p className="text-foreground/70 mb-12 max-w-xl text-xl leading-relaxed">
                 {isDe
                   ? 'Erzählen Sie uns, was Sie bauen. Bringen Sie uns Ihre Idee oder Ihre nächste Herausforderung, und wir helfen Ihnen, mit Zuversicht voranzukommen.'
@@ -65,6 +73,7 @@ export function ContactPage({ locale }: { locale: string }) {
                     icon: MapPin,
                     title: isDe ? 'Standorte' : 'Locations',
                     content: `Berlin, ${isDe ? 'Deutschland' : 'Germany'}\nLahore, Pakistan`,
+                    subtext: supportData[isDe ? 'de' : 'en'].contact.officeHours,
                     href: null,
                   },
                   {
@@ -95,19 +104,51 @@ export function ContactPage({ locale }: { locale: string }) {
                           {item.content}
                         </a>
                       ) : (
-                        <p className="text-foreground/70 text-lg leading-relaxed whitespace-pre-line">
-                          {item.content}
-                        </p>
+                        <div className="flex flex-col gap-1">
+                          <p className="text-foreground/70 text-lg leading-relaxed whitespace-pre-line">
+                            {item.content}
+                          </p>
+                          {item.subtext && (
+                            <p className="text-foreground/50 text-sm italic">
+                              {item.subtext}
+                            </p>
+                          )}
+                        </div>
                       )}
                     </div>
                   </motion.div>
                 ))}
               </div>
+
+              {/* What to expect */}
+              <div className="mt-16 border-t border-white/10 pt-8">
+                <h3 className="text-white font-semibold mb-6">
+                  {isDe ? 'Was Sie erwartet' : 'What to expect'}
+                </h3>
+                <ul className="space-y-4">
+                  {supportData[isDe ? 'de' : 'en'].contact.whatToExpect.map((bullet, i) => (
+                    <li key={i} className="flex items-center gap-3 text-foreground/70">
+                      <CheckCircle2 size={18} className="text-sp-accent" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-8 text-foreground/50 text-sm">
+                  {isDe ? 'Möchten Sie sich zuerst informieren? Sehen Sie sich unsere ' : 'Prefer to learn first? See our '}
+                  <Link href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`} className="text-sp-accent hover:underline">
+                    {isDe ? 'Fallstudien' : 'Case Studies'}
+                  </Link>
+                  {' '}{isDe ? 'oder das' : 'or the'}{' '}
+                  <Link href={`/${locale}/${isDe ? 'mvp-sprint-paket' : 'mvp-sprint-package'}`} className="text-sp-accent hover:underline">
+                    MVP Sprint
+                  </Link>.
+                </p>
+              </div>
             </Reveal>
           </div>
 
           <Reveal direction="left" delay={0.2}>
-            <div className="group bg-[#181a1c]/80 relative overflow-x-hidden rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12">
+            <div className="group bg-[#181a1c]/80 relative overflow-x-clip rounded-[2rem] border border-white/10 p-8 shadow-2xl backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-12">
               <div className="from-sp-accent/5 to-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent opacity-50 transition-opacity duration-500 group-hover:opacity-100" />
 
               <AnimatePresence>
@@ -245,7 +286,7 @@ export function ContactPage({ locale }: { locale: string }) {
                   disabled={isPending}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="bg-sp-accent hover:bg-sp-accent-dark group relative mt-8 flex w-full items-center justify-center gap-3 overflow-x-hidden rounded-xl px-8 py-5 text-lg font-bold text-white shadow-[0_0_20px_var(--sp-accent-dark)] transition-all hover:shadow-[0_0_40px_var(--sp-accent-dark)]"
+                  className="bg-sp-accent hover:bg-sp-accent-dark group relative mt-8 flex w-full items-center justify-center gap-3 overflow-x-clip rounded-xl px-8 py-5 text-lg font-bold text-white shadow-[0_0_20px_var(--sp-accent-dark)] transition-all hover:shadow-[0_0_40px_var(--sp-accent-dark)]"
                 >
                   <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
                   {isPending ? (
@@ -283,7 +324,7 @@ export function ContactPage({ locale }: { locale: string }) {
                 title: isDe ? 'Scale-ups' : 'Scale-ups',
                 desc: isDe ? 'Innovationsteams in Unternehmen' : 'Innovation teams in corporates',
                 link: 'scale-up',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Scale-ups-1.png',
+                img: '/images/Scale-ups-1.png',
               },
               {
                 title: isDe ? 'Start-ups' : 'Start-ups',
@@ -291,13 +332,13 @@ export function ContactPage({ locale }: { locale: string }) {
                   ? 'Gründer in Pre-Seed- bis Series-A-Phasen'
                   : 'Founders in pre-Seed to Series A stages',
                 link: 'startup',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Start-ups-1.png',
+                img: '/images/Start-ups-1.png',
               },
               {
                 title: isDe ? 'Gründer mit Idee' : 'Entrepreneur with an Idea',
                 desc: isDe ? 'Die einen Tech-Partner brauchen' : 'who need a tech partner',
                 link: 'entrepreneur-with-an-idea',
-                img: 'https://solutionplus.io/wp-content/uploads/2025/09/Entrepreneur-with-an-Idea-1.png',
+                img: '/images/Entrepreneur-with-an-Idea-1.png',
               },
             ].map((persona, i) => (
               <Reveal key={i} delay={0.1 * i} direction="up">

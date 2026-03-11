@@ -1,0 +1,18 @@
+
+--- src/app/[locale]/page.tsx ---
+
+--- src/components/pages/AboutPage.tsx ---
+
+--- src/components/pages/CareersPage.tsx ---
+
+--- src/components/pages/DedicatedTeamsPage.tsx ---
+
+--- src/components/pages/EntrepreneurPage.tsx ---
+
+--- src/components/pages/MvpSprintPage.tsx ---
+
+--- src/components/pages/ScaleUpPage.tsx ---
+
+--- src/components/pages/ServicesPage.tsx ---
+
+--- src/components/pages/StartupPage.tsx ---

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "convert-case-studies": "bash scripts/convert-case-studies-to-txt.sh && node scripts/create-case-study-de.mjs",
-    "tally-case-studies": "bash scripts/tally-case-studies.sh"
+    "tally-case-studies": "bash scripts/tally-case-studies.sh",
+    "download-scraped-images": "node scripts/download-scraped-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

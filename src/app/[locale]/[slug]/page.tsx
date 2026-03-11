@@ -12,6 +12,9 @@ import { DedicatedTeamsPage } from '@/components/pages/DedicatedTeamsPage'
 import { ServicesPage } from '@/components/pages/ServicesPage'
 import { CareersPage } from '@/components/pages/CareersPage'
 import { EntrepreneurPage } from '@/components/pages/EntrepreneurPage'
+import { ServiceDetailPage } from '@/components/pages/ServiceDetailPage'
+import { ServicesIndexPage } from '@/components/pages/ServicesIndexPage'
+import { servicesData } from '@/data/services-content'
 import type { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -24,6 +27,48 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { locale, slug } = await params
+
+  // Check if it's a service page
+  if (
+    [
+      'ai-automation',
+      'ki-automatisierung',
+      'ui-ux-design',
+      'web-app-development',
+      'web-entwicklung',
+      'mobile-app-development',
+      'mobile-app-entwicklung',
+    ].includes(slug)
+  ) {
+    const serviceKey =
+      {
+        'ki-automatisierung': 'ai-automation',
+        'web-entwicklung': 'web-app-development',
+        'mobile-app-entwicklung': 'mobile-app-development',
+      }[slug] || slug
+
+    const data = servicesData[serviceKey]
+    if (data) {
+      const isDe = locale === 'de'
+      const title = data.title[isDe ? 'de' : 'en']
+      const description = data.heroDescription[isDe ? 'de' : 'en']
+      return generatePageMetadata({
+        title,
+        description,
+        keywords: [
+          title,
+          ...data.technologyStack.categories
+            .map((c) => c.items)
+            .join(', ')
+            .split(',')
+            .map((s) => s.trim()),
+        ],
+        canonicalUrl: getCanonicalUrl(locale, slug),
+        alternateLocales: getAlternateUrls(locale, slug),
+        locale,
+      })
+    }
+  }
 
   try {
     const { frontmatter, content } = await getPageContent(locale, slug)
@@ -76,6 +121,15 @@ const CUSTOM_PAGE_SLUGS = [
   'karriere',
   'entrepreneur-with-an-idea',
   'gruender-idee-startup-partner',
+  'ai-automation',
+  'ki-automatisierung',
+  'ui-ux-design',
+  'web-app-development',
+  'web-entwicklung',
+  'mobile-app-development',
+  'mobile-app-entwicklung',
+  'services',
+  'leistungen',
 ]
 
 function renderWithStructuredData(
@@ -132,7 +186,30 @@ export default async function GenericPage({
       'dedizierte-teams',
       'product-modernization',
       'software-modernisierung',
+      'ai-automation',
+      'ki-automatisierung',
+      'ui-ux-design',
+      'web-app-development',
+      'web-entwicklung',
+      'mobile-app-development',
+      'mobile-app-entwicklung',
     ].includes(slug)
+
+    if (servicesData[slug]) {
+      pageTitle = servicesData[slug].title[locale === 'de' ? 'de' : 'en']
+      description = servicesData[slug].heroDescription[locale === 'de' ? 'de' : 'en']
+    } else {
+      const deToEnMap: Record<string, string> = {
+        'ki-automatisierung': 'ai-automation',
+        'web-entwicklung': 'web-app-development',
+        'mobile-app-entwicklung': 'mobile-app-development',
+      }
+      const mappedSlug = deToEnMap[slug]
+      if (mappedSlug && servicesData[mappedSlug]) {
+        pageTitle = servicesData[mappedSlug].title[locale === 'de' ? 'de' : 'en']
+        description = servicesData[mappedSlug].heroDescription[locale === 'de' ? 'de' : 'en']
+      }
+    }
   }
 
   if (slug === 'startup' || slug === 'startups')
@@ -216,6 +293,45 @@ export default async function GenericPage({
       false,
       <EntrepreneurPage locale={locale} />
     )
+
+  if (slug === 'services' || slug === 'leistungen') {
+    return renderWithStructuredData(
+      locale,
+      slug,
+      locale === 'de' ? 'Leistungen' : 'Services',
+      locale === 'de' ? 'Entdecken Sie unsere Dienstleistungen.' : 'Discover our services.',
+      false,
+      <ServicesIndexPage locale={locale} />
+    )
+  }
+
+  if (
+    [
+      'ai-automation',
+      'ki-automatisierung',
+      'ui-ux-design',
+      'web-app-development',
+      'web-entwicklung',
+      'mobile-app-development',
+      'mobile-app-entwicklung',
+    ].includes(slug)
+  ) {
+    const serviceKey =
+      {
+        'ki-automatisierung': 'ai-automation',
+        'web-entwicklung': 'web-app-development',
+        'mobile-app-entwicklung': 'mobile-app-development',
+      }[slug] || slug
+
+    return renderWithStructuredData(
+      locale,
+      slug,
+      pageTitle,
+      description,
+      true,
+      <ServiceDetailPage locale={locale} serviceKey={serviceKey} />
+    )
+  }
 
   let content = ''
   let frontmatter: PageFrontmatter = {} as PageFrontmatter

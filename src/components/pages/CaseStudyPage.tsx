@@ -5,7 +5,8 @@ import { ArrowLeft, ArrowRight, CheckCircle2, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { FloatiesBackground } from '@/components/ui/FloatiesBackground'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
-import { type CaseStudyContent } from '@/data/case-studies'
+import { type CaseStudyContent, caseStudies } from '@/data/case-studies'
+import { supportData } from '@/data/support-content'
 
 export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStudyContent }) {
   const isDe = locale === 'de'
@@ -14,28 +15,55 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
     if (!text) return null
     if (Array.isArray(text)) {
       return text.map((p, i) => (
-        <p key={i} className={`mb-4 leading-relaxed text-lg font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}>
-          {p.includes('**') 
-            ? p.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}>{part.replace(/\*\*/g, '')}</strong> : part)
+        <p
+          key={i}
+          className={`mb-4 text-lg leading-relaxed font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}
+        >
+          {p.includes('**')
+            ? p.split(/(\*\*.*?\*\*)/).map((part, j) =>
+                part.startsWith('**') ? (
+                  <strong
+                    key={j}
+                    className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}
+                  >
+                    {part.replace(/\*\*/g, '')}
+                  </strong>
+                ) : (
+                  part
+                )
+              )
             : p}
         </p>
       ))
     }
     return (
-      <p className={`mb-4 leading-relaxed text-lg font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}>
-        {text.includes('**') 
-            ? text.split(/(\*\*.*?\*\*)/).map((part, j) => part.startsWith('**') ? <strong key={j} className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}>{part.replace(/\*\*/g, '')}</strong> : part)
-            : text}
+      <p
+        className={`mb-4 text-lg leading-relaxed font-light ${darkText ? 'text-sp-text-on-light' : 'text-foreground/80'}`}
+      >
+        {text.includes('**')
+          ? text.split(/(\*\*.*?\*\*)/).map((part, j) =>
+              part.startsWith('**') ? (
+                <strong
+                  key={j}
+                  className={`font-bold ${darkText ? 'text-sp-text-dark' : 'text-white'}`}
+                >
+                  {part.replace(/\*\*/g, '')}
+                </strong>
+              ) : (
+                part
+              )
+            )
+          : text}
       </p>
     )
   }
 
   return (
-    <div className="relative flex w-full flex-col overflow-x-hidden pt-32 pb-24">
+    <div className="relative flex w-full flex-col overflow-x-clip pt-32 pb-24">
       <FloatiesBackground />
-      
+
       {/* Hero */}
-      <section className="relative flex min-h-[60vh] items-center overflow-x-hidden py-20">
+      <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-20">
         <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
@@ -44,27 +72,45 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
             <div className="mb-8 flex items-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="text-foreground/50 hover:text-sp-accent transition-colors flex items-center gap-2 font-medium"
+                className="text-foreground/70 hover:text-sp-accent flex items-center gap-2 font-medium transition-colors"
               >
                 <ArrowLeft size={16} />
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            
-            <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium tracking-wide uppercase">
-              {data.industryBadge}
+
+            <div className="mb-6 flex flex-wrap items-center gap-2">
+              <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium tracking-wide uppercase">
+                {data.industryBadge}
+              </div>
+              {data.duration && (
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium tracking-wide text-white/80 uppercase">
+                  {supportData[isDe ? 'de' : 'en'].caseStudies.duration}: {data.duration}
+                </div>
+              )}
+              {data.deliveryModel && (
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium tracking-wide text-white/80 uppercase">
+                  {data.deliveryModel}
+                </div>
+              )}
             </div>
-            
-            <h1 className="mb-8 max-w-5xl text-4xl leading-[1.15] font-bold md:text-6xl lg:text-7xl text-white">
+
+            <h1 className="mb-8 max-w-5xl text-4xl leading-[1.15] font-bold text-white md:text-6xl lg:text-7xl">
               {data.title.split('»')[0]} <br />
-              <span className="text-sp-accent text-3xl md:text-5xl lg:text-6xl mt-4 inline-block font-semibold">
+              <span className="text-sp-accent mt-4 inline-block text-3xl font-semibold md:text-5xl lg:text-6xl">
                 {data.title.split('»')[1]?.trim() || data.tagline}
               </span>
             </h1>
-            
-            <div className="max-w-3xl">
-              {renderText(data.intro)}
-            </div>
+
+            {data.executiveSummary && (
+              <div className="border-sp-accent mb-10 max-w-4xl border-l-4 py-2 pl-6">
+                <p className="text-xl leading-relaxed font-medium text-white md:text-2xl">
+                  {data.executiveSummary}
+                </p>
+              </div>
+            )}
+
+            <div className="max-w-3xl">{renderText(data.intro)}</div>
           </Reveal>
         </div>
       </section>
@@ -74,27 +120,37 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         <div className="grid gap-16 lg:grid-cols-2">
           {data.challengeTitle && (
             <Reveal direction="up" delay={0.1}>
-              <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-white/5 p-8 md:p-12">
-                <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.challengeTitle}</h2>
+              <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-black/10 p-8 md:p-12">
+                <h2 className="text-sp-text-dark mb-6 text-3xl font-bold">{data.challengeTitle}</h2>
                 {renderText(data.challengeText, true)}
-                
+
                 {data.challengeBullets && (
                   <ul className="mt-6 space-y-4">
                     {data.challengeBullets.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-4 text-sp-text-on-light leading-relaxed">
+                      <li
+                        key={i}
+                        className="text-sp-text-on-light flex items-start gap-4 leading-relaxed"
+                      >
                         <span className="text-sp-accent mt-1 text-xl font-bold">•</span>
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
                 )}
-                
+
                 {data.challengeTable && (
                   <div className="mt-8 overflow-hidden rounded-xl border border-black/10 bg-black/5">
                     {data.challengeTable.map((row, i) => (
-                      <div key={i} className={`flex flex-col md:flex-row border-black/10 p-4 ${i !== data.challengeTable!.length - 1 ? 'border-b' : ''}`}>
-                        <div className="font-semibold text-sp-text-dark md:w-1/3 mb-2 md:mb-0">{row.label || (row as any).col1}</div>
-                        <div className="text-sp-text-on-light md:w-2/3">{(row as any).value || (row as any).col2}</div>
+                      <div
+                        key={i}
+                        className={`flex flex-col border-black/10 p-4 md:flex-row ${i !== data.challengeTable!.length - 1 ? 'border-b' : ''}`}
+                      >
+                        <div className="text-sp-text-dark mb-2 font-semibold md:mb-0 md:w-1/3">
+                          {row.label || (row as any).col1}
+                        </div>
+                        <div className="text-sp-text-on-light md:w-2/3">
+                          {(row as any).value || (row as any).col2}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -105,8 +161,8 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
 
           {data.approachTitle && (
             <Reveal direction="up" delay={0.2}>
-              <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-white/5 p-8 md:p-12">
-                <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.approachTitle}</h2>
+              <div className="bg-sp-bg-medium h-full rounded-[2rem] border border-black/10 p-8 md:p-12">
+                <h2 className="text-sp-text-dark mb-6 text-3xl font-bold">{data.approachTitle}</h2>
                 {renderText(data.approachText, true)}
               </div>
             </Reveal>
@@ -118,10 +174,15 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
       {data.quote && (
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
-            <div className="mx-auto max-w-4xl text-center">
-              <blockquote className="text-3xl md:text-5xl font-light italic leading-tight text-sp-text-dark mb-6">
-                &quot;{data.quote}&quot;
-              </blockquote>
+            <div className="mx-auto max-w-4xl">
+              <div className="bg-sp-bg-medium relative overflow-hidden rounded-[2rem] border border-black/10 p-10 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)] md:p-16">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/60 to-transparent" />
+                <div className="bg-sp-accent absolute top-0 bottom-0 left-0 w-2" />
+
+                <blockquote className="text-sp-text-dark relative z-10 text-3xl leading-tight font-light italic md:text-5xl">
+                  &quot;{data.quote}&quot;
+                </blockquote>
+              </div>
             </div>
           </Reveal>
         </section>
@@ -132,15 +193,19 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
             <h2 className="mb-12 text-3xl font-bold md:text-5xl">{data.builtTitle}</h2>
-            {data.builtIntro && <div className="mb-12 max-w-3xl">{renderText(data.builtIntro)}</div>}
+            {data.builtIntro && (
+              <div className="mb-12 max-w-3xl">{renderText(data.builtIntro)}</div>
+            )}
           </Reveal>
 
           {data.builtBullets && (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {data.builtBullets.map((bullet, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="up">
-                  <div className="bg-sp-bg-medium h-full rounded-2xl border border-white/5 p-8">
-                    {bullet.title && <h3 className="mb-4 text-xl font-bold text-sp-text-dark">{bullet.title}</h3>}
+                  <div className="bg-sp-bg-medium h-full rounded-2xl border border-black/10 p-8">
+                    {bullet.title && (
+                      <h3 className="text-sp-text-dark mb-4 text-xl font-bold">{bullet.title}</h3>
+                    )}
                     <p className="text-sp-text-on-light leading-relaxed">{bullet.desc}</p>
                   </div>
                 </Reveal>
@@ -149,23 +214,30 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           )}
 
           {data.builtSections && (
-            <div className="space-y-16 mt-12">
+            <div className="mt-12 space-y-16">
               {data.builtSections.map((section, i) => (
                 <Reveal key={i} direction="up">
-                  <div className="bg-sp-bg-medium rounded-[2rem] border border-white/5 p-8 md:p-12">
-                <h3 className="mb-6 text-2xl font-bold text-sp-text-dark">{section.title}</h3>
-                {section.desc && <p className="mb-8 text-sp-text-on-light leading-relaxed text-lg">{section.desc}</p>}
-                
-                {section.bullets && (
-                  <div className="grid gap-4 md:grid-cols-2">
-                    {section.bullets.map((bullet, j) => (
-                      <div key={j} className="flex items-start gap-4 bg-black/5 p-4 rounded-xl border border-black/5">
-                        <CheckCircle2 className="text-sp-accent shrink-0" size={20} />
-                        <span className="text-sp-text-dark/90">{bullet}</span>
+                  <div className="bg-sp-bg-medium rounded-[2rem] border border-black/10 p-8 md:p-12">
+                    <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">{section.title}</h3>
+                    {section.desc && (
+                      <p className="text-sp-text-on-light mb-8 text-lg leading-relaxed">
+                        {section.desc}
+                      </p>
+                    )}
+
+                    {section.bullets && (
+                      <div className="grid gap-4 md:grid-cols-2">
+                        {section.bullets.map((bullet, j) => (
+                          <div
+                            key={j}
+                            className="flex items-start gap-4 rounded-xl border border-black/5 bg-black/5 p-4"
+                          >
+                            <CheckCircle2 className="text-sp-accent shrink-0" size={20} />
+                            <span className="text-sp-text-dark/90">{bullet}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                )}
+                    )}
                   </div>
                 </Reveal>
               ))}
@@ -180,18 +252,24 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           <Reveal>
             <h2 className="mb-8 text-3xl font-bold md:text-5xl">{data.architectureTitle}</h2>
             {renderText(data.architectureText)}
-            
+
             {data.architectureTable && (
-              <div className="mt-12 overflow-hidden rounded-2xl border border-black/10 bg-sp-bg-medium">
-                <div className="hidden md:grid grid-cols-3 gap-4 border-b border-black/10 p-6 bg-black/5 font-bold text-sp-text-dark uppercase tracking-wider text-sm">
+              <div className="bg-sp-bg-medium mt-12 overflow-hidden rounded-2xl border border-black/10 shadow-sm">
+                <div className="text-sp-text-dark hidden grid-cols-3 gap-4 border-b border-black/10 bg-black/5 p-6 text-sm font-bold tracking-wider uppercase md:grid">
                   <div>Layer</div>
                   <div>Choice</div>
                   <div>Reason</div>
                 </div>
                 {data.architectureTable.map((row, i) => (
-                  <div key={i} className={`grid md:grid-cols-3 gap-2 md:gap-4 p-6 ${i !== data.architectureTable!.length - 1 ? 'border-b border-black/10' : ''}`}>
-                    <div className="font-bold text-sp-accent md:text-sp-text-dark mb-1 md:mb-0">{row.col1}</div>
-                    <div className="font-semibold text-sp-text-dark mb-2 md:mb-0">{row.col2}</div>
+                  <div
+                    key={i}
+                    className={`grid gap-2 p-6 transition-colors hover:bg-black/5 md:grid-cols-3 md:gap-4 ${i !== data.architectureTable!.length - 1 ? 'border-b border-black/10' : ''} ${i % 2 === 0 ? 'bg-transparent' : 'bg-black/[0.02]'}`}
+                  >
+                    <div className="text-sp-accent md:text-sp-text-dark mb-1 flex items-center gap-2 font-bold md:mb-0">
+                      <div className="bg-sp-accent hidden h-1.5 w-1.5 rounded-full md:block" />
+                      {row.col1}
+                    </div>
+                    <div className="text-sp-text-dark mb-2 font-semibold md:mb-0">{row.col2}</div>
                     <div className="text-sp-text-on-light">{row.col3}</div>
                   </div>
                 ))}
@@ -204,15 +282,30 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
       {/* Metrics */}
       {data.metricsTitle && (
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
+          {/* Ambient Orb */}
+          <div className="bg-sp-accent/5 pointer-events-none absolute top-[20%] right-[-10%] -z-10 h-[40%] w-[40%] rounded-full blur-[120px]" />
+
           <Reveal>
-            <h2 className="mb-12 text-3xl font-bold md:text-5xl text-center">{data.metricsTitle}</h2>
-            
+            <h2 className="mb-12 text-center text-3xl font-bold md:text-5xl">
+              <span className="text-sp-accent">{data.metricsTitle.split(' ')[0]}</span>{' '}
+              {data.metricsTitle.split(' ').slice(1).join(' ')}
+            </h2>
+
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {data.metricsTable?.map((metric, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="up">
-                  <div className="bg-sp-bg-medium flex h-full flex-col justify-center rounded-[2rem] border border-black/5 p-8 text-center hover:border-sp-accent/30 transition-colors">
-                    <p className="text-sp-accent mb-4 text-sm font-bold uppercase tracking-widest">{metric.label}</p>
-                    <p className="text-xl font-bold text-sp-text-dark md:text-2xl">{metric.value}</p>
+                  <div className="bg-sp-bg-medium hover:border-sp-accent/30 group relative flex h-full flex-col justify-center overflow-hidden rounded-[2rem] border border-black/5 p-8 text-center shadow-sm transition-colors">
+                    {/* Subtle procedural background */}
+                    <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-10">
+                      <div className="h-full w-full bg-[radial-gradient(circle_at_center,_var(--sp-accent)_1px,_transparent_1px)] bg-[size:12px_12px]" />
+                    </div>
+
+                    <p className="text-sp-accent relative z-10 mb-4 text-sm font-bold tracking-widest uppercase">
+                      {metric.label}
+                    </p>
+                    <p className="text-sp-text-dark relative z-10 text-xl font-bold md:text-2xl">
+                      {metric.value}
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -222,34 +315,89 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
       )}
 
       {/* Why It Worked */}
-      {data.whyItWorkedTitle && (
+      {(data.whyItWorkedTitle || data.whyItWorkedPoints) && (
         <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
           <Reveal>
-            <div className="mx-auto max-w-4xl bg-sp-bg-medium border-l-4 border-sp-accent p-8 md:p-12 rounded-r-[2rem] shadow-2xl">
-              <h2 className="mb-6 text-3xl font-bold text-sp-text-dark">{data.whyItWorkedTitle}</h2>
-              {renderText(data.whyItWorkedText, true)}
+            <div className="border-l-sp-accent relative mx-auto mb-12 max-w-4xl overflow-hidden rounded-r-[2rem] border border-l-4 border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl md:p-12">
+              <div className="bg-sp-accent/5 absolute top-0 right-0 h-full w-[40%] rounded-full blur-3xl" />
+              {data.whyItWorkedTitle && (
+                <h2 className="relative z-10 mb-6 text-3xl font-bold text-white">
+                  {data.whyItWorkedTitle}
+                </h2>
+              )}
+              <div className="relative z-10">{renderText(data.whyItWorkedText, false)}</div>
             </div>
+          </Reveal>
+
+          {data.whyItWorkedPoints && (
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {data.whyItWorkedPoints.map((point, i) => (
+                <Reveal key={i} delay={0.1 * i} direction="up">
+                  <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-md transition-transform hover:-translate-y-1">
+                    <h3 className="group-hover:text-sp-accent mb-4 text-xl font-bold text-white transition-colors">
+                      {point.title}
+                    </h3>
+                    <p className="text-foreground/70 leading-relaxed">{point.desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* Comparison */}
+      {(data.comparisonTitle || data.comparisonPoints) && (
+        <section className="relative z-10 container mx-auto px-6 py-16 md:px-12">
+          <Reveal>
+            {data.comparisonTitle && (
+              <h2 className="mb-12 text-center text-3xl font-bold md:text-5xl">
+                {data.comparisonTitle}
+              </h2>
+            )}
+            {data.comparisonPoints && (
+              <div className="mx-auto max-w-4xl space-y-4">
+                {data.comparisonPoints.map((point, i) => (
+                  <div key={i} className="flex flex-col gap-4 md:flex-row">
+                    <div className="relative flex-1 rounded-xl border border-red-500/20 bg-red-500/10 p-6">
+                      <div className="mb-2 text-xs font-bold tracking-wider text-red-400 uppercase">
+                        {isDe ? 'Üblicherweise' : 'Typical Approach'}
+                      </div>
+                      <p className="text-white">{point.bad}</p>
+                    </div>
+                    <div className="relative flex-1 rounded-xl border border-green-500/20 bg-green-500/10 p-6">
+                      <div className="mb-2 text-xs font-bold tracking-wider text-green-400 uppercase">
+                        {isDe ? 'Unser Ansatz' : 'Our Approach'}
+                      </div>
+                      <p className="text-white">{point.good}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </Reveal>
         </section>
       )}
 
       {/* Tools & Services */}
       {(data.tools || data.services) && (
-        <section className="relative z-10 container mx-auto px-6 py-16 md:px-12 text-center">
+        <section className="relative z-10 container mx-auto px-6 py-16 text-center md:px-12">
           <Reveal>
-            <div className="inline-flex items-center gap-2 mb-6 text-sp-accent">
+            <div className="text-sp-accent mb-6 inline-flex items-center gap-2">
               <Settings size={20} />
-              <span className="font-bold uppercase tracking-wider">{isDe ? 'Technologien & Services' : 'Technologies & Services'}</span>
+              <span className="font-bold tracking-wider uppercase">
+                {isDe ? 'Technologien & Services' : 'Technologies & Services'}
+              </span>
             </div>
-            
+
             {data.tools && (
-              <p className="text-xl md:text-2xl font-light text-sp-text-dark mb-4 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-sp-text-dark mx-auto mb-4 max-w-4xl text-xl leading-relaxed font-light md:text-2xl">
                 {data.tools}
               </p>
             )}
-            
+
             {data.services && (
-              <p className="text-lg text-sp-text-on-light leading-relaxed max-w-4xl mx-auto">
+              <p className="text-sp-text-on-light mx-auto max-w-4xl text-lg leading-relaxed">
                 {data.services}
               </p>
             )}
@@ -263,24 +411,39 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
               {data.keyTakeaway && (
-                <blockquote className="text-3xl md:text-5xl font-bold leading-tight text-sp-text-dark mb-6">
-                  &quot;{data.keyTakeaway}&quot;
-                </blockquote>
+                <div className="bg-sp-bg-medium mb-12 rounded-[2rem] border border-black/10 p-10 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)] md:p-16">
+                  <blockquote className="text-sp-text-dark text-3xl leading-tight font-bold md:text-5xl">
+                    &quot;{data.keyTakeaway}&quot;
+                  </blockquote>
+                </div>
               )}
-              
+
               {data.testimonial && (
-                <div className="mt-12 bg-white/5 rounded-[2rem] p-8 md:p-12 border border-white/10">
+                <div className="bg-sp-bg-medium relative overflow-hidden rounded-[2rem] border border-black/10 p-8 shadow-xl md:p-12">
+                  <div className="from-sp-accent to-sp-accent-dark absolute top-0 left-0 h-1 w-full bg-gradient-to-r" />
                   <div className="mb-8 flex justify-center gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="h-6 w-6 text-[#ffb900]" fill="currentColor" viewBox="0 0 20 20">
+                      <svg
+                        key={i}
+                        className="h-6 w-6 text-[#ffb900]"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
                   </div>
-                  <blockquote className="text-xl md:text-2xl font-light italic leading-relaxed text-sp-text-dark mb-8">
+                  <blockquote className="text-sp-text-dark mb-8 text-xl leading-relaxed font-light italic md:text-2xl">
                     &quot;{data.testimonial.quote}&quot;
                   </blockquote>
-                  <p className="text-sp-accent font-bold text-lg">{data.testimonial.author}</p>
+                  <div className="flex items-center justify-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-black/5">
+                      <span className="text-sp-text-on-light text-lg font-bold">
+                        {data.testimonial.author.charAt(0)}
+                      </span>
+                    </div>
+                    <p className="text-sp-accent text-lg font-bold">{data.testimonial.author}</p>
+                  </div>
                 </div>
               )}
             </div>
@@ -288,20 +451,63 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
         </section>
       )}
 
+      {/* Related reading */}
+      <section className="relative z-10 container mx-auto px-6 pb-24 md:px-12">
+        <Reveal>
+          <div className="border-t border-black/10 pt-16">
+            <h3 className="text-sp-text-dark mb-10 text-center text-2xl font-bold">
+              {supportData[isDe ? 'de' : 'en'].caseStudies.readMore}
+            </h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {caseStudies[isDe ? 'de' : 'en']
+                .filter((cs) => cs.slug !== data.slug)
+                .slice(0, 3)
+                .map((cs, i) => (
+                  <Link
+                    key={cs.slug}
+                    href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/${cs.slug}`}
+                    className="bg-sp-bg-medium group hover:border-sp-accent/30 flex flex-col overflow-hidden rounded-[2rem] border border-black/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_32px_80px_-20px_rgba(0,0,0,0.15)]"
+                  >
+                    <div className="flex h-full flex-col p-8">
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className="text-sp-accent/80 bg-sp-accent/10 rounded-full px-3 py-1 text-xs font-semibold tracking-wide">
+                          {cs.industryBadge}
+                        </span>
+                      </div>
+                      <h4 className="text-sp-text-dark group-hover:text-sp-accent mb-2 text-xl leading-tight font-bold transition-colors">
+                        {cs.clientName}
+                      </h4>
+                      <p className="text-sp-text-on-light flex-1 text-sm leading-relaxed">
+                        {cs.tagline}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+            </div>
+            <div className="mt-12 flex justify-center">
+              <Link
+                href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
+                className="text-sp-text-dark hover:border-sp-accent hover:text-sp-accent rounded-full border border-black/10 bg-white/5 px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+              >
+                {isDe ? 'Alle Fallstudien ansehen' : 'View All Case Studies'}
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Final CTA */}
-      <section className="bg-sp-bg-medium relative overflow-x-hidden border-t border-white/5 py-24 md:py-32">
+      <section className="bg-sp-bg-medium relative overflow-x-clip border-t border-black/10 py-24 md:py-32">
         <div className="relative z-10 container mx-auto grid items-start gap-16 px-6 md:px-12 lg:grid-cols-2">
           <Reveal>
             <div className="max-w-xl">
               <h2 className="text-sp-text-dark mb-10 text-5xl leading-[1.1] font-black tracking-tight md:text-6xl">
-                {isDe
-                  ? 'Bereit für ähnliche Ergebnisse?'
-                  : 'Ready for similar results?'}
+                {isDe ? 'Bereit für ähnliche Ergebnisse?' : 'Ready for similar results?'}
               </h2>
               <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
                 {isDe
                   ? 'Lassen Sie uns darüber sprechen, wie wir Ihre Herausforderungen in Erfolgsgeschichten verwandeln können.'
-                  : 'Let\'s talk about how we can turn your challenges into success stories.'}
+                  : "Let's talk about how we can turn your challenges into success stories."}
               </p>
             </div>
           </Reveal>
