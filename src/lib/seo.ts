@@ -19,6 +19,11 @@ export const SLUG_LOCALE_MAP: Record<string, { en: string; de: string }> = {
   startup: { en: "startup", de: "startups" },
   "terms-and-conditions": { en: "terms-and-conditions", de: "allgemeine-geschaeftsbedingungen-agb" },
   "privacy-policy": { en: "privacy-policy", de: "datenschutzerklaerung" },
+  "ai-automation": { en: "ai-automation", de: "ki-automatisierung" },
+  "ui-ux-design": { en: "ui-ux-design", de: "ui-ux-design" },
+  "web-app-development": { en: "web-app-development", de: "web-entwicklung" },
+  "mobile-app-development": { en: "mobile-app-development", de: "mobile-app-entwicklung" },
+  "case-studies": { en: "case-studies", de: "fallstudien" },
 };
 
 /** Normalize slug to canonical key for mapping */
@@ -118,6 +123,7 @@ export function generatePageMetadata(
     locale,
     alternateLocales,
     noIndex,
+    ogType,
   } = pageMetadata;
 
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -128,6 +134,7 @@ export function generatePageMetadata(
     image: ogImage,
     imageAlt: ogImageAlt,
     alternateLocales: alternates.map((a) => (a.locale === "de" ? "de_DE" : "en_US")),
+    type: ogType,
   });
 
   const twitter = generateTwitterCard(fullTitle, description, { image: ogImage });

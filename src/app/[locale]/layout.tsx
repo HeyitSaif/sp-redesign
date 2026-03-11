@@ -51,6 +51,14 @@ export async function generateMetadata({
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? ['en_US'] : ['de_DE'],
       type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description.slice(0, 200))}`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

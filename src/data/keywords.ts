@@ -101,4 +101,39 @@ export const PAGE_KEYWORDS: Record<
     primary: ["privacy policy", "data protection", "SolutionPlus privacy"],
     secondary: ["GDPR", "personal data", "privacy"],
   },
+  "case-studies": {
+    primary: ["case studies", "success stories", "portfolio"],
+    secondary: [
+      "software development projects",
+      "client work",
+      "tech case studies",
+    ],
+  },
+  "ai-automation": {
+    primary: ["AI automation", "workflow automation", "process automation"],
+    secondary: [
+      "n8n",
+      "LangChain",
+      "RPA",
+      "business process automation",
+      "AI agents",
+    ],
+  },
+  "ui-ux-design": {
+    primary: ["UI design", "UX design", "user experience design"],
+    secondary: [
+      "wireframing",
+      "prototyping",
+      "design systems",
+      "user research",
+    ],
+  },
+  "web-app-development": {
+    primary: ["web development", "web app development", "full-stack development"],
+    secondary: ["React", "Next.js", "e-commerce", "CMS", "API development"],
+  },
+  "mobile-app-development": {
+    primary: ["mobile app development", "iOS", "Android", "cross-platform"],
+    secondary: ["Flutter", "React Native", "native app", "app modernization"],
+  },
 };

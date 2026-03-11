@@ -4,6 +4,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getKeywordsForPage } from '@/lib/keywords'
 import { generatePageMetadata } from '@/lib/seo'
+import { StructuredData } from '@/components/seo/StructuredData'
+import { generateFAQSchema } from '@/lib/schemas'
 import { HeroCarousel } from '@/components/sections/HeroCarousel'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { InvestingFaqAccordion } from '@/components/sections/InvestingFaqAccordion'
@@ -43,12 +45,47 @@ export async function generateMetadata({
   })
 }
 
+const HOME_FAQ_ITEMS = [
+  {
+    q: "Worried the quality won't hold up?",
+    a: 'We only assign vetted senior engineers; no juniors, no freelancers. We delivered a full-stack MVP in 6 weeks for a Berlin startup. You see the roadmap, not a black box.',
+  },
+  {
+    q: 'Think time zones will slow everything down?',
+    a: 'We sync to your hours; full or partial overlap. Our Lahore team works in lockstep with your German-based ops, so no lost context.',
+  },
+  {
+    q: "Afraid you'll lose control of your product?",
+    a: 'You always own the code, the process, and the team. Our BOT model lets you scale now, and fully own later — with zero gray areas.',
+  },
+] as const
+
+const HOME_FAQ_ITEMS_DE = [
+  {
+    q: 'Besorgt, dass die Qualität nicht hält?',
+    a: 'Wir weisen nur geprüfte Senior-Ingenieure zu; keine Junioren, keine Freiberufler. Wir haben für ein Berliner Startup in 6 Wochen ein Full-Stack-MVP geliefert. Sie sehen die Roadmap, keine Blackbox.',
+  },
+  {
+    q: 'Denken Sie, Zeitzonen verlangsamen alles?',
+    a: 'Wir synchronisieren uns mit Ihren Arbeitszeiten; volle oder teilweise Überlappung. Unser Team in Lahore arbeitet im Gleichschritt mit Ihrem Team in Deutschland, sodass kein Kontext verloren geht.',
+  },
+  {
+    q: 'Angst, die Kontrolle über Ihr Produkt zu verlieren?',
+    a: 'Sie besitzen immer den Code, den Prozess und das Team. Mit unserem BOT-Modell können Sie jetzt skalieren und später vollständig übernehmen — ohne Grauzonen.',
+  },
+] as const
+
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const isDe = locale === 'de'
+  const faqItems = isDe ? HOME_FAQ_ITEMS_DE : HOME_FAQ_ITEMS
+  const faqSchema = generateFAQSchema(
+    faqItems.map((item) => ({ question: item.q, answer: item.a }))
+  )
 
   return (
     <div className="bg-sp-bg-dark flex w-full flex-col overflow-x-clip text-white">
+      <StructuredData data={faqSchema} />
       {/* 1. Hero — 3-Slide Carousel */}
       <HeroCarousel locale={locale} />
 

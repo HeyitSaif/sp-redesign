@@ -98,7 +98,7 @@ export function ProceduralUIDesign({ className, animated = true }: ProceduralUID
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              strokeLinelinejoin="round"
+              strokeLinejoin="round"
               className="text-white drop-shadow-md"
             >
               <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />

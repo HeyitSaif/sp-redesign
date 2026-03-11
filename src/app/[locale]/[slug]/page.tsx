@@ -2,7 +2,7 @@ import { getPageContent } from '@/lib/markdown'
 import type { PageFrontmatter } from '@/lib/markdown'
 import { MarkdownPage } from '@/components/sections/MarkdownPage'
 import { StructuredData } from '@/components/seo/StructuredData'
-import { generateServiceSchema, generateBreadcrumbSchema } from '@/lib/schemas'
+import { generateServiceSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schemas'
 import { StartupPage } from '@/components/pages/StartupPage'
 import { ScaleUpPage } from '@/components/pages/ScaleUpPage'
 import { ContactPage } from '@/components/pages/ContactPage'
@@ -16,6 +16,7 @@ import { ServiceDetailPage } from '@/components/pages/ServiceDetailPage'
 import { ServicesIndexPage } from '@/components/pages/ServicesIndexPage'
 import { servicesData } from '@/data/services-content'
 import type { ReactNode } from 'react'
+import type { StructuredDataSchema } from '@/types/seo'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { generatePageMetadata, getCanonicalUrl, getAlternateUrls } from '@/lib/seo'
@@ -52,17 +53,12 @@ export async function generateMetadata({
       const isDe = locale === 'de'
       const title = data.title[isDe ? 'de' : 'en']
       const description = data.heroDescription[isDe ? 'de' : 'en']
+      const { primary, secondary } = getKeywordsForPage(serviceKey)
+      const keywords = [...primary, ...secondary]
       return generatePageMetadata({
         title,
         description,
-        keywords: [
-          title,
-          ...data.technologyStack.categories
-            .map((c) => c.items)
-            .join(', ')
-            .split(',')
-            .map((s) => s.trim()),
-        ],
+        keywords,
         canonicalUrl: getCanonicalUrl(locale, slug),
         alternateLocales: getAlternateUrls(locale, slug),
         locale,
@@ -138,7 +134,8 @@ function renderWithStructuredData(
   pageTitle: string,
   description: string,
   isService: boolean,
-  children: ReactNode
+  children: ReactNode,
+  extraSchemas?: StructuredDataSchema[]
 ) {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'
   const pageUrl = `${SITE_URL}/${locale}/${slug}`
@@ -147,7 +144,11 @@ function renderWithStructuredData(
     { name: 'SolutionPlus', url: `${SITE_URL}/${locale}` },
     { name: pageTitle, url: pageUrl },
   ])
-  const schemas = [breadcrumbSchema, ...(serviceSchema ? [serviceSchema] : [])]
+  const schemas = [
+    breadcrumbSchema,
+    ...(serviceSchema ? [serviceSchema] : []),
+    ...(extraSchemas ?? []),
+  ]
   return (
     <>
       <StructuredData data={schemas} />
@@ -323,13 +324,24 @@ export default async function GenericPage({
         'mobile-app-entwicklung': 'mobile-app-development',
       }[slug] || slug
 
+    const serviceData = servicesData[serviceKey]
+    const faqSchema =
+      serviceData?.faqs?.length &&
+      generateFAQSchema(
+        serviceData.faqs.map((f) => ({
+          question: f.q[locale === 'de' ? 'de' : 'en'],
+          answer: f.a[locale === 'de' ? 'de' : 'en'],
+        }))
+      )
+
     return renderWithStructuredData(
       locale,
       slug,
       pageTitle,
       description,
       true,
-      <ServiceDetailPage locale={locale} serviceKey={serviceKey} />
+      <ServiceDetailPage locale={locale} serviceKey={serviceKey} />,
+      faqSchema ? [faqSchema] : undefined
     )
   }
 

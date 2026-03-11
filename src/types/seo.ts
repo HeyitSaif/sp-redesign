@@ -10,6 +10,7 @@ export interface PageMetadata {
   locale: string;
   alternateLocales?: AlternateLocale[];
   noIndex?: boolean;
+  ogType?: "website" | "article";
 }
 
 export interface AlternateLocale {

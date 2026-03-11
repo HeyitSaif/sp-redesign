@@ -12,7 +12,12 @@ export function generateOrganizationSchema(): StructuredDataSchema {
     description:
       "SolutionPlus helps startups and scale-ups build better products, faster. From MVP sprints to modernizing legacy code, we deliver engineering that scales.",
     foundingDate: "2024",
-    sameAs: [],
+    sameAs: [
+      "https://www.linkedin.com/company/solutionplus-io/",
+      "https://www.facebook.com/SolutionPlus.io/",
+      "https://www.instagram.com/solutionplus.io/",
+      "https://x.com/SolutionPlus_io",
+    ],
     contactPoint: {
       "@type": "ContactPoint",
       email: "hello@solutionplus.io",
@@ -59,6 +64,54 @@ export function generateServiceSchema(
     },
     areaServed: "Worldwide",
     url,
+  };
+}
+
+export function generateFAQSchema(
+  items: Array<{ question: string; answer: string }>
+): StructuredDataSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+export function generateArticleSchema(
+  title: string,
+  description: string,
+  url: string,
+  options?: { datePublished?: string; dateModified?: string; author?: string }
+): StructuredDataSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url,
+    publisher: {
+      "@type": "Organization",
+      name: "SolutionPlus",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/logo.png`,
+      },
+    },
+    ...(options?.datePublished && { datePublished: options.datePublished }),
+    ...(options?.dateModified && { dateModified: options.dateModified }),
+    ...(options?.author && {
+      author: {
+        "@type": "Organization",
+        name: options.author,
+      },
+    }),
   };
 }
 

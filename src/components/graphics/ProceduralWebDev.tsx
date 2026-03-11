@@ -64,7 +64,7 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
             <motion.div
               className="bg-sp-accent mt-1 h-3 w-2"
               animate={{ opacity: [1, 0, 1] }}
-              transition={{ duration: 1, repeat: Infinity, ease: 'steps(2)' }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
             />
           )}
         </div>
