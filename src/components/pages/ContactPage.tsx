@@ -72,15 +72,17 @@ export function ContactPage({ locale }: { locale: string }) {
                   {
                     icon: MapPin,
                     title: isDe ? 'Standorte' : 'Locations',
-                    content: `Berlin, ${isDe ? 'Deutschland' : 'Germany'}\nDubai, UAE\nPakistan`,
+                    content: isDe
+                      ? `Berlin: Kollwitzstraße 76, 10435 Berlin, Deutschland\nSharjah: Business Centre, Sharjah Publishing City Free Zone, Sharjah, UAE\nPakistan`
+                      : `Berlin: Kollwitzstraße 76, 10435 Berlin, Germany\nSharjah: Business Centre, Sharjah Publishing City Free Zone, Sharjah, UAE\nPakistan`,
                     subtext: supportData[isDe ? 'de' : 'en'].contact.officeHours,
                     href: null,
                   },
                   {
                     icon: Phone,
                     title: isDe ? 'Telefon' : 'Phone',
-                    content: '+49 123 456 789',
-                    href: 'tel:+49123456789',
+                    content: isDe ? '+49 176 47658461' : '+971 58 881 8005',
+                    href: isDe ? 'tel:+4917647658461' : 'tel:+971588818005',
                   },
                 ].map((item, i) => (
                   <motion.div

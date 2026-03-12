@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { supportData } from '@/data/support-content'
 
 export function Footer({ locale }: { locale: string }) {
@@ -288,35 +288,47 @@ export function Footer({ locale }: { locale: string }) {
           </ul>
         </div>
 
-        {/* Headquarter */}
-        <div>
+        {/* Offices */}
+        <div className="lg:col-span-2 min-w-0">
           <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">
-            {isDe ? 'Hauptsitz' : 'Headquarter'}
+            {isDe ? 'Standorte' : 'Offices'}
           </h4>
-          <ul className="flex flex-col gap-6">
-            <li className="flex items-start gap-3 text-base">
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-6">
+            <li className="flex min-w-0 items-start gap-3 text-base">
               <MapPin className="text-sp-text-on-light shrink-0" size={20} />
-              <div className="flex flex-col gap-1">
-                <span>Kollwitzstraße 76, 10435 Berlin</span>
-                <span className="text-sp-text-on-light/60 text-sm italic">
-                  {supportData[isDe ? 'de' : 'en'].footer.locations}
-                </span>
+              <div className="min-w-0 flex flex-col gap-1">
+                <span className="break-words">Kollwitzstraße 76, 10435 Berlin, {isDe ? 'Deutschland' : 'Germany'}</span>
+                <a
+                  href="tel:+4917647658461"
+                  className="text-sp-text-on-light/60 hover:text-sp-link-hover text-sm transition-colors"
+                  data-analytics-event="link_click"
+                  data-analytics-event-label="Phone Germany"
+                  data-analytics-location="footer_contact"
+                  data-analytics-link-url="tel:+4917647658461"
+                >
+                  +49 176 47658461
+                </a>
               </div>
             </li>
-            <li className="flex items-center gap-3 text-base">
-              <Phone className="text-sp-text-on-light shrink-0" size={20} />
-              <a
-                href="tel:+4681234567"
-                className="hover:text-sp-link-hover transition-colors"
-                data-analytics-event="link_click"
-                data-analytics-event-label="Phone"
-                data-analytics-location="footer_contact"
-                data-analytics-link-url="tel:+4681234567"
-              >
-                +46 8123 4567
-              </a>
+            <li className="flex min-w-0 items-start gap-3 text-base">
+              <MapPin className="text-sp-text-on-light shrink-0" size={20} />
+              <div className="min-w-0 flex flex-col gap-1">
+                <span className="break-words">
+                  Business Centre, Sharjah Publishing City Free Zone, Sharjah, United Arab Emirates
+                </span>
+                <a
+                  href="tel:+971588818005"
+                  className="text-sp-text-on-light/60 hover:text-sp-link-hover text-sm transition-colors"
+                  data-analytics-event="link_click"
+                  data-analytics-event-label="Phone UAE"
+                  data-analytics-location="footer_contact"
+                  data-analytics-link-url="tel:+971588818005"
+                >
+                  +971 58 881 8005
+                </a>
+              </div>
             </li>
-            <li className="flex items-center gap-3 text-base">
+            <li className="col-span-full flex items-center gap-3 text-base">
               <Mail className="text-sp-text-on-light shrink-0" size={20} />
               <a
                 href="mailto:sales@solutionplus.io"
