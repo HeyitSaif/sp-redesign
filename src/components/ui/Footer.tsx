@@ -289,15 +289,17 @@ export function Footer({ locale }: { locale: string }) {
         </div>
 
         {/* Offices */}
-        <div className="lg:col-span-2 min-w-0">
+        <div className="min-w-0 lg:col-span-2">
           <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">
             {isDe ? 'Standorte' : 'Offices'}
           </h4>
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-8 md:gap-y-6">
             <li className="flex min-w-0 items-start gap-3 text-base">
               <MapPin className="text-sp-text-on-light shrink-0" size={20} />
-              <div className="min-w-0 flex flex-col gap-1">
-                <span className="break-words">Kollwitzstraße 76, 10435 Berlin, {isDe ? 'Deutschland' : 'Germany'}</span>
+              <div className="flex min-w-0 flex-col gap-1">
+                <span className="wrap-break-word">
+                  Kollwitzstraße 76, 10435 Berlin, {isDe ? 'Deutschland' : 'Germany'}
+                </span>
                 <a
                   href="tel:+4917647658461"
                   className="text-sp-text-on-light/60 hover:text-sp-link-hover text-sm transition-colors"
@@ -312,8 +314,8 @@ export function Footer({ locale }: { locale: string }) {
             </li>
             <li className="flex min-w-0 items-start gap-3 text-base">
               <MapPin className="text-sp-text-on-light shrink-0" size={20} />
-              <div className="min-w-0 flex flex-col gap-1">
-                <span className="break-words">
+              <div className="flex min-w-0 flex-col gap-1">
+                <span className="wrap-break-word">
                   Business Centre, Sharjah Publishing City Free Zone, Sharjah, United Arab Emirates
                 </span>
                 <a
