@@ -293,6 +293,57 @@ const CUSTOM_PAGE_SLUGS = [
   'leistungen',
 ]
 
+/** Slugs for [locale]/[slug] route (excludes case-studies, fallstudien - separate routes) */
+const STATIC_SLUGS_EN = [
+  'about-team',
+  'dedicated-delivery-teams',
+  'mvp-sprint-package',
+  'product-modernization',
+  'entrepreneur-with-an-idea',
+  'careers',
+  'contact-us',
+  'scale-up',
+  'startup',
+  'terms-and-conditions',
+  'privacy-policy',
+  'ai-automation',
+  'ui-ux-design',
+  'web-app-development',
+  'mobile-app-development',
+  'services',
+]
+const STATIC_SLUGS_DE = [
+  'ueber-solutionplus',
+  'dedizierte-teams',
+  'mvp-sprint-paket',
+  'software-modernisierung',
+  'gruender-idee-startup-partner',
+  'karriere',
+  'kontakt-solutionplus',
+  'scaleups',
+  'startups',
+  'allgemeine-geschaeftsbedingungen-agb',
+  'datenschutzerklaerung',
+  'ki-automatisierung',
+  'ui-ux-design',
+  'web-entwicklung',
+  'mobile-app-entwicklung',
+  'leistungen',
+]
+
+export function generateStaticParams() {
+  const params: { locale: string; slug: string }[] = []
+  for (const slug of STATIC_SLUGS_EN) {
+    params.push({ locale: 'en', slug })
+  }
+  for (const slug of STATIC_SLUGS_DE) {
+    params.push({ locale: 'de', slug })
+  }
+  return params
+}
+
+export const dynamicParams = false
+
 function renderWithStructuredData(
   locale: string,
   slug: string,

@@ -6,6 +6,8 @@ import { Footer } from '@/components/ui/Footer'
 import { ParticleBackground } from '@/components/animations/ParticleBackground'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import { StructuredData } from '@/components/seo/StructuredData'
+import { Analytics } from '@/components/providers/Analytics'
+import { GoogleTagManagerNoScript } from '@/components/providers/GoogleTagManagerNoScript'
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schemas'
 
 const geistSans = Geist({
@@ -45,6 +47,10 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
+    icons: {
+      icon: '/images/FAVICON-01-120x120.png',
+      apple: '/images/FAVICON-01-300x300.png',
+    },
     title: {
       default: title,
       template: '%s | SolutionPlus',
@@ -117,6 +123,8 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="scroll-smooth">
+      <Analytics />
+      <GoogleTagManagerNoScript />
       <body
         className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background selection:bg-sp-accent/30 relative flex min-h-[100dvh] flex-col overflow-x-clip antialiased selection:text-white`}
       >

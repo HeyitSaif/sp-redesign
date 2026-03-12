@@ -2,6 +2,7 @@
 
 import { headers } from "next/headers";
 import nodemailer from "nodemailer";
+import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { checkRateLimit, RATE_LIMITS } from "@/lib/rate-limit";
 import { escapeHtml } from "@/lib/sanitize";
 
@@ -17,6 +18,27 @@ async function getClientIp(): Promise<string> {
   if (forwarded) return forwarded.split(",")[0]?.trim() ?? "unknown";
   if (realIp) return realIp;
   return "unknown";
+}
+
+function createTransporter() {
+  const region = process.env.AWS_SES_REGION || "us-east-1";
+  const hasAwsCreds =
+    process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY;
+
+  if (hasAwsCreds) {
+    const sesClient = new SESv2Client({
+      region,
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
+    return nodemailer.createTransport({
+      SES: { sesClient, SendEmailCommand },
+    });
+  }
+
+  return null;
 }
 
 export async function submitContactForm(prevState: unknown, formData: FormData) {
@@ -52,19 +74,12 @@ export async function submitContactForm(prevState: unknown, formData: FormData) 
     const safeSubject = escapeHtml(subject);
     const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_PORT === "465",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const from = process.env.CONTACT_EMAIL_FROM || "noreply@solutionplus.io";
+    const to = process.env.CONTACT_EMAIL_TO || "sale@solutionplus.io";
 
     const mailOptions = {
-      from: process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || "hello@solutionplus.io",
+      from,
+      to,
       replyTo: email,
       subject: `New Contact Request: ${subject || "No Subject"} - from ${name}`,
       text: `
@@ -92,10 +107,13 @@ News & Updates: ${news ? "Yes" : "No"}
       `,
     };
 
-    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    const transporter = createTransporter();
+    if (transporter) {
       await transporter.sendMail(mailOptions);
     } else if (process.env.NODE_ENV !== "production") {
-      console.warn("SMTP credentials not provided in .env. Skipping actual email send.");
+      console.warn(
+        "AWS SES credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) not set. Skipping email send."
+      );
     }
 
     return { success: true, message: "Your message has been sent successfully.", error: "" };

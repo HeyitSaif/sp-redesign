@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { unstable_cache } from "next/cache";
 
 const contentDir = path.join(process.cwd(), "src/content");
 
@@ -30,7 +31,7 @@ function extractDescriptionFromContent(content: string, maxLen = 160): string {
   return plain.length > maxLen ? plain.slice(0, maxLen - 3) + "..." : plain;
 }
 
-export async function getPageContent(locale: string, slug: string) {
+async function getPageContentImpl(locale: string, slug: string) {
   const directPath = path.join(contentDir, locale, `${slug}.md`);
   let fullPath = directPath;
 
@@ -62,6 +63,19 @@ export async function getPageContent(locale: string, slug: string) {
     frontmatter,
     content,
   };
+}
+
+const getCachedPageContent = unstable_cache(
+  async (locale: string, slug: string) => getPageContentImpl(locale, slug),
+  ["page-content"],
+  {
+    tags: ["markdown-content"],
+    revalidate: 3600, // 1 hour ISR for content updates
+  }
+);
+
+export async function getPageContent(locale: string, slug: string) {
+  return getCachedPageContent(locale, slug);
 }
 
 /** List all content slugs for a locale (for sitemap) */

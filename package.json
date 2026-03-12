@@ -12,6 +12,8 @@
     "download-scraped-images": "node scripts/download-scraped-images.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.1007.0",
+    "@sentry/nextjs": "^10.43.0",
     "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.3",
