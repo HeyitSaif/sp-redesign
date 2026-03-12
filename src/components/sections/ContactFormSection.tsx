@@ -30,10 +30,10 @@ export function ContactFormSection({ locale }: { locale: string }) {
 
   return (
     <div
-      className="bg-sp-surface-elevated group border-sp-border-dark hover:border-sp-accent/40 relative overflow-x-clip rounded-2xl border p-5 md:p-8 shadow-2xl transition-all duration-500 md:p-5 md:p-8 md:p-12"
+      className="bg-sp-surface-elevated group border-sp-border-dark hover:border-sp-accent/40 relative overflow-hidden rounded-2xl border p-5 shadow-2xl transition-all duration-500 md:p-5 md:p-8 md:p-12"
       id="contact"
     >
-      <div className="bg-sp-accent/5 absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="bg-sp-accent/5 absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <AnimatePresence>
         {showSuccess && (
@@ -60,7 +60,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
       </AnimatePresence>
 
       <form action={formAction} className="relative z-10 mt-4 space-y-8">
-        <div className="grid gap-5 md:gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 md:gap-6">
           <div className="group/input relative space-y-3">
             <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
               {isDe ? 'Name*' : 'Name*'}

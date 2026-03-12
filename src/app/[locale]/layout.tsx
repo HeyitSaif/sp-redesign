@@ -1,23 +1,10 @@
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '../globals.css'
 import { Header } from '@/components/ui/Header'
 import { Footer } from '@/components/ui/Footer'
 import { StructuredData } from '@/components/seo/StructuredData'
-
-const ParticleBackground = dynamic(
-  () =>
-    import('@/components/animations/ParticleBackground').then((m) => ({
-      default: m.ParticleBackground,
-    })),
-  { ssr: false }
-)
-
-const ScrollToTop = dynamic(
-  () => import('@/components/ui/ScrollToTop').then((m) => ({ default: m.ScrollToTop })),
-  { ssr: false }
-)
+import { LayoutClientParts } from '@/components/layout/LayoutClientParts'
 import { Analytics } from '@/components/providers/Analytics'
 import { GoogleTagManagerNoScript } from '@/components/providers/GoogleTagManagerNoScript'
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schemas'
@@ -143,11 +130,10 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background selection:bg-sp-accent/30 relative flex min-h-[100dvh] flex-col overflow-x-clip antialiased selection:text-white`}
       >
         <StructuredData data={[orgSchema, siteSchema]} />
-        <ParticleBackground />
+        <LayoutClientParts />
         <Header locale={locale} />
         <main className="relative z-10 flex-grow">{children}</main>
         <Footer locale={locale} />
-        <ScrollToTop />
       </body>
     </html>
   )

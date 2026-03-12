@@ -84,6 +84,7 @@ const sentryConfig = process.env.SENTRY_AUTH_TOKEN
     authToken: process.env.SENTRY_AUTH_TOKEN,
     tunnelRoute: "/monitoring",
     silent: !process.env.CI,
+    sourcemaps: { disable: true },
   })
   : nextConfig;
 

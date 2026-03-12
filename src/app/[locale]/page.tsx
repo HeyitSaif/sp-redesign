@@ -223,7 +223,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
       {/* 3. German discipline + Pakistani engineering */}
       <section className="bg-sp-bg-medium text-sp-text-dark relative overflow-x-clip py-12 md:py-16 lg:py-24">
-        <div className="container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:gap-20 lg:px-12">
+        <div className="container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:items-start lg:gap-20 lg:px-12">
           <div>
             <Reveal>
               <h2 className="text-sp-text-dark mb-8 text-3xl leading-[1.2] font-black tracking-tight sm:text-3xl md:mb-12 md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
@@ -275,15 +275,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           </div>
 
           <Reveal direction="left">
-            <div className="flex flex-col items-center gap-2">
-              <div className="relative h-64 w-full overflow-hidden rounded-[2rem] shadow-2xl md:h-80 lg:h-[400px]">
+            <div className="flex w-full min-w-0 flex-col items-center gap-3 sm:gap-4">
+              <div className="relative aspect-square w-full max-w-full overflow-hidden rounded-[2rem] shadow-2xl">
                 <ImageWithShimmer
                   src="/images/We-combine-German-discipline-with-top-tier-Pakistani-engineering-14-scaled.jpg"
                   alt="German discipline with Pakistani engineering"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
-              <span className="text-sp-text-on-light/60 text-sm font-medium italic">
+              <span className="text-sp-text-on-light/60 text-center text-sm font-medium italic">
                 {supportData[isDe ? 'de' : 'en'].home.germanDiscipline.caption}
               </span>
             </div>
