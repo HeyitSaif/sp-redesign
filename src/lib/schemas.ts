@@ -40,6 +40,10 @@ export function generateWebSiteSchema(locale: string): StructuredDataSchema {
       "Build, launch, and scale software with SolutionPlus. German leadership, Pakistani engineering talent.",
     publisher: { "@id": ORG_ID },
     inLanguage: locale === "de" ? "de" : "en",
+    alternateName:
+      locale === "de"
+        ? "SolutionPlus – Software entwickeln & skalieren"
+        : "SolutionPlus – Build, Launch, Scale",
   };
 }
 
