@@ -59,6 +59,8 @@ export async function submitContactForm(prevState: unknown, formData: FormData) 
     const message = String(formData.get("message") ?? "").trim().slice(0, MAX_MESSAGE);
     const marketing = formData.get("marketing") === "on";
     const news = formData.get("news") === "on";
+    const locale = String(formData.get("locale") ?? "en");
+    const isDe = locale === "de";
 
     if (!name || !email) {
       return { success: false, error: "Name and email are required", message: "" };
@@ -72,16 +74,24 @@ export async function submitContactForm(prevState: unknown, formData: FormData) 
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safeSubject = escapeHtml(subject);
-    const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+    const safeMessage = escapeHtml(message);
 
     const from = process.env.CONTACT_EMAIL_FROM || "noreply@solutionplus.io";
-    const to = process.env.CONTACT_EMAIL_TO || "sale@solutionplus.io";
+    const to = process.env.CONTACT_EMAIL_TO ? process.env.CONTACT_EMAIL_TO.split(',') : ["sales@solutionplus.io"];
+
+    // Ensure we have a valid reply-to address
+    const replyTo = to.length > 0 ? to[0] : "sales@solutionplus.io";
+
+    // Debugging environment variables in development
+    if (process.env.NODE_ENV !== "production") {
+      console.log("Contact form submission targeting:", to);
+    }
 
     const mailOptions = {
       from,
       to,
       replyTo: email,
-      subject: `New Contact Request: ${subject || "No Subject"} - from ${name}`,
+      subject: `[Contact Form] New Request: ${subject || "No Subject"} - from ${name}`,
       text: `
 Name: ${name}
 Email: ${email}
@@ -95,21 +105,67 @@ Marketing Emails: ${marketing ? "Yes" : "No"}
 News & Updates: ${news ? "Yes" : "No"}
       `,
       html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        <p><strong>Subject:</strong> ${safeSubject || "N/A"}</p>
-        <h4>Message:</h4>
-        <p>${safeMessage || "N/A"}</p>
-        <hr/>
-        <p><strong>Marketing Emails:</strong> ${marketing ? "Yes" : "No"}</p>
-        <p><strong>News & Updates:</strong> ${news ? "Yes" : "No"}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
+          <h3 style="color: #ff7043; border-bottom: 1px solid #eee; padding-bottom: 10px;">New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> <a href="mailto:${safeEmail}" style="color: #126dfb;">${safeEmail}</a></p>
+          <p><strong>Subject:</strong> ${safeSubject || "N/A"}</p>
+          
+          <div style="margin-top: 20px;">
+            <h4 style="margin-bottom: 5px; color: #333;">Message:</h4>
+            <div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; border-left: 4px solid #ff7043; color: #555;">
+              <p style="margin: 0; line-height: 1.5; white-space: pre-wrap;">${safeMessage || "N/A"}</p>
+            </div>
+          </div>
+          
+          <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; font-size: 13px; color: #777;">
+            <p style="margin: 5px 0;"><strong>Marketing Emails:</strong> ${marketing ? "Yes" : "No"}</p>
+            <p style="margin: 5px 0;"><strong>News & Updates:</strong> ${news ? "Yes" : "No"}</p>
+          </div>
+        </div>
       `,
+    };
+
+    const ackSubject = isDe
+      ? "Vielen Dank für Ihre Kontaktaufnahme"
+      : "Thank you for contacting us";
+
+    const ackText = isDe
+      ? `Hallo ${name},\n\nvielen Dank für Ihre Nachricht! Wir haben Ihre Anfrage erhalten und unser Team wird sich in Kürze bei Ihnen melden.\n\nMit freundlichen Grüßen,\nIhr SolutionPlus Team`
+      : `Hi ${name},\n\nThank you for reaching out! We have received your message and our team will get back to you shortly.\n\nBest regards,\nThe SolutionPlus Team`;
+
+    const ackHtml = isDe
+      ? `<p>Hallo ${safeName},</p><p>vielen Dank für Ihre Nachricht! Wir haben Ihre Anfrage erhalten und unser Team wird sich in Kürze bei Ihnen melden.</p><p>Mit freundlichen Grüßen,<br/>Ihr SolutionPlus Team</p>`
+      : `<p>Hi ${safeName},</p><p>Thank you for reaching out! We have received your message and our team will get back to you shortly.</p><p>Best regards,<br/>The SolutionPlus Team</p>`;
+
+    const ackMailOptions = {
+      from,
+      to: email,
+      replyTo: replyTo,
+      subject: ackSubject,
+      text: ackText,
+      html: ackHtml,
     };
 
     const transporter = createTransporter();
     if (transporter) {
-      await transporter.sendMail(mailOptions);
+      try {
+        console.log("Sending contact notification to:", to);
+        const notifyResult = await transporter.sendMail(mailOptions);
+        console.log("Notification send result:", notifyResult.messageId);
+      } catch (err) {
+        console.error("Failed to send notification email to sales:", err);
+        // If the notification fails, don't send the acknowledgment
+        throw err;
+      }
+
+      try {
+        console.log("Sending acknowledgment to:", email);
+        const ackResult = await transporter.sendMail(ackMailOptions);
+        console.log("Acknowledgment send result:", ackResult.messageId);
+      } catch (err) {
+        console.error("Failed to send acknowledgment email to user:", err);
+      }
     } else if (process.env.NODE_ENV !== "production") {
       console.warn(
         "AWS SES credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) not set. Skipping email send."

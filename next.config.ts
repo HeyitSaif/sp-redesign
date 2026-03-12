@@ -83,7 +83,7 @@ const sentryConfig = process.env.SENTRY_AUTH_TOKEN
     project: process.env.SENTRY_PROJECT || "sp-redesign",
     authToken: process.env.SENTRY_AUTH_TOKEN,
     tunnelRoute: "/monitoring",
-    silent: !process.env.CI,
+    silent: true,
     sourcemaps: { disable: true },
   })
   : nextConfig;

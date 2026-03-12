@@ -125,10 +125,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <Analytics />
-      <GoogleTagManagerNoScript />
       <body
         className={`${geistSans.variable} ${geistMono.variable} text-foreground bg-background selection:bg-sp-accent/30 relative flex min-h-[100dvh] flex-col overflow-x-clip antialiased selection:text-white`}
       >
+        <GoogleTagManagerNoScript />
         <StructuredData data={[orgSchema, siteSchema]} />
         <LayoutClientParts />
         <Header locale={locale} />

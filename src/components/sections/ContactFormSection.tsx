@@ -68,6 +68,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
       </AnimatePresence>
 
       <form action={formAction} className="relative z-10 mt-4 space-y-8">
+        <input type="hidden" name="locale" value={locale} />
         <div className="grid gap-5 md:grid-cols-2 md:gap-6">
           <div className="group/input relative space-y-3">
             <label className="text-sp-text-muted group-focus-within/input:text-sp-accent text-sm font-medium transition-colors">
