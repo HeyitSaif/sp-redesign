@@ -167,7 +167,7 @@ export function StartupPage({ locale }: { locale: string }) {
                   src="/images/What-you-get-with-us-scaled.jpg"
                   alt="What you get with us"
                   wrapperClassName="rounded-2xl h-full w-full"
-                  className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                  className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
                 />
               </div>
             </Reveal>

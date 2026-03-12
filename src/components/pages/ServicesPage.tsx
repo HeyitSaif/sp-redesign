@@ -95,7 +95,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                 src="/images/old-code-14-1-scaled-uai-2560x1706.jpg"
                 alt="Product Modernization"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -179,7 +179,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                 src="/images/What-youll-ge-t-14-1-scaled-uai-2560x1706.jpg"
                 alt="What you'll get"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>

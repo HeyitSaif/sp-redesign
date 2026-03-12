@@ -85,7 +85,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 src="/images/Why-this-works-14-scaled-uai-2560x1706.jpg"
                 alt="Entrepreneur Idea"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -183,7 +183,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 src="/images/What-you-get-with-us-14-scaled-uai-2560x1706.jpg"
                 alt="Why it works"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>

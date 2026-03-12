@@ -84,7 +84,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 src="/images/When-speed-matters-and-teams-are-stretched-getting-an-MVP-live-can-feel-impossible._E2_80_A8-12-scaled-uai-2560x1706.jpg"
                 alt="Dedicated Delivery Teams"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -196,7 +196,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 src="/images/What-youll-ge-t-14-scaled-uai-2560x1706.jpg"
                 alt="What you'll get"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -281,7 +281,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 src="/images/Calculate-you-MVP-investment-14-uai-1460x973.jpg"
                 alt="Calculate your team setup"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>

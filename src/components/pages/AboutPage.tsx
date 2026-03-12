@@ -339,7 +339,7 @@ export function AboutPage({ locale }: { locale: string }) {
         </div>
       </section>
       <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-20">
-        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
@@ -378,7 +378,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 src="/images/Careers-13-scaled-uai-1444x1444.jpg"
                 alt="Team Collaboration"
                 wrapperClassName="rounded-2xl"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -461,17 +461,17 @@ export function AboutPage({ locale }: { locale: string }) {
           <div className="mx-auto grid max-w-6xl gap-8 text-left md:grid-cols-3">
             {team.map((member, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium overflow-x-clip rounded-[2rem] border border-black/10 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
-                  <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-x-clip">
-                    <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#141618] via-transparent to-transparent opacity-80" />
+                <div className="group bg-sp-bg-medium flex flex-col overflow-hidden rounded-4xl rounded-t-[0.5rem] border border-black/10 transition-all duration-500 hover:-translate-y-2 hover:border-black/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                  <div className="bg-sp-bg-medium relative aspect-[4/5] overflow-hidden rounded-t-[0.5rem]">
+                    <div className="from-sp-bg-medium via-sp-bg-medium/50 absolute inset-0 z-10 bg-gradient-to-t to-transparent opacity-100" />
                     <ImageWithShimmer
                       src={member.img}
                       alt={member.name}
                       wrapperClassName="h-full w-full"
-                      className="grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
+                      className="grayscale-0 transition-all duration-700 md:grayscale md:group-hover:scale-110 md:group-hover:grayscale-0"
                     />
                   </div>
-                  <div className="relative z-20 -mt-12 bg-gradient-to-t from-[#141618] to-transparent p-8 pt-12">
+                  <div className="from-sp-bg-medium relative z-20 -mt-24 flex-1 bg-gradient-to-t to-transparent p-8 pt-12 transition-all duration-500 md:group-hover:-translate-y-2">
                     <h3 className="group-hover:text-sp-accent text-sp-text-dark mb-2 text-2xl font-bold transition-colors">
                       {member.name}
                     </h3>

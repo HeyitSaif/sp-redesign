@@ -63,7 +63,7 @@ export function CareersPage({ locale }: { locale: string }) {
                 src="/images/Careers-13-scaled-uai-1444x1444.jpg"
                 alt="Careers at SolutionPlus"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -179,7 +179,7 @@ export function CareersPage({ locale }: { locale: string }) {
                 src="/images/Work-in-a-respectful-culture.-Stress-free-supportive-and-built-on-trust.png"
                 alt="Culture"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>
@@ -206,7 +206,7 @@ export function CareersPage({ locale }: { locale: string }) {
                 src="/images/how-we-hire-scaled.jpg"
                 alt="How We Hire"
                 wrapperClassName="rounded-2xl h-full w-full"
-                className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
               />
             </div>
           </Reveal>

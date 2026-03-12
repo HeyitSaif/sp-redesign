@@ -80,7 +80,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
                       src={typeof props.src === 'string' ? props.src : ''}
                       alt={props.alt || ''}
                       wrapperClassName="w-full rounded-3xl overflow-hidden"
-                      className="m-0 h-auto object-cover opacity-80 mix-blend-luminosity transition-all duration-1000 hover:mix-blend-normal"
+                      className="m-0 h-auto object-cover opacity-100 mix-blend-normal transition-all duration-1000 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
                     />
                   </div>
                 ),

@@ -93,7 +93,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                   src="/images/Why-Scaleups-Work-With-Us-14-uai-1460x973.jpg"
                   alt="Why Scaleups Work With Us"
                   wrapperClassName="rounded-2xl h-full w-full"
-                  className="object-cover opacity-80 mix-blend-luminosity transition-all duration-700 hover:mix-blend-normal"
+                  className="object-cover opacity-100 mix-blend-normal transition-all duration-700 md:opacity-80 md:mix-blend-luminosity md:hover:opacity-100 md:hover:mix-blend-normal"
                 />
               </div>
             </Reveal>
