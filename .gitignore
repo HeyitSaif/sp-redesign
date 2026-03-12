@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 docs/
+
+# Cloudflare crawl output (run `npm run crawl` to populate)
+/public/crawl/

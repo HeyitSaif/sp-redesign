@@ -56,6 +56,12 @@ const LLMS_TXT = `# SolutionPlus
 - [Democorder](${SITE_URL}/en/case-studies/democorder): Concept to production B2B SaaS
 - [Hospitality](${SITE_URL}/en/case-studies/hospitality): Hotel booking platforms
 
+## Crawl (LLM-Optimized)
+
+- [Full site content](${SITE_URL}/crawl?format=json): JSON with all page markdown
+- [Markdown dump](${SITE_URL}/crawl?format=markdown): Concatenated markdown for RAG
+- [Index](${SITE_URL}/crawl?format=index): URLs and metadata only
+
 ## Legal
 
 - [Terms and Conditions](${SITE_URL}/en/terms-and-conditions)
