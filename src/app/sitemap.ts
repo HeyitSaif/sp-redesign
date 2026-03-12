@@ -91,7 +91,7 @@ function getChangeFrequency(slug: string): "always" | "hourly" | "daily" | "week
 
 function getAlternateSlug(slug: string, fromLocale: "en" | "de"): string | undefined {
   const key = slug || "index";
-  let mapping = SLUG_LOCALE_MAP[key];
+  let mapping: { en: string; de: string } | undefined = SLUG_LOCALE_MAP[key];
   if (!mapping) {
     const entry = Object.entries(SLUG_LOCALE_MAP).find(
       ([_, v]) => v.en === slug || v.de === slug
