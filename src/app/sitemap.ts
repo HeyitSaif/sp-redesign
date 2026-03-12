@@ -4,59 +4,40 @@ import path from "path";
 import matter from "gray-matter";
 import type { PageFrontmatter } from "@/lib/markdown";
 import { SLUG_LOCALE_MAP } from "@/lib/seo";
+import { caseStudies } from "@/data/case-studies";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://solutionplus.io";
 const contentDir = path.join(process.cwd(), "src/content");
 
-const EN_SLUGS = [
-  "",
-  "about-team",
-  "dedicated-delivery-teams",
-  "mvp-sprint-package",
-  "product-modernization",
-  "entrepreneur-with-an-idea",
-  "careers",
-  "contact-us",
-  "scale-up",
-  "startup",
-  "terms-and-conditions",
-  "privacy-policy",
-  "ai-automation",
-  "ui-ux-design",
-  "web-app-development",
-  "mobile-app-development",
-  "case-studies",
-  "case-studies/tecsofiy",
-  "case-studies/automotive-ai",
-  "case-studies/democorder",
-  "case-studies/hospitality",
-];
+/** Build all sitemap slugs from SLUG_LOCALE_MAP + case study data (single source of truth) */
+function getSitemapSlugs(): { en: string[]; de: string[] } {
+  const enSlugs: string[] = [];
+  const deSlugs: string[] = [];
 
-const DE_SLUGS = [
-  "",
-  "ueber-solutionplus",
-  "dedizierte-teams",
-  "mvp-sprint-paket",
-  "software-modernisierung",
-  "gruender-idee-startup-partner",
-  "karriere",
-  "kontakt-solutionplus",
-  "scaleups",
-  "startups",
-  "allgemeine-geschaeftsbedingungen-agb",
-  "datenschutzerklaerung",
-  "ki-automatisierung",
-  "ui-ux-design",
-  "web-entwicklung",
-  "mobile-app-entwicklung",
-  "fallstudien",
-  "fallstudien/tecsofiy",
-  "fallstudien/automotive-ai",
-  "fallstudien/democorder",
-  "fallstudien/hospitality",
-];
+  for (const [key, mapping] of Object.entries(SLUG_LOCALE_MAP)) {
+    if (key.startsWith("case-studies/")) continue;
+    if (mapping.en) enSlugs.push(mapping.en);
+    if (mapping.de) deSlugs.push(mapping.de);
+  }
+
+  for (const c of caseStudies.en) {
+    enSlugs.push(`case-studies/${c.slug}`);
+  }
+  for (const c of caseStudies.de) {
+    deSlugs.push(`fallstudien/${c.slug}`);
+  }
+
+  return {
+    en: ["", ...new Set(enSlugs)],
+    de: ["", ...new Set(deSlugs)],
+  };
+}
+
+const { en: EN_SLUGS, de: DE_SLUGS } = getSitemapSlugs();
 
 function getLastModified(locale: string, slug: string): Date {
+  if (!fs.existsSync(contentDir)) return new Date();
+
   if (!slug) {
     const indexPath = path.join(contentDir, locale, "index.md");
     if (fs.existsSync(indexPath)) {
@@ -87,7 +68,14 @@ function getLastModified(locale: string, slug: string): Date {
 
 function getPriority(slug: string): number {
   if (!slug) return 1;
-  const main = ["about-team", "ueber-solutionplus", "contact-us", "kontakt-solutionplus"];
+  const main = [
+    "about-team",
+    "ueber-solutionplus",
+    "contact-us",
+    "kontakt-solutionplus",
+    "services",
+    "leistungen",
+  ];
   if (main.some((s) => slug === s)) return 0.9;
   const legal = ["terms-and-conditions", "privacy-policy", "allgemeine-geschaeftsbedingungen-agb", "datenschutzerklaerung"];
   if (legal.some((s) => slug === s)) return 0.5;
@@ -103,7 +91,13 @@ function getChangeFrequency(slug: string): "always" | "hourly" | "daily" | "week
 
 function getAlternateSlug(slug: string, fromLocale: "en" | "de"): string | undefined {
   const key = slug || "index";
-  const mapping = SLUG_LOCALE_MAP[key];
+  let mapping = SLUG_LOCALE_MAP[key];
+  if (!mapping) {
+    const entry = Object.entries(SLUG_LOCALE_MAP).find(
+      ([_, v]) => v.en === slug || v.de === slug
+    );
+    mapping = entry?.[1];
+  }
   if (!mapping) return undefined;
   return fromLocale === "en" ? mapping.de : mapping.en;
 }
@@ -122,12 +116,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: getPriority(slug),
       alternates: deSlug !== undefined
         ? {
-            languages: {
-              "en-US": `${baseUrl}${urlPath}`,
-              "de-DE": `${baseUrl}${dePath}`,
-              "x-default": `${baseUrl}${urlPath}`,
-            },
-          }
+          languages: {
+            "en-US": `${baseUrl}${urlPath}`,
+            "de-DE": `${baseUrl}${dePath}`,
+            "x-default": `${baseUrl}${urlPath}`,
+          },
+        }
         : undefined,
     });
   }
@@ -143,12 +137,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: getPriority(slug),
       alternates: enSlug !== undefined
         ? {
-            languages: {
-              "en-US": `${baseUrl}${enPath}`,
-              "de-DE": `${baseUrl}${urlPath}`,
-              "x-default": `${baseUrl}${enPath}`,
-            },
-          }
+          languages: {
+            "en-US": `${baseUrl}${enPath}`,
+            "de-DE": `${baseUrl}${urlPath}`,
+            "x-default": `${baseUrl}${enPath}`,
+          },
+        }
         : undefined,
     });
   }
