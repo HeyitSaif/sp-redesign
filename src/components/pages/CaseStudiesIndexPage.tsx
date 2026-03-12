@@ -20,7 +20,6 @@ export function CaseStudiesIndexPage({ locale }: { locale: string }) {
       {/* Hero */}
       <section className="relative flex min-h-[40vh] items-center overflow-x-clip py-12 md:min-h-[50vh] md:py-20">
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="pointer-events-none absolute inset-0 z-0 noise-overlay opacity-10 mix-blend-overlay" />
 
         {/* Ambient Backgrounds */}
         <div className="absolute top-0 left-1/2 -z-10 h-full w-full max-w-[1400px] -translate-x-1/2">
