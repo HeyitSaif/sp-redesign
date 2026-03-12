@@ -27,7 +27,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
       {/* Dynamic Header */}
       <section className="bg-sp-bg-dark relative flex min-h-[50vh] items-center overflow-x-clip border-b border-white/5 py-12 md:py-16 lg:py-24 xl:py-32">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[150px]" />
-        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-[0.03] mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay" />
         <div className="relative z-10 container mx-auto max-w-5xl px-5 md:px-10 lg:px-20 xl:px-32">
           <Reveal>
             <div className="mb-8 flex items-center gap-5">
@@ -44,7 +44,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
                     : 'Resource'}
               </div>
             </div>
-            <h1 className="mb-10 text-3xl md:text-4xl md:text-5xl leading-[1.1] font-black tracking-tight md:text-7xl lg:text-8xl">
+            <h1 className="mb-10 text-3xl leading-[1.1] font-black tracking-tight md:text-4xl md:text-5xl md:text-7xl lg:text-8xl">
               {frontmatter.title || 'SolutionPlus'}
             </h1>
             {frontmatter.description && (
@@ -53,7 +53,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
               </p>
             )}
             {isLegal && (
-              <div className="text-foreground/40 border-sp-accent/50 mt-8 md:mt-12 border-l-2 py-2 pl-6 text-lg">
+              <div className="text-foreground/40 border-sp-accent/50 mt-8 border-l-2 py-2 pl-6 text-lg md:mt-12">
                 {locale === 'de' ? 'Zuletzt aktualisiert: ' : 'Last updated: '}{' '}
                 {new Date().toLocaleDateString(locale === 'de' ? 'de-DE' : 'en-US', {
                   year: 'numeric',
@@ -69,7 +69,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
       {/* Markdown Content */}
       <section className="container mx-auto max-w-4xl px-5 py-12 md:px-10 md:py-20 lg:px-20 lg:py-32">
         <Reveal delay={0.1} direction="up">
-          <div className="prose prose-invert prose-xl prose-headings:text-white prose-a:text-sp-accent hover:prose-a:text-sp-accent prose-a:transition-colors prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-h1:text-3xl md:text-4xl md:text-5xl md:text-6xl prose-h1:font-black prose-h1:mb-8 md:mb-12 prose-h2:text-3xl md:text-4xl md:text-5xl prose-h2:mt-10 md:mt-16 md:mt-24 prose-h2:mb-10 prose-h2:font-bold prose-h3:text-3xl prose-h3:font-semibold prose-p:text-foreground/70 prose-p:leading-relaxed prose-li:text-foreground/70 prose-strong:text-white prose-hr:border-white/10 max-w-none">
+          <div className="prose prose-invert prose-xl prose-headings:text-white prose-a:text-sp-accent hover:prose-a:text-sp-accent prose-a:transition-colors prose-img:rounded-3xl prose-img:border prose-img:border-white/10 prose-img:shadow-2xl prose-h1:text-3xl prose-h1:font-black prose-h1:mb-8 prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-10 prose-h2:font-bold prose-h3:text-3xl prose-h3:font-semibold prose-p:text-foreground/70 prose-p:leading-relaxed prose-li:text-foreground/70 prose-strong:text-white prose-hr:border-white/10 max-w-none md:mt-16 md:mt-24 md:mb-12 md:text-4xl md:text-5xl md:text-6xl">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
@@ -147,9 +147,9 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
       {/* Global CTA */}
       <section className="bg-sp-bg-dark relative mt-32 overflow-x-clip border-t border-white/5 py-48 md:py-64 lg:py-80">
         <div className="bg-sp-accent/10 pointer-events-none absolute inset-0 rounded-full blur-[150px]" />
-        <div className="relative z-10 container mx-auto max-w-5xl px-5 md:px-10 text-center md:px-20 lg:px-32">
+        <div className="relative z-10 container mx-auto max-w-5xl px-5 text-center md:px-10 md:px-20 lg:px-32">
           <Reveal>
-            <h2 className="mb-14 text-3xl md:text-4xl md:text-5xl font-black md:text-7xl lg:text-8xl">
+            <h2 className="mb-14 text-3xl font-black md:text-4xl md:text-5xl md:text-7xl lg:text-8xl">
               {locale === 'de' ? 'Lassen Sie uns Ihre Vision' : "Let's turn your vision into"}{' '}
               <span className="text-sp-accent">
                 {locale === 'de' ? 'Wirklichkeit werden lassen.' : 'something unforgettable.'}

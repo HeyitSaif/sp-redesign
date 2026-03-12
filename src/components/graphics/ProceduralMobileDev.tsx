@@ -17,7 +17,7 @@ export function ProceduralMobileDev({ className, animated = true }: ProceduralMo
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
 
       {/* Background radial gradient */}
       <motion.div

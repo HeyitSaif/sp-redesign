@@ -25,7 +25,7 @@ export function ProceduralWebDev({ className, animated = true }: ProceduralWebDe
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
 
       {/* Background glow */}
       <motion.div

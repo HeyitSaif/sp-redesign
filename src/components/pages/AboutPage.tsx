@@ -339,7 +339,7 @@ export function AboutPage({ locale }: { locale: string }) {
         </div>
       </section>
       <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-20">
-        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto grid items-center gap-16 px-6 md:px-12 lg:grid-cols-2">
