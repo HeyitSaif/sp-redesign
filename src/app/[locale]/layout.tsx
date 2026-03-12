@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { Geist, Geist_Mono } from 'next/font/google'
 import '../globals.css'
 import { Header } from '@/components/ui/Header'
 import { Footer } from '@/components/ui/Footer'
-import { ParticleBackground } from '@/components/animations/ParticleBackground'
-import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import { StructuredData } from '@/components/seo/StructuredData'
+
+const ParticleBackground = dynamic(
+  () =>
+    import('@/components/animations/ParticleBackground').then((m) => ({
+      default: m.ParticleBackground,
+    })),
+  { ssr: false }
+)
+
+const ScrollToTop = dynamic(
+  () => import('@/components/ui/ScrollToTop').then((m) => ({ default: m.ScrollToTop })),
+  { ssr: false }
+)
 import { Analytics } from '@/components/providers/Analytics'
 import { GoogleTagManagerNoScript } from '@/components/providers/GoogleTagManagerNoScript'
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schemas'
@@ -13,11 +25,13 @@ import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schemas
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://solutionplus.io'

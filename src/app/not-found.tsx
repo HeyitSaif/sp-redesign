@@ -10,7 +10,7 @@ export default function NotFound() {
       {/* Background Orbs */}
       <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/4 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-[120px]" />
       <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 right-1/4 h-[400px] w-[400px] -translate-y-1/2 rounded-full blur-[120px]" />
-      <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 noise-overlay opacity-[0.03] mix-blend-overlay" />
 
       <div className="relative z-10 container mx-auto flex max-w-2xl flex-col items-center px-6 text-center md:px-12">
         <motion.div

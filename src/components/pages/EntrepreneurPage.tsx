@@ -23,7 +23,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       <FloatiesBackground />
       {/* Hero */}
       <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 left-0 h-[800px] w-[800px] rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto grid items-center gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">

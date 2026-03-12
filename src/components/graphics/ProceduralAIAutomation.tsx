@@ -19,7 +19,7 @@ export function ProceduralAIAutomation({
         className
       )}
     >
-      <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
 
       {/* Ambient blur orbs per design patterns */}
       <div className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2">

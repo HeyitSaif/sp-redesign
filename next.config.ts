@@ -24,6 +24,7 @@ const nextConfig: NextConfig = {
     ],
     turbopackFileSystemCacheForBuild: true,
   },
+  serverExternalPackages: ["nodemailer", "@aws-sdk/client-sesv2"],
   async headers() {
     return [
       {

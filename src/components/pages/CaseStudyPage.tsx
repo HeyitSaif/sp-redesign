@@ -64,7 +64,7 @@ export function CaseStudyPage({ locale, data }: { locale: string; data: CaseStud
 
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto px-5 md:px-8 lg:px-12">

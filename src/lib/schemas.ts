@@ -22,7 +22,7 @@ export function generateOrganizationSchema(): StructuredDataSchema {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "hello@solutionplus.io",
+      email: "sales@solutionplus.io",
       contactType: "customer service",
       url: `${SITE_URL}/en/contact-us`,
     },

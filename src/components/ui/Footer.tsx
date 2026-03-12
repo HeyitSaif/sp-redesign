@@ -123,9 +123,7 @@ export function Footer({ locale }: { locale: string }) {
 
         {/* Services */}
         <div>
-          <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">
-            Services
-          </h4>
+          <h4 className="text-sp-text-dark mb-8 text-lg font-semibold">Services</h4>
           <ul className="flex flex-col gap-4">
             <li>
               <Link
@@ -153,7 +151,9 @@ export function Footer({ locale }: { locale: string }) {
             </li>
             <li>
               <Link
-                href={isDe ? `/${locale}/mobile-app-entwicklung` : `/${locale}/mobile-app-development`}
+                href={
+                  isDe ? `/${locale}/mobile-app-entwicklung` : `/${locale}/mobile-app-development`
+                }
                 className="hover:text-sp-link-hover text-base transition-colors"
               >
                 {isDe ? 'Mobile App-Entwicklung' : 'Mobile App Development'}
@@ -224,10 +224,10 @@ export function Footer({ locale }: { locale: string }) {
             <li className="flex items-center gap-3 text-base">
               <Mail className="text-sp-text-on-light shrink-0" size={20} />
               <a
-                href="mailto:hello@solutionplus.io"
+                href="mailto:sales@solutionplus.io"
                 className="hover:text-sp-link-hover transition-colors"
               >
-                hello@solutionplus.io
+                sales@solutionplus.io
               </a>
             </li>
           </ul>

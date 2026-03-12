@@ -9,7 +9,9 @@
     "lint": "eslint",
     "convert-case-studies": "bash scripts/convert-case-studies-to-txt.sh && node scripts/create-case-study-de.mjs",
     "tally-case-studies": "bash scripts/tally-case-studies.sh",
-    "download-scraped-images": "node scripts/download-scraped-images.mjs"
+    "download-scraped-images": "node scripts/download-scraped-images.mjs",
+    "find-unused-images": "node scripts/find-unused-images.mjs",
+    "find-unused-images:delete": "node scripts/find-unused-images.mjs --delete"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1007.0",

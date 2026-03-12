@@ -27,7 +27,7 @@ export function MarkdownPage({ content, frontmatter, locale }: MarkdownPageProps
       {/* Dynamic Header */}
       <section className="bg-sp-bg-dark relative flex min-h-[50vh] items-center overflow-x-clip border-b border-white/5 py-12 md:py-16 lg:py-24 xl:py-32">
         <div className="bg-sp-accent/5 pointer-events-none absolute inset-0 blur-[150px]" />
-        <div className="pointer-events-none absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-[0.03] mix-blend-overlay" />
         <div className="relative z-10 container mx-auto max-w-5xl px-5 md:px-10 lg:px-20 xl:px-32">
           <Reveal>
             <div className="mb-8 flex items-center gap-5">
