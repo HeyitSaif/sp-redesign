@@ -88,7 +88,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
             >
-              <h1 className="mb-10 text-3xl md:text-4xl leading-[1.1] font-black tracking-tight text-white sm:text-3xl md:text-4xl md:text-5xl md:text-7xl lg:text-8xl">
+              <h1 className="mb-10 text-3xl leading-[1.1] font-black tracking-tight text-white sm:text-3xl md:text-4xl md:text-5xl md:text-7xl lg:text-8xl">
                 {slides[current].headline}
               </h1>
             </motion.div>
@@ -110,7 +110,11 @@ export function HeroCarousel({ locale }: { locale: string }) {
               </p>
               <Link
                 href={slides[current].href}
-                className="group border-sp-accent hover:bg-sp-accent inline-flex items-center gap-3 rounded-full border bg-transparent px-5 py-3 md:px-6 text-base font-medium text-white transition-colors md:px-8 md:py-4 md:text-lg"
+                className="group border-sp-accent hover:bg-sp-accent inline-flex items-center gap-3 rounded-full border bg-transparent px-5 py-3 text-base font-medium text-white transition-colors md:px-6 md:px-8 md:py-4 md:text-lg"
+                data-analytics-event="cta_click"
+                data-analytics-event-label={slides[current].cta}
+                data-analytics-location="hero_carousel"
+                data-analytics-destination={slides[current].href}
               >
                 {slides[current].cta}
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />

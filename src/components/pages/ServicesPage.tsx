@@ -33,7 +33,7 @@ export function ServicesPage({ locale }: { locale: string }) {
       <FloatiesBackground />
       {/* Hero */}
       <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-1/2 left-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
         <div className="relative z-10 container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
@@ -63,6 +63,10 @@ export function ServicesPage({ locale }: { locale: string }) {
                   variant="primary"
                   size="md"
                   href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                  data-analytics-event="cta_click"
+                  data-analytics-event-label={isDe ? 'Jetzt anfragen' : 'Get Started'}
+                  data-analytics-location="services_hero"
+                  data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
                 >
                   {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
                   <ArrowRight
@@ -70,7 +74,15 @@ export function ServicesPage({ locale }: { locale: string }) {
                     className="transition-transform group-hover:translate-x-1"
                   />
                 </Button>
-                <Button variant="secondary" size="md" href="#how-it-works">
+                <Button
+                  variant="secondary"
+                  size="md"
+                  href="#how-it-works"
+                  data-analytics-event="link_click"
+                  data-analytics-event-label={isDe ? 'Mehr erfahren' : 'Learn more'}
+                  data-analytics-location="services_hero"
+                  data-analytics-link-url="#how-it-works"
+                >
                   {isDe ? 'Mehr erfahren' : 'Learn more'}
                 </Button>
               </div>
@@ -469,6 +481,10 @@ export function ServicesPage({ locale }: { locale: string }) {
               variant="primary"
               size="lg"
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+              data-analytics-event="cta_click"
+              data-analytics-event-label={isDe ? 'Team-Setup anfragen' : 'Get a team setup'}
+              data-analytics-location="services_cta"
+              data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
             >
               {isDe ? 'Team-Setup anfragen' : 'Get a team setup'}
             </Button>

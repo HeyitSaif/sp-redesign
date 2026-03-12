@@ -1,8 +1,9 @@
 'use client'
 
-import { useActionState, useEffect, useState, startTransition } from 'react'
+import { useActionState, useEffect, useState } from 'react'
 import { submitContactForm } from '@/app/actions/contact'
 import { CheckCircle2, Loader2, ArrowRight } from 'lucide-react'
+import { trackFormResult } from '@/lib/analytics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 
@@ -19,6 +20,7 @@ export function ContactFormSection({ locale }: { locale: string }) {
 
   useEffect(() => {
     if (state?.success) {
+      trackFormResult({ success: true, form_name: 'contact' })
       const showTimer = setTimeout(() => setShowSuccess(true), 0)
       const hideTimer = setTimeout(() => setShowSuccess(false), 5000)
       return () => {
@@ -27,6 +29,12 @@ export function ContactFormSection({ locale }: { locale: string }) {
       }
     }
   }, [state?.success])
+
+  useEffect(() => {
+    if (state?.error && !state?.success) {
+      trackFormResult({ success: false, error: state.error, form_name: 'contact' })
+    }
+  }, [state?.error, state?.success])
 
   return (
     <div
@@ -172,6 +180,8 @@ export function ContactFormSection({ locale }: { locale: string }) {
           className="mt-8 w-full"
           disabled={isPending}
           isLoading={isPending}
+          data-analytics-event="form_submit"
+          data-analytics-form-name="contact"
         >
           {!isPending && (
             <>

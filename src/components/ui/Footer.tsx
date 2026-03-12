@@ -22,6 +22,9 @@ export function Footer({ locale }: { locale: string }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sp-text-on-light hover:text-sp-accent transition-colors"
+              data-analytics-event="social_click"
+              data-analytics-platform="linkedin"
+              data-analytics-link-url="https://www.linkedin.com/company/solutionplus-io/"
             >
               <span className="sr-only">LinkedIn</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -33,6 +36,9 @@ export function Footer({ locale }: { locale: string }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sp-text-on-light hover:text-sp-accent transition-colors"
+              data-analytics-event="social_click"
+              data-analytics-platform="facebook"
+              data-analytics-link-url="https://www.facebook.com/SolutionPlus.io/"
             >
               <span className="sr-only">Facebook</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -44,6 +50,9 @@ export function Footer({ locale }: { locale: string }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sp-text-on-light hover:text-sp-accent transition-colors"
+              data-analytics-event="social_click"
+              data-analytics-platform="instagram"
+              data-analytics-link-url="https://www.instagram.com/solutionplus.io/"
             >
               <span className="sr-only">Instagram</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -55,6 +64,9 @@ export function Footer({ locale }: { locale: string }) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-sp-text-on-light hover:text-sp-accent transition-colors"
+              data-analytics-event="social_click"
+              data-analytics-platform="x_twitter"
+              data-analytics-link-url="https://x.com/SolutionPlus_io"
             >
               <span className="sr-only">X (Twitter)</span>
               <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -74,6 +86,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/ueber-solutionplus` : `/${locale}/about-team`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Über Uns' : 'About'}
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/ueber-solutionplus` : `/${locale}/about-team`
+                }
               >
                 {isDe ? 'Über Uns' : 'About'}
               </Link>
@@ -82,6 +100,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/fallstudien` : `/${locale}/case-studies`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Fallstudien' : 'Case Studies'}
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/fallstudien` : `/${locale}/case-studies`
+                }
               >
                 {isDe ? 'Fallstudien' : 'Case Studies'}
               </Link>
@@ -90,6 +114,10 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/startups` : `/${locale}/startup`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="Startups"
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={isDe ? `/${locale}/startups` : `/${locale}/startup`}
               >
                 Startups
               </Link>
@@ -98,6 +126,10 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/scaleups` : `/${locale}/scale-up`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="Scale ups"
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={isDe ? `/${locale}/scaleups` : `/${locale}/scale-up`}
               >
                 {isDe ? 'Scale ups' : 'Scale ups'}
               </Link>
@@ -106,6 +138,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/mvp-sprint-paket` : `/${locale}/mvp-sprint-package`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="MVP Sprint Package"
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/mvp-sprint-paket` : `/${locale}/mvp-sprint-package`
+                }
               >
                 MVP Sprint Package
               </Link>
@@ -114,6 +152,14 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/dedizierte-teams` : `/${locale}/dedicated-delivery-teams`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={
+                  isDe ? 'Dedizierte Delivery Teams' : 'Dedicated Delivery Teams'
+                }
+                data-analytics-location="footer_nav"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/dedizierte-teams` : `/${locale}/dedicated-delivery-teams`
+                }
               >
                 {isDe ? 'Dedizierte Delivery Teams' : 'Dedicated Delivery Teams'}
               </Link>
@@ -129,6 +175,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/ki-automatisierung` : `/${locale}/ai-automation`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'KI-Automatisierung' : 'AI Automation'}
+                data-analytics-location="footer_services"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/ki-automatisierung` : `/${locale}/ai-automation`
+                }
               >
                 {isDe ? 'KI-Automatisierung' : 'AI Automation'}
               </Link>
@@ -137,6 +189,10 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={`/${locale}/ui-ux-design`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="UI/UX Design"
+                data-analytics-location="footer_services"
+                data-analytics-link-url={`/${locale}/ui-ux-design`}
               >
                 UI/UX Design
               </Link>
@@ -145,6 +201,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/web-entwicklung` : `/${locale}/web-app-development`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Web-Entwicklung' : 'Web App Development'}
+                data-analytics-location="footer_services"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/web-entwicklung` : `/${locale}/web-app-development`
+                }
               >
                 {isDe ? 'Web-Entwicklung' : 'Web App Development'}
               </Link>
@@ -155,6 +217,14 @@ export function Footer({ locale }: { locale: string }) {
                   isDe ? `/${locale}/mobile-app-entwicklung` : `/${locale}/mobile-app-development`
                 }
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={
+                  isDe ? 'Mobile App-Entwicklung' : 'Mobile App Development'
+                }
+                data-analytics-location="footer_services"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/mobile-app-entwicklung` : `/${locale}/mobile-app-development`
+                }
               >
                 {isDe ? 'Mobile App-Entwicklung' : 'Mobile App Development'}
               </Link>
@@ -172,6 +242,12 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/datenschutzerklaerung` : `/${locale}/privacy-policy`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Datenschutz' : 'Privacy Policy'}
+                data-analytics-location="footer_legal"
+                data-analytics-link-url={
+                  isDe ? `/${locale}/datenschutzerklaerung` : `/${locale}/privacy-policy`
+                }
               >
                 {isDe ? 'Datenschutz' : 'Privacy Policy'}
               </Link>
@@ -184,6 +260,14 @@ export function Footer({ locale }: { locale: string }) {
                     : `/${locale}/terms-and-conditions`
                 }
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'AGB' : 'Terms of Use'}
+                data-analytics-location="footer_legal"
+                data-analytics-link-url={
+                  isDe
+                    ? `/${locale}/allgemeine-geschaeftsbedingungen-agb`
+                    : `/${locale}/terms-and-conditions`
+                }
               >
                 {isDe ? 'AGB' : 'Terms of Use'}
               </Link>
@@ -192,6 +276,10 @@ export function Footer({ locale }: { locale: string }) {
               <Link
                 href={isDe ? `/${locale}/karriere` : `/${locale}/careers`}
                 className="hover:text-sp-link-hover text-base transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Karriere' : 'Career'}
+                data-analytics-location="footer_legal"
+                data-analytics-link-url={isDe ? `/${locale}/karriere` : `/${locale}/careers`}
               >
                 {isDe ? 'Karriere' : 'Career'}
               </Link>
@@ -217,7 +305,14 @@ export function Footer({ locale }: { locale: string }) {
             </li>
             <li className="flex items-center gap-3 text-base">
               <Phone className="text-sp-text-on-light shrink-0" size={20} />
-              <a href="tel:+4681234567" className="hover:text-sp-link-hover transition-colors">
+              <a
+                href="tel:+4681234567"
+                className="hover:text-sp-link-hover transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="Phone"
+                data-analytics-location="footer_contact"
+                data-analytics-link-url="tel:+4681234567"
+              >
                 +46 8123 4567
               </a>
             </li>
@@ -226,6 +321,10 @@ export function Footer({ locale }: { locale: string }) {
               <a
                 href="mailto:sales@solutionplus.io"
                 className="hover:text-sp-link-hover transition-colors"
+                data-analytics-event="link_click"
+                data-analytics-event-label="Email"
+                data-analytics-location="footer_contact"
+                data-analytics-link-url="mailto:sales@solutionplus.io"
               >
                 sales@solutionplus.io
               </a>
@@ -234,6 +333,12 @@ export function Footer({ locale }: { locale: string }) {
           <Link
             href={isDe ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`}
             className="text-sp-accent hover:text-sp-accent-dark mt-8 inline-flex items-center gap-2 font-medium transition-colors"
+            data-analytics-event="cta_click"
+            data-analytics-event-label="Ask for Quote"
+            data-analytics-location="footer"
+            data-analytics-destination={
+              isDe ? `/${locale}/kontakt-solutionplus` : `/${locale}/contact-us`
+            }
           >
             Ask for Quote
           </Link>

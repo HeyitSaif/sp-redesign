@@ -23,10 +23,10 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       <FloatiesBackground />
       {/* Hero */}
       <section className="relative flex min-h-[70vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 left-0 h-[800px] w-[800px] rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-center gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <div>
             <Reveal>
               <div className="mb-8 flex flex-wrap items-center gap-3">
@@ -38,7 +38,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   {supportData[isDe ? 'de' : 'en'].services.idealFor}: Pre-Seed / Idea Phase
                 </Badge>
               </div>
-              <h1 className="mb-8 text-3xl md:text-4xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
                 {isDe ? 'Ihre Idee verdient mehr als ' : 'Your idea deserves more than '}{' '}
                 <span className="text-sp-accent">{isDe ? 'einen Prototyp.' : 'a prototype.'}</span>
               </h1>
@@ -49,16 +49,32 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Button variant="primary" size="md" href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}>
-                {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
+                <Button
+                  variant="primary"
+                  size="md"
+                  href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                  data-analytics-event="cta_click"
+                  data-analytics-event-label={isDe ? 'Jetzt anfragen' : 'Get Started'}
+                  data-analytics-location="entrepreneur_hero"
+                  data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+                >
+                  {isDe ? 'Jetzt anfragen' : 'Get Started'}{' '}
                   <ArrowRight
                     size={18}
                     className="transition-transform group-hover:translate-x-1"
                   />
-              </Button>
-                <Button variant="secondary" size="md" href="#how-we-help">
-                {isDe ? 'Mehr erfahren' : 'Learn more'}
-              </Button>
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="md"
+                  href="#how-we-help"
+                  data-analytics-event="link_click"
+                  data-analytics-event-label={isDe ? 'Mehr erfahren' : 'Learn more'}
+                  data-analytics-location="entrepreneur_hero"
+                  data-analytics-link-url="#how-we-help"
+                >
+                  {isDe ? 'Mehr erfahren' : 'Learn more'}
+                </Button>
               </div>
             </Reveal>
           </div>
@@ -77,18 +93,20 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* What you're probably thinking */}
-      <section className="bg-sp-bg-dark relative border-y border-sp-border-dark py-12 md:py-16 lg:py-24">
+      <section className="bg-sp-bg-dark border-sp-border-dark relative border-y py-12 md:py-16 lg:py-24">
         <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
-            <h2 className="mb-10 md:mb-16 text-center text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
+            <h2 className="mb-10 text-center text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Was Sie wahrscheinlich denken' : "What you're probably thinking"}
             </h2>
           </Reveal>
 
-          <div className="grid gap-5 md:gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 md:gap-8">
             <Reveal delay={0.1}>
               <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
-                <div className="text-sp-accent mb-4 font-serif text-3xl md:text-4xl md:text-5xl opacity-50">&quot;</div>
+                <div className="text-sp-accent mb-4 font-serif text-3xl opacity-50 md:text-4xl md:text-5xl">
+                  &quot;
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Ich habe noch keinen CTO oder technischen Mitgründer.'
@@ -98,7 +116,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
             <Reveal delay={0.2}>
               <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
-                <div className="text-sp-accent mb-4 font-serif text-3xl md:text-4xl md:text-5xl opacity-50">&quot;</div>
+                <div className="text-sp-accent mb-4 font-serif text-3xl opacity-50 md:text-4xl md:text-5xl">
+                  &quot;
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Entwickler einzustellen kostet Zeit und Geld, das ich nicht habe.'
@@ -108,7 +128,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
             <Reveal delay={0.3}>
               <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
-                <div className="text-sp-accent mb-4 font-serif text-3xl md:text-4xl md:text-5xl opacity-50">&quot;</div>
+                <div className="text-sp-accent mb-4 font-serif text-3xl opacity-50 md:text-4xl md:text-5xl">
+                  &quot;
+                </div>
                 <p className="text-sp-text-dark text-xl font-medium">
                   {isDe
                     ? 'Ich möchte einfach etwas Echtes launchen, um es Investoren oder Nutzern zu zeigen.'
@@ -123,7 +145,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       {/* Why this works */}
       <section className="relative overflow-x-clip py-12 md:py-16 lg:py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[120px]" />
-        <div className="container mx-auto grid items-center gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <div>
             <Reveal>
               <h2 className="mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
@@ -146,7 +168,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   : 'No long timelines or bloated processes. Just working software, delivered on time.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
-                  <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 rounded-2xl overflow-hidden border border-black/5 p-5 md:p-6 transition-colors">
+                  <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 overflow-hidden rounded-2xl border border-black/5 p-5 transition-colors md:p-6">
                     <Target className="text-sp-accent mt-1 shrink-0" />
                     <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
@@ -169,26 +191,29 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       </section>
 
       {/* How we help */}
-      <section id="how-we-help" className="bg-sp-bg-dark scroll-mt-10 md:mt-16 md:mt-24 border-y border-sp-border-dark py-12 md:py-16 lg:py-24">
+      <section
+        id="how-we-help"
+        className="bg-sp-bg-dark border-sp-border-dark scroll-mt-10 border-y py-12 md:mt-16 md:mt-24 md:py-16 lg:py-24"
+      >
         <div className="container mx-auto max-w-5xl px-5 md:px-8 lg:px-12">
           <Reveal>
-            <h2 className="mb-10 md:mb-16 text-center text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
+            <h2 className="mb-10 text-center text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Wie wir Ihnen vorwärts helfen!' : 'How we help you move forward!'}
             </h2>
           </Reveal>
 
-          <div className="grid gap-5 md:gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 md:gap-8">
             <Reveal delay={0.1} direction="up">
-              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+              <div className="group border-sp-border-dark bg-sp-surface-elevated hover:border-sp-accent/40 flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
                 <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
                   <div className="absolute inset-0">
                     <ProceduralProcessPipeline steps={4} animated compact />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
-                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                  <div className="from-sp-surface-elevated absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-80" />
+                  <div className="border-sp-border-dark bg-sp-surface-elevated text-sp-accent absolute top-4 right-4 flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg">
                     <Rocket size={22} strokeWidth={2.5} />
                   </div>
-                  <span className="absolute left-4 top-4 text-3xl md:text-4xl md:text-5xl md:text-6xl font-black leading-none text-white/5">
+                  <span className="absolute top-4 left-4 text-3xl leading-none font-black text-white/5 md:text-4xl md:text-5xl md:text-6xl">
                     01
                   </span>
                 </div>
@@ -206,16 +231,16 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+              <div className="group border-sp-border-dark bg-sp-surface-elevated hover:border-sp-accent/40 flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
                 <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
                   <div className="absolute inset-0">
                     <ProceduralDataGrid animated compact />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
-                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                  <div className="from-sp-surface-elevated absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-80" />
+                  <div className="border-sp-border-dark bg-sp-surface-elevated text-sp-accent absolute top-4 right-4 flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg">
                     <Coins size={22} strokeWidth={2.5} />
                   </div>
-                  <span className="absolute left-4 top-4 text-3xl md:text-4xl md:text-5xl md:text-6xl font-black leading-none text-white/5">
+                  <span className="absolute top-4 left-4 text-3xl leading-none font-black text-white/5 md:text-4xl md:text-5xl md:text-6xl">
                     02
                   </span>
                 </div>
@@ -235,16 +260,16 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-sp-border-dark bg-sp-surface-elevated transition-all duration-500 hover:-translate-y-2 hover:border-sp-accent/40 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
+              <div className="group border-sp-border-dark bg-sp-surface-elevated hover:border-sp-accent/40 flex h-full flex-col overflow-hidden rounded-3xl border transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.4)]">
                 <div className="relative aspect-[16/10] min-h-[200px] overflow-hidden">
                   <div className="absolute inset-0">
                     <ProceduralNetwork nodeCount={12} animated />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-sp-surface-elevated via-transparent to-transparent opacity-80" />
-                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-xl border border-sp-border-dark bg-sp-surface-elevated text-sp-accent shadow-lg">
+                  <div className="from-sp-surface-elevated absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-80" />
+                  <div className="border-sp-border-dark bg-sp-surface-elevated text-sp-accent absolute top-4 right-4 flex h-12 w-12 items-center justify-center rounded-xl border shadow-lg">
                     <LayoutDashboard size={22} strokeWidth={2.5} />
                   </div>
-                  <span className="absolute left-4 top-4 text-3xl md:text-4xl md:text-5xl md:text-6xl font-black leading-none text-white/5">
+                  <span className="absolute top-4 left-4 text-3xl leading-none font-black text-white/5 md:text-4xl md:text-5xl md:text-6xl">
                     03
                   </span>
                 </div>
@@ -268,10 +293,10 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-dark relative overflow-x-clip py-12 md:py-16 lg:py-24 xl:py-32">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-start gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-3xl md:text-4xl md:text-5xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+              <h2 className="mb-10 text-3xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
                   ? 'Lassen Sie uns Ihre Idee zum Leben erwecken'
                   : "Let's bring your idea to life"}
@@ -338,7 +363,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-3xl md:text-4xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
                   ? 'Sie werden nicht der Erste sein, der uns vertraut'
                   : "You won't be the first to trust us"}
@@ -346,9 +371,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </div>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-5 md:gap-8 md:gap-12 md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 md:gap-8 md:gap-12">
             <Reveal direction="up" delay={0.1}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-2xl overflow-hidden border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -386,7 +411,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="border-sp-border-testimonial flex h-full flex-col rounded-2xl overflow-hidden border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -435,14 +460,14 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 max-w-2xl">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between rounded-2xl overflow-hidden border p-5 md:p-6 transition-all"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 transition-all md:p-6"
               >
                 <div>
                   <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
                     B2B SaaS · {isDe ? 'Fallstudie' : 'Case Study'}
                   </div>
                   <div className="text-lg font-semibold text-white">Democorder</div>
-                  <div className="text-sm text-sp-text-muted">
+                  <div className="text-sp-text-muted text-sm">
                     {isDe
                       ? 'Von der Idee zur produktionsreifen B2B-Plattform in 6 Monaten'
                       : 'From idea to production-ready B2B SaaS in 6 months'}
@@ -457,12 +482,12 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${isDe ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-5 md:px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-5 py-2 text-sm font-semibold tracking-wide uppercase transition-colors md:px-6"
               >
                 {isDe ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            <div className="mt-10 md:mt-16 text-center">
+            <div className="mt-10 text-center md:mt-16">
               <p className="text-sp-text-muted mb-6 text-lg">
                 {supportData[isDe ? 'de' : 'en'].services.stillHaveQuestions}
               </p>
@@ -481,18 +506,26 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
       <section className="bg-sp-accent/5 border-sp-accent/10 relative overflow-x-clip border-t py-12 md:py-16 lg:py-24">
         <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-8 text-3xl md:text-4xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+            <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {isDe ? 'Erwecken Sie Ihre' : "Let's bring your"}{' '}
               <span className="text-sp-accent">{isDe ? 'Idee zum Leben.' : 'idea to life.'}</span>
             </h2>
-            <p className="text-foreground/70 mb-8 md:mb-12 text-xl">
+            <p className="text-foreground/70 mb-8 text-xl md:mb-12">
               {isDe
                 ? 'Egal, ob Sie ein Konzept validieren oder auf ein MVP hinsteuern, wir helfen Ihnen, den nächsten Schritt zu planen – ohne Fachjargon, ohne lange Wartezeiten.'
                 : "Whether you're validating a concept or racing toward an MVP, we'll help you map the next step; no jargon, no long wait."}
             </p>
-            <Button variant="primary" size="lg" href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}>
-                {isDe ? 'Jetzt sprechen' : 'Start talking'}
-              </Button>
+            <Button
+              variant="primary"
+              size="lg"
+              href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+              data-analytics-event="cta_click"
+              data-analytics-event-label={isDe ? 'Jetzt sprechen' : 'Start talking'}
+              data-analytics-location="entrepreneur_cta"
+              data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+            >
+              {isDe ? 'Jetzt sprechen' : 'Start talking'}
+            </Button>
           </Reveal>
         </div>
       </section>

@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { AnalyticsTracker } from '@/components/providers/AnalyticsTracker'
 
 const ParticleBackground = dynamic(
   () =>
@@ -18,6 +19,7 @@ const ScrollToTop = dynamic(
 export function LayoutClientParts() {
   return (
     <>
+      <AnalyticsTracker />
       <ParticleBackground />
       <ScrollToTop />
     </>

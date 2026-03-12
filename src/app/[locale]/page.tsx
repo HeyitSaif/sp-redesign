@@ -177,6 +177,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                     <Link
                       href={feature.href}
                       className="text-sp-text-dark hover:text-sp-link-hover group inline-flex items-center gap-2 text-lg font-medium transition-colors"
+                      data-analytics-event="cta_click"
+                      data-analytics-event-label={feature.cta}
+                      data-analytics-location="home_value_props"
+                      data-analytics-destination={feature.href}
                     >
                       {feature.cta}
                       <ArrowRight
@@ -193,6 +197,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       <Link
                         href={feature.learnMore}
                         className="text-sp-accent hover:text-sp-accent-dark text-sm font-medium underline underline-offset-4"
+                        data-analytics-event="link_click"
+                        data-analytics-event-label={isDe ? 'Mehr erfahren' : 'Learn more'}
+                        data-analytics-location="home_value_props"
+                        data-analytics-link-url={feature.learnMore}
                       >
                         {isDe ? 'Mehr erfahren' : 'Learn more'}
                       </Link>
@@ -267,6 +275,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               <Link
                 href={isDe ? `/${locale}/ueber-solutionplus` : `/${locale}/about-team`}
                 className="text-sp-text-dark hover:text-sp-link-hover group mt-8 inline-flex items-center gap-4 text-xl font-medium transition-all md:mt-12"
+                data-analytics-event="cta_click"
+                data-analytics-event-label={isDe ? 'Lernen Sie das Team kennen' : 'Meet the team'}
+                data-analytics-location="home_german_discipline"
+                data-analytics-destination={
+                  isDe ? `/${locale}/ueber-solutionplus` : `/${locale}/about-team`
+                }
               >
                 {isDe ? 'Lernen Sie das Team kennen' : 'Meet the team'}{' '}
                 <ArrowRight size={24} className="transition-transform group-hover:translate-x-2" />

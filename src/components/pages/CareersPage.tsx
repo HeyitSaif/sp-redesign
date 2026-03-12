@@ -18,16 +18,16 @@ export function CareersPage({ locale }: { locale: string }) {
       <FloatiesBackground />
       {/* Hero */}
       <section className="relative flex min-h-[60vh] items-center overflow-x-clip py-12 md:py-16 lg:py-20">
-        <div className="pointer-events-none absolute inset-0 noise-overlay opacity-10 mix-blend-overlay" />
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-10 mix-blend-overlay" />
         <div className="bg-sp-accent/10 pointer-events-none absolute top-0 right-0 h-[500px] w-[500px] rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-center gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <div>
             <Reveal>
               <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle mb-8 inline-block rounded-full border px-4 py-2 text-sm font-medium">
                 {isDe ? 'Karriere bei SolutionPlus' : 'Careers at SolutionPlus'}
               </span>
-              <h1 className="mb-8 text-3xl md:text-4xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
                 {isDe ? 'Bauen mit Sinn. ' : 'Build with purpose. '}{' '}
                 <span className="text-gradient">
                   {isDe ? 'Wachsen ohne Grenzen.' : 'Grow without borders.'}
@@ -39,7 +39,15 @@ export function CareersPage({ locale }: { locale: string }) {
                   : "We're more than a software company; we're a team built on purpose. With German-led project oversight and top engineering talent from Pakistan, we deliver lasting impact for clients across Europe and the US."}
               </p>
               <div className="flex gap-4">
-                <Button variant="primary" size="md" href="#culture">
+                <Button
+                  variant="primary"
+                  size="md"
+                  href="#culture"
+                  data-analytics-event="cta_click"
+                  data-analytics-event-label={isDe ? 'Unsere Kultur' : 'Our Culture'}
+                  data-analytics-location="careers_hero"
+                  data-analytics-destination="#culture"
+                >
                   {isDe ? 'Unsere Kultur' : 'Our Culture'}{' '}
                   <ArrowRight
                     size={18}
@@ -73,14 +81,14 @@ export function CareersPage({ locale }: { locale: string }) {
             <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Unsere Arbeitskultur' : 'Our Work Culture'}
             </h2>
-            <p className="text-sp-accent mb-10 md:mb-16 text-xl font-medium">
+            <p className="text-sp-accent mb-10 text-xl font-medium md:mb-16">
               {isDe
                 ? 'Remote-first by design. Global by nature. Human at the core.'
                 : 'Remote-first by design. Global by nature. Human at the core.'}
             </p>
           </Reveal>
 
-          <div className="grid gap-5 md:gap-8 text-left md:grid-cols-2">
+          <div className="grid gap-5 text-left md:grid-cols-2 md:gap-8">
             {[
               {
                 icon: <Globe2 size={32} className="text-sp-accent" />,
@@ -110,7 +118,7 @@ export function CareersPage({ locale }: { locale: string }) {
               },
             ].map((feature, i) => (
               <Reveal key={i} delay={0.1 * (i + 1)} direction="up">
-                <div className="group bg-sp-bg-medium relative h-full overflow-hidden overflow-x-clip rounded-2xl border border-black/10 p-5 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-black/10 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)]">
+                <div className="group bg-sp-bg-medium relative h-full overflow-hidden overflow-x-clip rounded-2xl border border-black/10 p-5 transition-all duration-500 hover:-translate-y-2 hover:border-black/10 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] md:p-8">
                   <div className="from-sp-accent/5 absolute inset-0 bg-gradient-to-tr via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="group-hover:bg-sp-accent/10 group-hover:border-sp-accent/40 group-hover:text-sp-accent text-sp-text-dark mb-6 flex h-16 w-16 items-center justify-center overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-lg transition-all duration-500 group-hover:scale-110">
                     {feature.icon}
@@ -131,7 +139,7 @@ export function CareersPage({ locale }: { locale: string }) {
       {/* Why Work With Us */}
       <section className="relative overflow-x-clip py-12 md:py-16 lg:py-24">
         <div className="bg-sp-accent/5 pointer-events-none absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full blur-[150px]" />
-        <div className="container mx-auto grid items-center gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="container mx-auto grid items-center gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <div>
             <Reveal>
               <h2 className="mb-6 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
@@ -156,7 +164,7 @@ export function CareersPage({ locale }: { locale: string }) {
                   : 'Grow globally. Gain exposure as a developer, teammate, and professional.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
-                  <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 overflow-hidden rounded-2xl border border-black/5 p-5 md:p-6 transition-colors">
+                  <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 overflow-hidden rounded-2xl border border-black/5 p-5 transition-colors md:p-6">
                     <Heart className="text-sp-accent mt-1 shrink-0" />
                     <p className="text-sp-text-on-light leading-relaxed font-medium">{item}</p>
                   </div>
@@ -179,13 +187,13 @@ export function CareersPage({ locale }: { locale: string }) {
       </section>
 
       {/* How We Hire */}
-      <section className="bg-sp-bg-dark border-sp-border-dark relative scroll-mt-10 md:mt-16 md:mt-24 overflow-x-clip border-t py-12 md:py-16 lg:py-24">
+      <section className="bg-sp-bg-dark border-sp-border-dark relative scroll-mt-10 overflow-x-clip border-t py-12 md:mt-16 md:mt-24 md:py-16 lg:py-24">
         <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
             <h2 className="mb-6 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
               {isDe ? 'Wachsen Sie mit uns, nicht um uns herum.' : 'Grow with us, not around us.'}
             </h2>
-            <p className="text-foreground/70 mx-auto mb-10 md:mb-16 max-w-3xl text-xl">
+            <p className="text-foreground/70 mx-auto mb-10 max-w-3xl text-xl md:mb-16">
               {isDe
                 ? 'Treten Sie einem Team bei, in dem Ihr Beitrag nicht nur wahrgenommen wird; er prägt die Zukunft von Produkten und Unternehmen.'
                 : "Join a team where your contribution isn't just noticed; it shapes the future of products and companies."}
@@ -258,12 +266,12 @@ export function CareersPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
-                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-5 md:px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="bg-sp-surface-subtle border-sp-border-dark text-sp-text-muted hover:border-sp-accent hover:text-sp-accent rounded-full border px-5 py-2 text-sm font-semibold tracking-wide uppercase transition-colors md:px-6"
               >
                 {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            <div className="mt-10 md:mt-16 text-center">
+            <div className="mt-10 text-center md:mt-16">
               <p className="text-foreground/70 mb-6 text-lg">
                 {supportData[locale === 'de' ? 'de' : 'en'].services.stillHaveQuestions}
               </p>
@@ -282,7 +290,7 @@ export function CareersPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-dark border-sp-accent/10 relative overflow-x-clip border-t py-12 md:py-16 lg:py-24">
         <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-8 text-3xl md:text-4xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+            <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {isDe ? 'Bereit für den' : 'Ready to make an'}{' '}
               <span className="text-sp-accent">{isDe ? 'nächsten Schritt?' : 'impact?'}</span>
             </h2>
@@ -290,6 +298,10 @@ export function CareersPage({ locale }: { locale: string }) {
               variant="primary"
               size="lg"
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
+              data-analytics-event="cta_click"
+              data-analytics-event-label={isDe ? 'Jetzt bewerben' : 'Get in touch'}
+              data-analytics-location="careers_cta"
+              data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
             >
               {isDe ? 'Jetzt bewerben' : 'Get in touch'}
             </Button>

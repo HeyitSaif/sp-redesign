@@ -414,6 +414,10 @@ export function Header({ locale }: { locale: string }) {
                                     : 'bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover border-transparent'
                                 )}
                                 onClick={() => setDesktopOpen(null)}
+                                data-analytics-event="nav_click"
+                                data-analytics-event-label={item.name}
+                                data-analytics-location="header_dropdown"
+                                data-analytics-link-url={`/${locale}${item.href}`}
                               >
                                 <div className="mb-2.5 flex items-center gap-2.5">
                                   <div
@@ -476,6 +480,10 @@ export function Header({ locale }: { locale: string }) {
                                               : 'text-sp-text-muted'
                                           )}
                                           onClick={() => setDesktopOpen(null)}
+                                          data-analytics-event="nav_click"
+                                          data-analytics-event-label={child.name}
+                                          data-analytics-location="header_dropdown"
+                                          data-analytics-link-url={`/${locale}${child.href}`}
                                         >
                                           <span className="truncate pr-2">{child.name}</span>
                                           <ChevronRight
@@ -503,6 +511,12 @@ export function Header({ locale }: { locale: string }) {
                             href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
                             className="group hover:text-sp-accent bg-sp-surface-subtle hover:bg-sp-surface-hover focus-visible:ring-sp-accent/50 flex w-full items-center justify-between rounded-xl p-3 text-sm font-semibold text-white transition-all outline-none focus-visible:ring-2"
                             onClick={() => setDesktopOpen(null)}
+                            data-analytics-event="nav_click"
+                            data-analytics-event-label={
+                              locale === 'de' ? 'Alle Leistungen ansehen' : 'View All Services'
+                            }
+                            data-analytics-location="header_dropdown"
+                            data-analytics-link-url={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
                           >
                             {locale === 'de' ? 'Alle Leistungen ansehen' : 'View All Services'}
                             <ArrowRight
@@ -539,13 +553,24 @@ export function Header({ locale }: { locale: string }) {
                         : 'text-sp-text-muted hover:bg-sp-surface-hover hover:text-white'
                     )}
                     aria-current={isActive ? 'page' : undefined}
+                    data-analytics-event="language_switch"
+                    data-analytics-from={locale}
+                    data-analytics-to={loc}
                   >
                     {loc.toUpperCase()}
                   </Link>
                 )
               })}
             </div>
-            <Button href={contactHref} variant="primary" size="sm">
+            <Button
+              href={contactHref}
+              variant="primary"
+              size="sm"
+              data-analytics-event="cta_click"
+              data-analytics-event-label={locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
+              data-analytics-location="header"
+              data-analytics-destination={contactHref}
+            >
               {locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
             </Button>
           </div>
@@ -637,6 +662,10 @@ export function Header({ locale }: { locale: string }) {
                                             : 'hover:bg-sp-surface-hover border border-transparent'
                                         )}
                                         onClick={() => setMobileOpen(false)}
+                                        data-analytics-event="nav_click"
+                                        data-analytics-event-label={item.name}
+                                        data-analytics-location="header_mobile"
+                                        data-analytics-link-url={`/${locale}${item.href}`}
                                       >
                                         <div
                                           className={cn(
@@ -711,6 +740,10 @@ export function Header({ locale }: { locale: string }) {
                                                 : 'text-sp-text-muted'
                                             )}
                                             onClick={() => setMobileOpen(false)}
+                                            data-analytics-event="nav_click"
+                                            data-analytics-event-label={child.name}
+                                            data-analytics-location="header_mobile"
+                                            data-analytics-link-url={`/${locale}${child.href}`}
                                           >
                                             {child.name}
                                           </Link>
@@ -725,6 +758,14 @@ export function Header({ locale }: { locale: string }) {
                                   href={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
                                   className="bg-sp-surface-subtle hover:bg-sp-surface-hover mt-2 flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-white transition-colors"
                                   onClick={() => setMobileOpen(false)}
+                                  data-analytics-event="nav_click"
+                                  data-analytics-event-label={
+                                    locale === 'de'
+                                      ? 'Alle Leistungen ansehen'
+                                      : 'View All Services'
+                                  }
+                                  data-analytics-location="header_mobile"
+                                  data-analytics-link-url={`/${locale}/${locale === 'de' ? 'leistungen' : 'services'}`}
                                 >
                                   {locale === 'de'
                                     ? 'Alle Leistungen ansehen'
@@ -774,6 +815,12 @@ export function Header({ locale }: { locale: string }) {
                 size="md"
                 className="mt-4 w-full justify-center"
                 onClick={() => setMobileOpen(false)}
+                data-analytics-event="cta_click"
+                data-analytics-event-label={
+                  locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'
+                }
+                data-analytics-location="header_mobile"
+                data-analytics-destination={contactHref}
               >
                 {locale === 'de' ? 'Kontaktieren Sie uns' : 'Get in touch'}
                 <ArrowRight size={16} />

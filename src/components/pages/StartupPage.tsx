@@ -41,11 +41,11 @@ export function StartupPage({ locale }: { locale: string }) {
                 {supportData[locale === 'de' ? 'de' : 'en'].services.idealFor}: Pre-Seed to Series A
               </Badge>
             </div>
-            <h1 className="mb-8 text-3xl md:text-4xl leading-[1.1] font-bold md:text-7xl">
+            <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-4xl md:text-7xl">
               The more you <span className="text-gradient">grow</span>, the harder it gets to stay
               on track.
             </h1>
-            <p className="text-foreground/70 mx-auto mb-8 md:mb-12 max-w-2xl text-xl">
+            <p className="text-foreground/70 mx-auto mb-8 max-w-2xl text-xl md:mb-12">
               We provide the designers, developers, QA, and delivery management so you can focus on
               strategy and product. You lead the vision, we handle the execution.
             </p>
@@ -60,6 +60,10 @@ export function StartupPage({ locale }: { locale: string }) {
                 variant="primary"
                 size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+                data-analytics-event="cta_click"
+                data-analytics-event-label="Set up a short call"
+                data-analytics-location="startup_hero"
+                data-analytics-destination={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
                 Set up a short call{' '}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -68,6 +72,10 @@ export function StartupPage({ locale }: { locale: string }) {
                 variant="secondary"
                 size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+                data-analytics-event="link_click"
+                data-analytics-event-label="Learn more"
+                data-analytics-location="startup_hero"
+                data-analytics-link-url={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
                 Learn more
               </Button>
@@ -77,14 +85,17 @@ export function StartupPage({ locale }: { locale: string }) {
       </section>
 
       {/* What you&apos;re probably thinking */}
-      <section id="what-youre-thinking" className="bg-sp-bg-dark scroll-mt-10 md:mt-16 md:mt-24 py-12 md:py-16 lg:py-24">
+      <section
+        id="what-youre-thinking"
+        className="bg-sp-bg-dark scroll-mt-10 py-12 md:mt-16 md:mt-24 md:py-16 lg:py-24"
+      >
         <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
-            <h2 className="mb-10 md:mb-16 text-center text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
+            <h2 className="mb-10 text-center text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
               What you&apos;re probably thinking?
             </h2>
           </Reveal>
-          <div className="grid gap-5 md:gap-8 md:grid-cols-3">
+          <div className="grid gap-5 md:grid-cols-3 md:gap-8">
             <Reveal delay={0.1}>
               <div className="bg-sp-bg-medium h-full rounded-3xl border border-black/5 p-5 md:p-8">
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm">
@@ -128,7 +139,9 @@ export function StartupPage({ locale }: { locale: string }) {
           <div className="grid items-center gap-10 md:gap-16 lg:grid-cols-2">
             <div>
               <Reveal>
-                <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">Why this works</h2>
+                <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
+                  Why this works
+                </h2>
               </Reveal>
               <div className="space-y-6">
                 {[
@@ -166,16 +179,18 @@ export function StartupPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-dark py-12 md:py-16 lg:py-24">
         <div className="container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
-            <h2 className="mb-10 md:mb-16 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">How we help you move forward!</h2>
+            <h2 className="mb-10 text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
+              How we help you move forward!
+            </h2>
           </Reveal>
 
-          <div className="grid gap-5 md:gap-8 text-left md:grid-cols-3">
+          <div className="grid gap-5 text-left md:grid-cols-3 md:gap-8">
             <Reveal delay={0.1} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 transition-transform duration-300 hover:-translate-y-2 md:p-8">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   01
                 </div>
-                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl border md:h-40 md:rounded-2xl">
                   <ProceduralGeometricMesh variant="mixed" animated={true} />
                   <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Users size={32} className="text-sp-accent" />
@@ -192,11 +207,11 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.2} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 transition-transform duration-300 hover:-translate-y-2 md:p-8">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   02
                 </div>
-                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl border md:h-40 md:rounded-2xl">
                   <ProceduralDataGrid animated={true} />
                   <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Target size={32} className="text-sp-accent" />
@@ -213,11 +228,11 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal delay={0.3} direction="up">
-              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 md:p-8 transition-transform duration-300 hover:-translate-y-2">
+              <div className="group bg-sp-bg-medium relative overflow-hidden rounded-3xl border border-black/5 p-5 transition-transform duration-300 hover:-translate-y-2 md:p-8">
                 <div className="group-hover:text-sp-accent/[0.1] text-sp-text-dark/[0.03] absolute -top-6 -right-6 z-0 text-9xl font-bold transition-colors">
                   03
                 </div>
-                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl md:h-40 md:rounded-2xl border">
+                <div className="bg-sp-bg-dark border-sp-border-dark relative z-10 mb-6 h-32 w-full shrink-0 overflow-hidden rounded-xl border md:h-40 md:rounded-2xl">
                   <ProceduralNetwork nodeCount={15} animated={true} />
                   <div className="bg-sp-bg-dark/60 group-hover:bg-sp-bg-dark/40 absolute inset-0 flex items-center justify-center transition-colors duration-500">
                     <Rocket size={32} className="text-sp-accent" />
@@ -239,10 +254,10 @@ export function StartupPage({ locale }: { locale: string }) {
       <section className="bg-sp-bg-dark relative overflow-x-clip py-12 md:py-16 lg:py-24 xl:py-32">
         <div className="bg-sp-accent/10 absolute top-1/2 left-1/2 h-[1200px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[150px]" />
 
-        <div className="relative z-10 container mx-auto grid items-start gap-10 md:gap-16 px-5 md:px-8 lg:px-12 lg:grid-cols-2">
+        <div className="relative z-10 container mx-auto grid items-start gap-10 px-5 md:gap-16 md:px-8 lg:grid-cols-2 lg:px-12">
           <Reveal>
             <div className="max-w-xl">
-              <h2 className="mb-10 text-3xl md:text-4xl md:text-5xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+              <h2 className="mb-10 text-3xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
                   ? 'Lassen Sie uns lösen, was Sie bremst'
                   : "Let's solve what's slowing you down"}
@@ -323,7 +338,7 @@ export function StartupPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <div className="mx-auto mb-20 max-w-4xl text-center">
-              <h2 className="text-sp-text-dark mb-10 text-3xl md:text-4xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+              <h2 className="text-sp-text-dark mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
                   ? 'Was Gründer wie Sie über uns sagten'
                   : 'What founders like you said about us'}
@@ -331,9 +346,9 @@ export function StartupPage({ locale }: { locale: string }) {
             </div>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-5 md:gap-8 md:gap-12 md:grid-cols-2">
+          <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 md:gap-8 md:gap-12">
             <Reveal direction="up" delay={0.1}>
-              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -371,7 +386,7 @@ export function StartupPage({ locale }: { locale: string }) {
             </Reveal>
 
             <Reveal direction="up" delay={0.2}>
-              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 md:p-8 md:p-12 shadow-lg transition-transform duration-500 hover:-translate-y-2">
+              <div className="border-sp-border-testimonial flex h-full flex-col overflow-hidden rounded-2xl border bg-white p-5 shadow-lg transition-transform duration-500 hover:-translate-y-2 md:p-8 md:p-12">
                 <div className="mb-8 flex gap-1">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -418,7 +433,7 @@ export function StartupPage({ locale }: { locale: string }) {
             <h4 className="mb-6 text-sm font-bold tracking-[0.2em] text-white/80 uppercase md:text-base">
               {locale === 'de' ? 'Sie haben es so weit geschafft' : "You've made it this far"}
             </h4>
-            <h2 className="mb-8 text-3xl md:text-4xl font-bold text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
+            <h2 className="mb-8 text-3xl font-bold text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {locale === 'de'
                 ? 'Lassen Sie uns Ihre Vision in etwas Finanzierbares und Unvergessliches verwandeln.'
                 : "Let's turn your vision into something fundable and unforgettable."}
@@ -427,6 +442,12 @@ export function StartupPage({ locale }: { locale: string }) {
               variant="primary"
               size="lg"
               href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+              data-analytics-event="cta_click"
+              data-analytics-event-label={
+                locale === 'de' ? 'Kurzes Gespräch vereinbaren' : 'Set up a short call'
+              }
+              data-analytics-location="startup_cta"
+              data-analytics-destination={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
             >
               {locale === 'de' ? 'Kurzes Gespräch vereinbaren' : 'Set up a short call'}
             </Button>
@@ -444,7 +465,7 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-10 grid max-w-3xl gap-4 md:grid-cols-2">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/democorder`}
-                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-all"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 transition-all md:p-6"
               >
                 <div>
                   <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
@@ -464,7 +485,7 @@ export function StartupPage({ locale }: { locale: string }) {
               </Link>
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}/hospitality`}
-                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-all"
+                className="group border-sp-border-dark bg-sp-surface-subtle hover:border-sp-accent/40 hover:bg-sp-accent/10 flex items-center justify-between overflow-hidden rounded-2xl border p-5 transition-all md:p-6"
               >
                 <div>
                   <div className="text-sp-accent mb-1 text-xs font-bold tracking-widest uppercase">
@@ -486,12 +507,12 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/${locale}/${locale === 'de' ? 'fallstudien' : 'case-studies'}`}
-                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-5 md:px-6 py-2 text-sm font-semibold tracking-wide uppercase transition-colors"
+                className="hover:border-sp-accent hover:text-sp-accent border-sp-border-dark bg-sp-surface-subtle text-sp-text-muted rounded-full border px-5 py-2 text-sm font-semibold tracking-wide uppercase transition-colors md:px-6"
               >
                 {locale === 'de' ? 'Alle Fallstudien' : 'All Case Studies'}
               </Link>
             </div>
-            <div className="mt-10 md:mt-16 text-center">
+            <div className="mt-10 text-center md:mt-16">
               <p className="text-foreground/70 mb-6 text-lg">
                 {supportData[locale === 'de' ? 'de' : 'en'].services.stillHaveQuestions}
               </p>

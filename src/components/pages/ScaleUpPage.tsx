@@ -55,6 +55,10 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               <Link
                 href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
                 className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-flex items-center gap-2 overflow-x-clip rounded-full px-8 py-4 font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+                data-analytics-event="cta_click"
+                data-analytics-event-label={isDe ? 'Gespräch vereinbaren' : 'Set up a short call'}
+                data-analytics-location="scaleup_hero"
+                data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
                 {isDe ? 'Gespräch vereinbaren' : 'Set up a short call'}{' '}
@@ -63,6 +67,10 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               <a
                 href="#how-we-help"
                 className="border-sp-border-dark bg-sp-surface-subtle hover:border-sp-border-dark hover:bg-sp-surface-hover rounded-full border px-8 py-4 font-medium text-white shadow-lg transition-all duration-300 hover:-translate-y-1 active:scale-95"
+                data-analytics-event="link_click"
+                data-analytics-event-label={isDe ? 'Mehr erfahren' : 'Learn more'}
+                data-analytics-location="scaleup_hero"
+                data-analytics-link-url="#how-we-help"
               >
                 {isDe ? 'Mehr erfahren' : 'Learn more'}
               </a>
@@ -448,6 +456,10 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             <Link
               href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
               className="bg-sp-accent group hover:bg-sp-accent-dark relative inline-block overflow-x-clip rounded-full px-10 py-5 text-lg font-bold tracking-wide text-white shadow-[0_4px_20px_-4px_rgba(255,112,67,0.4)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_40px_-4px_rgba(255,112,67,0.6)] active:scale-95"
+              data-analytics-event="cta_click"
+              data-analytics-event-label={isDe ? 'Sprechen Sie mit uns' : 'Talk to us'}
+              data-analytics-location="scaleup_cta"
+              data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_2s_infinite]" />
               {isDe ? 'Sprechen Sie mit uns' : 'Talk to us'}
@@ -500,6 +512,10 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               <Link
                 href={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
                 className="text-sp-accent hover:text-sp-accent-dark font-medium underline underline-offset-4"
+                data-analytics-event="cta_click"
+                data-analytics-event-label={isDe ? 'Sprechen Sie mit uns' : "Let's talk"}
+                data-analytics-location="scaleup_related"
+                data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
                 {isDe ? 'Sprechen Sie mit uns' : "Let's talk"}
               </Link>
