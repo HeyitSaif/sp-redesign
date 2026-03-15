@@ -77,7 +77,7 @@ export const supportData = {
       germanDiscipline: {
         caption: 'Unser Entwicklungszentrum in Pakistan',
       },
-      cta: 'Unverbindlich. Wir besprechen Ihr Projekt und die nächsten Schritte.',
+      cta: 'Ganz unverbindlich. Wir besprechen Ihr Projekt und die nächsten Schritte.',
     },
     services: {
       idealFor: 'Ideal für',
@@ -90,7 +90,7 @@ export const supportData = {
       quickLinks: 'Schnelllinks',
     },
     caseStudies: {
-      readMore: 'Weiterführende Lektüre',
+      readMore: 'Das könnte Sie auch interessieren',
       duration: 'Dauer',
     },
     faqIntro: 'Häufige Fragen zu unserem Liefermodell und der Zusammenarbeit mit Kunden.',

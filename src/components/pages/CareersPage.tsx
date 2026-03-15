@@ -28,14 +28,14 @@ export function CareersPage({ locale }: { locale: string }) {
                 {isDe ? 'Karriere bei SolutionPlus' : 'Careers at SolutionPlus'}
               </span>
               <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
-                {isDe ? 'Bauen mit Sinn. ' : 'Build with purpose. '}{' '}
+                {isDe ? 'Mit Vision bauen. ' : 'Build with purpose. '}{' '}
                 <span className="text-gradient">
-                  {isDe ? 'Wachsen ohne Grenzen.' : 'Grow without borders.'}
+                  {isDe ? 'Grenzenlos wachsen.' : 'Grow without borders.'}
                 </span>
               </h1>
               <p className="text-sp-text-muted mb-8 max-w-xl text-xl leading-relaxed">
                 {isDe
-                  ? 'Wir sind mehr als ein Softwareunternehmen; wir sind ein Team mit klaren Zielen. Mit deutsch geführter Projektaufsicht und Top-Engineering-Talenten aus Pakistan liefern wir nachhaltigen Einfluss für Kunden in ganz Europa und den USA.'
+                  ? 'Wir sind mehr als ein Softwareunternehmen – wir sind ein Team mit einer klaren Mission. Mit deutscher Projektleitung und den besten Engineering-Talenten aus Pakistan schaffen wir echten Impact für Kunden in Europa und den USA.'
                   : "We're more than a software company; we're a team built on purpose. With German-led project oversight and top engineering talent from Pakistan, we deliver lasting impact for clients across Europe and the US."}
               </p>
               <div className="flex gap-4">
@@ -83,7 +83,7 @@ export function CareersPage({ locale }: { locale: string }) {
             </h2>
             <p className="text-sp-accent mb-10 text-xl font-medium md:mb-16">
               {isDe
-                ? 'Remote-first by design. Global by nature. Human at the core.'
+                ? 'Remote-first aus Überzeugung. Global aus Natur. Der Mensch im Mittelpunkt.'
                 : 'Remote-first by design. Global by nature. Human at the core.'}
             </p>
           </Reveal>
@@ -94,14 +94,14 @@ export function CareersPage({ locale }: { locale: string }) {
                 icon: <Globe2 size={32} className="text-sp-accent" />,
                 title: isDe ? 'Kommunikation' : 'Communication',
                 desc: isDe
-                  ? 'Kommunizieren Sie klar und respektvoll über Grenzen und Hintergründe hinweg.'
+                  ? 'Kommuniziere klar und respektvoll – über Grenzen und Hintergründe hinweg.'
                   : 'Communicate clearly and respectfully across borders and backgrounds.',
               },
               {
                 icon: <ShieldCheck size={32} className="text-sp-accent" />,
                 title: isDe ? 'Verantwortung übernehmen' : 'Take ownership',
                 desc: isDe
-                  ? 'Warten Sie nicht darauf, dass man es Ihnen sagt, machen Sie Dinge besser.'
+                  ? 'Übernimm Verantwortung und handle proaktiv – warte nicht darauf, dass man es dir sagt.'
                   : "Don't wait to be told, make things better.",
               },
               {
@@ -147,20 +147,20 @@ export function CareersPage({ locale }: { locale: string }) {
               </h2>
               <p className="text-sp-text-muted mb-10 text-lg">
                 {isDe
-                  ? 'Wenn sich dies nach Ihrer Arbeitsweise anfühlt, würden wir uns freuen, von Ihnen zu hören.'
+                  ? 'Wenn das nach deiner Arbeitsweise klingt, wollen wir dich kennenlernen.'
                   : "If this feels like your way of working, we'd love to hear from you."}
               </p>
             </Reveal>
             <div className="space-y-6">
               {[
                 isDe
-                  ? 'Denken Sie wie ein Ingenieur. Fragen Sie nach dem Warum und verbessern Sie Dinge.'
+                  ? 'Folge nicht einfach nur Spezifikationen – hinterfrage das „Warum“ und mache Lösungen besser.'
                   : "Think like an engineer. Don't just follow specs ask why and improve.",
                 isDe
-                  ? 'Arbeiten Sie in einer respektvollen Kultur. Stressfrei, unterstützend und auf Vertrauen gebaut.'
+                  ? 'Stressfrei, unterstützend und auf gegenseitigem Vertrauen aufgebaut.'
                   : 'Work in a respectful culture. Stress-free, supportive, and built on trust.',
                 isDe
-                  ? 'Wachsen Sie global. Sammeln Sie Erfahrung als Entwickler, Teammitglied und Profi.'
+                  ? 'Entwickle dich weiter – als Developer, Teammitglied und Profi auf internationalem Parkett.'
                   : 'Grow globally. Gain exposure as a developer, teammate, and professional.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
@@ -191,11 +191,11 @@ export function CareersPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-5 text-center md:px-12">
           <Reveal>
             <h2 className="mb-6 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
-              {isDe ? 'Wachsen Sie mit uns, nicht um uns herum.' : 'Grow with us, not around us.'}
+              {isDe ? 'Wachse mit uns, nicht nur neben uns.' : 'Grow with us, not around us.'}
             </h2>
             <p className="text-foreground/70 mx-auto mb-10 max-w-3xl text-xl md:mb-16">
               {isDe
-                ? 'Treten Sie einem Team bei, in dem Ihr Beitrag nicht nur wahrgenommen wird; er prägt die Zukunft von Produkten und Unternehmen.'
+                ? 'Werde Teil eines Teams, in dem dein Beitrag nicht nur gesehen wird, sondern die Zukunft von Produkten und Unternehmen aktiv mitgestaltet.'
                 : "Join a team where your contribution isn't just noticed; it shapes the future of products and companies."}
             </p>
           </Reveal>
@@ -218,39 +218,39 @@ export function CareersPage({ locale }: { locale: string }) {
         locale={locale}
         items={[
           {
-            q: isDe ? 'Sponsern Sie Visa?' : '"Do you sponsor visas?"',
+            q: isDe ? '„Bietet ihr Visa-Sponsoring an?"' : '"Do you sponsor visas?"',
             a: isDe
-              ? 'Ja, für die richtigen Rollen bieten wir Visumsponsoring und Unterstützung beim Umzug an. Wir führen Sie durch den Prozess, damit Sie sich auf einen starken Start im Team konzentrieren können.'
+              ? 'Ja. Für entsprechende Positionen unterstützen wir dich beim Visum und beim Umzug. Wir begleiten dich durch den gesamten Prozess, damit du dich voll und ganz auf deinen Start im Team konzentrieren kannst.'
               : "Yes, for the right roles we provide visa sponsorship and relocation support. We'll guide you through the process so you can focus on starting strong with the team.",
           },
           {
             q: isDe
-              ? 'Kann ich mich ohne Informatik-Abschluss bewerben?'
+              ? '„Kann ich mich ohne Informatik-Studium bewerben?"'
               : '"Can I apply without a CS degree?"',
             a: isDe
-              ? 'Absolut. Uns sind Ihre Fähigkeiten, Ihre lösungsorientierte Denkweise und das, was Sie aufgebaut haben, wichtiger als formale Abschlüsse. Ein solides Portfolio oder nachgewiesene Erfahrung hat hier mehr Gewicht.'
+              ? 'Absolut. Deine Fähigkeiten, deine Herangehensweise an Probleme und das, was du bereits aufgebaut hast, zählen für uns mehr als ein formaler Abschluss. Ein starkes Portfolio oder nachweisbare Projekterfahrung haben bei uns mehr Gewicht.'
               : "Absolutely. We care more about your skills, problem-solving mindset, and what you've built than about formal degrees. A solid portfolio or proven experience carries more weight here.",
           },
           {
-            q: isDe ? 'Wie funktioniert das BOT-Modell?' : '"How does the BOT model work?"',
+            q: isDe ? '„Wie funktioniert das BOT-Modell?"' : '"How does the BOT model work?"',
             a: isDe
-              ? 'BOT (Build-Operate-Transfer) bedeutet, dass Sie als Teil unseres Delivery-Teams an Live-Projekten mit Top-Ingenieuren und deutschen Projektleitern arbeiten. Wenn ein Kunde beschließt, das Projekt intern fortzuführen, können Sie in sein Inhouse-Team wechseln, wenn es gut passt.'
+              ? 'BOT steht für Build-Operate-Transfer. Das bedeutet: Du startest als Teil unseres Teams und arbeitest an Live-Projekten mit Top-Engineers und deutscher Projektleitung. Wenn ein Kunde das Team fest übernehmen möchte, kannst du direkt in dessen Inhouse-Team wechseln – sofern es für beide Seiten passt.'
               : "BOT (Build–Operate–Transfer) means you start as part of our delivery team, working on live projects with top engineers and German project leads. Once a client decides to internalize, you may transition to their in-house team if it's the right fit.",
           },
           {
             q: isDe
-              ? 'Kann ich remote starten und später umziehen?'
+              ? '„Kann ich remote starten und später umziehen?"'
               : '"Can I start remote and relocate later?"',
             a: isDe
-              ? 'Ja. Viele unserer Teammitglieder beginnen remote und wechseln vor Ort, wenn es sinnvoll ist. Wir helfen dabei, diesen Übergang reibungslos zu gestalten, wenn die Zeit reif ist.'
+              ? 'Ja. Viele unserer Teammitglieder beginnen remote und ziehen später an den Standort um, wenn es sinnvoll ist. Wir helfen dir dabei, diesen Übergang so reibungslos wie möglich zu gestalten.'
               : "Yes. Many of our teammates begin remotely and move onsite when it makes sense. We'll help make that transition smooth when the time comes.",
           },
           {
             q: isDe
-              ? 'Wie sieht der Bewerbungsprozess aus?'
+              ? '„Wie sieht der Bewerbungsprozess aus?"'
               : '"What\'s the interview process like?"',
             a: isDe
-              ? 'Wir halten es einfach: ein Intro-Gespräch, eine technische oder rollenspezifische Aufgabe und ein Gespräch zur Unternehmenskultur. Unser Ziel ist es, Ihre Zeit zu respektieren und Ihnen gleichzeitig den Raum zu geben, Ihre beste Arbeit zu zeigen.'
+              ? 'Wir halten es unkompliziert: Ein Kennenlern-Chat, ein technisches oder rollenspezifisches Assessment und ein Gespräch zum „Culture Fit". Unser Ziel ist es, deine Zeit zu respektieren und dir gleichzeitig den Raum zu geben, deine beste Arbeit zu zeigen.'
               : 'We keep it simple: an intro chat, a technical or role-specific assessment, and a culture fit conversation. Our goal is to respect your time while giving you space to show your best work.',
           },
         ]}

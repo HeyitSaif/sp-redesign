@@ -143,7 +143,7 @@ export function ContactPage({ locale }: { locale: string }) {
                   >
                     {isDe ? 'Fallstudien' : 'Case Studies'}
                   </Link>{' '}
-                  {isDe ? 'oder das' : 'or the'}{' '}
+                  {isDe ? 'oder den' : 'or the'}{' '}
                   <Link
                     href={`/${locale}/${isDe ? 'mvp-sprint-paket' : 'mvp-sprint-package'}`}
                     className="text-sp-accent hover:underline"

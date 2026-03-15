@@ -43,7 +43,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               </h1>
               <p className="text-foreground/70 mb-10 max-w-xl text-xl leading-relaxed">
                 {isDe
-                  ? 'Wenn Ihre Roadmap schneller wächst als Sie einstellen können, stagniert die Lieferung. Unsere dedizierten Teams integrieren sich in Ihren Workflow – ohne Rekrutierungsverzögerung.'
+                  ? 'Wenn die Produkt-Roadmap schneller ist als der Aufbau interner Ressourcen, entstehen Engpässe. Wir liefern Ihnen komplette Engineering-Teams, die sofort einsatzbereit sind und nahtlos in Ihren Prozessen arbeiten.'
                   : 'When your roadmap moves faster than hiring can keep up, delivery stalls. Our dedicated teams integrate into your workflow, bringing developers, QA, and leadership—without the lag.'}
               </p>
 
@@ -107,23 +107,23 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             {[
               {
                 icon: <Gauge size={32} className="text-sp-accent" />,
-                title: isDe ? 'Aggressive Ziele' : 'Aggressive Goals',
+                title: isDe ? 'Ehrgeizige Ziele' : 'Aggressive Goals',
                 desc: isDe
-                  ? 'Erreichen Sie ambitionierte Lieferziele ohne Rekrutierungspausen.'
+                  ? 'Erreichen Sie Ihre Release-Ziele termingerecht, ohne auf langwierige Recruiting-Zyklen warten zu müssen.'
                   : 'Hit aggressive delivery goals without slowing down for hiring cycles.',
               },
               {
                 icon: <Globe2 size={32} className="text-sp-accent" />,
-                title: isDe ? 'Zeitübergreifend' : 'Cross-Timezones',
+                title: isDe ? 'Zeitzonen-übergreifend' : 'Cross-Timezones',
                 desc: isDe
-                  ? 'Halten Sie Projekte über Zeitzonen und Workstreams hinweg in Bewegung.'
+                  ? 'Sichern Sie den Projektfortschritt durch parallele Workstreams und effiziente Arbeit über Zeitzonen hinweg.'
                   : 'Keep projects moving across time zones and parallel workstreams.',
               },
               {
                 icon: <CheckCircle2 size={32} className="text-sp-accent" />,
                 title: isDe ? 'Deutsche Qualität' : 'German Oversight',
                 desc: isDe
-                  ? 'Wahren Sie Qualität und Konsistenz durch deutsch-geführte Lieferübersicht.'
+                  ? 'Garantieren Sie Qualität und Kontinuität durch eine Projektsteuerung nach deutschen Standards.'
                   : 'Maintain quality and consistency with German-led delivery oversight.',
               },
               {
@@ -171,14 +171,14 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
             <div className="space-y-6">
               {[
                 isDe
-                  ? 'Vorgeprüfte Entwickler und QA, passend zu Ihrem Stack'
+                  ? 'Vorselektierte Entwickler und QA – exakt abgestimmt auf Ihren Tech-Stack'
                   : 'Pre-vetted engineers, QA, and developers matched to your stack',
                 isDe
-                  ? 'Volle Integration in Ihre Tools, Prozesse und Kommunikationskanäle'
+                  ? 'Vollständige Integration in Ihre Tools, Prozesse und Kommunikationskanäle'
                   : 'Full integration with your tools, processes, and communication channels',
                 isDe
-                  ? 'Transparente Lieferberichte und Sprint-Planung'
-                  : 'Transparent delivery reports and sprint planning',
+                  ? 'Lückenlose Projektberichte und eine strukturierte Planung'
+                  : 'Transparent delivery reports and structured planning',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
                   <div className="hover:border-sp-accent/40 bg-sp-bg-medium flex items-start gap-4 overflow-hidden rounded-2xl border border-black/5 p-5 transition-colors md:p-6">
@@ -298,18 +298,18 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
         items={[
           {
             q: isDe
-              ? 'Werden sie sich wie unser eigenes Team anfühlen?'
+              ? 'Fühlen sie sich wie unser eigenes Team an?'
               : 'Will they feel like our own team?',
             a: isDe
-              ? 'Ja. Das ist der ganze Sinn der Sache. Sie arbeiten mit Ihren Tools, nehmen an Ihren Meetings teil und orientieren sich an Ihrer Kultur – nur ohne die Verwaltungs- oder Einstellungskopfschmerzen für Sie.'
+              ? 'Ja. Das ist genau das Ziel. Die Experten arbeiten mit Ihren Tools, nehmen an Ihren Meetings teil und passen sich Ihrer Unternehmenskultur an – nur ohne den administrativen Aufwand oder den Recruiting-Stress für Sie.'
               : "Yes. That's the entire point. They work in your tools, attend your meetings, and align with your culture—just without the admin or hiring headache on your end.",
           },
           {
             q: isDe
-              ? 'Wie lange dauert es, bis das Team einsatzbereit ist?'
+              ? 'Wie schnell kann das Team starten?'
               : 'How quickly can the team start?',
             a: isDe
-              ? 'Es dauert in der Regel 2 bis 4 Wochen, ein engagiertes Team zusammenzustellen und einzuarbeiten, abhängig vom geforderten Tech-Stack und der Senioritätsstufe.'
+              ? 'In der Regel dauert es 2 bis 4 Wochen, um ein dediziertes Team zusammenzustellen und einzubinden. Die genaue Zeit hängt vom benötigten Tech-Stack und dem Senioritätslevel ab.'
               : 'It typically takes 2 to 4 weeks to assemble and onboard a dedicated team, depending on the required tech stack and seniority level.',
           },
           {
@@ -317,13 +317,13 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
               ? 'Können wir die Teamgröße später anpassen?'
               : 'Can we adjust the team size later?',
             a: isDe
-              ? 'Absolut. Sie können nach Bedarf Entwickler, Designer oder QA-Spezialisten hinzufügen oder reduzieren.'
+              ? 'Absolut. Sie können jederzeit Entwickler, Designer oder QA-Spezialisten hinzufügen oder reduzieren, wenn sich Ihre Projektanforderungen ändern.'
               : 'Absolutely. You can add or scale down developers, designers, or QA specialists as your project requirements evolve.',
           },
           {
             q: isDe ? 'Wem gehört der Code?' : 'Who owns the code?',
             a: isDe
-              ? 'Sie tun es. Wir arbeiten in Ihren Repositories und Sie behalten von Tag 1 an die volle Kontrolle über das gesamte geistige Eigentum.'
+              ? 'Ihnen. Wir arbeiten direkt in Ihren Repositories, und Sie behalten vom ersten Tag an das volle Eigentum an jeglichem geistigen Eigentum (IP).'
               : 'You do. We work in your repositories, and you retain full ownership of all IP from day 1.',
           },
         ]}
@@ -358,13 +358,12 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -375,7 +374,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -397,12 +396,9 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -426,7 +422,7 @@ export function DedicatedTeamsPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <h2 className="text-sp-text-dark mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
-              {isDe ? 'Geben Sie Ihrem Produkt' : 'Give your product'}{' '}
+              {isDe ? 'Schenken Sie Ihrem Produkt' : 'Give your product'}{' '}
               <span className="text-sp-accent">
                 {isDe ? 'ein zweites Leben.' : 'a second life.'}
               </span>

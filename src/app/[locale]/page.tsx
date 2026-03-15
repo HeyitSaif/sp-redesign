@@ -62,16 +62,16 @@ const HOME_FAQ_ITEMS = [
 
 const HOME_FAQ_ITEMS_DE = [
   {
-    q: 'Besorgt, dass die Qualität nicht hält?',
-    a: 'Wir weisen nur geprüfte Senior-Ingenieure zu; keine Junioren, keine Freiberufler. Wir haben für ein Berliner Startup in 6 Wochen ein Full-Stack-MVP geliefert. Sie sehen die Roadmap, keine Blackbox.',
+    q: 'Skeptisch, was die Qualität angeht?',
+    a: 'Wir setzen ausschließlich geprüfte Senior-Engineers ein – keine Junioren, keine Freelancer. Für ein Berliner Startup haben wir ein Full-Stack-MVP in nur 6 Wochen geliefert. Bei uns erhalten Sie volle Transparenz statt einer Blackbox.',
   },
   {
-    q: 'Denken Sie, Zeitzonen verlangsamen alles?',
-    a: 'Wir synchronisieren uns mit Ihren Arbeitszeiten; volle oder teilweise Überlappung. Unser Team in Pakistan arbeitet im Gleichschritt mit Ihrem Team in Deutschland, sodass kein Kontext verloren geht.',
+    q: 'Bremsen Zeitzonen den Fortschritt?',
+    a: 'Wir synchronisieren unsere Arbeit mit Ihren Geschäftszeiten – durch volle oder strategische Überlappung. Unser Team in Pakistan arbeitet nahtlos im Gleichschritt mit Ihren Entwicklern in Deutschland. Ohne Reibungsverluste, ohne Kontextverlust.',
   },
   {
-    q: 'Angst, die Kontrolle über Ihr Produkt zu verlieren?',
-    a: 'Sie besitzen immer den Code, den Prozess und das Team. Mit unserem BOT-Modell können Sie jetzt skalieren und später vollständig übernehmen — ohne Grauzonen.',
+    q: 'Sorge um den Kontrollverlust?',
+    a: 'Code, Prozesse und das Team gehören rechtlich immer Ihnen. Mit unserem BOT-Modell skalieren Sie jetzt flexibel und übernehmen das gesamte Setup später vollständig – transparent und ohne Grauzonen.',
   },
 ] as const
 
@@ -95,11 +95,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           <div className="mx-auto mb-10 max-w-4xl text-center md:mb-16">
             <Reveal>
               <h2 className="text-sp-text-dark mb-10 text-3xl font-black tracking-tight sm:text-3xl md:mb-14 md:text-4xl md:text-5xl md:text-7xl lg:text-8xl">
-                {isDe ? 'Was wir tun — und gut machen' : 'What we do — and do well'}
+                {isDe ? 'Was wir tun – und worin wir glänzen.' : 'What we do — and do well'}
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed font-light md:text-3xl">
                 {isDe
-                  ? 'Von MVPs bis zur Skalierung entwerfen wir leistungsstarke Technologielösungen, die von erstklassigen Teams geleitet werden. Ein Partner, volle Verantwortung, keine Kompromisse.'
+                  ? 'Von MVPs bis zur Skalierung entwerfen wir leistungsstarke Technologielösungen, die von erstklassigen Teams umgesetzt werden. Ein Partner, volle Verantwortung, keine Kompromisse.'
                   : 'From MVPs to scale, we design high-performing tech solutions led by top-tier teams. One partner, full accountability, zero compromise.'}
               </p>
             </Reveal>
@@ -128,7 +128,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 desc: isDe
                   ? 'Starten Sie schnell mit einem risikofreien MVP oder Feature-Build – fester Umfang, vollständig gemanagt und bereit zu beweisen, dass wir liefern.'
                   : 'Launch fast with a risk-free MVP or feature build— fixed scope, fully managed, and ready to prove we deliver.',
-                cta: isDe ? 'Starten Sie Ihr MVP' : 'Start your MVP',
+                cta: isDe ? 'Jetzt mit dem MVP starten' : 'Start your MVP',
                 subtext: supportData[isDe ? 'de' : 'en'].home.valueProps.startup.subtext,
                 href: `/${locale}#contact`,
                 learnMore: `/${locale}/${isDe ? 'mvp-sprint-paket' : 'mvp-sprint-package'}`,
@@ -150,7 +150,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 badge: supportData[isDe ? 'de' : 'en'].home.valueProps.relocation.badge,
                 title: isDe ? 'Relocation-Support' : 'Relocation support',
                 desc: isDe
-                  ? 'Sie brauchen Ihre besten Ingenieure vor Ort? Wir kümmern uns um einen nahtlosen, ethischen Relocation-Prozess, damit Ihr geistiges Eigentum und Wissen in Ihrer Nähe bleiben.'
+                  ? 'Nahtlose, verantwortungsbewusste Relocation-Prozesse sorgen dafür, dass wertvolles Know-how und IP in Ihrem Team bleiben.'
                   : 'Need your best engineers onsite? We handle seamless, ethical relocation so your IP and knowledge stay close.',
                 cta: isDe ? 'Mit Vertrauen umziehen' : 'Relocate with confidence',
                 subtext: supportData[isDe ? 'de' : 'en'].home.valueProps.relocation.subtext,
@@ -236,14 +236,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <Reveal>
               <h2 className="text-sp-text-dark mb-8 text-3xl leading-[1.2] font-black tracking-tight sm:text-3xl md:mb-12 md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
-                  ? 'Wir kombinieren deutsche Disziplin mit pakistanischer Spitzeningenieurskunst. So liefern wir Qualität.'
+                  ? 'Wir kombinieren deutsche Disziplin mit pakistanischen Top-Entwicklern. So liefern wir Qualität.'
                   : 'We combine German discipline with top-tier Pakistani engineering. It’s how we deliver quality.'}
               </h2>
               <hr className="border-sp-border-light my-10 w-24 border-t-2" />
               <div className="text-sp-text-on-light space-y-8 text-xl leading-relaxed font-light">
                 <p>
                   {isDe
-                    ? 'Unsere Teams vereinen die Struktur, Klarheit und Zuverlässigkeit, die Sie von einem deutsch geführten Unternehmen erwarten, mit der tiefgreifenden technischen Expertise und dem Ehrgeiz von Pakistans Top-Ingenieuren. Es ist nicht nur eine Zusammenarbeit.'
+                    ? ' Wir kombinieren deutsche Standards in Planung und Verlässlichkeit mit der hohen Innovationskraft und Ambition von Pakistans besten Entwicklern. Wir nennen es nicht Kollaboration – wir nennen es Synergie.'
                     : 'Our teams combine the structure, clarity, and reliability you’d expect from a native-led German operation with the deep technical expertise and ambition of Pakistan’s top engineers. It’s not just a collaboration.'}
                 </p>
                 <p className="text-sp-text-dark font-medium">
@@ -317,7 +317,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="max-w-xl">
               <h2 className="mb-6 text-3xl leading-[1.1] font-black tracking-tight text-white sm:text-3xl md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
-                  ? 'Bereit, das Scrollen zu überspringen und ein echtes Gespräch zu beginnen?'
+                  ? 'Bereit für das nächste Kapitel? Starten wir ein echtes Gespräch.'
                   : 'Ready to skip the scroll and start a real conversation?'}
               </h2>
               <div className="mb-10 flex flex-wrap gap-4">
@@ -333,7 +333,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </div>
               <p className="text-foreground/70 text-2xl leading-relaxed font-light">
                 {isDe
-                  ? 'Lassen Sie es uns herausfinden. Buchen Sie einen kurzen Call oder senden Sie uns Ihre Infos. Wir melden uns schnell und klar.'
+                  ? 'Finden wir es heraus. Buchen Sie einen kurzen Termin oder senden Sie uns Ihre Informationen. Wir melden uns umgehend bei Ihnen.'
                   : 'Let’s find out. Book a short call or send us your info. We’ll be in touch, quick and clear.'}
               </p>
             </div>
@@ -367,26 +367,26 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         items={[
           {
             q: isDe
-              ? 'Besorgt, dass die Qualität nicht hält?'
+              ? 'Skeptisch, was die Qualität angeht?'
               : 'Worried the quality won’t hold up?',
             a: isDe
-              ? 'Wir weisen nur geprüfte Senior-Ingenieure zu; keine Junioren, keine Freiberufler. Wir haben für ein Berliner Startup in 6 Wochen ein Full-Stack-MVP geliefert. Sie sehen die Roadmap, keine Blackbox.'
+              ? 'Wir setzen ausschließlich geprüfte Senior-Engineers ein – keine Junioren, keine Freelancer. Für ein Berliner Startup haben wir ein Full-Stack-MVP in nur 6 Wochen geliefert. Bei uns erhalten Sie volle Transparenz statt einer Blackbox.'
               : 'We only assign vetted senior engineers; no juniors, no freelancers. We delivered a full-stack MVP in 6 weeks for a Berlin startup. You see the roadmap, not a black box.',
           },
           {
             q: isDe
-              ? 'Denken Sie, Zeitzonen verlangsamen alles?'
+              ? 'Bremsen Zeitzonen den Fortschritt?'
               : 'Think time zones will slow everything down?',
             a: isDe
-              ? 'Wir synchronisieren uns mit Ihren Arbeitszeiten; volle oder teilweise Überlappung. Unser Team in Pakistan arbeitet im Gleichschritt mit Ihrem Team in Deutschland, sodass kein Kontext verloren geht.'
+              ? 'Wir synchronisieren unsere Arbeit mit Ihren Geschäftszeiten – durch volle oder strategische Überlappung. Unser Team in Pakistan arbeitet nahtlos im Gleichschritt mit Ihren Entwicklern in Deutschland. Ohne Reibungsverluste, ohne Kontextverlust.'
               : 'We sync to your hours; full or partial overlap. Our Pakistan team works in lockstep with your German-based ops, so no lost context.',
           },
           {
             q: isDe
-              ? 'Angst, die Kontrolle über Ihr Produkt zu verlieren?'
+              ? 'Sorge um den Kontrollverlust?'
               : 'Afraid you’ll lose control of your product?',
             a: isDe
-              ? 'Sie besitzen immer den Code, den Prozess und das Team. Mit unserem BOT-Modell können Sie jetzt skalieren und später vollständig übernehmen — ohne Grauzonen.'
+              ? 'Code, Prozesse und das Team gehören rechtlich immer Ihnen. Mit unserem BOT-Modell skalieren Sie jetzt flexibel und übernehmen das gesamte Setup später vollständig – transparent und ohne Grauzonen.'
               : 'You always own the code, the process, and the team. Our BOT model lets you scale now, and fully own later — with zero gray areas.',
           },
         ]}
@@ -415,7 +415,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed font-light md:text-2xl">
                 {isDe
-                  ? 'Von MVPs bis hin zu vollständigen Teamtransfers haben wir Unternehmen in Deutschland, den USA und Europa unterstützt; wir liefern leise, transparent und immer mit dem Ziel langfristigen Vertrauens.'
+                  ? 'Ob MVP oder globaler Team-Aufbau – wir begleiten Firmen weltweit mit einer klaren Marschroute: Transparente Prozesse, verlässliche Lieferung und eine Zusammenarbeit auf Augenhöhe.'
                   : 'From MVPs to full team transfers, we’ve supported companies across Germany, the US, and Europe; delivering quietly, transparently, and always with long-term trust in mind.'}
               </p>
             </div>
@@ -437,7 +437,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-2 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <div className="mb-6">
                   <Badge variant="outline" className="text-sp-text-on-light border-sp-border-light">
@@ -445,10 +445,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   </Badge>
                 </div>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center justify-between border-t pt-8">
                   <div className="flex items-center gap-4">
@@ -460,7 +459,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                       />
                     </div>
                     <p className="text-sp-text-dark font-semibold">
-                      Automotive Artificial Intelligence (AAI) GmBh
+                      Automotive Artificial Intelligence (AAI) GmbH
                     </p>
                   </div>
                   <Link
@@ -494,12 +493,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   </Badge>
                 </div>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-x-clip rounded-full bg-gray-100">

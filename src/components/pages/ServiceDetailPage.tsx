@@ -240,7 +240,9 @@ export function ServiceDetailPage({ locale, serviceKey }: { locale: string; serv
                     <span className="text-sp-text-dark font-bold">
                       {cat.category[isDe ? 'de' : 'en']}
                     </span>
-                    <span className="text-sp-text-on-light text-sm">{cat.items}</span>
+                    <span className="text-sp-text-on-light text-sm">
+                      {typeof cat.items === 'string' ? cat.items : cat.items[isDe ? 'de' : 'en']}
+                    </span>
                   </div>
                 </Reveal>
               ))}

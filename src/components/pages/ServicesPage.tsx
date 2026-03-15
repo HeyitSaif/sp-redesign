@@ -42,7 +42,7 @@ export function ServicesPage({ locale }: { locale: string }) {
               <div className="mb-8 flex flex-wrap items-center gap-3">
                 <div className="bg-sp-accent/10 border-sp-accent/20 text-sp-accent inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium">
                   <RefreshCcw size={16} />
-                  {isDe ? 'Software Modernisierung' : 'Product Modernization'}
+                  {isDe ? 'Legacy Code sanieren' : 'Fix Legacy Code'}
                 </div>
                 <Badge variant="outline" className="text-white/60">
                   {supportData[isDe ? 'de' : 'en'].services.idealFor}: Existing Products
@@ -286,12 +286,12 @@ export function ServicesPage({ locale }: { locale: string }) {
             <div className="max-w-xl">
               <h2 className="text-sp-text-dark mb-10 text-3xl leading-[1.1] font-black tracking-tight md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {isDe
-                  ? 'Geben Sie Ihrem Produkt ein zweites Leben'
-                  : 'Give your product a second life'}
+                  ? 'Schenken Sie Ihrem Produkt ein zweites Leben.'
+                  : 'Give your product a second life.'}
               </h2>
               <p className="text-sp-text-on-light text-2xl leading-relaxed font-light">
                 {isDe
-                  ? 'Wir modernisieren Ihr Produkt in Phasen, sodass es live bleibt, während wir es verbessern.'
+                  ? 'Wir modernisieren Ihre Software schrittweise, damit sie im Live-Betrieb bleibt, während wir sie zukunftsfähig machen.'
                   : 'We modernize your product in phases so it stays live while we improve it.'}
               </p>
             </div>
@@ -371,13 +371,12 @@ export function ServicesPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -388,7 +387,7 @@ export function ServicesPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -410,12 +409,9 @@ export function ServicesPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -494,3 +490,4 @@ export function ServicesPage({ locale }: { locale: string }) {
     </div>
   )
 }
+

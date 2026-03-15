@@ -10,7 +10,7 @@ interface FaqItem {
   a: string
 }
 
-export function StickyQnA({ items, locale }: { items: FaqItem[]; locale: string }) {
+export function StickyQnA({ items, locale, title }: { items: FaqItem[]; locale: string; title?: string }) {
   const isDe = locale === 'de'
 
   return (
@@ -21,9 +21,9 @@ export function StickyQnA({ items, locale }: { items: FaqItem[]; locale: string 
           <div className="z-10 self-start pt-16 lg:sticky lg:top-40 lg:w-[45%] lg:pt-0">
             <Reveal direction="up">
               <h2 className="text-3xl md:text-4xl leading-[1.1] font-black tracking-tight text-white sm:text-3xl md:text-4xl md:text-5xl md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
-                {isDe
+                {title ?? (isDe
                   ? 'Sie sind nicht der Erste, der fragt, und wir sind bereit.'
-                  : 'You’re not the first to ask, and we’re ready.'}
+                  : "You're not the first to ask, and we're ready.")}
               </h2>
             </Reveal>
             <Reveal direction="up" delay={0.2} className="mt-8 md:mt-12 hidden lg:block">

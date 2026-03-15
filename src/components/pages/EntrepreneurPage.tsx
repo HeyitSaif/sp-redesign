@@ -40,7 +40,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
               </div>
               <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl lg:text-7xl">
                 {isDe ? 'Ihre Idee verdient mehr als ' : 'Your idea deserves more than '}{' '}
-                <span className="text-sp-accent">{isDe ? 'einen Prototyp.' : 'a prototype.'}</span>
+                <span className="text-sp-accent">{isDe ? 'nur einen Prototyp.' : 'a prototype.'}</span>
               </h1>
               <p className="text-sp-text-muted mb-10 max-w-xl text-xl leading-relaxed">
                 {isDe
@@ -164,7 +164,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   ? 'Sie erhalten eine schnelle, stabile Ausführung, die Ihnen beim Pitchen, Geldsammeln und Wachsen hilft.'
                   : 'You get fast, stable execution that helps you pitch, raise, and grow.',
                 isDe
-                  ? 'Keine langen Zeitpläne oder aufgeblähten Prozesse. Nur funktionierende Software, pünktlich geliefert.'
+                  ? 'Keine endlosen Zeitpläne oder aufgeblähten Prozesse. Einfach funktionierende Software, pünktlich geliefert.'
                   : 'No long timelines or bloated processes. Just working software, delivered on time.',
               ].map((item, i) => (
                 <Reveal key={i} delay={0.1 * i} direction="right">
@@ -279,7 +279,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   </h3>
                   <p className="text-sp-text-muted leading-relaxed">
                     {isDe
-                      ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unsere Ingenieure in Pakistan mit Sorgfalt bauen.'
+                      ? 'Sie arbeiten mit einem Delivery Lead in Deutschland, während unser Entwicklerteam in Pakistan mit Sorgfalt baut.'
                       : "You'll work with a German-based delivery lead, while our engineers in Pakistan build with care."}
                   </p>
                 </div>
@@ -387,13 +387,12 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -404,7 +403,7 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -426,12 +425,9 @@ export function EntrepreneurPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">

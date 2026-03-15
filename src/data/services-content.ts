@@ -28,7 +28,7 @@ export interface ServiceContent {
     sectionTitle: { en: string; de: string };
     categories: {
       category: { en: string; de: string };
-      items: string;
+      items: string | { en: string; de: string };
     }[];
   };
   faqs: {
@@ -49,37 +49,37 @@ export const servicesData: Record<string, ServiceContent> = {
     },
     heroDescription: {
       en: 'We help ambitious businesses transform operations by fixing broken processes before deploying automation. From identifying quick wins to implementing enterprise-grade orchestration, we combine deep process thinking with powerful AI technology to eliminate friction and drive sustainable growth.',
-      de: 'Wir helfen aufstrebenden Unternehmen, ihre Abläufe zu transformieren – indem wir Prozesse optimieren, bevor wir KI-Automatisierung einsetzen. Von schnellen Erfolgen bis zu unternehmensweiter Orchestrierung kombinieren wir strategisches Prozessdenken mit leistungsstarker Technologie für spürbares Wachstum.',
+      de: 'Wir unterstützen ambitionierte Unternehmen dabei, ihre operativen Abläufe zu transformieren. Dabei reparieren wir ineffiziente Prozesse, bevor wir sie automatisieren. Von der Identifizierung schneller Erfolge bis hin zur Implementierung komplexer Enterprise-Lösungen: Wir kombinieren tiefgreifendes Prozessdenken mit leistungsstarker KI-Technologie, um Reibungsverluste zu eliminieren und nachhaltiges Wachstum zu sichern.',
     },
     whatWeDeliver: {
-      sectionTitle: { en: 'What We Deliver', de: 'Was wir liefern' },
+      sectionTitle: { en: 'What We Deliver', de: 'Was wir für Sie tun' },
       items: [
         {
-          title: { en: 'Process Analysis & Optimization', de: 'Prozessanalyse & Optimierung' },
+          title: { en: 'Process Analysis & Optimization', de: 'Prozesse verstehen & verbessern' },
           description: {
             en: 'We dive deep to identify hidden bottlenecks, eliminate redundancies, and fix error-prone steps. By aligning with industry best practices, we define crystal-clear ROI metrics before a single line of automation code is written.',
-            de: 'Wir tauchen tief in Ihre Prozesse ein, um versteckte Engpässe und Redundanzen zu identifizieren. Basierend auf Best Practices definieren wir kristallklare ROI-Metriken, bevor die erste Zeile Code geschrieben wird.',
+            de: 'Bevor wir Technik einsetzen, schauen wir uns genau an, wie Sie arbeiten. Wir finden heraus, was Sie Zeit kostet, wo oft Fehler passieren und was Sie sich eigentlich sparen können. Wir legen gemeinsam fest, was sich ändern muss, damit sich die Investition für Sie ab dem ersten Tag lohnt.',
           },
         },
         {
-          title: { en: 'Workflow Automation', de: 'Workflow-Automatisierung' },
+          title: { en: 'Workflow Automation', de: 'Abläufe automatisch steuern' },
           description: {
             en: 'Leverage low-code platforms (n8n, Zapier) for lightning-fast rollouts, or custom AI agent frameworks (LangChain, AutoGen) for complex, logic-heavy workflows. We build hybrid paths for phased delivery and total control.',
-            de: 'Nutzen Sie Low-Code-Plattformen für blitzschnelle Rollouts oder maßgeschneiderte KI-Agenten für komplexe Workflows. Wir bauen hybride Lösungen für schrittweise Einführung und absolute Kontrolle.',
+            de: 'Vergessen Sie mühsame Handarbeit. Wir automatisieren Aufgaben, die bisher viel Zeit gefressen haben. Für einfache Dinge nutzen wir schnelle Standard-Tools, für komplizierte Aufgaben bauen wir intelligente digitale Assistenten. So erhalten Sie Ergebnisse schneller und bei voller Kontrolle.',
           },
         },
         {
-          title: { en: 'System Integration', de: 'Systemintegration' },
+          title: { en: 'System Integration', de: 'Systeme miteinander verbinden' },
           description: {
             en: 'Achieve real-time API syncs across your entire stack. From custom Python ETL pipelines to seamless ERP, CRM, and HR integrations, we ensure your data flows smoothly securely across AWS, Azure, or GCP.',
-            de: 'Erreichen Sie Echtzeit-API-Synchronisierung über Ihren gesamten Tech-Stack. Von individuellen ETL-Pipelines bis zur nahtlosen ERP- und CRM-Integration sorgen wir dafür, dass Ihre Daten sicher fließen.',
+            de: 'Schluss mit dem Daten-Chaos. Wir sorgen dafür, dass Ihre verschiedenen Programme (wie Buchhaltung, Kundenverwaltung oder Personalwesen) endlich miteinander sprechen. Informationen fließen automatisch und sicher von A nach B, ohne dass Sie Daten doppelt abtippen müssen.',
           },
         },
         {
-          title: { en: 'AI-Powered Process Intelligence', de: 'KI-gestützte Prozessintelligenz' },
+          title: { en: 'AI-Powered Process Intelligence', de: 'Intelligente Auswertungen (KI)' },
           description: {
             en: 'Transform raw data into actionable insights with intelligent document routing, autonomous decision-making, and advanced predictive forecasting to keep you steps ahead of anomalies.',
-            de: 'Verwandeln Sie Rohdaten in umsetzbare Erkenntnisse durch intelligentes Dokumenten-Routing, autonome Entscheidungsfindung und vorausschauende Analysen.',
+            de: 'Wir machen Ihre Daten nutzbar. Unsere KI-Lösungen sortieren Dokumente automatisch, helfen Ihnen, die richtigen Entscheidungen zu treffen und warnen Sie vor Problemen, bevor diese überhaupt entstehen. So behalten Sie immer den Überblick über Ihr Geschäft.',
           },
         },
       ],
@@ -88,31 +88,31 @@ export const servicesData: Record<string, ServiceContent> = {
       sectionTitle: { en: 'Why Our Approach Works', de: 'Warum unser Ansatz funktioniert' },
       items: [
         {
-          title: { en: 'Process-first, always', de: 'Prozess zuerst, immer' },
+          title: { en: 'Process-first, always', de: 'Erst der Prozess, dann die Technik' },
           description: {
             en: 'Automation fails when it simply accelerates bad workflows. We fix the root cause first.',
-            de: 'Automatisierung scheitert, wenn sie schlechte Workflows lediglich beschleunigt. Wir beheben die Ursachen zuerst.',
+            de: 'Automatisierung scheitert, wenn sie lediglich schlechte Abläufe beschleunigt. Wir beheben zuerst die eigentliche Ursache der Probleme.',
           },
         },
         {
-          title: { en: 'Tool-agnostic execution', de: 'Tool-agnostische Umsetzung' },
+          title: { en: 'Tool-agnostic execution', de: 'Die richtige Lösung für Ihre IT' },
           description: {
             en: 'We pick exactly what fits your unique architecture. No over-engineering, zero vendor lock-in.',
-            de: 'Wir wählen genau das, was zu Ihrer Architektur passt. Kein Over-Engineering, kein Vendor Lock-in.',
+            de: 'Wir wählen genau das aus, was zu Ihrer bestehenden Infrastruktur passt. Wir bauen nichts unnötig Kompliziertes und machen Sie nicht von einem einzelnen Anbieter abhängig.',
           },
         },
         {
-          title: { en: 'Quick wins + scalable plans', de: 'Quick Wins + skalierbare Pläne' },
+          title: { en: 'Quick wins + scalable plans', de: 'Schnelle Erfolge, sicheres Wachstum' },
           description: {
             en: 'Start small to prove immediate value, then scale aggressively when you are ready.',
-            de: 'Klein anfangen, um sofortigen Mehrwert zu beweisen, dann aggressiv skalieren, wenn Sie bereit sind.',
+            de: 'Wir fangen klein an, um sofortigen Nutzen zu beweisen. Sobald alles läuft, skalieren wir die Lösung gemeinsam mit Ihnen hoch.',
           },
         },
         {
-          title: { en: 'Clear, measurable results', de: 'Klare, messbare Ergebnisse' },
+          title: { en: 'Clear, measurable results', de: 'Ergebnisse, die man schwarz auf weiß hat' },
           description: {
             en: 'We meticulously track before-and-after metrics so you can measure true ROI, not guess it.',
-            de: 'Wir verfolgen akribisch Vorher-Nachher-Metriken, damit Sie den wahren ROI messen können, nicht nur schätzen.',
+            de: 'Wir messen den Erfolg vor und nach der Optimierung. So kennen Sie Ihren echten Gewinn (ROI) ganz genau, statt ihn nur zu schätzen.',
           },
         },
       ],
@@ -124,28 +124,28 @@ export const servicesData: Record<string, ServiceContent> = {
           title: { en: 'Step 1: Discovery & Analysis', de: 'Schritt 1: Discovery & Analyse' },
           description: {
             en: 'We map your workflows to find the friction and capture root causes, spotting quick wins to define metrics early on.',
-            de: 'Wir mappen Ihre Workflows, um Reibungspunkte und Ursachen zu finden, identifizieren Quick Wins und definieren frühzeitig Metriken.',
+            de: 'Wir analysieren Ihre Workflows tiefgreifend, um Reibungspunkte und deren Ursachen zu finden. Dabei stellen wir den Status Quo radikal infrage: Was nicht absolut notwendig ist, wird eliminiert. So identifizieren wir Quick Wins und definieren klare Metriken, bevor wir mit dem Aufbau beginnen.',
           },
         },
         {
           title: { en: 'Step 2: Redesign & Validation', de: 'Schritt 2: Redesign & Validierung' },
           description: {
             en: 'Rebuilding workflows to drastically reduce waste, errors, and manual handoffs while aligning with stakeholder goals.',
-            de: 'Wir strukturieren Workflows neu, um Fehler und manuelle Übergaben drastisch zu reduzieren und sie auf die Ziele der Stakeholder abzustimmen.',
+            de: 'Wir strukturieren Ihre Workflows neu, um Verschwendung, Fehlerquellen und manuelle Schnittstellen radikal zu eliminieren. Dabei stellen wir sicher, dass jeder Prozessschritt direkt auf die Ziele Ihrer Stakeholder einzahlt.',
           },
         },
         {
           title: { en: 'Step 3: Tool Selection & Pilot', de: 'Schritt 3: Tool-Auswahl & Pilot' },
           description: {
             en: 'Matching the perfect automation approach to your process type, deploying pilot workflows in just 2-6 weeks.',
-            de: 'Wir passen den perfekten Automatisierungsansatz an Ihren Prozesstyp an und implementieren Pilot-Workflows in nur 2-6 Wochen.',
+            de: 'Wir wählen den technologischen Ansatz (Standard- oder Individualsoftware), der exakt zu Ihrem Prozess passt. Innerhalb von nur 2 bis 6 Wochen bringen wir die ersten Pilot-Workflows in den Live-Betrieb.',
           },
         },
         {
           title: { en: 'Step 4: Scale & Optimize', de: 'Schritt 4: Skalierung & Optimierung' },
           description: {
             en: 'Rolling out incrementally while continuously monitoring and refining based on real user feedback and performance data.',
-            de: 'Wir rollen schrittweise aus und überwachen und verfeinern kontinuierlich basierend auf echtem Nutzerfeedback und Leistungsdaten.',
+            de: 'Der Roll-out erfolgt schrittweise und kontrolliert. Auf Basis von echtem Nutzer-Feedback und Performance-Daten verfeinern wir das System kontinuierlich, um maximale Effizienz im gesamten Unternehmen sicherzustellen.',
           },
         },
       ],
@@ -171,7 +171,7 @@ export const servicesData: Record<string, ServiceContent> = {
         },
         {
           category: { en: 'Compliance', de: 'Compliance' },
-          items: 'GDPR-ready, end-to-end encrypted, auditable solutions',
+          items: { en: 'GDPR-ready, end-to-end encrypted, auditable solutions', de: 'DSGVO-konform, Ende-zu-Ende-verschlüsselt, auditierbare Lösungen' },
         },
       ],
     },
@@ -183,27 +183,27 @@ export const servicesData: Record<string, ServiceContent> = {
         },
         a: {
           en: 'We automate repetitive workflows such as data entry, intelligent lead routing, complex reporting, customer support triage, document processing, and multi-step operational tasks across departments.',
-          de: 'Wir automatisieren wiederkehrende Workflows wie Dateneingabe, intelligentes Lead-Routing, komplexe Berichterstattung, Kundensupport, Dokumentenverarbeitung und mehrstufige operative Aufgaben.',
+          de: 'Wir automatisieren repetitive Workflows wie Dateneingaben, intelligentes Lead-Routing, komplexe Reports, Customer-Support-Triage, Dokumentenverarbeitung sowie mehrstufige operative Aufgaben über verschiedene Abteilungen hinweg.',
         },
       },
       {
         q: {
           en: 'Do you build custom AI workflows or use existing tools?',
-          de: 'Bauen Sie maßgeschneiderte KI-Workflows oder nutzen Sie bestehende Tools?',
+          de: 'Entwickeln Sie individuelle KI-Workflows oder nutzen Sie bestehende Tools?',
         },
         a: {
           en: 'Both. We design bespoke automation using deep API integrations and AI agents, while also leveraging enterprise tools like n8n and Zapier to keep solutions remarkably fast, scalable, and cost-efficient.',
-          de: 'Beides. Wir entwerfen maßgeschneiderte Automatisierungen mit tiefen API-Integrationen und KI-Agenten und nutzen gleichzeitig Enterprise-Tools wie n8n und Zapier, um Lösungen schnell, skalierbar und kosteneffizient zu halten.',
+          de: 'Beides. Wir entwerfen maßgeschneiderte Automatisierungen mittels tiefer API-Integrationen und KI-Agenten. Gleichzeitig nutzen wir Enterprise-Tools wie n8n und Zapier, um Lösungen bemerkenswert schnell, skalierbar und kosteneffizient zu halten.',
         },
       },
       {
         q: {
           en: 'How quickly can AI automation be implemented?',
-          de: 'Wie schnell kann KI-Automatisierung implementiert werden?',
+          de: 'Wie schnell lässt sich eine KI-Automatisierung implementieren?',
         },
         a: {
           en: 'Thanks to our agile process, most automations go live within 1–3 weeks, depending on system complexity, integration depth, and your specific data requirements.',
-          de: 'Dank unseres agilen Prozesses gehen die meisten Automatisierungen innerhalb von 1–3 Wochen live, abhängig von Systemkomplexität, Integrationstiefe und Datenanforderungen.',
+          de: 'Dank unseres agilen Prozesses gehen die meisten Automatisierungen innerhalb von 1 bis 3 Wochen live – abhängig von der Systemkomplexität, der Integrationstiefe und Ihren spezifischen Datenanforderungen.',
         },
       },
     ],

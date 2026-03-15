@@ -48,7 +48,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             </h1>
             <p className="text-foreground/70 mx-auto mb-12 max-w-2xl text-xl">
               {isDe
-                ? 'Wachstum ist das Ziel - bis es unübersichtlich wird. Sie liefern schneller, vergrößern Ihre Teams und jonglieren mit der Komplexität. Bleiben Sie zuverlässig, während Sie an Schwung gewinnen.'
+                ? 'Sie haben eine ehrgeizige Roadmap, aber Ihr Wachstum wird durch quälend lange Einstellungszyklen und unzuverlässige Drittanbieter gebremst. Nachdem wir uns integriert haben, führen Sie ein hochperformerndes Senior-Team, das Ihre Kultur teilt und mitsamt allem Wissen fest in Ihr Unternehmen übergeht.'
                 : "Growth is the goal—until it gets messy. You're shipping faster, scaling teams, and juggling complexity. Stay reliable while keeping momentum."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -146,7 +146,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             {[
               {
                 icon: <Code size={32} className="text-sp-accent" />,
-                title: isDe ? 'IT-Talente' : 'IT talent',
+                title: isDe ? 'IT-Spezialisten' : 'IT talent',
                 desc: isDe
                   ? 'Mit Erfahrung in komplexen, regulierten Branchen.'
                   : "That's experienced in complex, regulated industries.",
@@ -273,12 +273,12 @@ export function ScaleUpPage({ locale }: { locale: string }) {
             <div className="max-w-xl">
               <h2 className="mb-10 text-5xl leading-[1.1] font-black tracking-tight text-white md:text-6xl">
                 {isDe
-                  ? 'Lassen Sie uns Lieferhindernisse in Vorwärtsdynamik verwandeln'
+                  ? 'Wir bringen Sie ans Ziel, während andere noch die Karte lesen.'
                   : "Let's turn delivery roadblocks into forward momentum"}
               </h2>
               <p className="text-foreground/70 text-2xl leading-relaxed font-light">
                 {isDe
-                  ? 'Wenn Team-Kapazität, Prozesslücken oder Einstellungsverzögerungen das Momentum blockieren, sind wir hier, um Klarheit und Ausführungsfluss wiederherzustellen.'
+                  ? 'Wenn fehlende Kapazitäten, Prozesslücken oder Recruiting-Staus Ihr Momentum bremsen, schaffen wir Klarheit und bringen Ihre Projekte wieder in den Flow.'
                   : "If team bandwidth, process gaps, or hiring delays are blocking momentum, we're here to help restore clarity and execution flow."}
               </p>
             </div>
@@ -299,7 +299,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Wir skalieren schnell. Können Sie mehrere Workstreams oder Produktlinien unterstützen?'
               : "We're scaling fast. Can you support multiple workstreams or product lines?",
             a: isDe
-              ? 'Ja. Wir sind ausgestattet, um parallele Lieferwege zu unterstützen, jeder mit seinem eigenen Projekt- oder Sprint-Team, geleitet von erfahrenen Delivery Managern, die Abstimmung, Konsistenz und Geschwindigkeit über alle Funktionen hinweg sicherstellen.'
+              ? 'Ja. Wir sind darauf ausgelegt, parallele Delivery-Tracks zu steuern. Jedes Team hat seine eigenen Projekt- oder Sprint-Leads, während erfahrene Delivery Manager sicherstellen, dass Abstimmung, Konsistenz und Geschwindigkeit über alle Funktionen hinweg gewahrt bleiben.'
               : "Yes. We're equipped to support parallel delivery tracks, each with its own project or sprint team, led by experienced delivery managers who ensure alignment, consistency, and velocity across functions.",
           },
           {
@@ -307,7 +307,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Unsere internen Teams sind bereits ausgelastet. Wie stark müssen wir involviert sein?'
               : 'Our internal teams are already stretched. How involved do we need to be?',
             a: isDe
-              ? 'Wir integrieren uns nahtlos in Ihre Workflows und managen das Tagesgeschäft unabhängig. Sie erhalten volle Transparenz durch Lieferberichte und Check-ins, ohne jedes Detail überwachen zu müssen.'
+              ? 'Wir integrieren uns nahtlos in Ihre Workflows und steuern das Tagesgeschäft eigenständig. Sie erhalten durch regelmäßige Berichte und Check-ins volle Transparenz, ohne sich um jedes operative Detail kümmern zu müssen.'
               : 'We integrate smoothly with your workflows and manage day-to-day operations independently. You get full visibility through delivery reports and check-ins, without needing to oversee every detail.',
           },
           {
@@ -315,7 +315,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Wie stellen Sie die Engineering-Qualität in verteilten Teams sicher?'
               : 'How do you ensure engineering quality across distributed teams?',
             a: isDe
-              ? 'Wir folgen strengen Programmierstandards, setzen Code-Reviews durch und nutzen Git-basierte Versionskontrolle, wobei Sprint-Planung und QA in jeden Release-Zyklus integriert sind. Die Lieferung wird durch deutsch-geführte Leitung für zusätzliche Sorgfalt überwacht.'
+              ? 'Wir arbeiten nach strengen Coding-Standards, setzen auf Peer-Reviews und nutzen Git-basierte Versionskontrolle. Qualitätssicherung (QA) und Sprint-Planung sind fest in jeden Release-Zyklus integriert. Für zusätzliche Präzision wird die Umsetzung durch unsere deutsche Projektleitung überwacht.'
               : 'We follow strict coding standards, enforce peer reviews, and use Git-based version control with sprint planning and QA baked into each release cycle. Delivery is monitored by German-led leadership for added rigor.',
           },
           {
@@ -323,7 +323,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Können Sie mit unseren internen Entwicklern oder anderen Dienstleistern zusammenarbeiten?'
               : 'Can you work with our internal developers or other vendors?',
             a: isDe
-              ? 'Ja. Wir arbeiten häufig in hybriden Teamstrukturen zusammen. Unsere Teams passen sich Ihren bestehenden Tools, Prozessen und Stakeholdern an, bringen aber Struktur und Klarheit dort ein, wo sie benötigt wird.'
+              ? 'Ja. Wir arbeiten häufig in hybriden Teamstrukturen. Unsere Teams passen sich Ihren bestehenden Tools, Prozessen und Stakeholdern an und bringen dort Struktur und Klarheit ein, wo sie benötigt werden.'
               : 'Yes. We frequently collaborate within hybrid team structures. Our teams adapt to your existing tools, processes, and stakeholders while bringing in structure and clarity where needed.',
           },
           {
@@ -331,7 +331,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Was passiert, wenn wir das Team schnell vergrößern müssen?'
               : 'What happens if we need to scale the team quickly?',
             a: isDe
-              ? 'Unsere Rekrutierungspipeline ermöglicht es uns, Teams innerhalb weniger Wochen aufzubauen. Wir stimmen uns auf Ihren Tech-Stack und Ihre Anforderungen ab und stellen sicher, dass neue Mitarbeiter schnell produktiv sind, ohne Kompromisse bei Qualität oder Passung einzugehen.'
+              ? 'Durch unsere Recruiting-Pipeline können wir Teams innerhalb weniger Wochen hochfahren. Wir stimmen uns eng mit Ihrem Tech-Stack ab und sorgen dafür, dass neue Mitarbeiter schnell produktiv sind – ohne Kompromisse bei Qualität oder Team-Fit.'
               : 'Our recruitment pipeline allows us to ramp teams in a matter of weeks. We align with your tech stack and requirements, ensuring new hires are productive fast without compromising on quality or fit.',
           },
           {
@@ -339,7 +339,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               ? 'Erfüllt Ihr Setup Datenschutz- oder branchenspezifische Vorgaben?'
               : 'Is your setup compliant with data security or industry-specific regulations?',
             a: isDe
-              ? 'Ja. Wir arbeiten mit Kunden in regulierten Branchen wie der Automobilindustrie und dem Gesundheitswesen zusammen und können Lieferumgebungen an Ihre Compliance-Anforderungen anpassen, einschließlich Code-Zugriffskontrollen, Audit-Trails und Datenschutzprotokollen.'
+              ? 'Ja. Wir arbeiten mit Kunden aus regulierten Branchen wie Automotive und Healthcare zusammen. Wir passen die Delivery-Umgebungen an Ihre Compliance-Vorgaben an – inklusive Zugriffskontrollen, Audit-Trails und strengen Datenschutzprotokollen (TOMs).'
               : 'Yes. We work with clients in regulated industries like automotive and healthcare, and can tailor delivery environments to meet your compliance needs including code access controls, audit trails, and data protection protocols.',
           },
         ]}
@@ -357,7 +357,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed font-light md:text-2xl">
                 {isDe
-                  ? 'Von MVPs bis hin zu vollständigen Teamtransfers haben wir Unternehmen in Deutschland, den USA und Europa unterstützt; wir liefern leise, transparent und immer mit dem Ziel langfristigen Vertrauens.'
+                  ? 'Ob MVP oder globaler Team-Aufbau – wir begleiten Firmen weltweit mit einer klaren Marschroute: Transparente Prozesse, verlässliche Lieferung und eine Zusammenarbeit auf Augenhöhe.'
                   : "From MVPs to full team transfers, we've supported companies across Germany, the US, and Europe; delivering quietly, transparently, and always with long-term trust in mind."}
               </p>
             </div>
@@ -379,13 +379,12 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -396,7 +395,7 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -418,12 +417,9 @@ export function ScaleUpPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">

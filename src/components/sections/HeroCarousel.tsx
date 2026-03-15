@@ -19,7 +19,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
     },
     {
       headline: isDe
-        ? 'Sie arbeiten an Produktzielen mit der halben Besetzung.'
+        ? 'Sie haben große Pläne, aber zu wenig Hände im Code?'
         : "You're sprinting toward product goals with half a crew.",
       subtext: isDe
         ? 'Ein zuverlässiges Entwicklerteam, ohne Zeit, Budget oder Momentum zu verlieren.'
@@ -30,7 +30,7 @@ export function HeroCarousel({ locale }: { locale: string }) {
     },
     {
       headline: isDe
-        ? 'Ihr nächstes Release sollte nicht auf Einstellungsprozesse warten.'
+        ? 'Ihr nächstes Release wartet nicht auf den perfekten Lebenslauf.'
         : "Your next release shouldn't wait on hiring red tape.",
       subtext: isDe
         ? 'Bringen Sie erfahrene Senior-Ingenieure an Bord, auf die Sie sich verlassen können – ohne Overhead.'

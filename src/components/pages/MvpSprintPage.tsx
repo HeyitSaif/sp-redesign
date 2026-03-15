@@ -174,10 +174,10 @@ export function MvpSprintPage({ locale }: { locale: string }) {
                   ? 'UX/UI Design, das Ihre Marke und Ziele widerspiegelt'
                   : 'UX/UI design that reflects your brand and goal',
                 isDe
-                  ? 'Schnelle Sprints mit QA für eine kontrollierte Lieferung'
+                  ? 'Schnelle Sprints mit integrierter Qualitätssicherung für ein kontrolliertes Release'
                   : 'Rapid sprints with QA for fast, controlled delivery',
                 isDe
-                  ? 'Transparentes Projektmanagement für volle Kontrolle'
+                  ? 'Transparentes Projektmanagement – damit Sie den Fortschritt im Blick haben'
                   : 'Transparent project management so you always know progress',
                 isDe
                   ? 'Vollständiger Code und Dokumentation, bereit zur Übergabe'
@@ -290,42 +290,42 @@ export function MvpSprintPage({ locale }: { locale: string }) {
         items={[
           {
             q: isDe
-              ? 'Wir haben mehrere parallele Releases. Können Sie helfen, den Zeitplan einzuhalten?'
+              ? '„Wir haben mehrere Releases gleichzeitig. Können Sie uns helfen, den Zeitplan einzuhalten?"'
               : '"We have multiple releases happening at once. Can you help keep them on schedule?"',
             a: isDe
-              ? 'Ja. Wir managen parallele Lieferströme mit dedizierten Sprint-Leads, die Abhängigkeiten koordinieren, Blockaden frühzeitig lösen und Release-Termine realistisch und zuverlässig halten.'
+              ? 'Ja. Wir steuern parallele Delivery-Streams mit dedizierten Sprint-Leads. Diese koordinieren Abhängigkeiten, lösen Blocker frühzeitig auf und sorgen dafür, dass Release-Termine realistisch und verlässlich bleiben.'
               : 'Yes. We manage parallel delivery streams with dedicated sprint leads who coordinate dependencies, resolve blockers early, and keep release dates realistic and reliable.',
           },
           {
             q: isDe
-              ? 'Wie gehen Sie beim Onboarding für komplexe Projekte vor?'
+              ? '„Wie läuft das Onboarding bei komplexen Projekten ab?"'
               : '"How do you handle onboarding for complex projects?"',
             a: isDe
-              ? 'Wir führen einen strukturierten Onboarding-Prozess durch, der Ihre Workflows, Tools und Prioritäten abbildet. Innerhalb der ersten Woche ist unser Team auf Ihre Prozesse abgestimmt, sodass die Lieferung reibungslos beginnt, ohne Ihre laufende Arbeit zu unterbrechen.'
+              ? 'Wir nutzen einen strukturierten Onboarding-Prozess, der Ihre Workflows, Tools und Prioritäten genau abbildet. Innerhalb der ersten Woche ist unser Team so auf Ihre Prozesse eingestimmt, dass die Umsetzung reibungslos startet, ohne Ihr laufendes Tagesgeschäft zu stören.'
               : 'We run a structured onboarding process that maps your workflows, tools, and priorities. Within the first week, our team is aligned on your processes so delivery starts smoothly without disrupting your ongoing work.',
           },
           {
             q: isDe
-              ? 'Was passiert, wenn sich unsere Anforderungen während des Projekts ändern?'
+              ? '„Was passiert, wenn sich unsere Anforderungen während des Projekts ändern?"'
               : '"What if our requirements change mid-project?"',
             a: isDe
-              ? 'Wir bauen Flexibilität in unsere Sprintplanung ein. Alle Änderungen werden auf ihre Auswirkungen geprüft, neu priorisiert und implementiert, ohne den gesamten Lieferzeitplan zu gefährden.'
+              ? 'Wir planen unsere Sprints flexibel. Jede Änderung wird auf ihre Auswirkungen geprüft, neu priorisiert und umgesetzt, ohne den gesamten Zeitplan aus der Bahn zu werfen.'
               : 'We build flexibility into our sprint planning. Any changes are assessed for impact, reprioritized, and implemented without derailing the overall delivery timeline.',
           },
           {
             q: isDe
-              ? 'Wie stellen Sie Sicherheit und Compliance sicher?'
+              ? '„Wie gewährleisten Sie Sicherheit und Compliance?"'
               : 'How do you ensure security and compliance?"',
             a: isDe
-              ? 'Wir befolgen sichere Programmierpraktiken, rollenbasierte Zugriffskontrollen und richten uns nach branchenspezifischen Compliance-Standards aus, die für Ihren Sektor relevant sind, sei es Automobil, Medizin oder Energie.'
+              ? 'Wir arbeiten strikt nach DSGVO-Standards und implementieren umfassende Technische und Organisatorische Maßnahmen (TOM) zum Schutz Ihrer Daten. Dazu gehören Secure-Coding-Praktiken, verschlüsselte Kommunikation und rollenbasierte Zugriffskontrollen. Wir richten uns nach den spezifischen Compliance-Anforderungen Ihrer Branche – sei es Automotive, Medizintechnik oder Energiewirtschaft – und stellen sicher, dass Ihre IP und sensiblen Daten jederzeit geschützt sind.'
               : "We follow secure coding practices, role-based access controls, and align with industry compliance standards relevant to your sector, whether it's automotive, medical, or energy.",
           },
           {
             q: isDe
-              ? 'Können Sie sich in unsere bestehenden Projektmanagement-Tools integrieren?'
+              ? '„Können Sie unsere bestehenden Projektmanagement-Tools nutzen?"'
               : '"Can you integrate with our existing project management tools?"',
             a: isDe
-              ? 'Ja. Wir passen uns an Ihre bevorzugten Plattformen an; egal ob Jira, Trello, Azure DevOps oder andere – so bleiben Reporting, Tracking und Zusammenarbeit in Ihrer Umgebung vollständig sichtbar.'
+              ? 'Ja. Wir passen uns Ihren bevorzugten Plattformen an – egal ob Jira, Trello, Azure DevOps oder andere. Reporting, Tracking und Zusammenarbeit bleiben so vollständig in Ihrer gewohnten Umgebung sichtbar.'
               : 'Yes. We adapt to your preferred platforms; whether Jira, Trello, Azure DevOps, or others — so reporting, tracking, and collaboration stay fully visible in your environment.',
           },
         ]}
@@ -336,14 +336,14 @@ export function MvpSprintPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
-              {isDe ? 'Werden Sie aktiv,' : 'Get moving before'}{' '}
+              {isDe ? 'Seien Sie dem' : 'Get moving before'}{' '}
               <span className="text-sp-accent">
-                {isDe ? 'bevor der Markt es tut.' : 'the market does.'}
+                {isDe ? 'einen Schritt voraus.' : 'the market does.'}
               </span>
             </h2>
             <p className="text-foreground/70 mb-8 text-xl md:mb-12">
               {isDe
-                ? 'Wir verwandeln Ihr validiertes Konzept in ein funktionierendes Produkt – mit Geschwindigkeit, Klarheit und Vertrauen.'
+                ? 'Wir verwandeln Ihr validiertes Konzept in ein funktionierendes Produkt – mit Schnelligkeit, Klarheit und höchster Präzision.'
                 : "We'll turn your validated concept into a working product with speed, clarity, and confidence."}
             </p>
             <Button

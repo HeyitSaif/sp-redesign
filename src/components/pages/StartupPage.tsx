@@ -25,6 +25,8 @@ import { supportData } from '@/data/support-content'
 import { Badge } from '@/components/ui/Badge'
 
 export function StartupPage({ locale }: { locale: string }) {
+  const isDe = locale === 'de'
+
   return (
     <div className="relative flex w-full flex-col overflow-x-clip pt-24 pb-16 md:pt-32 md:pb-24">
       <FloatiesBackground />
@@ -35,24 +37,33 @@ export function StartupPage({ locale }: { locale: string }) {
           <Reveal>
             <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
               <span className="text-sp-accent border-sp-border-dark bg-sp-surface-subtle rounded-full border px-4 py-2 text-sm font-medium">
-                For Startups
+                {isDe ? 'Für Startups' : 'For Startups'}
               </span>
               <Badge variant="outline" className="text-white/60">
                 {supportData[locale === 'de' ? 'de' : 'en'].services.idealFor}: Pre-Seed to Series A
               </Badge>
             </div>
             <h1 className="mb-8 text-3xl leading-[1.1] font-bold md:text-4xl md:text-7xl">
-              The more you <span className="text-gradient">grow</span>, the harder it gets to stay
-              on track.
+              {isDe ? (
+                <>
+                  Mit dem <span className="text-gradient">Wachstum</span> steigt die Komplexität.
+                </>
+              ) : (
+                <>
+                  The more you <span className="text-gradient">grow</span>, the harder it gets to
+                  stay on track.
+                </>
+              )}
             </h1>
             <p className="text-foreground/70 mx-auto mb-8 max-w-2xl text-xl md:mb-12">
-              We provide the designers, developers, QA, and delivery management so you can focus on
-              strategy and product. You lead the vision, we handle the execution.
+              {isDe
+                ? 'Wir stellen die Designer, Entwickler, QA und das Delivery Management – damit du dich voll auf Strategie und Produkt konzentrieren kannst. Du hast die Vision, wir übernehmen die Umsetzung.'
+                : 'We provide the designers, developers, QA, and delivery management so you can focus on strategy and product. You lead the vision, we handle the execution.'}
             </p>
             <div className="mb-10 text-center">
               <span className="text-sm font-semibold tracking-wider text-white/50 uppercase">
-                {supportData[locale === 'de' ? 'de' : 'en'].services.deliveryModel}: Managed remote
-                engineering teams
+                {supportData[isDe ? 'de' : 'en'].services.deliveryModel}:{' '}
+                {isDe ? 'Verwaltete Remote-Engineering-Teams' : 'Managed remote engineering teams'}
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-4">
@@ -61,11 +72,11 @@ export function StartupPage({ locale }: { locale: string }) {
                 size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
                 data-analytics-event="cta_click"
-                data-analytics-event-label="Set up a short call"
+                data-analytics-event-label={isDe ? 'Gespräch vereinbaren' : 'Set up a short call'}
                 data-analytics-location="startup_hero"
-                data-analytics-destination={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+                data-analytics-destination={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
-                Set up a short call{' '}
+                {isDe ? 'Gespräch vereinbaren' : 'Set up a short call'}{' '}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
@@ -73,11 +84,11 @@ export function StartupPage({ locale }: { locale: string }) {
                 size="md"
                 href={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
                 data-analytics-event="link_click"
-                data-analytics-event-label="Learn more"
+                data-analytics-event-label={isDe ? 'Mehr erfahren' : 'Learn more'}
                 data-analytics-location="startup_hero"
-                data-analytics-link-url={`/${locale}/${locale === 'de' ? 'kontakt-solutionplus' : 'contact-us'}`}
+                data-analytics-link-url={`/${locale}/${isDe ? 'kontakt-solutionplus' : 'contact-us'}`}
               >
-                Learn more
+                {isDe ? 'Mehr erfahren' : 'Learn more'}
               </Button>
             </div>
           </Reveal>
@@ -92,7 +103,7 @@ export function StartupPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-5 md:px-8 lg:px-12">
           <Reveal>
             <h2 className="mb-10 text-center text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
-              What you&apos;re probably thinking?
+              {isDe ? 'Was du wahrscheinlich denkst?' : "What you're probably thinking?"}
             </h2>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-3 md:gap-8">
@@ -102,7 +113,9 @@ export function StartupPage({ locale }: { locale: string }) {
                   <Wallet className="text-sp-accent" size={28} />
                 </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  &quot;We can&apos;t afford to keep hiring in-house just yet.&quot;
+                  {isDe
+                    ? '„Interne Einstellungen können wir uns noch nicht leisten."'
+                    : '"We can\'t afford to keep hiring in-house just yet."'}
                 </p>
               </div>
             </Reveal>
@@ -112,8 +125,9 @@ export function StartupPage({ locale }: { locale: string }) {
                   <Users className="text-sp-accent" size={28} />
                 </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  &quot;Our current team is maxed out; we need extra hands that won&apos;t derail
-                  the roadmap.&quot;
+                  {isDe
+                    ? '„Unser Team ist ausgelastet – wir brauchen zusätzliche Unterstützung, ohne die Roadmap zu gefährden."'
+                    : '"Our current team is maxed out; we need extra hands that won\'t derail the roadmap."'}
                 </p>
               </div>
             </Reveal>
@@ -123,8 +137,9 @@ export function StartupPage({ locale }: { locale: string }) {
                   <ShieldAlert className="text-sp-accent" size={28} />
                 </div>
                 <p className="text-sp-text-dark text-xl font-medium">
-                  &quot;We&apos;ve had bad luck with freelancers. We need someone reliable this
-                  time.&quot;
+                  {isDe
+                    ? '„Mit Freelancern hatten wir bisher Pech. Diesmal brauchen wir jemanden Verlässliches."'
+                    : '"We\'ve had bad luck with freelancers. We need someone reliable this time."'}
                 </p>
               </div>
             </Reveal>
@@ -140,16 +155,24 @@ export function StartupPage({ locale }: { locale: string }) {
             <div>
               <Reveal>
                 <h2 className="mb-8 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl">
-                  Why this works
+                  {isDe ? 'Warum das funktioniert' : 'Why this works'}
                 </h2>
               </Reveal>
               <div className="space-y-6">
-                {[
-                  'UX/UI design tailored to both users and investors, so your product looks sharp and feels right from the start.',
-                  'Rapid sprints with QA baked in, keeping your releases clean, reliable, and on track.',
-                  'Git-based workflows and sprint velocity tracking, so you always know where things stand.',
-                  'Flexibility to grow, easily expand your team or evolve into a long-term setup when you&apos;re ready.',
-                ].map((item, i) => (
+                {(isDe
+                  ? [
+                      'UX/UI-Design, maßgeschneidert für Nutzer und Investoren – so sieht dein Produkt von Anfang an professionell aus und fühlt sich intuitiv richtig an.',
+                      'Schnelle Sprints mit integrierter Qualitätssicherung – so bleiben deine Releases sauber, zuverlässig und exakt im Zeitplan.',
+                      'Git-basierte Workflows und Sprint-Velocity-Tracking – damit hast du jederzeit volle Transparenz über den aktuellen Fortschritt.',
+                      'Flexibilität für dein Wachstum – erweitere dein Team mühelos oder wechsle in ein langfristiges Setup, sobald du bereit bist.',
+                    ]
+                  : [
+                      'UX/UI design tailored to both users and investors, so your product looks sharp and feels right from the start.',
+                      'Rapid sprints with QA baked in, keeping your releases clean, reliable, and on track.',
+                      'Git-based workflows and sprint velocity tracking, so you always know where things stand.',
+                      "Flexibility to grow, easily expand your team or evolve into a long-term setup when you're ready.",
+                    ]
+                ).map((item, i) => (
                   <Reveal key={i} delay={0.1 * i} direction="right">
                     <div className="border-sp-border-dark bg-sp-surface-subtle flex gap-4 overflow-hidden rounded-2xl border p-5 md:p-6">
                       <div className="mt-1 shrink-0">
@@ -180,7 +203,7 @@ export function StartupPage({ locale }: { locale: string }) {
         <div className="container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <h2 className="mb-10 text-3xl font-bold md:mb-16 md:text-3xl md:text-4xl md:text-5xl">
-              How we help you move forward!
+              {isDe ? 'Wie wir dir helfen, voranzukommen!' : 'How we help you move forward!'}
             </h2>
           </Reveal>
 
@@ -197,11 +220,12 @@ export function StartupPage({ locale }: { locale: string }) {
                   </div>
                 </div>
                 <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  Flexible Delivery Pods
+                  {isDe ? 'Flexible Delivery-Teams' : 'Flexible Delivery Pods'}
                 </h3>
                 <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  Sprint-ready teams that plug into your workflows: Senior developers, UI/UX QA, led
-                  by experienced German delivery managers.
+                  {isDe
+                    ? 'Sprint-bereite Teams, die sich in deine Workflows integrieren: Senior-Entwickler, UI/UX QA – geleitet von erfahrenen deutschen Delivery Managern.'
+                    : 'Sprint-ready teams that plug into your workflows: Senior developers, UI/UX QA, led by experienced German delivery managers.'}
                 </p>
               </div>
             </Reveal>
@@ -218,11 +242,12 @@ export function StartupPage({ locale }: { locale: string }) {
                   </div>
                 </div>
                 <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  Reliable Execution
+                  {isDe ? 'Verlässliche Umsetzung' : 'Reliable Execution'}
                 </h3>
                 <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  No black-box delivery, no daily chasing. Our teams integrate into your rhythm,
-                  with shared tools, clear timelines, and high accountability.
+                  {isDe
+                    ? 'Keine Blackbox-Entwicklung, kein tägliches Hinterherlaufen. Unsere Teams integrieren sich in deinen Rhythmus – mit gemeinsamen Tools, klaren Zeitplänen und voller Eigenverantwortung.'
+                    : 'No black-box delivery, no daily chasing. Our teams integrate into your rhythm, with shared tools, clear timelines, and high accountability.'}
                 </p>
               </div>
             </Reveal>
@@ -239,11 +264,12 @@ export function StartupPage({ locale }: { locale: string }) {
                   </div>
                 </div>
                 <h3 className="text-sp-text-dark relative z-20 mb-4 text-xl font-bold">
-                  Scale Without Risk
+                  {isDe ? 'Skalieren ohne Risiko' : 'Scale Without Risk'}
                 </h3>
                 <p className="text-sp-text-on-light relative z-20 leading-relaxed">
-                  Start with a delivery sprint, then grow into a dedicated team. Add specialists in
-                  your team as you go, without blowing your burn rate.
+                  {isDe
+                    ? 'Starte mit einem ersten Delivery-Sprint und bau Schritt für Schritt ein festes Team auf. Erweitere deine Kapazitäten flexibel mit Spezialisten, ohne dein Budget zu überlasten.'
+                    : 'Start with a delivery sprint, then grow into a dedicated team. Add specialists in your team as you go, without blowing your burn rate.'}
                 </p>
               </div>
             </Reveal>
@@ -259,12 +285,12 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="max-w-xl">
               <h2 className="mb-10 text-3xl leading-[1.1] font-black tracking-tight text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
-                  ? 'Lassen Sie uns lösen, was Sie bremst'
+                  ? 'Lass uns lösen, was dich bremst'
                   : "Let's solve what's slowing you down"}
               </h2>
               <p className="text-foreground/70 text-2xl leading-relaxed font-light">
                 {locale === 'de'
-                  ? 'Wenn jeder Sprint zählt, brauchen Sie weniger Rätselraten und mehr Traktion. Lassen Sie uns darüber sprechen, wo Sie feststecken und wie wir Ihnen helfen können, weiterzukommen.'
+                  ? 'Wenn jeder Sprint zählt, brauchst du weniger Rätselraten und mehr Traktion. Lass uns darüber sprechen, wo du feststeckst und wie wir dir helfen können, weiterzukommen.'
                   : "When every sprint counts, you need less guesswork and more traction. Let's talk about where you're stuck and how we can help you get unstuck."}
               </p>
             </div>
@@ -279,15 +305,16 @@ export function StartupPage({ locale }: { locale: string }) {
       {/* FAQ */}
       <StickyQnA
         locale={locale}
+        title={isDe ? 'Du bist nicht der Erste, der fragt, und wir sind bereit.' : undefined}
         items={[
           {
             q:
               locale === 'de'
-                ? 'Wir haben kein vollständiges Tech-Team. Können wir trotzdem mit Ihnen arbeiten?'
+                ? 'Wir haben noch kein vollständiges Tech-Team. Können wir trotzdem mit euch arbeiten?'
                 : "We don't have a full tech team. Can we still work with you?",
             a:
               locale === 'de'
-                ? 'Ja. Wir stellen die Designer, Entwickler, QA und das Delivery Management zur Verfügung, damit Sie sich auf Strategie und Produkt konzentrieren können. Sie leiten die Vision, wir kümmern uns um die Umsetzung.'
+                ? 'Ja. Wir stellen die Designer, Entwickler, QA und das Delivery Management – damit du dich auf Strategie und Produkt konzentrieren kannst. Du leitest die Vision, wir kümmern uns um die Umsetzung.'
                 : 'Yes. We provide the designers, developers, QA, and delivery management so you can focus on strategy and product. You lead the vision, we handle the execution.',
           },
           {
@@ -297,7 +324,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 : 'Do we have to manage the team daily?',
             a:
               locale === 'de'
-                ? 'Ganz und gar nicht. Wir weisen einen Delivery Lead zu, der alles auf Kurs und synchron mit Ihren Prioritäten hält. Sie bleiben informiert, ohne Mikromanagement betreiben zu müssen.'
+                ? 'Ganz und gar nicht. Wir weisen einen Delivery Lead zu, der alles auf Kurs und synchron mit deinen Prioritäten hält. Du bleibst informiert, ohne Mikromanagement betreiben zu müssen.'
                 : 'Not at all. We assign a delivery lead who keeps everything on track and in sync with your priorities. You stay informed without having to micromanage.',
           },
           {
@@ -307,7 +334,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 : 'How do we know the code quality will hold up as we scale?',
             a:
               locale === 'de'
-                ? 'Wir folgen sauberen Programmierpraktiken, effizienter Lieferung und Git-basierten Workflows, um sicherzustellen, dass alles stabil und wartbar bleibt, während Ihr Produkt wächst.'
+                ? 'Wir folgen sauberen Programmierpraktiken, effizienter Lieferung und Git-basierten Workflows, um sicherzustellen, dass alles stabil und wartbar bleibt, während dein Produkt wächst.'
                 : 'We follow clean coding practices, efficient delivery, and Git-based workflows to ensure everything stays stable and maintainable as your product grows.',
           },
           {
@@ -327,7 +354,7 @@ export function StartupPage({ locale }: { locale: string }) {
                 : 'Will communication be a challenge across time zones?',
             a:
               locale === 'de'
-                ? 'Wir arbeiten synchron mit Ihren bevorzugten Arbeitszeiten; volle oder teilweise Überlappung. Ihr Team wird sich lokal anfühlen, auch wenn es das nicht ist.'
+                ? 'Wir arbeiten synchron mit deinen bevorzugten Arbeitszeiten – mit voller oder teilweiser Überschneidung. Dein Team wird sich lokal anfühlen, auch wenn es das nicht ist.'
                 : "We work in sync with your preferred hours; full or partial overlap. Your team will feel local, even if they're not.",
           },
         ]}
@@ -340,7 +367,7 @@ export function StartupPage({ locale }: { locale: string }) {
             <div className="mx-auto mb-20 max-w-4xl text-center">
               <h2 className="text-sp-text-dark mb-10 text-3xl font-bold md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
                 {locale === 'de'
-                  ? 'Was Gründer wie Sie über uns sagten'
+                  ? 'Was Gründer wie du über uns sagten'
                   : 'What founders like you said about us'}
               </h2>
             </div>
@@ -362,13 +389,12 @@ export function StartupPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -379,7 +405,7 @@ export function StartupPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -401,12 +427,9 @@ export function StartupPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -431,11 +454,11 @@ export function StartupPage({ locale }: { locale: string }) {
         <div className="relative z-10 container mx-auto max-w-4xl px-5 text-center md:px-12">
           <Reveal>
             <h4 className="mb-6 text-sm font-bold tracking-[0.2em] text-white/80 uppercase md:text-base">
-              {locale === 'de' ? 'Sie haben es so weit geschafft' : "You've made it this far"}
+              {locale === 'de' ? 'Du hast es so weit geschafft' : "You've made it this far"}
             </h4>
             <h2 className="mb-8 text-3xl font-bold text-white md:text-3xl md:text-4xl md:text-5xl md:text-6xl">
               {locale === 'de'
-                ? 'Lassen Sie uns Ihre Vision in etwas Finanzierbares und Unvergessliches verwandeln.'
+                ? 'Lass uns deine Vision in etwas Finanzierbares und Unvergessliches verwandeln.'
                 : "Let's turn your vision into something fundable and unforgettable."}
             </h2>
             <Button

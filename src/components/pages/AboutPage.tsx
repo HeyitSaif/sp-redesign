@@ -47,22 +47,22 @@ export function AboutPage({ locale }: { locale: string }) {
         <div className="container mx-auto px-6 text-center md:px-12">
           <Reveal>
             <h2 className="mb-16 text-3xl font-bold md:text-5xl">
-              {isDe ? 'Für wen wir gebaut sind' : "Who we're built for"}
+              {isDe ? 'Für wen wir arbeiten' : "Who we're built for"}
             </h2>
           </Reveal>
 
           <div className="grid gap-8 md:grid-cols-3">
             {[
               {
-                title: isDe ? 'Startups' : 'Startups',
+                title: isDe ? 'Start-ups' : 'Startups',
                 desc: isDe ? 'die ihr erstes Produkt bauen.' : 'building their first product.',
                 link: 'mvp-sprint-paket',
                 linkEn: 'mvp-sprint-package',
-                btnText: isDe ? 'Mein MVP bauen' : 'Build my MVP',
+                btnText: isDe ? 'Mein MVP starten' : 'Build my MVP',
                 img: '/images/Startups-building-their-first-product-1.png',
               },
               {
-                title: isDe ? 'Skalierende' : 'Scaling',
+                title: isDe ? 'Scale-ups' : 'Scaling',
                 desc: isDe
                   ? 'Tech-Teams, die Zuverlässigkeit brauchen'
                   : 'tech teams that need reliability',
@@ -145,7 +145,7 @@ export function AboutPage({ locale }: { locale: string }) {
                   2
                 </div>
                 <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
-                  {isDe ? 'Wachsen ohne Wachstumsschmerzen' : 'Grow without growing pains'}
+                  {isDe ? 'Nachhaltiges Wachstum' : 'Grow without growing pains'}
                 </h3>
                 <p className="text-sp-text-on-light relative z-10 leading-relaxed">
                   {isDe
@@ -162,7 +162,7 @@ export function AboutPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-4 text-xl font-bold">
                   {isDe
-                    ? 'Relocaten Sie die Personen, die Ihr Produkt am Laufen halten'
+                    ? 'Holen Sie die Menschen zu sich, die Ihr Produkt vorantreiben'
                     : 'Relocate the people who keep your product running'}
                 </h3>
                 <p className="text-sp-text-on-light relative z-10 leading-relaxed">
@@ -188,7 +188,7 @@ export function AboutPage({ locale }: { locale: string }) {
               </h2>
               <p className="text-sp-text-on-light text-xl leading-relaxed font-light md:text-2xl">
                 {isDe
-                  ? 'Von MVPs bis hin zu vollständigen Teamtransfers haben wir Unternehmen in Deutschland, den USA und Europa unterstützt; wir liefern leise, transparent und immer mit dem Ziel langfristigen Vertrauens.'
+                  ? 'Ob MVP oder globaler Team-Aufbau – wir begleiten Firmen weltweit mit einer klaren Marschroute: Transparente Prozesse, verlässliche Lieferung und eine Zusammenarbeit auf Augenhöhe.'
                   : "From MVPs to full team transfers, we've supported companies across Germany, the US, and Europe; delivering quietly, transparently, and always with long-term trust in mind."}
               </p>
             </div>
@@ -210,13 +210,12 @@ export function AboutPage({ locale }: { locale: string }) {
                   ))}
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">
-                  Automotive Artificial Intelligence (AAI) GmBh
+                  Automotive Artificial Intelligence (AAI) GmbH
                 </h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;SolutionPlus delivered an automotive simulation platform with advanced
-                  mapping and visualization. The attention to detail and ability to handle complex
-                  data sets made them the perfect partner for an industry as demanding as
-                  ours.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat eine Automotive-Simulationsplattform mit modernstem Mapping und Visualisierung geliefert. Die Liebe zum Detail und der souveräne Umgang mit komplexen Datensätzen machten sie zum idealen Partner für eine so anspruchsvolle Branche wie die unsere."'
+                    : '"SolutionPlus delivered an automotive simulation platform with advanced mapping and visualization. The attention to detail and ability to handle complex data sets made them the perfect partner for an industry as demanding as ours."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -227,7 +226,7 @@ export function AboutPage({ locale }: { locale: string }) {
                     />
                   </div>
                   <p className="text-sp-text-dark font-semibold">
-                    Automotive Artificial Intelligence (AAI) GmBh
+                    Automotive Artificial Intelligence (AAI) GmbH
                   </p>
                 </div>
               </div>
@@ -249,12 +248,9 @@ export function AboutPage({ locale }: { locale: string }) {
                 </div>
                 <h3 className="text-sp-text-dark mb-6 text-2xl font-bold">Aghaz Invest</h3>
                 <blockquote className="text-sp-text-on-light flex-1 text-lg leading-relaxed italic">
-                  &quot;Solution Plus turned our vision for a digital investment platform into
-                  reality. They built a robust MERN stack foundation and seamlessly integrated with
-                  Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to
-                  handle financial data securely while still moving fast. Thanks to their work, we
-                  were able to launch confidently and scale without worrying about the
-                  technology.&quot;
+                  {isDe
+                    ? '„SolutionPlus hat unsere Vision einer digitalen Investment-Plattform Realität werden lassen. Sie entwickelten ein robustes MERN-Stack-Fundament und sorgten für die nahtlose Integration von Plaid, DriveWealth, IBKR und Stripe. Besonders beeindruckt hat uns der sichere Umgang mit Finanzdaten bei gleichzeitig hohem Entwicklungstempo. Dank ihrer Arbeit konnten wir mit vollem Vertrauen launchen und skalieren, ohne uns um die Technik sorgen zu müssen."'
+                    : '"Solution Plus turned our vision for a digital investment platform into reality. They built a robust MERN stack foundation and seamlessly integrated with Plaid, DriveWealth, IBKR, and Stripe. What impressed us most was their ability to handle financial data securely while still moving fast. Thanks to their work, we were able to launch confidently and scale without worrying about the technology."'}
                 </blockquote>
                 <div className="border-sp-border-light mt-8 flex items-center gap-4 border-t pt-8">
                   <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-gray-100">
@@ -349,8 +345,16 @@ export function AboutPage({ locale }: { locale: string }) {
                 {isDe ? 'Über Uns' : 'About Us'}
               </span>
               <h1 className="mb-8 text-4xl leading-[1.1] font-bold md:text-6xl lg:text-7xl">
-                The <span className="text-gradient">partner</span> behind your next product
-                milestone.
+                {isDe ? (
+                  <>
+                    Der <span className="text-gradient">Partner</span> hinter Ihrem nächsten Meilenstein.
+                  </>
+                ) : (
+                  <>
+                    The <span className="text-gradient">partner</span> behind your next product
+                    milestone.
+                  </>
+                )}
               </h1>
               <p className="text-sp-text-muted mb-8 text-xl leading-relaxed">
                 {isDe
